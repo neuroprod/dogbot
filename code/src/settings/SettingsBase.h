@@ -5,4 +5,28 @@
 #ifndef BOT_SETTINGSBASE_H
 #define BOT_SETTINGSBASE_H
 
+#include "cinder/Json.h"
+#include "cinder/app/App.h"
+#include "../utils/Singleton.h"
+#include "cinder/Log.h"
+
+class SettingBase
+{
+public:
+    SettingBase()
+    {};
+
+    virtual ci::JsonTree toJson()
+    { return ci::JsonTree("data", ""); };
+
+    virtual void setFromJson(ci::JsonTree &json)
+    {};
+
+
+    std::string mKey;
+    std::string mFile;
+    std::string mType;
+};
+
+
 #endif //BOT_SETTINGSBASE_H

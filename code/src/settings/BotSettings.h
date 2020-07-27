@@ -7,68 +7,11 @@
 
 #include "cinder/Json.h"
 #include "cinder/app/App.h"
-#include "Singleton.h"
+#include "../utils/Singleton.h"
 #include "cinder/Log.h"
-
-class SettingBase
-{
-public:
-    SettingBase()
-    {};
-
-    virtual ci::JsonTree toJson()
-    { return ci::JsonTree("data", ""); };
-
-    virtual void setFromJson(ci::JsonTree &json)
-    {};
-
-
-    std::string mKey;
-    std::string mFile;
-    std::string mType;
-};
-
-
-
-class SettingFloat: public SettingBase
-{
-   float mValue;
-public:
-    SettingFloat()
-    {}
-
-    SettingFloat(std::string file, std::string key, float defaultValue=0.0f)
-    {
-        mFile = file;
-        mKey = key;
-        mValue = defaultValue;
-        mType ="float";
-    }
-
-    void setFromJson(ci::JsonTree &json) override
-    {
-        mValue = json.getValue<float>();
-    }
-
-
-    ci::JsonTree toJson() override
-    {
-        ci::JsonTree json =  ci::JsonTree::makeObject();
-        json.addChild(ci::JsonTree("key", mKey));
-        json.addChild(ci::JsonTree("value", mValue));
-        json.addChild(ci::JsonTree("type",  mType));
-        return json;
-    }
-
-   float &value()
-    {
-        return mValue;
-    }
-
-
-};
-typedef std::shared_ptr<SettingFloat> Sfloat;
-
+#include "../settings/SettingsBase.h"
+#include "../settings/SettingsFloat.h"
+#include "../settings/SettingsInt.h"
 
 class BotSettings
 {
@@ -80,10 +23,8 @@ public:
 
     Sfloat getFloat(std::string file, std::string key, float defaultValue)
     {
-
         for (auto s:settings)
         {
-
             if (s->mFile == file && s->mKey == key)
             {
                 return std::dynamic_pointer_cast<SettingFloat>(s);
@@ -91,10 +32,21 @@ public:
         }
         auto s = std::make_shared<SettingFloat>(file, key, defaultValue);
         settings.push_back(s);
-        ci::app::console() << "init" << std::endl;
         return s;
     }
-
+    Sint getInt(std::string file, std::string key, int defaultValue)
+    {
+        for (auto s:settings)
+        {
+            if (s->mFile == file && s->mKey == key)
+            {
+                return std::dynamic_pointer_cast<SettingInt>(s);
+            }
+        }
+        auto s = std::make_shared<SettingInt>(file, key, defaultValue);
+        settings.push_back(s);
+        return s;
+    }
 
 
     void save()
@@ -131,7 +83,7 @@ public:
 
     void saveSettingsFile(ci::JsonTree const &settingsJson, std::string const &filename)
     {
-        std::string settingPath = ci::app::getAssetPath("").string() + filename + ".json";
+        std::string settingPath = ci::app::getAssetPath("settings/").string() + filename + ".json";
         std::ofstream settingFile(settingPath, std::ios::out);
         settingFile << settingsJson.serialize();
         settingFile.close();
@@ -144,7 +96,7 @@ public:
     {
         for (auto filename:files)
         {
-            std::string settingPath = ci::app::getAssetPath("").string() + filename + ".json";
+            std::string settingPath = ci::app::getAssetPath("settings/").string() + filename + ".json";
             if (!ci::fs::exists(settingPath))
             {
                 CI_LOG_E("CAN'T FIND SETTING FILE " + settingPath);
@@ -165,22 +117,29 @@ public:
                 ci::JsonTree storedSettingsJson = ci::JsonTree(file_contents);
                 input.close();
                 int numC = storedSettingsJson.getNumChildren();
-                CI_LOG_I("found " << numC  << " settings");
-               for(size_t i=0;i<numC ;i++)
+                CI_LOG_I("found " << numC << " settings");
+                for (size_t i = 0; i < numC; i++)
                 {
-                   ci::JsonTree s = storedSettingsJson.getChild(i);
-                   std::string type =s.getChild("type").getValue<std::string>();
-                   std::string key =s.getChild("key").getValue<std::string>();
-                   ci::JsonTree val =s.getChild("value");
+                    ci::JsonTree s = storedSettingsJson.getChild(i);
+                    std::string type = s.getChild("type").getValue<std::string>();
+                    std::string key = s.getChild("key").getValue<std::string>();
+                    ci::JsonTree val = s.getChild("value");
 
-                  if(type =="float"){
+                    if (type == "float")
+                    {
 
-                      auto s = std::make_shared<SettingFloat>(filename, key);
-                      s->setFromJson(val);
-                      settings.push_back(s);
-                  }
+                        auto s = std::make_shared<SettingFloat>(filename, key);
+                        s->setFromJson(val);
+                        settings.push_back(s);
+                    }
+                    if (type == "int")
+                    {
+
+                        auto s = std::make_shared<SettingInt>(filename, key);
+                        s->setFromJson(val);
+                        settings.push_back(s);
+                    }
                 }
-
 
             }
 
@@ -193,7 +152,7 @@ public:
 
 typedef Singleton<BotSettings> BotSettingsSingleton;
 
-inline BotSettings *BS()
+inline BotSettings *SETTINGS()
 {
     return BotSettingsSingleton::Instance();
 }

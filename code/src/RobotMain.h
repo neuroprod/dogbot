@@ -8,7 +8,11 @@
 
 class RobotMain
 {
-
+public:
+    RobotMain();
+    void setup();
+    void update();
+    void draw();
 };
 
 

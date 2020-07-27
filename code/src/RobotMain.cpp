@@ -3,3 +3,17 @@
 //
 
 #include "RobotMain.h"
+
+void RobotMain::setup() {
+
+}
+
+void RobotMain::update() {
+
+
+}
+void RobotMain::draw()
+{
+
+
+}

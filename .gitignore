@@ -1,3 +1,7 @@
+code/cmake-build-debug/
+code/cmake-build-release/
+.idea/
+
 # Prerequisites
 *.d
 
