@@ -4,12 +4,12 @@
 
 #ifndef BOT_ROBOTMAIN_H
 #define BOT_ROBOTMAIN_H
-
+#include "cinder/app/App.h"
 
 class RobotMain
 {
 public:
-    RobotMain();
+    RobotMain(){};
     void setup();
     void update();
     void draw();

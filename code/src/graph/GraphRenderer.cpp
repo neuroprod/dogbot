@@ -23,7 +23,7 @@ void GraphRenderer::draw()
     {
         if(g->gVisible)
         {
-            ci::gl::translate(0,100);
+          //  ci::gl::translate(pos,100);
             g->gDraw();
 
         }

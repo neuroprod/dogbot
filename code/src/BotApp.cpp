@@ -1,5 +1,5 @@
 #ifndef __arm__
-#define SIMULATION
+//#define SIMULATION
 #endif
 
 #include "cinder/app/App.h"
@@ -67,6 +67,7 @@ void BotApp::update()
     simulation.update();
 #else
 robot.update();
+
 #endif
 
 }
