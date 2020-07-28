@@ -19,6 +19,8 @@ set(SRC_FILES
         ${APP_PATH}/src/RobotMain.cpp
         ${APP_PATH}/src/graph/GraphableArray.cpp
         ${APP_PATH}/src/graph/GraphRenderer.cpp
+        ${APP_PATH}/src/motor/Motor.cpp
+        ${APP_PATH}/src/motor/MotorControl.cpp
         )
 
 ci_make_app(

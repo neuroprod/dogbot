@@ -5,7 +5,7 @@
 #ifndef BOT_ROBOTMAIN_H
 #define BOT_ROBOTMAIN_H
 #include "cinder/app/App.h"
-
+#include "motor/MotorControl.h"
 class RobotMain
 {
 public:
@@ -13,6 +13,8 @@ public:
     void setup();
     void update();
     void draw();
+
+    MotorControl motorControl;
 };
 
 
