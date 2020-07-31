@@ -2,8 +2,8 @@
 // Created by kris on 22.07.20.
 //
 
-#ifndef BOT_SETTINGSFLOAT_H
-#define BOT_SETTINGSFLOAT_H
+#ifndef BOT_SETTINGFLOAT_H
+#define BOT_SETTINGFLOAT_H
 
 class SettingFloat : public SettingBase
 {
@@ -44,4 +44,4 @@ public:
 };
 
 typedef std::shared_ptr <SettingFloat> Sfloat;
-#endif //BOT_SETTINGSFLOAT_H
+#endif //BOT_SETTINGFLOAT_H

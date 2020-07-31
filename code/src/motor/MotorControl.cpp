@@ -1,6 +1,7 @@
 #include "MotorControl.h"
 
 #include "cinder/CinderImGui.h"
+#include "../settings/BotSettings.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -15,8 +16,11 @@ void MotorControl::setup()
     for( const auto &dev : Serial::getDevices() )
         console() << "Device: " << dev.getName() << endl;
 
+
+
+
 	MotorRef FRHip = Motor::create();
-	FRHip->setup(1, "FRHip","ttyMotor1");
+	FRHip->setup(SETTINGS()->getMotor("FRHip"));
 	motors.push_back(FRHip);	
 }
 

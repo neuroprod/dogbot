@@ -16,11 +16,12 @@ MotorRef Motor::create()
 	return make_shared<Motor>();
 }
 
-void Motor::setup(uint8_t _id, std::string _name, std::string _port)
+void Motor::setup(Smotor settings)
 {
-	id = _id;
-	name = _name;
-    port = _port;
+    mSettings =settings;
+    id =   mSettings->mID  ;
+	name = mSettings->mKey;
+    port =  mSettings->mPort;
 
     unsigned long baud = 115200;
 

@@ -1,0 +1,12 @@
+[
+   {
+      "key" : "windowSizeX",
+      "type" : "int",
+      "value" : 1920
+   },
+   {
+      "key" : "windowSizeY",
+      "type" : "int",
+      "value" : 1080
+   }
+]

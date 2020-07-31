@@ -82,7 +82,7 @@ void BotApp::draw()
 }
 
 CINDER_APP( BotApp, RendererGl, [] ( App::Settings *settings ) {
-    SETTINGS()->load({"SimulationSettings"});
+    SETTINGS()->load({"SimulationSettings","RobotSettings","MotorSettings"});
 
 }
 )

@@ -1,6 +1,7 @@
 #pragma once
 #include "cinder/app/App.h"
 #include "cinder/Serial.h"
+#include "../settings/SettingMotor.h"
 class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
 
@@ -32,13 +33,16 @@ class Motor {
 	float kpTarget = 580;
 	float kp = kpTarget;
 	ci::vec4 motorData;
+
+    Smotor mSettings;
+
 public:
 	Motor() {};
 
 	static MotorRef create();
-	void setup(uint8_t id, std::string name,std::string port);
+	void setup(Smotor settings);
 	void drawGui();
-	
+
 	void setMotorAngle(float angle);
 	void setMotorMaxSpeed(float speed);
 	ci::vec4 getData();

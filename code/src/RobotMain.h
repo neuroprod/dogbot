@@ -6,6 +6,7 @@
 #define BOT_ROBOTMAIN_H
 #include "cinder/app/App.h"
 #include "motor/MotorControl.h"
+#include "settings/BotSettings.h"
 class RobotMain
 {
 public:
@@ -14,6 +15,8 @@ public:
     void update();
     void draw();
 
+    Sint windowSizeX=SETTINGS()->getInt("RobotSettings","windowSizeX",1920);
+    Sint windowSizeY=SETTINGS()->getInt("RobotSettings","windowSizeY",1080);
     MotorControl motorControl;
 };
 

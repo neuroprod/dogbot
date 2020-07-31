@@ -14,6 +14,9 @@ using namespace std;
 
 void RobotMain::setup() {
     ImGui::Initialize();
+    setWindowSize(windowSizeX->value(),windowSizeY->value());
+    setWindowPos(0,0);
+
     motorControl.setup();
    // GPIO::setmode(GPIO::BOARD);
     //GPIO::setup(12, GPIO::OUT, GPIO::HIGH);

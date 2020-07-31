@@ -9,10 +9,10 @@
 #include "cinder/app/App.h"
 #include "../utils/Singleton.h"
 #include "cinder/Log.h"
-#include "../settings/SettingsBase.h"
-#include "../settings/SettingsFloat.h"
-#include "../settings/SettingsInt.h"
-
+#include "../settings/SettingBase.h"
+#include "../settings/SettingFloat.h"
+#include "../settings/SettingInt.h"
+#include "../settings/SettingMotor.h"
 class BotSettings
 {
 
@@ -47,7 +47,19 @@ public:
         settings.push_back(s);
         return s;
     }
-
+    Smotor getMotor( std::string key)
+    {
+        for (auto s:settings)
+        {
+            if (s->mFile == "MotorSettings" && s->mKey == key)
+            {
+                return std::dynamic_pointer_cast<SettingMotor>(s);
+            }
+        }
+        auto s = std::make_shared<SettingMotor>( key);
+        settings.push_back(s);
+        return s;
+    }
 
     void save()
     {
@@ -136,6 +148,13 @@ public:
                     {
 
                         auto s = std::make_shared<SettingInt>(filename, key);
+                        s->setFromJson(val);
+                        settings.push_back(s);
+                    }
+                    if (type == "motor")
+                    {
+
+                        auto s = std::make_shared<SettingMotor>( key);
                         s->setFromJson(val);
                         settings.push_back(s);
                     }

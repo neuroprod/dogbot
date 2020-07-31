@@ -1,0 +1,14 @@
+[
+   {
+      "key" : "FRHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 0,
+         "max" : 0,
+         "min" : 0,
+         "offset" : 0,
+         "port" : "ttyMotorName",
+         "startValue" : 0
+      }
+   }
+]

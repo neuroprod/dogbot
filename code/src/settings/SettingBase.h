@@ -2,8 +2,8 @@
 // Created by kris on 22.07.20.
 //
 
-#ifndef BOT_SETTINGSBASE_H
-#define BOT_SETTINGSBASE_H
+#ifndef BOT_SETTINGBASE_H
+#define BOT_SETTINGBASE_H
 
 #include "cinder/Json.h"
 #include "cinder/app/App.h"
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif //BOT_SETTINGSBASE_H
+#endif //BOT_SETTINGBASE_H
