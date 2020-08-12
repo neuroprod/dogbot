@@ -13,7 +13,7 @@ class Graphable
 {
 public:
     Graphable() {};
-    virtual void gDraw() {};
+    virtual void gDraw(int width) {};
     std::string gName;
     bool gVisible = true;
 

@@ -20,6 +20,7 @@ public:
     Sint windowSizeY=SETTINGS()->getInt("SimulationSettings","windowSizeY",1440);
 
     GraphableArray test;
+    GraphableArray test2;
 };
 
 

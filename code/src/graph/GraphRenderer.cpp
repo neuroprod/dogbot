@@ -5,6 +5,13 @@
 #include "GraphRenderer.h"
 #include "cinder/CinderImGui.h"
 #include "cinder/gl/gl.h"
+
+GraphRenderer::GraphRenderer()
+{
+
+    fboWindow.setup("Graphs");
+}
+
 void GraphRenderer::reg(Graphable * graphable)
 {
     graphables.push_back(graphable);
@@ -12,21 +19,38 @@ void GraphRenderer::reg(Graphable * graphable)
 }
 void GraphRenderer::draw()
 {
-    ImGui::Begin( "graphs" );
-    for(auto g:graphables)
+
+    fboWindow.begin();
+    if (ImGui::BeginMenuBar())
     {
-        ImGui::Checkbox(g->gName.c_str(),&g->gVisible);
+
+        if (ImGui::BeginMenu("Items"))
+
+        {
+
+            for(auto g:graphables)
+            {
+                ImGui::Checkbox(g->gName.c_str(),&g->gVisible);
+            }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMenuBar();
     }
-    ImGui::End();
+
+
+
+
+
+
     float pos =0;
     for(auto g:graphables)
     {
         if(g->gVisible)
         {
-          //  ci::gl::translate(pos,100);
-            g->gDraw();
 
+         g->gDraw(fboWindow.width);
+            ci::gl::translate(pos,200);
         }
     }
-
+    fboWindow.end();
 }

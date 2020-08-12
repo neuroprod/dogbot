@@ -17,6 +17,8 @@ void GraphableArray::prepGraph(std::string name, int size, std::vector<float> sc
     gSize = size;
 
 
+   fontL = Font(loadAsset("fonts/Ubuntu-M.ttf"),20);
+    fontS = Font(loadAsset("fonts/Ubuntu-R.ttf"),15);
 }
 void GraphableArray::addData(std::vector<float> _data){
     gData.push_back(_data);
@@ -26,23 +28,23 @@ void GraphableArray::addData(std::vector<float> _data){
     }
 
 }
-void GraphableArray::gDraw(){
+void GraphableArray::gDraw(int width){
 
 
     gl::pushMatrices();
-    gl::translate(100, 100);
-    gl::drawStringRight(gName, vec2(0, -90), Color(1, 1, 1), Font("Arial",30));
-
+    gl::translate(0, 100);
+   gl::drawString(gName, vec2(0, -90), Color(1, 1, 1), fontL);
+   float step = (float)(width-10)/500.f;
     for (int i = 0; i < gSize; i++) {
 
-        gl::drawStringRight(gNames[i] , vec2(0,-90+ 30+i*20), gColors[i], Font("Arial", 24));
+       gl::drawString(gNames[i] , vec2(0,-90+ 30+i*20), gColors[i], fontS);
         gl::color(gColors[i]);
         gl::begin(GL_LINE_STRIP);
-        int pos = 0;
+       float pos = 0;
         for (auto const& val : gData) {
 
             gl::vertex(vec2(pos, val[i] * gScale[i]));
-            pos += 2;
+            pos +=  step;
         }
         gl::end();
 

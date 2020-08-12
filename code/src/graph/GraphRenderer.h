@@ -6,14 +6,14 @@
 #define BOT_GRAPHRENDERER_H
 #include "../utils/Singleton.h"
 #include "Graphable.h"
-
+#include "../gui/FBOWindow.h"
 class GraphRenderer
 {
 public :
-    GraphRenderer(){};
+    GraphRenderer();
     void reg(Graphable * graphable);
     void draw();
-
+    FBOWindow fboWindow;
     std::vector<Graphable *> graphables;
 };
 typedef Singleton<GraphRenderer> GraphRendererSingleton;
