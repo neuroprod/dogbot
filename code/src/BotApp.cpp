@@ -1,6 +1,6 @@
-#ifndef __arm__
-#define SIMULATION
-#endif
+
+//#define SIMULATION
+
 #include "cinder/CinderImGui.h"
 
 #include "cinder/app/App.h"
@@ -198,7 +198,7 @@ void  BotApp::imGuiUpdate()
 
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Examples"))
+      /* if (ImGui::BeginMenu("Examples"))
         {
             ImGui::MenuItem("Main menu bar", NULL);
 
@@ -210,7 +210,7 @@ void  BotApp::imGuiUpdate()
             ImGui::MenuItem("Style Editor", NULL);
             ImGui::MenuItem("About Dear ImGui", NULL);
             ImGui::EndMenu();
-        }
+        }*/
         ImGui::EndMenuBar();
     }
     ImGui::End();
