@@ -59,8 +59,8 @@ public:
 
     int mID =0;
     float mOffset=0.f ;
-    float mMin=0.f ;
-    float mMax=0.f ;
+    float mMin=-30.f ;
+    float mMax=30.f ;
     float mStartValue=0.f ;
     std::string mPort="ttyMotorName" ;
 

@@ -21,7 +21,19 @@ void MotorControl::setup()
 
 	MotorRef FRHip = Motor::create();
 	FRHip->setup(SETTINGS()->getMotor("FRHip"));
-	motors.push_back(FRHip);	
+	motors.push_back(FRHip);
+
+    MotorRef FLHip = Motor::create();
+    FLHip->setup(SETTINGS()->getMotor("FLHip"));
+    motors.push_back(FLHip);
+
+    MotorRef BRHip = Motor::create();
+    BRHip->setup(SETTINGS()->getMotor("BRHip"));
+    motors.push_back(BRHip);
+
+    MotorRef BLHip = Motor::create();
+    BLHip->setup(SETTINGS()->getMotor("BLHip"));
+    motors.push_back(BLHip);
 }
 
 void MotorControl::drawGui()

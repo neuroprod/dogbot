@@ -8,8 +8,10 @@ typedef std::shared_ptr<Motor> MotorRef;
 class Motor {
 
 	float motorAngle = 0;
-	float motorSpeed = 25000;
+	float motorSpeed = 50000;
 	void setPosition(uint8_t id, int64_t angle, int32_t speed);
+    void readAngle(uint8_t id);
+    void shutDown(uint8_t id);
 	void makeHeader(uint8_t command, uint8_t id, uint8_t dataLength);
 	void addCheckSum();
 	void logData();
@@ -28,7 +30,7 @@ class Motor {
 	bool connectionFailed = false;
 
 	float angleTarget = 0;
-	float speedTarget = 100000;
+	float speedTarget = 200000;
 	float prevAngleTarget = 0;
 	float kpTarget = 580;
 	float kp = kpTarget;
@@ -44,6 +46,7 @@ public:
 	void drawGui();
 
 	void setMotorAngle(float angle);
+
 	void setMotorMaxSpeed(float speed);
 	ci::vec4 getData();
 	
