@@ -22,7 +22,7 @@ public:
     cinder::TriMeshRef motor;
     cinder::TriMeshRef hip;
     cinder::TriMeshRef knee;
-
+    cinder::TriMeshRef kneePlas;
     Material rubber;
     Material plastic;
     Material aluminium;

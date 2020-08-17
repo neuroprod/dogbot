@@ -22,10 +22,12 @@ void MeshDataPool::setup()
     motor= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/motor.obj"))) );
     hip= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/hipAlu.obj"))) );
     knee= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/upperLegAlu.obj"))) );
+    kneePlas= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/upperLegPlastic.obj"))) );
     //materials;
-    rubber.color =Color(0.8, 0.0, 0.0);
+    rubber.color =Color(0.1, 0.1, 0.1);
+    rubber.spec=0.1;
     plastic.color =Color(0.99, 0.99, 0.99);
-    aluminium.color =Color(0.5, 0.5, 0.5);
+    aluminium.color =Color(0.8, 0.8, 0.8);
     aluminiumBlack.color =Color(0.2, 0.2, 0.2);
 }
 
@@ -76,11 +78,15 @@ MeshDataRef MeshDataPool::getMesh(std::string type)
 	{
 	
 		MeshRef m = Mesh::create();
-		m->setup(knee, aluminium, mGlsl,vec3( -69,0,0),vec3(0, glm::pi<float>()/2.f, 0));
+		m->setup(knee, aluminium, mGlsl,vec3( -76,0,0),vec3(0, glm::pi<float>()/2.f, 0));
 		nd->meshes.push_back(m);
 
+        MeshRef mp = Mesh::create();
+        mp->setup(kneePlas, plastic, mGlsl,vec3( -76,0,0),vec3(0, glm::pi<float>()/2.f, 0));
+        nd->meshes.push_back(mp);
+
         MeshRef motor1 = Mesh::create();
-        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(0,0,0),vec3(0,  0,0));
+        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(-13,0,0),vec3(glm::pi<float>()/4.f,  -glm::pi<float>()/2.f,0));
         nd->meshes.push_back(motor1);
 
 
@@ -95,7 +101,7 @@ MeshDataRef MeshDataPool::getMesh(std::string type)
 
 
         MeshRef motor1 = Mesh::create();
-        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->hipOffsetX,0,-5),vec3(0,  0,glm::pi<float>()));
+        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->hipOffsetX,0,-4),vec3(0,  0,glm::pi<float>()));
         nd->meshes.push_back(motor1);
 
 	}
@@ -109,7 +115,7 @@ MeshDataRef MeshDataPool::getMesh(std::string type)
 		nd->meshes.push_back( hipMesh);
 
         MeshRef motor1 = Mesh::create();
-        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->hipOffsetX,0,5),vec3(glm::pi<float>(),  0,glm::pi<float>()));
+        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->hipOffsetX,0,4),vec3(glm::pi<float>(),  0,glm::pi<float>()));
         nd->meshes.push_back(motor1);
 
 	}

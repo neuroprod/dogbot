@@ -30,6 +30,7 @@ set(SRC_FILES
         ${APP_PATH}/src/modelrenderer/Mesh.cpp
         ${APP_PATH}/src/modelrenderer/MeshData.cpp
         ${APP_PATH}/src/modelrenderer/MeshDataPool.cpp
+        ${APP_PATH}/src/modelrenderer/SymbolBatches.cpp
         )
 
 ci_make_app(

@@ -11,6 +11,7 @@ class Material{
 public:
     Material(){};
     ci::Color color;
+    float spec =0.5;
 
 };
 #endif //BOT_MATERIAL_H

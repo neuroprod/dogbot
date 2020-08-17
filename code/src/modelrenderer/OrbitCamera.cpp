@@ -125,5 +125,5 @@ void OrbitCamera::mouseWheel(float inc_)
 	{
 		targetCameraDistance/=0.9;
 	}
-	
+	if(targetCameraDistance>4000)targetCameraDistance=4000;
 }

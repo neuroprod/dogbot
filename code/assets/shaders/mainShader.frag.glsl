@@ -1,10 +1,11 @@
 #version 150 core
 uniform float alpha;
-uniform vec3 uLightPos;
+uniform float spec;
 uniform sampler2DShadow uShadowMap;
 
 in vec4 vColor;
 in vec4 vPosition;
+in vec4 vLight;
 in vec3 vNormal;
 in vec4 vShadowCoord;
 
@@ -46,17 +47,20 @@ float samplePCF4x4( vec4 sc )
 void main( void )
 {
 //todo fix+ make nice shading
-	vec3 Normal			= normalize( vNormal );
-	vec3 lightDir		= normalize( uLightPos - vPosition.xyz );
-	float NdotL			=  dot( vNormal, lightDir)*0.5 +0.5;
+	vec3 normal			= normalize( vNormal );
+
+	vec3 lightDir		= normalize( vLight.xyz - vPosition.xyz );
+
+	vec3 viewDir		= normalize( vPosition.xyz );
+	float NdotL			=  dot( normal, lightDir);
 	
-	vec3 Diffuse		= vec3( NdotL );
+	vec3 diffuse		= vec3( NdotL )*0.5 +0.5;
 	vec3 Ambient		= vec3( 0.1 );
 	
+    vec3 viewDirR = normalize(uViewPos - vPosition.xyz);
+    vec3 reflectDir = reflect(-lightDir, normal	);
+    float spec = pow(max(dot(viewDirR, reflectDir), 0.0), 4)*spec;
 
-	 vec3 viewDir = normalize(uViewPos - vPosition.xyz);
-    vec3 reflectDir = reflect(-lightDir, Normal	);  
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 2)*0.1;
 
 
 	vec4 sc = vShadowCoord;
@@ -66,10 +70,15 @@ void main( void )
 	sc.z -= 0.005;
 	float shadow = samplePCF4x4( sc );
 	shadow =shadow*0.3+0.7;
-	
-	Color.rgb = ( Diffuse  * shadow  + Ambient  )* vColor.rgb +spec*shadow;
+if(length(vPosition.xyz)>5000)
+{
+shadow =1.0;
+}
+
+
+		Color.rgb =vec3(diffuse)*shadow*vColor.xyz +spec	;
 	Color.a	= alpha;
 
-	
+	//Color.rgb  =vec3(length(vPosition.xyz)/10000);
 	
 }

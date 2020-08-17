@@ -40,7 +40,7 @@ void Mesh::draw()
 {
 
 	gl::color(mMat.color);
-
+    mainBatch->getGlslProg()->uniform("spec",mMat.spec );
 
 	mainBatch->draw();
 

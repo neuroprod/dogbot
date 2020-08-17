@@ -8,11 +8,18 @@ using namespace ci;
 using namespace ci::app;
 
 void ModelRenderer::setup() {
+
     fboWindow.setup("ModelRenderer");
     MDP()->setup();
+    symbols.setup();
     model = std::make_shared<FKModel>();
     model->setup();
-
+    mat4 posM ;
+    posM= glm::translate(posM,vec3(0,330,0));
+    float F5 =glm::pi<float>()/4;
+    std::vector<float > m = {0,-F5 ,F5*2 ,0,F5 ,-F5*2,0,-F5 ,F5*2,0,F5 ,-F5*2};
+    model->setPosition(posM,m);
+    model->update();
     gl::Texture2d::Format depthFormat;
     depthFormat.setInternalFormat(GL_DEPTH_COMPONENT32F);
     depthFormat.setCompareMode(GL_COMPARE_REF_TO_TEXTURE);
@@ -26,7 +33,7 @@ void ModelRenderer::setup() {
     fboFormat.attachment(GL_DEPTH_ATTACHMENT, mShadowMapTex);
     mFbo = gl::Fbo::create(fboSize, fboSize, fboFormat);
 
-    mLightPos = vec3(1000.0f, 2500.0f, 1500.0f);
+    mLightPos = vec3(2000.0f, 2500.0f, 2000.0f);
     mLightCam.setPerspective(50.0f, mFbo->getAspectRatio(), 10.f, 15000.0f);
     mLightCam.lookAt(mLightPos, vec3(0.0f));
 
@@ -41,7 +48,7 @@ void ModelRenderer::draw() {
 
     if(fboWindow.width !=0 || fboWindow.height !=0)
     {
-      //  drawShadow();
+       drawShadow();
 
     }
 
@@ -49,7 +56,7 @@ void ModelRenderer::draw() {
     if(  fboWindow.begin())
   {
       camera.aspect = (float)fboWindow.width / (float)fboWindow.height;
-
+      camera.setBodyPos(vec3(0,150,0));
       camera.update(fboWindow.vMin,fboWindow.vMax);
 
 
@@ -62,11 +69,27 @@ void ModelRenderer::draw() {
           }
           ImGui::EndMenuBar();
       }
-      gl::clear(Color::gray(0.5));
+      gl::clear(Color(0.53, 	0.81 ,	0.98));
 
       gl::pushMatrices();
       gl::setMatrices(camera.mCam);
       gl::drawCoordinateFrame(1000);
+
+
+      for (auto n : model->nodes)
+      {
+          gl::pushMatrices();
+          gl::setModelMatrix(n->globalMatrix);
+          symbols.coordinateFrame->draw();
+          gl::popMatrices();
+
+      }
+
+
+
+
+
+
 
       gl::ScopedTextureBind texScope(mShadowMapTex, (uint8_t)0);
       //	vec3 mvLightPos = vec3(gl::getModelView() * vec4(mLightPos, 1.0f));
@@ -79,6 +102,9 @@ void ModelRenderer::draw() {
       MDP()->mGlsl->uniform("uViewPos", camera.mCam.getEyePoint());
       MDP()->mGlsl->uniform("alpha", 1.f);
 
+      MDP()->mGlsl->uniform("spec", 0.01f);
+          gl::color(Color::gray(0.7));
+          symbols.floorBatch->draw();
 
 
       for (auto n : model->nodes)
@@ -123,9 +149,10 @@ void ModelRenderer::drawShadow()
         for (auto n : model->nodes)
         {
             gl::pushMatrices();
-            gl::setModelMatrix(n->globalMatrix);
+
             for (auto m : n->meshData->meshes)
             {
+                gl::setModelMatrix(n->globalMatrix *m->modelMatrix);
                 m->drawShadow();
             }
             gl::popMatrices();

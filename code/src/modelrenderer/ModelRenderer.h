@@ -10,6 +10,7 @@
 #include "cinder/gl/gl.h"
 #include "OrbitCamera.h"
 #include "FKModel.h"
+#include "SymbolBatches.h"
 class ModelRenderer
 {
 public:
@@ -30,6 +31,7 @@ public:
     ci::gl::Texture2dRef	mShadowMapTex;
     int	fboSize = 2048;
 
+    SymbolBatches symbols;
 };
 
 
