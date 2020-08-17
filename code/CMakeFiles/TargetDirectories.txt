@@ -1,0 +1,3 @@
+/home/kris/Desktop/dogbot/code/CMakeFiles/rebuild_cache.dir
+/home/kris/Desktop/dogbot/code/CMakeFiles/bot.dir
+/home/kris/Desktop/dogbot/code/CMakeFiles/edit_cache.dir

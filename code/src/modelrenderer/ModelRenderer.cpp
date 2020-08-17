@@ -56,7 +56,7 @@ void ModelRenderer::draw() {
     if(  fboWindow.begin())
   {
       camera.aspect = (float)fboWindow.width / (float)fboWindow.height;
-      camera.setBodyPos(vec3(0,150,0));
+      camera.setBodyPos(vec3(0,200,0));
       camera.update(fboWindow.vMin,fboWindow.vMax);
 
 
@@ -69,7 +69,7 @@ void ModelRenderer::draw() {
           }
           ImGui::EndMenuBar();
       }
-      gl::clear(Color(0.53, 	0.81 ,	0.98));
+      gl::clear(Color(0.65, 	0.9 ,	0.98));
 
       gl::pushMatrices();
       gl::setMatrices(camera.mCam);
@@ -103,7 +103,7 @@ void ModelRenderer::draw() {
       MDP()->mGlsl->uniform("alpha", 1.f);
 
       MDP()->mGlsl->uniform("spec", 0.01f);
-          gl::color(Color::gray(0.7));
+          gl::color(Color::gray(0.4));
           symbols.floorBatch->draw();
 
 

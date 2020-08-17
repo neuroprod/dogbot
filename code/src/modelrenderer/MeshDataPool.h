@@ -23,10 +23,17 @@ public:
     cinder::TriMeshRef hip;
     cinder::TriMeshRef knee;
     cinder::TriMeshRef kneePlas;
+
+    cinder::TriMeshRef bodyPlas;
+    cinder::TriMeshRef bodyBlack;
+    cinder::TriMeshRef bodyGreen;
+
+
     Material rubber;
     Material plastic;
     Material aluminium;
     Material aluminiumBlack;
+    Material blue;
 };
 
 typedef Singleton<MeshDataPool > NodeDataPoolSingleton;

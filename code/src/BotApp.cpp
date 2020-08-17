@@ -40,6 +40,7 @@ RobotMain robot;
 void BotApp::setup()
 {
     setFrameRate(120);
+    gl::enableVerticalSync(false);
     setupImGui();
 
 
@@ -63,7 +64,7 @@ void BotApp::update()
 {
     imGuiUpdate();
 
-    ImGui::ShowDemoWindow();
+    //ImGui::ShowDemoWindow();
 
 
 
@@ -89,10 +90,6 @@ void  BotApp::setupImGui()
 
     ImGui::Initialize();
     ImGuiIO& io = ImGui::GetIO();
-
-
-
-
 
 
     io.Fonts->AddFontFromFileTTF(getAssetPath("fonts/Ubuntu-R.ttf").c_str(), 16.0f);
@@ -216,6 +213,10 @@ void  BotApp::imGuiUpdate()
     }
     ImGui::End();
 
+
+    ImGui::Begin("performance");
+    ImGui::Text("fps:%f",ImGui::GetIO().Framerate);
+    ImGui::End();
 }
 
 

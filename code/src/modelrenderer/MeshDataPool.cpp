@@ -19,6 +19,9 @@ void MeshDataPool::setup()
 	//meshes
     ankle = TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/ankle.obj"))) );
     bodyAl= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyAlu.obj"))) );
+    bodyPlas= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyplastic.obj"))) );
+    bodyBlack= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyblack.obj"))) );
+    bodyGreen= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodygreen.obj"))) );
     motor= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/motor.obj"))) );
     hip= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/hipAlu.obj"))) );
     knee= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/upperLegAlu.obj"))) );
@@ -29,6 +32,8 @@ void MeshDataPool::setup()
     plastic.color =Color(0.99, 0.99, 0.99);
     aluminium.color =Color(0.8, 0.8, 0.8);
     aluminiumBlack.color =Color(0.2, 0.2, 0.2);
+
+    blue.color =Color(107.f/255.f, 193.f/255.f, 255.f/255.f);
 }
 
 MeshDataRef MeshDataPool::getMesh(std::string type)
@@ -44,6 +49,23 @@ MeshDataRef MeshDataPool::getMesh(std::string type)
 		MeshRef m = Mesh::create();
 		m->setup(bodyAl, aluminium, mGlsl);
 		nd->meshes.push_back(m);
+
+        MeshRef m2 = Mesh::create();
+        m2->setup(bodyPlas, plastic, mGlsl);
+        nd->meshes.push_back(m2);
+
+
+
+
+
+        MeshRef m3 = Mesh::create();
+        m3->setup(bodyBlack, aluminiumBlack, mGlsl);
+        nd->meshes.push_back(m3);
+
+
+        MeshRef m4= Mesh::create();
+        m4->setup(bodyGreen, blue, mGlsl);
+        nd->meshes.push_back(m4);
 
 
 		MeshRef motor1 = Mesh::create();
