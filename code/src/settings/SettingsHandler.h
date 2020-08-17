@@ -2,8 +2,8 @@
 // Created by kris on 29.06.20.
 //
 
-#ifndef BOT_BOTSETTINGS_H
-#define BOT_BOTSETTINGS_H
+#ifndef BOT_SETTINGSHANDLER_H
+#define BOT_SETTINGSHANDLER_H
 
 #include "cinder/Json.h"
 #include "cinder/app/App.h"
@@ -13,12 +13,12 @@
 #include "../settings/SettingFloat.h"
 #include "../settings/SettingInt.h"
 #include "../settings/SettingMotor.h"
-class BotSettings
+class SettingsHandler
 {
 
     std::vector<std::shared_ptr<SettingBase>> settings;
 public:
-    BotSettings()
+    SettingsHandler()
     {};
 
     Sfloat getFloat(std::string file, std::string key, float defaultValue)
@@ -169,11 +169,11 @@ public:
 
 };
 
-typedef Singleton<BotSettings> BotSettingsSingleton;
+typedef Singleton<SettingsHandler> BotSettingsSingleton;
 
-inline BotSettings *SETTINGS()
+inline SettingsHandler *SETTINGS()
 {
     return BotSettingsSingleton::Instance();
 }
 
-#endif //BOT_BOTSETTINGS_H
+#endif //BOT_SETTINGSHANDLER_H

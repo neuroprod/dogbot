@@ -22,6 +22,14 @@ set(SRC_FILES
         ${APP_PATH}/src/motor/Motor.cpp
         ${APP_PATH}/src/motor/MotorControl.cpp
         ${APP_PATH}/src/gui/FBOWindow.cpp
+        ${APP_PATH}/src/modelrenderer/ModelRenderer.cpp
+        ${APP_PATH}/src/modelrenderer/OrbitCamera.cpp
+        ${APP_PATH}/src/modelrenderer/FKModel.cpp
+        ${APP_PATH}/src/modelrenderer/FKLeg.cpp
+        ${APP_PATH}/src/modelrenderer/FKNode.cpp
+        ${APP_PATH}/src/modelrenderer/Mesh.cpp
+        ${APP_PATH}/src/modelrenderer/MeshData.cpp
+        ${APP_PATH}/src/modelrenderer/MeshDataPool.cpp
         )
 
 ci_make_app(

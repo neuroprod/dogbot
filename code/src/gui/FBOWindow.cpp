@@ -1,7 +1,7 @@
 //
 // Created by kris on 12.08.20.
 //
-#include "cinder/CinderImGui.h"
+
 #include "FBOWindow.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Fbo.h"
@@ -16,15 +16,16 @@ void FBOWindow::setup(std::string name)
 
 };
 
-void FBOWindow::begin()
+bool FBOWindow::begin()
 {
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
     ImGuiWindowFlags window_flags = 0;
-
+    window_flags |= ImGuiWindowFlags_NoScrollbar;
+    window_flags |= ImGuiWindowFlags_NoScrollWithMouse;
     window_flags |= ImGuiWindowFlags_MenuBar;
     ImGui::Begin(mName.c_str(), __null, window_flags);
-    ImVec2 vMin = ImGui::GetWindowContentRegionMin();
-    ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+    vMin = ImGui::GetWindowContentRegionMin();
+    vMax = ImGui::GetWindowContentRegionMax();
 
     int widthNew = vMax.x - vMin.x;
     int heightNew = vMax.y - vMin.y;
@@ -37,11 +38,13 @@ void FBOWindow::begin()
 
 
     }
+    if(width ==0 | height==0)return false;
+
     if (needResize)
     {
         gl::Fbo::Format format;
         format.setSamples( 4 );
-        mFbo = gl::Fbo::create(  width-2, height-2, format.depthTexture() );
+        mFbo = gl::Fbo::create(  width, height, format.depthTexture() );
     }
 
      mFbo->bindFramebuffer();
@@ -51,7 +54,7 @@ void FBOWindow::begin()
     // setup the viewport to match the dimensions of the FBO
     gl::viewport( ivec2( 0 ), mFbo->getSize() );
     gl::setMatricesWindow(mFbo->getSize(),true);
-
+    return true;
 };
 
 void FBOWindow::end()

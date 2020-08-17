@@ -13,6 +13,7 @@ using namespace ci::app;
 using namespace std;
 
 void RobotMain::setup() {
+
     ImGui::Initialize();
     setWindowSize(windowSizeX->value(),windowSizeY->value());
     setWindowPos(0,0);
