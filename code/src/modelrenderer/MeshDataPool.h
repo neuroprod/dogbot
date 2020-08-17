@@ -5,6 +5,7 @@
 
 #include "MeshData.h"
 #include "cinder/TriMesh.h"
+#include "Material.h"
 
 class MeshDataPool
 {
@@ -17,7 +18,15 @@ public:
 	ci::gl::GlslProgRef mGlsl;
 
     cinder::TriMeshRef ankle;
+    cinder::TriMeshRef bodyAl;
+    cinder::TriMeshRef motor;
+    cinder::TriMeshRef hip;
+    cinder::TriMeshRef knee;
 
+    Material rubber;
+    Material plastic;
+    Material aluminium;
+    Material aluminiumBlack;
 };
 
 typedef Singleton<MeshDataPool > NodeDataPoolSingleton;

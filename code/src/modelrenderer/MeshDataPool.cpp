@@ -16,15 +16,23 @@ void MeshDataPool::setup()
 
 	mGlsl = gl::GlslProg::create(loadAsset("shaders/mainShader.vert.glsl"), loadAsset("shaders/mainShader.frag.glsl"));
 
+	//meshes
     ankle = TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/ankle.obj"))) );
+    bodyAl= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyAlu.obj"))) );
+    motor= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/motor.obj"))) );
+    hip= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/hipAlu.obj"))) );
+    knee= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/upperLegAlu.obj"))) );
+    //materials;
+    rubber.color =Color(0.8, 0.0, 0.0);
+    plastic.color =Color(0.99, 0.99, 0.99);
+    aluminium.color =Color(0.5, 0.5, 0.5);
+    aluminiumBlack.color =Color(0.2, 0.2, 0.2);
 }
 
 MeshDataRef MeshDataPool::getMesh(std::string type)
 {
 	
-	Color baseColor = Color(1, 1, 1);
-	Color feetColor = Color(1,0, 0);
-	Color motorColor = Color(0.8, 0.0, 0.0);
+
 
 	MeshDataRef nd = MeshData::create();
 	nd->type = type;
@@ -32,73 +40,77 @@ MeshDataRef MeshDataPool::getMesh(std::string type)
 	{
 		
 		MeshRef m = Mesh::create();
-		m->setup(geom::Cube().size( BOTSETTINGS()->bodyLength, 80.0f, BOTSETTINGS()->bodyWidth), baseColor, mGlsl);
+		m->setup(bodyAl, aluminium, mGlsl);
 		nd->meshes.push_back(m);
 
 
-	/*	MeshRef motor1 = Mesh::create();
-		motor1->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(1, 0, 0)).origin(vec3(0, 0, 0)), vec3(-config->bodyLength/2, 0, -config->bodyWidth / 2), motorColor, mGlsl);
+		MeshRef motor1 = Mesh::create();
+		motor1->setup(motor, aluminiumBlack, mGlsl, vec3(-BOTSETTINGS()->bodyLength/2, 0, -BOTSETTINGS()->bodyWidth/2),vec3(0, glm::pi<float>()/2.f, 0));
 		nd->meshes.push_back(motor1);
 
-		MeshRef motor2 = Mesh::create();
-		motor2->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(1, 0, 0)).origin(vec3(0, 0, 0)), vec3(-config->bodyLength / 2, 0, +config->bodyWidth / 2), motorColor, mGlsl);
-		nd->meshes.push_back(motor2);
+        MeshRef motor2 = Mesh::create();
+        motor2->setup(motor, aluminiumBlack, mGlsl, vec3(-BOTSETTINGS()->bodyLength/2, 0, BOTSETTINGS()->bodyWidth/2),vec3(glm::pi<float>(), glm::pi<float>()/2.f, 0));
+        nd->meshes.push_back(motor2);
 
+        MeshRef motor3 = Mesh::create();
+        motor3->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->bodyLength/2, 0, -BOTSETTINGS()->bodyWidth/2),vec3(glm::pi<float>(), -glm::pi<float>()/2.f, 0));
+        nd->meshes.push_back(motor3);
 
-		MeshRef motor3 = Mesh::create();
-		motor3->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(-1, 0, 0)).origin(vec3(0, 0, 0)), vec3(config->bodyLength / 2, 0, -config->bodyWidth / 2), motorColor, mGlsl);
-		nd->meshes.push_back(motor3);
-
-		MeshRef motor4 = Mesh::create();
-		motor4->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(-1, 0, 0)).origin(vec3(0, 0, 0)), vec3(config->bodyLength / 2, 0, +config->bodyWidth / 2), motorColor, mGlsl);
-		nd->meshes.push_back(motor4);*/
-
+        MeshRef motor4 = Mesh::create();
+        motor4->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->bodyLength/2, 0, BOTSETTINGS()->bodyWidth/2),vec3(0, -glm::pi<float>()/2.f, 0));
+        nd->meshes.push_back(motor4);
 
 	}
 	if (type == "ankle")
 	{
 		
 		MeshRef m = Mesh::create();
-		m->setup(ankle,  baseColor, mGlsl,vec3(0, 0, 0),vec3(0, glm::pi<float>()/2.f, 0));
+		m->setup(ankle,  aluminium, mGlsl,vec3(0, 0, 0),vec3(0, glm::pi<float>()/2.f, 0));
 		nd->meshes.push_back(m);
 
 		MeshRef m2 = Mesh::create();
-		m2->setup(geom::Sphere().radius(BOTSETTINGS()->footRadius), feetColor, mGlsl,vec3(0, -BOTSETTINGS()->underLegLength + BOTSETTINGS()->footRadius, 0));
+		m2->setup(geom::Sphere().radius(BOTSETTINGS()->footRadius), rubber, mGlsl,vec3(0, -BOTSETTINGS()->underLegLength + BOTSETTINGS()->footRadius, 0));
 		nd->meshes.push_back(m2);
 	}
-	/*if (type == "hip2")
+	if (type == "knee")
 	{
 	
 		MeshRef m = Mesh::create();
-		m->setup(geom::Capsule().radius(22).length(config->upperLegLength ).center(vec3(0,-config->upperLegLength/2,0)), vec3(0, 0, 0), baseColor, mGlsl);
+		m->setup(knee, aluminium, mGlsl,vec3( -69,0,0),vec3(0, glm::pi<float>()/2.f, 0));
 		nd->meshes.push_back(m);
 
-	
-		MeshRef motor = Mesh::create();
-		motor->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(1,0,0)).origin(vec3(-config->hipOffsetZ +20, 0, 0)), vec3(0, 0, 0), motorColor, mGlsl);
-		nd->meshes.push_back(motor);
+        MeshRef motor1 = Mesh::create();
+        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(0,0,0),vec3(0,  0,0));
+        nd->meshes.push_back(motor1);
 
-
-	}*/
-	if (type == "hip1_mirror")
-	{
-	
-	
-		MeshRef motor = Mesh::create();
-		motor->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(0, 0, -1)).origin(vec3(config->hipOffsetX, 0, 0)), vec3(0, 0, 0), motorColor, mGlsl);
-		nd->meshes.push_back(motor);
 
 
 	}
-	if (type == "hip1")
+	if (type == "hip_mirror")
+	{
+	
+		MeshRef hipMesh = Mesh::create();
+        hipMesh->setup(hip,  aluminium, mGlsl,vec3(0),vec3(glm::pi<float>(), 0, 0));
+		nd->meshes.push_back( hipMesh);
+
+
+        MeshRef motor1 = Mesh::create();
+        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->hipOffsetX,0,-5),vec3(0,  0,glm::pi<float>()));
+        nd->meshes.push_back(motor1);
+
+	}
+	if (type == "hip")
 	{
 
 
 
-		MeshRef motor = Mesh::create();
-		motor->setup(geom::Cylinder().radius(config->motorRadius).height(config->motorHeight).direction(vec3(0, 0, 1)).origin(vec3(config->hipOffsetX, 0, 0)), vec3(0, 0, 0), motorColor, mGlsl);
-		nd->meshes.push_back(motor);
+		MeshRef hipMesh= Mesh::create();
+        hipMesh->setup(hip,  aluminium, mGlsl);
+		nd->meshes.push_back( hipMesh);
 
+        MeshRef motor1 = Mesh::create();
+        motor1->setup(motor, aluminiumBlack, mGlsl, vec3(BOTSETTINGS()->hipOffsetX,0,5),vec3(glm::pi<float>(),  0,glm::pi<float>()));
+        nd->meshes.push_back(motor1);
 
 	}
 

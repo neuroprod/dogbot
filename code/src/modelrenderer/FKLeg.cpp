@@ -22,11 +22,11 @@ void FKLeg::setup(string name,FKNodeRef body, glm::vec3 pos, std::vector<FKNodeR
 
 	if (hipOffsetZFlip == 1)
 	{
-		hip = FKNode::create(name + "hip", "hip_mirror");
+		hip = FKNode::create(name + "hip", "hip");
 	}
 	if (hipOffsetZFlip == -1)
 	{
-		hip = FKNode::create(name + "hip", "hip");
+		hip = FKNode::create(name + "hip", "hip_mirror");
 	}
 	float hip1Rot = 0;
 	if (pos.x < 0)hip1Rot = PI;
