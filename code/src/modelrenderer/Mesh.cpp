@@ -32,6 +32,7 @@ void Mesh::setup(TriMeshRef mMesh,    Material mat, ci::gl::GlslProgRef mGlsl, c
     modelMatrix =modelMatrix*rotationM;
 
     mMat =mat;
+
     mainBatch= gl::Batch::create( *mMesh, mGlsl);
     shadowedBatch = gl::Batch::create( *mMesh, gl::getStockShader(gl::ShaderDef()));
 

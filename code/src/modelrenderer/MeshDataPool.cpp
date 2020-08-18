@@ -17,7 +17,9 @@ void MeshDataPool::setup()
 	mGlsl = gl::GlslProg::create(loadAsset("shaders/mainShader.vert.glsl"), loadAsset("shaders/mainShader.frag.glsl"));
 
 	//meshes
+
     ankle = TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/ankle.obj"))) );
+
     bodyAl= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyAlu.obj"))) );
     bodyPlas= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyplastic.obj"))) );
     bodyBlack= TriMesh::create(   ObjLoader (loadFile(getAssetPath("models/bodyblack.obj"))) );

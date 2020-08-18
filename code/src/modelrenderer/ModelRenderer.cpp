@@ -40,7 +40,7 @@ void ModelRenderer::setup() {
 
 }
 void ModelRenderer::update() {
-
+    model->update();
 }
 void ModelRenderer::draw() {
     gl::enableDepthRead();

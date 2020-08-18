@@ -9,6 +9,7 @@
 #include "settings/SettingsHandler.h"
 #include "graph/GraphableArray.h"
 #include "modelrenderer/ModelRenderer.h"
+#include "ik/IKControle.h"
 class SimulationMain
 {
 public:
@@ -20,6 +21,7 @@ public:
     Sint windowSizeX=SETTINGS()->getInt("SimulationSettings","windowSizeX",2560);
     Sint windowSizeY=SETTINGS()->getInt("SimulationSettings","windowSizeY",1440);
 
+    IKControle ikControle;
     ModelRenderer modelRenderer;
 
     GraphableArray test;
