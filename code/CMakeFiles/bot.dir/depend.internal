@@ -350,6 +350,7 @@ CMakeFiles/bot.dir/src/BotApp.cpp.o
  /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
  /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
  /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
  /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
@@ -1052,6 +1053,7 @@ CMakeFiles/bot.dir/src/SimulationMain.cpp.o
  /home/kris/Desktop/Cinder/include/imgui/imconfig.h
  /home/kris/Desktop/Cinder/include/imgui/imgui.h
  /home/kris/Desktop/Cinder/include/imgui/imgui_stdlib.h
+ /home/kris/Desktop/dogbot/code/src/RobotSettings.h
  /home/kris/Desktop/dogbot/code/src/SimulationMain.cpp
  /home/kris/Desktop/dogbot/code/src/SimulationMain.h
  /home/kris/Desktop/dogbot/code/src/graph/GraphRenderer.h
@@ -1062,6 +1064,7 @@ CMakeFiles/bot.dir/src/SimulationMain.cpp.o
  /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
  /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
  /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
  /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
@@ -2080,9 +2083,12 @@ CMakeFiles/bot.dir/src/gui/FBOWindow.cpp.o
  /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.cpp
  /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h
 CMakeFiles/bot.dir/src/ik/IKControle.cpp.o
+ /home/kris/Desktop/Cinder/include/KHR/khrplatform.h
  /home/kris/Desktop/Cinder/include/cinder/Area.h
+ /home/kris/Desktop/Cinder/include/cinder/AxisAlignedBox.h
  /home/kris/Desktop/Cinder/include/cinder/BSpline.h
  /home/kris/Desktop/Cinder/include/cinder/Buffer.h
+ /home/kris/Desktop/Cinder/include/cinder/Camera.h
  /home/kris/Desktop/Cinder/include/cinder/ChanTraits.h
  /home/kris/Desktop/Cinder/include/cinder/Channel.h
  /home/kris/Desktop/Cinder/include/cinder/Cinder.h
@@ -2099,6 +2105,9 @@ CMakeFiles/bot.dir/src/ik/IKControle.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/Exception.h
  /home/kris/Desktop/Cinder/include/cinder/Export.h
  /home/kris/Desktop/Cinder/include/cinder/Filesystem.h
+ /home/kris/Desktop/Cinder/include/cinder/Font.h
+ /home/kris/Desktop/Cinder/include/cinder/Frustum.h
+ /home/kris/Desktop/Cinder/include/cinder/GeomIo.h
  /home/kris/Desktop/Cinder/include/cinder/ImageIo.h
  /home/kris/Desktop/Cinder/include/cinder/Json.h
  /home/kris/Desktop/Cinder/include/cinder/Log.h
@@ -2108,14 +2117,21 @@ CMakeFiles/bot.dir/src/ik/IKControle.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/Matrix44.h
  /home/kris/Desktop/Cinder/include/cinder/Noncopyable.h
  /home/kris/Desktop/Cinder/include/cinder/Path2d.h
+ /home/kris/Desktop/Cinder/include/cinder/Plane.h
+ /home/kris/Desktop/Cinder/include/cinder/PolyLine.h
+ /home/kris/Desktop/Cinder/include/cinder/Quaternion.h
+ /home/kris/Desktop/Cinder/include/cinder/Ray.h
  /home/kris/Desktop/Cinder/include/cinder/Rect.h
  /home/kris/Desktop/Cinder/include/cinder/Shape2d.h
  /home/kris/Desktop/Cinder/include/cinder/Signals.h
+ /home/kris/Desktop/Cinder/include/cinder/Sphere.h
  /home/kris/Desktop/Cinder/include/cinder/Stream.h
  /home/kris/Desktop/Cinder/include/cinder/Surface.h
  /home/kris/Desktop/Cinder/include/cinder/System.h
+ /home/kris/Desktop/Cinder/include/cinder/Text.h
  /home/kris/Desktop/Cinder/include/cinder/Thread.h
  /home/kris/Desktop/Cinder/include/cinder/Timer.h
+ /home/kris/Desktop/Cinder/include/cinder/TriMesh.h
  /home/kris/Desktop/Cinder/include/cinder/Url.h
  /home/kris/Desktop/Cinder/include/cinder/Utilities.h
  /home/kris/Desktop/Cinder/include/cinder/Vector.h
@@ -2141,9 +2157,37 @@ CMakeFiles/bot.dir/src/ik/IKControle.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/app/winrt/AppWinRt.h
  /home/kris/Desktop/Cinder/include/cinder/cocoa/CinderCocoa.h
  /home/kris/Desktop/Cinder/include/cinder/cocoa/CinderCocoaTouch.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Batch.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/BufferObj.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/BufferTexture.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Context.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Environment.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Fbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/GlslProg.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Pbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Query.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Sampler.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Shader.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/ShaderPreprocessor.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Ssbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Sync.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Texture.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/TextureFont.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/TransformFeedbackObj.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Ubo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Vao.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Vbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/VboMesh.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/draw.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/gl.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/platform.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/scoped.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/wrapper.h
  /home/kris/Desktop/Cinder/include/cinder/msw/CinderWindowsFwd.h
  /home/kris/Desktop/Cinder/include/ghc/filesystem.hpp
  /home/kris/Desktop/Cinder/include/ghc/fs_fwd.hpp
+ /home/kris/Desktop/Cinder/include/glad/glad.h
+ /home/kris/Desktop/Cinder/include/glad/glad_es.h
  /home/kris/Desktop/Cinder/include/glm/common.hpp
  /home/kris/Desktop/Cinder/include/glm/detail/_fixes.hpp
  /home/kris/Desktop/Cinder/include/glm/detail/_swizzle.hpp
@@ -2375,11 +2419,24 @@ CMakeFiles/bot.dir/src/ik/IKControle.cpp.o
  /home/kris/Desktop/Cinder/include/imgui/imgui.h
  /home/kris/Desktop/Cinder/include/imgui/imgui_stdlib.h
  /home/kris/Desktop/dogbot/code/src/RobotSettings.h
+ /home/kris/Desktop/dogbot/code/src/graph/Graphable.h
+ /home/kris/Desktop/dogbot/code/src/graph/GraphableArray.h
+ /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h
  /home/kris/Desktop/dogbot/code/src/ik/IKControle.cpp
  /home/kris/Desktop/dogbot/code/src/ik/IKControle.h
  /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/Material.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingBase.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingFloat.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingInt.h
@@ -2676,15 +2733,19 @@ CMakeFiles/bot.dir/src/ik/IKControleLeg.cpp.o
  /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.cpp
  /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
 CMakeFiles/bot.dir/src/ik/IKLeg.cpp.o
+ /home/kris/Desktop/Cinder/include/KHR/khrplatform.h
  /home/kris/Desktop/Cinder/include/cinder/Area.h
+ /home/kris/Desktop/Cinder/include/cinder/AxisAlignedBox.h
  /home/kris/Desktop/Cinder/include/cinder/BSpline.h
  /home/kris/Desktop/Cinder/include/cinder/Buffer.h
+ /home/kris/Desktop/Cinder/include/cinder/Camera.h
  /home/kris/Desktop/Cinder/include/cinder/ChanTraits.h
  /home/kris/Desktop/Cinder/include/cinder/Channel.h
  /home/kris/Desktop/Cinder/include/cinder/Cinder.h
  /home/kris/Desktop/Cinder/include/cinder/CinderAssert.h
  /home/kris/Desktop/Cinder/include/cinder/CinderFwd.h
  /home/kris/Desktop/Cinder/include/cinder/CinderGlm.h
+ /home/kris/Desktop/Cinder/include/cinder/CinderImGui.h
  /home/kris/Desktop/Cinder/include/cinder/CinderMath.h
  /home/kris/Desktop/Cinder/include/cinder/Color.h
  /home/kris/Desktop/Cinder/include/cinder/CurrentFunction.h
@@ -2694,6 +2755,9 @@ CMakeFiles/bot.dir/src/ik/IKLeg.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/Exception.h
  /home/kris/Desktop/Cinder/include/cinder/Export.h
  /home/kris/Desktop/Cinder/include/cinder/Filesystem.h
+ /home/kris/Desktop/Cinder/include/cinder/Font.h
+ /home/kris/Desktop/Cinder/include/cinder/Frustum.h
+ /home/kris/Desktop/Cinder/include/cinder/GeomIo.h
  /home/kris/Desktop/Cinder/include/cinder/ImageIo.h
  /home/kris/Desktop/Cinder/include/cinder/Json.h
  /home/kris/Desktop/Cinder/include/cinder/Log.h
@@ -2703,14 +2767,21 @@ CMakeFiles/bot.dir/src/ik/IKLeg.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/Matrix44.h
  /home/kris/Desktop/Cinder/include/cinder/Noncopyable.h
  /home/kris/Desktop/Cinder/include/cinder/Path2d.h
+ /home/kris/Desktop/Cinder/include/cinder/Plane.h
+ /home/kris/Desktop/Cinder/include/cinder/PolyLine.h
+ /home/kris/Desktop/Cinder/include/cinder/Quaternion.h
+ /home/kris/Desktop/Cinder/include/cinder/Ray.h
  /home/kris/Desktop/Cinder/include/cinder/Rect.h
  /home/kris/Desktop/Cinder/include/cinder/Shape2d.h
  /home/kris/Desktop/Cinder/include/cinder/Signals.h
+ /home/kris/Desktop/Cinder/include/cinder/Sphere.h
  /home/kris/Desktop/Cinder/include/cinder/Stream.h
  /home/kris/Desktop/Cinder/include/cinder/Surface.h
  /home/kris/Desktop/Cinder/include/cinder/System.h
+ /home/kris/Desktop/Cinder/include/cinder/Text.h
  /home/kris/Desktop/Cinder/include/cinder/Thread.h
  /home/kris/Desktop/Cinder/include/cinder/Timer.h
+ /home/kris/Desktop/Cinder/include/cinder/TriMesh.h
  /home/kris/Desktop/Cinder/include/cinder/Url.h
  /home/kris/Desktop/Cinder/include/cinder/Utilities.h
  /home/kris/Desktop/Cinder/include/cinder/Vector.h
@@ -2736,9 +2807,37 @@ CMakeFiles/bot.dir/src/ik/IKLeg.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/app/winrt/AppWinRt.h
  /home/kris/Desktop/Cinder/include/cinder/cocoa/CinderCocoa.h
  /home/kris/Desktop/Cinder/include/cinder/cocoa/CinderCocoaTouch.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Batch.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/BufferObj.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/BufferTexture.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Context.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Environment.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Fbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/GlslProg.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Pbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Query.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Sampler.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Shader.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/ShaderPreprocessor.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Ssbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Sync.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Texture.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/TextureFont.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/TransformFeedbackObj.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Ubo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Vao.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Vbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/VboMesh.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/draw.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/gl.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/platform.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/scoped.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/wrapper.h
  /home/kris/Desktop/Cinder/include/cinder/msw/CinderWindowsFwd.h
  /home/kris/Desktop/Cinder/include/ghc/filesystem.hpp
  /home/kris/Desktop/Cinder/include/ghc/fs_fwd.hpp
+ /home/kris/Desktop/Cinder/include/glad/glad.h
+ /home/kris/Desktop/Cinder/include/glad/glad_es.h
  /home/kris/Desktop/Cinder/include/glm/common.hpp
  /home/kris/Desktop/Cinder/include/glm/detail/_fixes.hpp
  /home/kris/Desktop/Cinder/include/glm/detail/_swizzle.hpp
@@ -2966,9 +3065,28 @@ CMakeFiles/bot.dir/src/ik/IKLeg.cpp.o
  /home/kris/Desktop/Cinder/include/glm/vec3.hpp
  /home/kris/Desktop/Cinder/include/glm/vec4.hpp
  /home/kris/Desktop/Cinder/include/glm/vector_relational.hpp
+ /home/kris/Desktop/Cinder/include/imgui/imconfig.h
+ /home/kris/Desktop/Cinder/include/imgui/imgui.h
+ /home/kris/Desktop/Cinder/include/imgui/imgui_stdlib.h
  /home/kris/Desktop/dogbot/code/src/RobotSettings.h
+ /home/kris/Desktop/dogbot/code/src/graph/Graphable.h
+ /home/kris/Desktop/dogbot/code/src/graph/GraphableArray.h
+ /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h
+ /home/kris/Desktop/dogbot/code/src/ik/IKControle.h
+ /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKLeg.cpp
  /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
+ /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/Material.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingBase.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingFloat.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingInt.h
@@ -2976,15 +3094,19 @@ CMakeFiles/bot.dir/src/ik/IKLeg.cpp.o
  /home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
  /home/kris/Desktop/dogbot/code/src/utils/Singleton.h
 CMakeFiles/bot.dir/src/ik/IKModel.cpp.o
+ /home/kris/Desktop/Cinder/include/KHR/khrplatform.h
  /home/kris/Desktop/Cinder/include/cinder/Area.h
+ /home/kris/Desktop/Cinder/include/cinder/AxisAlignedBox.h
  /home/kris/Desktop/Cinder/include/cinder/BSpline.h
  /home/kris/Desktop/Cinder/include/cinder/Buffer.h
+ /home/kris/Desktop/Cinder/include/cinder/Camera.h
  /home/kris/Desktop/Cinder/include/cinder/ChanTraits.h
  /home/kris/Desktop/Cinder/include/cinder/Channel.h
  /home/kris/Desktop/Cinder/include/cinder/Cinder.h
  /home/kris/Desktop/Cinder/include/cinder/CinderAssert.h
  /home/kris/Desktop/Cinder/include/cinder/CinderFwd.h
  /home/kris/Desktop/Cinder/include/cinder/CinderGlm.h
+ /home/kris/Desktop/Cinder/include/cinder/CinderImGui.h
  /home/kris/Desktop/Cinder/include/cinder/CinderMath.h
  /home/kris/Desktop/Cinder/include/cinder/Color.h
  /home/kris/Desktop/Cinder/include/cinder/CurrentFunction.h
@@ -2994,6 +3116,9 @@ CMakeFiles/bot.dir/src/ik/IKModel.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/Exception.h
  /home/kris/Desktop/Cinder/include/cinder/Export.h
  /home/kris/Desktop/Cinder/include/cinder/Filesystem.h
+ /home/kris/Desktop/Cinder/include/cinder/Font.h
+ /home/kris/Desktop/Cinder/include/cinder/Frustum.h
+ /home/kris/Desktop/Cinder/include/cinder/GeomIo.h
  /home/kris/Desktop/Cinder/include/cinder/ImageIo.h
  /home/kris/Desktop/Cinder/include/cinder/Json.h
  /home/kris/Desktop/Cinder/include/cinder/Log.h
@@ -3003,14 +3128,21 @@ CMakeFiles/bot.dir/src/ik/IKModel.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/Matrix44.h
  /home/kris/Desktop/Cinder/include/cinder/Noncopyable.h
  /home/kris/Desktop/Cinder/include/cinder/Path2d.h
+ /home/kris/Desktop/Cinder/include/cinder/Plane.h
+ /home/kris/Desktop/Cinder/include/cinder/PolyLine.h
+ /home/kris/Desktop/Cinder/include/cinder/Quaternion.h
+ /home/kris/Desktop/Cinder/include/cinder/Ray.h
  /home/kris/Desktop/Cinder/include/cinder/Rect.h
  /home/kris/Desktop/Cinder/include/cinder/Shape2d.h
  /home/kris/Desktop/Cinder/include/cinder/Signals.h
+ /home/kris/Desktop/Cinder/include/cinder/Sphere.h
  /home/kris/Desktop/Cinder/include/cinder/Stream.h
  /home/kris/Desktop/Cinder/include/cinder/Surface.h
  /home/kris/Desktop/Cinder/include/cinder/System.h
+ /home/kris/Desktop/Cinder/include/cinder/Text.h
  /home/kris/Desktop/Cinder/include/cinder/Thread.h
  /home/kris/Desktop/Cinder/include/cinder/Timer.h
+ /home/kris/Desktop/Cinder/include/cinder/TriMesh.h
  /home/kris/Desktop/Cinder/include/cinder/Url.h
  /home/kris/Desktop/Cinder/include/cinder/Utilities.h
  /home/kris/Desktop/Cinder/include/cinder/Vector.h
@@ -3036,9 +3168,37 @@ CMakeFiles/bot.dir/src/ik/IKModel.cpp.o
  /home/kris/Desktop/Cinder/include/cinder/app/winrt/AppWinRt.h
  /home/kris/Desktop/Cinder/include/cinder/cocoa/CinderCocoa.h
  /home/kris/Desktop/Cinder/include/cinder/cocoa/CinderCocoaTouch.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Batch.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/BufferObj.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/BufferTexture.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Context.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Environment.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Fbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/GlslProg.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Pbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Query.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Sampler.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Shader.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/ShaderPreprocessor.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Ssbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Sync.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Texture.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/TextureFont.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/TransformFeedbackObj.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Ubo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Vao.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/Vbo.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/VboMesh.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/draw.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/gl.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/platform.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/scoped.h
+ /home/kris/Desktop/Cinder/include/cinder/gl/wrapper.h
  /home/kris/Desktop/Cinder/include/cinder/msw/CinderWindowsFwd.h
  /home/kris/Desktop/Cinder/include/ghc/filesystem.hpp
  /home/kris/Desktop/Cinder/include/ghc/fs_fwd.hpp
+ /home/kris/Desktop/Cinder/include/glad/glad.h
+ /home/kris/Desktop/Cinder/include/glad/glad_es.h
  /home/kris/Desktop/Cinder/include/glm/common.hpp
  /home/kris/Desktop/Cinder/include/glm/detail/_fixes.hpp
  /home/kris/Desktop/Cinder/include/glm/detail/_swizzle.hpp
@@ -3266,10 +3426,28 @@ CMakeFiles/bot.dir/src/ik/IKModel.cpp.o
  /home/kris/Desktop/Cinder/include/glm/vec3.hpp
  /home/kris/Desktop/Cinder/include/glm/vec4.hpp
  /home/kris/Desktop/Cinder/include/glm/vector_relational.hpp
+ /home/kris/Desktop/Cinder/include/imgui/imconfig.h
+ /home/kris/Desktop/Cinder/include/imgui/imgui.h
+ /home/kris/Desktop/Cinder/include/imgui/imgui_stdlib.h
  /home/kris/Desktop/dogbot/code/src/RobotSettings.h
+ /home/kris/Desktop/dogbot/code/src/graph/Graphable.h
+ /home/kris/Desktop/dogbot/code/src/graph/GraphableArray.h
+ /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h
+ /home/kris/Desktop/dogbot/code/src/ik/IKControle.h
+ /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
  /home/kris/Desktop/dogbot/code/src/ik/IKModel.cpp
  /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/Material.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.h
+ /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingBase.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingFloat.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingInt.h
@@ -7022,3 +7200,4 @@ CMakeFiles/bot.dir/src/motor/MotorControl.cpp.o
  /home/kris/Desktop/dogbot/code/src/settings/SettingMotor.h
  /home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
  /home/kris/Desktop/dogbot/code/src/utils/Singleton.h
+ /home/kris/Desktop/dogbot/code/src/utils/Unions.h

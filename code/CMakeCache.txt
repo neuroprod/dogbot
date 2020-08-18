@@ -237,7 +237,7 @@ bot_BINARY_DIR:STATIC=/home/kris/Desktop/dogbot/code
 bot_SOURCE_DIR:STATIC=/home/kris/Desktop/dogbot/code
 
 //The directory containing a CMake configuration file for cinder.
-cinder_DIR:PATH=/home/kris/Desktop/Cinder/lib/linux/aarch64/ogl/Debug
+cinder_DIR:PATH=/home/kris/Desktop/Cinder/lib/linux/x86_64/ogl/Debug
 
 
 ########################

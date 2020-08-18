@@ -3016,28 +3016,10 @@ motor/MotorControl.h
 settings/SettingsHandler.h
 /home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
-/home/kris/Desktop/dogbot/code/src/RobotSettings.h
-SimulationMain.h
-/home/kris/Desktop/dogbot/code/src/SimulationMain.h
-RobotMain.h
-/home/kris/Desktop/dogbot/code/src/RobotMain.h
-
-/home/kris/Desktop/dogbot/code/src/RobotMain.h
-cinder/app/App.h
-/home/kris/Desktop/dogbot/code/src/cinder/app/App.h
-motor/MotorControl.h
-/home/kris/Desktop/dogbot/code/src/motor/MotorControl.h
-settings/SettingsHandler.h
-/home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
-
-<<<<<<< HEAD
 /home/kris/Desktop/dogbot/code/src/RobotSettings.h
 settings/SettingsHandler.h
 /home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
 
-/home/kris/Desktop/dogbot/code/src/SimulationMain.h
-=======
 /home/kris/Desktop/dogbot/code/src/SimulationMain.cpp
 SimulationMain.h
 /home/kris/Desktop/dogbot/code/src/SimulationMain.h
@@ -3152,11 +3134,11 @@ modelrenderer/ModelRenderer.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.h
 ik/IKControle.h
 /home/kris/Desktop/dogbot/code/src/ik/IKControle.h
-
+-
 /home/kris/Desktop/dogbot/code/src/graph/Graphable.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/graph/cinder/app/App.h
-
+-
 /home/kris/Desktop/dogbot/code/src/graph/GraphableArray.h
 Graphable.h
 /home/kris/Desktop/dogbot/code/src/graph/Graphable.h
@@ -3164,7 +3146,7 @@ list
 -
 cinder/Font.h
 -
-
+-
 /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/gui/cinder/app/App.h
@@ -3174,7 +3156,7 @@ cinder/gl/Fbo.h
 /home/kris/Desktop/dogbot/code/src/gui/cinder/gl/Fbo.h
 cinder/CinderImGui.h
 /home/kris/Desktop/dogbot/code/src/gui/cinder/CinderImGui.h
-
+-
 /home/kris/Desktop/dogbot/code/src/ik/IKControle.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/ik/cinder/app/App.h
@@ -3182,21 +3164,21 @@ IKControleLeg.h
 /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
 IKModel.h
 /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
-
+-
 /home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/ik/cinder/app/App.h
-
+-
 /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/ik/cinder/app/App.h
-
+-
 /home/kris/Desktop/dogbot/code/src/ik/IKModel.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/ik/cinder/app/App.h
 IKLeg.h
 /home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
-
+-
 <<<<<<< HEAD
 =======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
@@ -3204,7 +3186,7 @@ FKLeg.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
 ../RobotSettings.h
 /home/kris/Desktop/dogbot/code/src/RobotSettings.h
-
+-
 >>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
 cinder/app/App.h
@@ -3212,8 +3194,30 @@ cinder/app/App.h
 FKNode.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
 
-<<<<<<< HEAD
-=======
+/home/kris/Desktop/dogbot/code/src/ik/IKModel.cpp
+IKModel.h
+/home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+../RobotSettings.h
+/home/kris/Desktop/dogbot/code/src/RobotSettings.h
+
+/home/kris/Desktop/dogbot/code/src/ik/IKModel.h
+cinder/app/App.h
+/home/kris/Desktop/dogbot/code/src/ik/cinder/app/App.h
+IKLeg.h
+/home/kris/Desktop/dogbot/code/src/ik/IKLeg.h
+
+/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp
+FKLeg.h
+/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
+../RobotSettings.h
+/home/kris/Desktop/dogbot/code/src/RobotSettings.h
+
+/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
+cinder/app/App.h
+/home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
+FKNode.h
+/home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
+
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.cpp
 FKModel.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
@@ -3224,7 +3228,6 @@ MeshDataPool.h
 ../RobotSettings.h
 /home/kris/Desktop/dogbot/code/src/RobotSettings.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
@@ -3233,8 +3236,6 @@ FKNode.h
 FKLeg.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.cpp
 FKNode.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
@@ -3243,7 +3244,6 @@ cinder/gl/gl.h
 MeshDataPool.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
@@ -3254,13 +3254,10 @@ MeshData.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.cpp
 Mesh.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
@@ -3271,21 +3268,16 @@ cinder/TriMesh.h
 Material.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/Material.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.cpp
 MeshData.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
 Mesh.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.cpp
 MeshDataPool.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.h
@@ -3318,7 +3310,6 @@ ModelRenderer.h
 MeshDataPool.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.h
 ../gui/FBOWindow.h
 /home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h
@@ -3335,13 +3326,10 @@ FKModel.h
 SymbolBatches.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.cpp
 OrbitCamera.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
@@ -3350,23 +3338,18 @@ cinder/gl/gl.h
 cinder/CinderImGui.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/CinderImGui.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.cpp
 SymbolBatches.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h
 MeshDataPool.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/app/App.h
 cinder/gl/gl.h
 /home/kris/Desktop/dogbot/code/src/modelrenderer/cinder/gl/gl.h
 
-<<<<<<< HEAD
-=======
 /home/kris/Desktop/dogbot/code/src/motor/Motor.cpp
 Motor.h
 /home/kris/Desktop/dogbot/code/src/motor/Motor.h
@@ -3385,7 +3368,6 @@ termios.h
 ../graph/GraphRenderer.h
 /home/kris/Desktop/dogbot/code/src/graph/GraphRenderer.h
 
->>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
 /home/kris/Desktop/dogbot/code/src/motor/Motor.h
 cinder/app/App.h
 /home/kris/Desktop/dogbot/code/src/motor/cinder/app/App.h
@@ -3393,8 +3375,6 @@ cinder/Serial.h
 /home/kris/Desktop/dogbot/code/src/motor/cinder/Serial.h
 ../settings/SettingMotor.h
 /home/kris/Desktop/dogbot/code/src/settings/SettingMotor.h
-<<<<<<< HEAD
-=======
 ../graph/GraphableArray.h
 /home/kris/Desktop/dogbot/code/src/graph/GraphableArray.h
 
@@ -3408,6 +3388,59 @@ cinder/CinderImGui.h
 ../settings/SettingsHandler.h
 /home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
 >>>>>>> b8462325a7716d1e812452b664a0d61e3a7be0ea
+-
+/home/kris/Desktop/dogbot/code/src/motor/MotorControl.h
+cinder/app/App.h
+/home/kris/Desktop/dogbot/code/src/motor/cinder/app/App.h
+Motor.h
+/home/kris/Desktop/dogbot/code/src/motor/Motor.h
+-
+/home/kris/Desktop/dogbot/code/src/settings/SettingBase.h
+cinder/Json.h
+/home/kris/Desktop/dogbot/code/src/settings/cinder/Json.h
+cinder/app/App.h
+/home/kris/Desktop/dogbot/code/src/settings/cinder/app/App.h
+../utils/Singleton.h
+/home/kris/Desktop/dogbot/code/src/utils/Singleton.h
+cinder/Log.h
+/home/kris/Desktop/dogbot/code/src/settings/cinder/Log.h
+-
+/home/kris/Desktop/dogbot/code/src/settings/SettingFloat.h
+-
+/home/kris/Desktop/dogbot/code/src/settings/SettingInt.h
+-
+/home/kris/Desktop/dogbot/code/src/settings/SettingMotor.h
+SettingBase.h
+/home/kris/Desktop/dogbot/code/src/settings/SettingBase.h
+-
+/home/kris/Desktop/dogbot/code/src/settings/SettingsHandler.h
+cinder/Json.h
+/home/kris/Desktop/dogbot/code/src/settings/cinder/Json.h
+cinder/app/App.h
+/home/kris/Desktop/dogbot/code/src/settings/cinder/app/App.h
+../utils/Singleton.h
+/home/kris/Desktop/dogbot/code/src/utils/Singleton.h
+cinder/Log.h
+/home/kris/Desktop/dogbot/code/src/settings/cinder/Log.h
+../settings/SettingBase.h
+/home/kris/Desktop/dogbot/code/src/settings/SettingBase.h
+../settings/SettingFloat.h
+/home/kris/Desktop/dogbot/code/src/settings/SettingFloat.h
+../settings/SettingInt.h
+/home/kris/Desktop/dogbot/code/src/settings/SettingInt.h
+../settings/SettingMotor.h
+/home/kris/Desktop/dogbot/code/src/settings/SettingMotor.h
+-
+/home/kris/Desktop/dogbot/code/src/utils/Singleton.h
+stddef.h
+-
+-
+/home/kris/Desktop/dogbot/code/src/utils/Unions.h
+iostream
+-
+cstdint
+-
+-
 
 /home/kris/Desktop/dogbot/code/src/motor/MotorControl.h
 cinder/app/App.h

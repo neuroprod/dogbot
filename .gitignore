@@ -1,6 +1,10 @@
 code/cmake-build-debug/
 code/cmake-build-release/
 code/CMakeFiles/
+code/Release/
+code/Debug/
+
+
 *.ini
 .idea/
 
