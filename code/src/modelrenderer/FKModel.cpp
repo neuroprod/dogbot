@@ -78,3 +78,53 @@ void FKModel::build()
 
 }
 
+void FKModel::drawWire()
+{
+    for (auto n : nodes)
+    {
+       n->setGlobalPos();
+
+    }
+    gl::lineWidth(2);
+    gl::color(1,1,1);
+    gl::begin(GL_LINES);
+
+    gl::vertex( FRLeg->hip->globalPos);
+    gl::vertex( BRLeg->hip->globalPos);
+
+    gl::vertex( FLLeg->hip->globalPos);
+    gl::vertex( BLLeg->hip->globalPos);
+
+
+    gl::vertex( FRLeg->hip->globalPos);
+    gl::vertex( FLLeg->hip->globalPos);
+
+    gl::vertex( BRLeg->hip->globalPos);
+    gl::vertex( BLLeg->hip->globalPos);
+
+    for (auto l : legs)
+    {
+        gl::vertex( l->hip->globalPos);
+        gl::vertex( l->knee->globalPos);
+
+        gl::vertex( l->knee->globalPos);
+        gl::vertex( l->ankle->globalPos);
+
+        gl::vertex( l->ankle->globalPos);
+        vec3 foot=  l->ankle->globalMatrix *vec4(0,-BOTSETTINGS()->underLegLength+BOTSETTINGS()->footRadius,0,1);
+        gl::vertex(foot);
+
+    }
+
+    gl::end();
+    gl::lineWidth(1);
+    gl::color(0,0,0);
+    for (auto l : legs)
+    {
+
+        vec3 foot=  l->ankle->globalMatrix *vec4(0,-BOTSETTINGS()->underLegLength+BOTSETTINGS()->footRadius,0,1);
+       gl::drawSphere(foot,BOTSETTINGS()->footRadius);
+
+    }
+
+}

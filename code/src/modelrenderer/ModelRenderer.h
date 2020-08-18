@@ -32,6 +32,10 @@ public:
     int	fboSize = 2048;
 
     SymbolBatches symbols;
+
+    bool showFloor = true;
+    bool showMesh = true;
+    bool showWire = false;
 };
 
 

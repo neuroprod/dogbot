@@ -24,8 +24,7 @@ public:
     IKControle ikControle;
     ModelRenderer modelRenderer;
 
-    GraphableArray test;
-    GraphableArray test2;
+
 };
 
 

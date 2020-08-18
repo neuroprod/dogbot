@@ -62,9 +62,12 @@ void ModelRenderer::draw() {
 
       if (ImGui::BeginMenuBar())
       {
-          if (ImGui::BeginMenu("Items"))
+          if (ImGui::BeginMenu("View Options"))
           {
               //    ImGui::Checkbox(g->gName.c_str(),&g->gVisible);
+              if (ImGui::MenuItem("Show Floor", NULL, showFloor)) {showFloor = !showFloor;}
+              if (ImGui::MenuItem("Show Mesh", NULL, showMesh)) {showMesh = !showMesh;}
+              if (ImGui::MenuItem("Show Wire", NULL, showWire)) {showWire = !showWire;}
               ImGui::EndMenu();
           }
           ImGui::EndMenuBar();
@@ -75,52 +78,58 @@ void ModelRenderer::draw() {
       gl::setMatrices(camera.mCam);
       gl::drawCoordinateFrame(1000);
 
+    if(showWire)
+    {
+        for (auto n : model->nodes)
+        {
+            gl::pushMatrices();
+            gl::setModelMatrix(n->globalMatrix);
+            symbols.coordinateFrame->draw();
+            gl::popMatrices();
 
-      for (auto n : model->nodes)
+        }
+
+        model->drawWire();
+    }
+
+
+      if (showMesh || showFloor)
       {
-          gl::pushMatrices();
-          gl::setModelMatrix(n->globalMatrix);
-          symbols.coordinateFrame->draw();
-          gl::popMatrices();
 
-      }
+          gl::ScopedTextureBind texScope(mShadowMapTex, (uint8_t) 0);
+          //	vec3 mvLightPos = vec3(gl::getModelView() * vec4(mLightPos, 1.0f));
+          mat4 shadowMatrix = mLightCam.getProjectionMatrix() * mLightCam.getViewMatrix();
 
 
-
-
-
-
-
-      gl::ScopedTextureBind texScope(mShadowMapTex, (uint8_t)0);
-      //	vec3 mvLightPos = vec3(gl::getModelView() * vec4(mLightPos, 1.0f));
-      mat4 shadowMatrix = mLightCam.getProjectionMatrix() * mLightCam.getViewMatrix();
-
-
-      MDP()->mGlsl->uniform("uShadowMap", 0);
-      MDP()->mGlsl->uniform("uLightPos", mLightPos);
-      MDP()->mGlsl->uniform("uShadowMatrix", shadowMatrix);
-      MDP()->mGlsl->uniform("uViewPos", camera.mCam.getEyePoint());
-      MDP()->mGlsl->uniform("alpha", 1.f);
-
-      MDP()->mGlsl->uniform("spec", 0.01f);
-          gl::color(Color::gray(0.4));
-          symbols.floorBatch->draw();
-
-
-      for (auto n : model->nodes)
-      {
-          gl::pushMatrices();
-
-          for (auto m : n->meshData->meshes)
+          MDP()->mGlsl->uniform("uShadowMap", 0);
+          MDP()->mGlsl->uniform("uLightPos", mLightPos);
+          MDP()->mGlsl->uniform("uShadowMatrix", shadowMatrix);
+          MDP()->mGlsl->uniform("uViewPos", camera.mCam.getEyePoint());
+          MDP()->mGlsl->uniform("alpha", 1.f);
+          if (showFloor)
           {
-
-              gl::setModelMatrix(n->globalMatrix *m->modelMatrix);
-              m->draw();
+              MDP()->mGlsl->uniform("spec", 0.01f);
+              gl::color(Color::gray(0.4));
+              symbols.floorBatch->draw();
           }
-          gl::popMatrices();
+          if (showMesh)
+          {
+              for (auto n : model->nodes)
+              {
+                  gl::pushMatrices();
+
+                  for (auto m : n->meshData->meshes)
+                  {
+
+                      gl::setModelMatrix(n->globalMatrix * m->modelMatrix);
+                      m->draw();
+                  }
+                  gl::popMatrices();
+
+              }
+          }
 
       }
-
       gl::popMatrices();
       fboWindow.end();
 
@@ -132,6 +141,7 @@ void ModelRenderer::draw() {
 }
 void ModelRenderer::drawShadow()
 {
+    if (!showMesh && !showFloor) return;
     gl::pushMatrices();
     gl::enable(GL_POLYGON_OFFSET_FILL);
     glPolygonOffset(2.0f, 2.0f);
@@ -140,10 +150,10 @@ void ModelRenderer::drawShadow()
     gl::ScopedViewport viewport(vec2(0.0f), mFbo->getSize());
     gl::clear(Color::black());
 
-
+    if (showMesh)
+    {
         gl::color(Color::white());
         gl::setMatrices(mLightCam);
-
 
 
         for (auto n : model->nodes)
@@ -152,14 +162,14 @@ void ModelRenderer::drawShadow()
 
             for (auto m : n->meshData->meshes)
             {
-                gl::setModelMatrix(n->globalMatrix *m->modelMatrix);
+                gl::setModelMatrix(n->globalMatrix * m->modelMatrix);
                 m->drawShadow();
             }
             gl::popMatrices();
 
         }
 
-
+    }
     gl::disable(GL_POLYGON_OFFSET_FILL);
 
     gl::popMatrices();

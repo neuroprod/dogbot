@@ -10,8 +10,9 @@ class RobotSettings
 {
 public:
     RobotSettings(){};
-    float bodyY = 352;
-
+    float bodyY =250;
+    float bodyXStart =SETTINGS()->getFloat("RobotSettings","bodyXStart",-27)->value();
+    float bodyYStart =SETTINGS()->getFloat("RobotSettings","bodyYStart",80)->value();
     float bodyLength =SETTINGS()->getFloat("RobotSettings","bodyLength",352.f)->value();
     float bodyWidth =SETTINGS()->getFloat("RobotSettings","bodyWidth",120.f)->value();
 

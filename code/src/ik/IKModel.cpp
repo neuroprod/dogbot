@@ -44,25 +44,5 @@ void IKModel::reBuild()
 void IKModel::update()
 {
 
-/*
-	bodyMatrix = mat4();
-	bodyMatrix = glm::translate(bodyMatrix, vec3(controle->bodyX, controle->bodyY, controle->bodyZ));
 
-	bodyMatrix = glm::rotate(bodyMatrix, controle->bodyRotX, vec3(1, 0, 0));
-	bodyMatrix = glm::rotate(bodyMatrix, controle->bodyRotY, vec3(0, 1, 0));
-	bodyMatrix = glm::rotate(bodyMatrix, controle->bodyRotZ, vec3(0, 0, 1));
-
-	mat4 invBodyMatrix = glm::inverse(bodyMatrix);
-	int count = 0;
-	for (int i=0; i< controle->legs.size();i++) 
-	{
-		vec3 target = controle->legs[i]->targetPos;
-		target.y += config->footRadius;
-		legs[i]->resolve(target, invBodyMatrix);
-
-		angles[count++] = legs[i]->angleHip1;
-		angles[count++] = legs[i]->angleHip2;
-		angles[count++] = legs[i]->angleKnee;
-	}
-*/
 }

@@ -79,8 +79,9 @@ void IKLeg::resolve(glm::vec3 target, glm::mat4 invBodyMatrix)
 	{
 		angleHip1 =  (angleCX - angleBC)*-1+PI;
 	}
+    if(  hipOffsetZFlip==-1 )angleHip1-=PI*2;
 
-	mat4 hip1MatrixRot = glm::rotate(hip1Matrix, angleHip1, vec3(1, 0, 0));
+    mat4 hip1MatrixRot = glm::rotate(hip1Matrix, angleHip1, vec3(1, 0, 0));
 	mat4 invHip1MatrixRot = glm::inverse(hip1MatrixRot);
 
 

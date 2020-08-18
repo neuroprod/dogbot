@@ -27,8 +27,8 @@ void IKControle::setup()
 
 void IKControle::setBase()
 {
-	bodyX = 50;
-	bodyY = BOTSETTINGS()->bodyY;
+	bodyX =BOTSETTINGS()->bodyXStart;;
+	bodyY = BOTSETTINGS()->bodyYStart;
 	bodyZ = 0;
 
 	bodyRotX = 0;
@@ -125,5 +125,13 @@ void IKControle::drawGui()
 
 
 	}
+    ImGui::Separator();
+	float toDeg = 180./3.1415;
+
+	ImGui::Text("FR  H:%f K:%f A:%f", angles[0]*toDeg ,angles[1]*toDeg,angles[2]*toDeg );
+    ImGui::Text("FL  H:%f K:%f A:%f", angles[3]*toDeg ,angles[4]*toDeg,angles[5]*toDeg );
+    ImGui::Text("BR  H:%f K:%f A:%f", angles[6]*toDeg ,angles[7]*toDeg,angles[8]*toDeg );
+    ImGui::Text("FL  H:%f K:%f A:%f", angles[9]*toDeg ,angles[10]*toDeg,angles[11]*toDeg );
+
 	ImGui::End();
 }

@@ -64,7 +64,7 @@ void BotApp::update()
 {
     imGuiUpdate();
 
-    //ImGui::ShowDemoWindow();
+    ImGui::ShowDemoWindow();
 
 
 
@@ -193,7 +193,7 @@ void  BotApp::imGuiUpdate()
     {
         if (ImGui::BeginMenu("Menu"))
         {
-
+           if( ImGui::MenuItem("Save Settings", NULL)){SETTINGS()->save();};
             ImGui::EndMenu();
         }
       /* if (ImGui::BeginMenu("Examples"))

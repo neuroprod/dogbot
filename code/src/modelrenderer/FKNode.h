@@ -19,7 +19,8 @@ public:
 	void setRotation(float r);
 
 	void update();
-	
+	void setGlobalPos();
+	ci::vec3 globalPos;
 	
 
 	MeshDataRef meshData;

@@ -19,7 +19,7 @@ public:
 	void setPosition(glm::mat4 bodyMatrix, std::vector<float> &jointAngles);
 
 	void update();
-
+    void drawWire();
 
 
 	FKNodeRef root;

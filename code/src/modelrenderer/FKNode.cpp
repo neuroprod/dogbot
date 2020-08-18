@@ -84,3 +84,11 @@ void FKNode::update()
 
 }
 
+void FKNode::setGlobalPos()
+{
+    vec4 pos = globalMatrix *vec4(0,0,0,1);
+    globalPos = pos;
+
+}
+
+

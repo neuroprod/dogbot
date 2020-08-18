@@ -33,5 +33,15 @@
       "key" : "footRadius",
       "type" : "float",
       "value" : 20
+   },
+   {
+      "key" : "bodyXStart",
+      "type" : "float",
+      "value" : -27
+   },
+   {
+      "key" : "bodyYStart",
+      "type" : "float",
+      "value" : 80
    }
 ]

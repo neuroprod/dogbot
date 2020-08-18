@@ -16,23 +16,19 @@ void SimulationMain::setup() {
     ikControle.setup();
     modelRenderer.setup();
 
-    test.prepGraph("test graph",1,{100},{Color(1,0,0)},{"sin"} );
-    test2.prepGraph("test graph2",1,{100},{Color(0,1,1)},{"cos"} );
-    GRAPH()->reg(&test);
-    GRAPH()->reg(&test2);
+
 }
 void SimulationMain::update() {
 
     ikControle.update();
     modelRenderer.model->setPosition(ikControle.bodyMatrix,ikControle.angles);
     modelRenderer.update();
-    test.addData({sinf((float)getElapsedSeconds())});
-    test2.addData({cosf((float)getElapsedSeconds())});
+
 }
 void SimulationMain::draw() {
 
     ikControle.drawGui();
     modelRenderer.draw();
-    GRAPH()->draw();
+
 
 }
