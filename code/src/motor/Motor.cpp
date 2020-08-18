@@ -6,7 +6,7 @@
 #include <unistd.h>       // Used for UART
 #include <sys/fcntl.h>    // Used for UART
 #include <termios.h>      // Used for UART
-
+#include "../graph/GraphRenderer.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -24,6 +24,12 @@ void Motor::setup(Smotor settings)
     port =  mSettings->mPort;
     angleTarget = mSettings->mStartValue;
     motorAngle = angleTarget+mSettings->mOffset;
+
+
+
+    motorGraph.prepGraph(name,3,{0.5f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
+
+    GRAPH()->reg(&motorGraph);
 
     unsigned long baud = 115200;
 
@@ -59,32 +65,7 @@ void Motor::loop()
     bool nComplete = true;
     std::vector<uint8_t> buffer;
     std::this_thread::sleep_for (std::chrono::seconds(1));
-   /* readAngle( id);
-    my_serial->writeBytes(&data[0], data.size());
-*/
 
-
-
-/*
-    while ((my_serial->getNumBytesAvailable() != 14)) {
-    }
-    console()<<"OKEDOKE"<<my_serial->getNumBytesAvailable()<<endl;
-    buffer.clear();
-    buffer.resize(14);
-    my_serial->readBytes(&buffer[0], 14);
-    Union64 Uangle;
-    Uangle.b[0] = buffer[5];
-    Uangle.b[1] = buffer[6];
-    Uangle.b[2] = buffer[7];
-    Uangle.b[3] = buffer[8];
-    Uangle.b[4] = buffer[9];
-    Uangle.b[5] = buffer[10];
-    Uangle.b[6] = buffer[11];
-    Uangle.b[7] = buffer[12];
-    float angle = (float)Uangle.r/100.f;
-  console()<<name <<angle<<endl;
-
-*/
 
 
     while (nComplete)
@@ -116,6 +97,7 @@ void Motor::loop()
 
 
       while ((my_serial->getNumBytesAvailable() != 13)) {
+          std::this_thread::sleep_for (std::chrono::milliseconds(1));
       }
 
         buffer.clear();
@@ -139,6 +121,8 @@ void Motor::loop()
         motorData.y = Uspeed.r;
         motorData.z = Uencoder.r;
         outMutex.unlock();
+
+
       //  console() << (float)Utorque.r / 2048.f * 33.f << " " << (float)Uspeed.r << " " << (float)Uencoder.r << endl;
       /*  std::this_thread::sleep_for (std::chrono::seconds(5));
         shutDown( id);
@@ -157,11 +141,15 @@ void Motor::drawGui()
         if (ImGui::SliderFloat("motorAngle", &angleTarget, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
         if (ImGui::SliderFloat("motorSpeed", &speedTarget, 0.f, 200000.f)) { setMotorMaxSpeed(speedTarget); }
         if (ImGui::SliderFloat("motorKp", &kpTarget, 0.f, 2000.f)) { inMutex.lock(); kp = kpTarget;     inMutex.unlock();}
-        outMutex.lock();
-     ImGui::Text("encoderP = %f",motorData.z);
-        outMutex.unlock();
+
     }
+
+    outMutex.lock();
+    motorGraph.addData({ motorData.x,motorData.y,motorData.z  });
+    outMutex.unlock();
     ImGui::PopID();
+
+
 }
 
 void Motor::setMotorAngle(float target)

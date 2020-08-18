@@ -6,7 +6,7 @@
          "id" : 1,
          "max" : 30,
          "min" : -30,
-         "offset" : 0,
+         "offset" : -29,
          "port" : "ttyMotor1",
          "startValue" : 0
       }
@@ -18,7 +18,7 @@
          "id" : 2,
          "max" : 30,
          "min" : -30,
-         "offset" : 0,
+         "offset" : -21,
          "port" : "ttyMotor2",
          "startValue" : 0
       }
@@ -30,7 +30,7 @@
          "id" : 3,
          "max" : 30,
          "min" : -30,
-         "offset" : 0,
+         "offset" : 14,
          "port" : "ttyMotor3",
          "startValue" : 0
       }
@@ -42,7 +42,7 @@
          "id" : 4,
          "max" : 30,
          "min" : -30,
-         "offset" : 0,
+         "offset" : -17,
          "port" : "ttyMotor4",
          "startValue" : 0
       }

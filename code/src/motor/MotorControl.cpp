@@ -2,7 +2,7 @@
 
 #include "cinder/CinderImGui.h"
 #include "../settings/BotSettings.h"
-
+#include "../graph/GraphRenderer.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -45,5 +45,7 @@ void MotorControl::drawGui()
 		m->drawGui();
 	}
     ImGui::End();
+
+	GRAPH()->draw();
 }
 

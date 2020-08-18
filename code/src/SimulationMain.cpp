@@ -9,21 +9,22 @@
 using namespace ci;
 using namespace ci::app;
 void SimulationMain::setup() {
-    ImGui::Initialize();
+   // ImGui::Initialize();
     setWindowSize(windowSizeX->value(),windowSizeY->value());
     setWindowPos(0,0);
-    test.prepGraph("test",1,{50},{Color(1,0,1)},{"sin"} );
-
+    test.prepGraph("test graph",1,{100},{Color(1,0,0)},{"sin"} );
+    test2.prepGraph("test graph2",1,{100},{Color(0,1,1)},{"cos"} );
     GRAPH()->reg(&test);
+    GRAPH()->reg(&test2);
 }
 void SimulationMain::update() {
 
     test.addData({sinf((float)getElapsedSeconds())});
-
+    test2.addData({cosf((float)getElapsedSeconds())});
 }
 void SimulationMain::draw() {
 
-    gl::clear();
+
     GRAPH()->draw();
 
 }
