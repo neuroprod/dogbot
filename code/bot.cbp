@@ -5,7 +5,7 @@
 		<Option title="bot"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\x86_64\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\aarch64\;CMake Files\..\..\Cinder\lib\linux\aarch64\ogl\;CMake Files\..\..\Cinder\lib\linux\aarch64\ogl\Debug\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
@@ -27,18 +27,8 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="bot">
-				<Option output="/home/kris/Desktop/dogbot/code/Release/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
@@ -60,7 +50,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="bot/fast">
-				<Option output="/home/kris/Desktop/dogbot/code/Release/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
@@ -76,6 +66,16 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 bot/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 edit_cache"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
@@ -217,11 +217,11 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/proj/cmake/modules/cinderMakeApp.cmake">
 			<Option virtualFolder="CMake Files\..\..\Cinder\proj\cmake\modules\"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Release/cinderConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\"/>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/aarch64/ogl/Debug/cinderConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\aarch64\ogl\Debug\"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Release/cinderTargets.cmake">
-			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\"/>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/aarch64/ogl/Debug/cinderTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\aarch64\ogl\Debug\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -3,6 +3,7 @@
 #include "cinder/app/App.h"
 
 #include "Motor.h"
+
 class MotorControl
 {
 

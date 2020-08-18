@@ -1,5 +1,7 @@
 code/cmake-build-debug/
 code/cmake-build-release/
+code/CMakeFiles/
+*.ini
 .idea/
 
 # Prerequisites

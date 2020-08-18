@@ -6,7 +6,7 @@
 #include <unistd.h>       // Used for UART
 #include <sys/fcntl.h>    // Used for UART
 #include <termios.h>      // Used for UART
-
+#include "../graph/GraphRenderer.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -22,6 +22,14 @@ void Motor::setup(Smotor settings)
     id =   mSettings->mID  ;
 	name = mSettings->mKey;
     port =  mSettings->mPort;
+    angleTarget = mSettings->mStartValue;
+    motorAngle = angleTarget+mSettings->mOffset;
+
+
+
+    motorGraph.prepGraph(name,3,{0.5f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
+
+    GRAPH()->reg(&motorGraph);
 
     unsigned long baud = 115200;
 
@@ -53,8 +61,13 @@ void Motor::setup(Smotor settings)
 }
 void Motor::loop()
 {
+
     bool nComplete = true;
     std::vector<uint8_t> buffer;
+    std::this_thread::sleep_for (std::chrono::seconds(1));
+
+
+
     while (nComplete)
     {
         inMutex.lock();
@@ -66,7 +79,7 @@ void Motor::loop()
         //speed = dps*100
 
         uint32_t speedR= maxSpeed;
-        int64_t  angleR = (angleTarget + 180.f) * 100.f * 6.f;
+        int64_t  angleR = (angleTarget ) * 100.f * 6.f;
 
         float angleChange = abs(prevAngleTarget - angleTarget);
         uint32_t speed = angleChange *60 * kpR;
@@ -84,6 +97,7 @@ void Motor::loop()
 
 
       while ((my_serial->getNumBytesAvailable() != 13)) {
+          std::this_thread::sleep_for (std::chrono::milliseconds(1));
       }
 
         buffer.clear();
@@ -107,8 +121,12 @@ void Motor::loop()
         motorData.y = Uspeed.r;
         motorData.z = Uencoder.r;
         outMutex.unlock();
-      //  console() << (float)Utorque.r / 2048.f * 33.f << " " << (float)Uspeed.r << " " << (float)Uencoder.r << endl;
 
+
+      //  console() << (float)Utorque.r / 2048.f * 33.f << " " << (float)Uspeed.r << " " << (float)Uencoder.r << endl;
+      /*  std::this_thread::sleep_for (std::chrono::seconds(5));
+        shutDown( id);
+        my_serial->writeBytes(&data[0], data.size());*/
     }
 }
 
@@ -116,20 +134,28 @@ void Motor::loop()
 void Motor::drawGui()
 {
     ImGui::PushID(name.c_str());
+    ImGui::SetNextTreeNodeOpen(true);
     if (ImGui::CollapsingHeader(name.c_str()))
     {
-      
-        if (ImGui::SliderFloat("motorAngle", &angleTarget, -180.f, 180.f)) { setMotorAngle(angleTarget); }
+
+        if (ImGui::SliderFloat("motorAngle", &angleTarget, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
         if (ImGui::SliderFloat("motorSpeed", &speedTarget, 0.f, 200000.f)) { setMotorMaxSpeed(speedTarget); }
         if (ImGui::SliderFloat("motorKp", &kpTarget, 0.f, 2000.f)) { inMutex.lock(); kp = kpTarget;     inMutex.unlock();}
+        if (ImGui::SliderFloat("motorOffset", &mSettings->mOffset, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
     }
+
+    outMutex.lock();
+    motorGraph.addData({ motorData.x,motorData.y,motorData.z  });
+    outMutex.unlock();
     ImGui::PopID();
+
+
 }
 
 void Motor::setMotorAngle(float target)
 {
     inMutex.lock();
-    motorAngle = target;
+    motorAngle = target+mSettings->mOffset;
 
    
     inMutex.unlock();
@@ -174,7 +200,22 @@ void Motor::setPosition(uint8_t id, int64_t angleControl, int32_t maxSpeed)
     addCheckSum();
 
 }
+void Motor::readAngle(uint8_t id)
+{
 
+    makeHeader(0x92, 1, 0x00);
+
+    addCheckSum();
+
+}
+void Motor::shutDown(uint8_t id)
+{
+
+    makeHeader(0x80, 1, 0x00);
+
+    addCheckSum();
+
+}
 void Motor::makeHeader(uint8_t command, uint8_t id, uint8_t dataLength)
 {
     data.clear();

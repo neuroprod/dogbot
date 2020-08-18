@@ -1,5 +1,5 @@
 
-#define SIMULATION
+//#define SIMULATION
 
 #include "cinder/CinderImGui.h"
 
@@ -7,6 +7,7 @@
 #include "cinder/app/RendererGl.h"
 #include "settings/SettingsHandler.h"
 #include "RobotSettings.h"
+#include "cinder/gl/gl.h"
 
 #ifdef SIMULATION
 #include "SimulationMain.h"
