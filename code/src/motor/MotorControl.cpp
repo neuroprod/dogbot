@@ -1,8 +1,12 @@
 #include "MotorControl.h"
 
 #include "cinder/CinderImGui.h"
-#include "../settings/BotSettings.h"
+
 #include "../graph/GraphRenderer.h"
+
+#include "../settings/SettingsHandler.h"
+
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;

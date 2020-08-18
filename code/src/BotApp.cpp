@@ -5,8 +5,9 @@
 
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
-
-#include "settings/BotSettings.h"
+#include "settings/SettingsHandler.h"
+#include "RobotSettings.h"
+#include "cinder/gl/gl.h"
 
 #ifdef SIMULATION
 #include "SimulationMain.h"
@@ -21,12 +22,13 @@ class BotApp : public App {
 public:
     void setup() override;
     void update() override;
-  /*  void resize() override;
-    void mouseDown( MouseEvent event ) override;
-    void mouseDrag( MouseEvent event ) override;*/
+
+
     void draw() override;
     void imGuiUpdate();
     void setupImGui();
+    RobotSettings settings; //auto init of settings
+
 #ifdef SIMULATION
 SimulationMain simulation;
 #else
@@ -38,11 +40,12 @@ RobotMain robot;
 
 void BotApp::setup()
 {
+    setFrameRate(120);
+    gl::enableVerticalSync(false);
     setupImGui();
 
 
-    ImGuiIO& io = ImGui::GetIO();
-  io.Fonts->AddFontFromFileTTF(getAssetPath("fonts/Ubuntu-R.ttf").c_str(), 16.0f);
+
 
 
 
@@ -54,23 +57,15 @@ robot.setup();
 
     SETTINGS()->save();
 }
-/*
-void BotApp::resize() {
 
-}
-void BotApp::mouseDown( MouseEvent event )
-{
 
-}
 
-void BotApp::mouseDrag( MouseEvent event ) {
 
-}*/
 void BotApp::update()
 {
     imGuiUpdate();
 
-    ImGui::ShowDemoWindow();
+    //ImGui::ShowDemoWindow();
 
 
 
@@ -96,6 +91,10 @@ void  BotApp::setupImGui()
 
     ImGui::Initialize();
     ImGuiIO& io = ImGui::GetIO();
+
+
+    io.Fonts->AddFontFromFileTTF(getAssetPath("fonts/Ubuntu-R.ttf").c_str(), 16.0f);
+
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImVec4* colors = ImGui::GetStyle().Colors;
     colors[ImGuiCol_Text]                   = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
@@ -215,11 +214,15 @@ void  BotApp::imGuiUpdate()
     }
     ImGui::End();
 
+
+    ImGui::Begin("performance");
+    ImGui::Text("fps:%f",ImGui::GetIO().Framerate);
+    ImGui::End();
 }
 
 
 CINDER_APP( BotApp, RendererGl, [] ( App::Settings *settings ) {
-    SETTINGS()->load({"SimulationSettings","RobotSettings","MotorSettings"});
+    SETTINGS()->load({"SimulationSettings","RobotSettings","RobotDebugSettings","MotorSettings"});
 
 }
 )
