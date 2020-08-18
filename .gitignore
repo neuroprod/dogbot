@@ -4,6 +4,7 @@ code/CMakeFiles/
 code/Release/
 code/Debug/
 
+code/CMakeCache.txt
 
 *.ini
 .idea/
