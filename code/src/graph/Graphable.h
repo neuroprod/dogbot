@@ -15,7 +15,7 @@ public:
     Graphable() {};
     virtual void gDraw(int width) {};
     std::string gName;
-    bool gVisible = true;
+    bool gVisible = false;
 
 };
 #endif //BOT_GRAPHABLE_H

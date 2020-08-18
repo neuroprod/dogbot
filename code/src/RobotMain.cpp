@@ -17,13 +17,20 @@ void RobotMain::setup() {
     ImGui::Initialize();
     setWindowSize(windowSizeX->value(),windowSizeY->value());
     setWindowPos(0,0);
-
+    ikControle.setup();
+    modelRenderer.setup();
+    modelRenderer.showMesh =false;
+    modelRenderer.showWire =true;
     motorControl.setup();
    // GPIO::setmode(GPIO::BOARD);
     //GPIO::setup(12, GPIO::OUT, GPIO::HIGH);
 }
 
 void RobotMain::update() {
+    ikControle.update();
+    modelRenderer.model->setPosition(ikControle.bodyMatrix,ikControle.angles);
+    modelRenderer.update();
+
     motorControl.drawGui();
   /*int a = ci::app::getElapsedSeconds() ;
   if(a%2==0){
@@ -36,6 +43,8 @@ void RobotMain::update() {
 }
 void RobotMain::draw()
 {
-    gl::clear();
+    ikControle.drawGui();
+    modelRenderer.draw();
 
 }
+

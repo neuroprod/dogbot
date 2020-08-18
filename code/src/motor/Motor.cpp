@@ -142,6 +142,7 @@ void Motor::drawGui()
         if (ImGui::SliderFloat("motorSpeed", &speedTarget, 0.f, 200000.f)) { setMotorMaxSpeed(speedTarget); }
         if (ImGui::SliderFloat("motorKp", &kpTarget, 0.f, 2000.f)) { inMutex.lock(); kp = kpTarget;     inMutex.unlock();}
         if (ImGui::SliderFloat("motorOffset", &mSettings->mOffset, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
+        if (ImGui::InputFloat("inputOffset", &mSettings->mOffsetInput)) {  }
     }
 
     outMutex.lock();

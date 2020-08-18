@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="bot"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\x86_64\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bot">
+				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFT2_BUILD_LIBRARY"/>
+					<Add option="-DFT_DEBUG_LEVEL_TRACE"/>
+					<Add option="-DCINDER_GL_CORE"/>
+					<Add option="-D_UNIX"/>
+					<Add option="-D_GLFW_X11"/>
+					<Add directory="/home/kris/Desktop/dogbot/shared"/>
+					<Add directory="/home/kris/Desktop/Cinder/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 bot"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bot/fast">
+				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFT2_BUILD_LIBRARY"/>
+					<Add option="-DFT_DEBUG_LEVEL_TRACE"/>
+					<Add option="-DCINDER_GL_CORE"/>
+					<Add option="-D_UNIX"/>
+					<Add option="-D_GLFW_X11"/>
+					<Add directory="/home/kris/Desktop/dogbot/shared"/>
+					<Add directory="/home/kris/Desktop/Cinder/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 bot/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/kris/Desktop/dogbot/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/BotApp.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/RobotMain.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/RobotMain.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/SimulationMain.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/SimulationMain.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/graph/GraphRenderer.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/graph/GraphRenderer.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/graph/GraphableArray.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/graph/GraphableArray.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/gui/FBOWindow.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControle.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControle.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKLeg.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKLeg.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKModel.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKModel.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKModel.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKNode.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/Mesh.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/MeshData.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/MeshDataPool.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/ModelRenderer.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/OrbitCamera.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/SymbolBatches.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/motor/Motor.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/motor/Motor.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/motor/MotorControl.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/motor/MotorControl.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/proj/cmake/configure.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\proj\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/proj/cmake/utilities.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\proj\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/proj/cmake/modules/cinderMakeApp.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\proj\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Debug/cinderConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Debug/cinderTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

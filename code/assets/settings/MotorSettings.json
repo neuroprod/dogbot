@@ -1,13 +1,14 @@
 [
    {
-      "key" : "BLHip",
+      "key" : "FLHip",
       "type" : "motor",
       "value" : {
-         "id" : 4,
+         "id" : 2,
          "max" : 30,
          "min" : -30,
-         "offset" : -17,
-         "port" : "ttyMotor4",
+         "offset" : -22.84,
+         "offsetInput" : 0,
+         "port" : "ttyMotor2",
          "startValue" : 0
       }
    },
@@ -19,19 +20,21 @@
          "max" : 30,
          "min" : -30,
          "offset" : 14,
+         "offsetInput" : 0,
          "port" : "ttyMotor3",
          "startValue" : 0
       }
    },
    {
-      "key" : "FLHip",
+      "key" : "BLHip",
       "type" : "motor",
       "value" : {
-         "id" : 2,
+         "id" : 4,
          "max" : 30,
          "min" : -30,
-         "offset" : -21,
-         "port" : "ttyMotor2",
+         "offset" : -17,
+         "offsetInput" : 0,
+         "port" : "ttyMotor4",
          "startValue" : 0
       }
    },
@@ -43,6 +46,7 @@
          "max" : 30,
          "min" : -30,
          "offset" : -29,
+         "offsetInput" : 0,
          "port" : "ttyMotor1",
          "startValue" : 0
       }

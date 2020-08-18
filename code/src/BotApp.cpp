@@ -49,10 +49,12 @@ void BotApp::setup()
 
 
 
+
 #ifdef SIMULATION
     simulation.setup();
 #else
 robot.setup();
+
 #endif
 
     SETTINGS()->save();
