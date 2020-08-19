@@ -35,6 +35,9 @@ set(SRC_FILES
         ${APP_PATH}/src/ik/IKControleLeg.cpp
         ${APP_PATH}/src/ik/IKLeg.cpp
         ${APP_PATH}/src/ik/IKModel.cpp
+        ${APP_PATH}/src/states/StateControle.cpp
+        ${APP_PATH}/src/states/RiseState.cpp
+        ${APP_PATH}/src/input/InputHandler.cpp
         )
 
 ci_make_app(

@@ -5,7 +5,7 @@
 		<Option title="bot"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\x86_64\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\x86_64\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
@@ -38,7 +38,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="bot">
-				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/kris/Desktop/dogbot/code/Release/bot/bot" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
@@ -60,7 +60,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="bot/fast">
-				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/kris/Desktop/dogbot/code/Release/bot/bot" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
@@ -139,6 +139,12 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKModel.h">
 			<Option target="bot"/>
 		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/input/InputHandler.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/input/InputHandler.h">
+			<Option target="bot"/>
+		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp">
 			<Option target="bot"/>
 		</Unit>
@@ -205,6 +211,18 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/motor/MotorControl.h">
 			<Option target="bot"/>
 		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/RiseState.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/RiseState.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StateControle.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StateControle.h">
+			<Option target="bot"/>
+		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
@@ -217,11 +235,11 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/proj/cmake/modules/cinderMakeApp.cmake">
 			<Option virtualFolder="CMake Files\..\..\Cinder\proj\cmake\modules\"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Debug/cinderConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\"/>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Release/cinderConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Debug/cinderTargets.cmake">
-			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\"/>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Release/cinderTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -10,6 +10,7 @@
 #include "graph/GraphableArray.h"
 #include "modelrenderer/ModelRenderer.h"
 #include "ik/IKControle.h"
+#include "states/StateControle.h"
 class SimulationMain
 {
 public:
@@ -23,7 +24,7 @@ public:
 
     IKControle ikControle;
     ModelRenderer modelRenderer;
-
+    StateControle stateControle;
 
 };
 

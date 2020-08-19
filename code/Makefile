@@ -396,6 +396,33 @@ src/ik/IKModel.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKModel.cpp.s
 .PHONY : src/ik/IKModel.cpp.s
 
+src/input/InputHandler.o: src/input/InputHandler.cpp.o
+
+.PHONY : src/input/InputHandler.o
+
+# target to build an object file
+src/input/InputHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/InputHandler.cpp.o
+.PHONY : src/input/InputHandler.cpp.o
+
+src/input/InputHandler.i: src/input/InputHandler.cpp.i
+
+.PHONY : src/input/InputHandler.i
+
+# target to preprocess a source file
+src/input/InputHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/InputHandler.cpp.i
+.PHONY : src/input/InputHandler.cpp.i
+
+src/input/InputHandler.s: src/input/InputHandler.cpp.s
+
+.PHONY : src/input/InputHandler.s
+
+# target to generate assembly for a file
+src/input/InputHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/InputHandler.cpp.s
+.PHONY : src/input/InputHandler.cpp.s
+
 src/modelrenderer/FKLeg.o: src/modelrenderer/FKLeg.cpp.o
 
 .PHONY : src/modelrenderer/FKLeg.o
@@ -693,6 +720,60 @@ src/motor/MotorControl.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/motor/MotorControl.cpp.s
 .PHONY : src/motor/MotorControl.cpp.s
 
+src/states/RiseState.o: src/states/RiseState.cpp.o
+
+.PHONY : src/states/RiseState.o
+
+# target to build an object file
+src/states/RiseState.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/RiseState.cpp.o
+.PHONY : src/states/RiseState.cpp.o
+
+src/states/RiseState.i: src/states/RiseState.cpp.i
+
+.PHONY : src/states/RiseState.i
+
+# target to preprocess a source file
+src/states/RiseState.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/RiseState.cpp.i
+.PHONY : src/states/RiseState.cpp.i
+
+src/states/RiseState.s: src/states/RiseState.cpp.s
+
+.PHONY : src/states/RiseState.s
+
+# target to generate assembly for a file
+src/states/RiseState.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/RiseState.cpp.s
+.PHONY : src/states/RiseState.cpp.s
+
+src/states/StateControle.o: src/states/StateControle.cpp.o
+
+.PHONY : src/states/StateControle.o
+
+# target to build an object file
+src/states/StateControle.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateControle.cpp.o
+.PHONY : src/states/StateControle.cpp.o
+
+src/states/StateControle.i: src/states/StateControle.cpp.i
+
+.PHONY : src/states/StateControle.i
+
+# target to preprocess a source file
+src/states/StateControle.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateControle.cpp.i
+.PHONY : src/states/StateControle.cpp.i
+
+src/states/StateControle.s: src/states/StateControle.cpp.s
+
+.PHONY : src/states/StateControle.s
+
+# target to generate assembly for a file
+src/states/StateControle.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateControle.cpp.s
+.PHONY : src/states/StateControle.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -732,6 +813,9 @@ help:
 	@echo "... src/ik/IKModel.o"
 	@echo "... src/ik/IKModel.i"
 	@echo "... src/ik/IKModel.s"
+	@echo "... src/input/InputHandler.o"
+	@echo "... src/input/InputHandler.i"
+	@echo "... src/input/InputHandler.s"
 	@echo "... src/modelrenderer/FKLeg.o"
 	@echo "... src/modelrenderer/FKLeg.i"
 	@echo "... src/modelrenderer/FKLeg.s"
@@ -765,6 +849,12 @@ help:
 	@echo "... src/motor/MotorControl.o"
 	@echo "... src/motor/MotorControl.i"
 	@echo "... src/motor/MotorControl.s"
+	@echo "... src/states/RiseState.o"
+	@echo "... src/states/RiseState.i"
+	@echo "... src/states/RiseState.s"
+	@echo "... src/states/StateControle.o"
+	@echo "... src/states/StateControle.i"
+	@echo "... src/states/StateControle.s"
 .PHONY : help
 
 

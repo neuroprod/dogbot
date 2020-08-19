@@ -13,7 +13,7 @@ MeshDataPool::MeshDataPool() {
 }
 void MeshDataPool::setup()
 {
-
+if (mGlsl) return;
 	mGlsl = gl::GlslProg::create(loadAsset("shaders/mainShader.vert.glsl"), loadAsset("shaders/mainShader.frag.glsl"));
 
 	//meshes

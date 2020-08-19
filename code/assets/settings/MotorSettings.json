@@ -1,27 +1,14 @@
 [
    {
-      "key" : "FLHip",
+      "key" : "FRHip",
       "type" : "motor",
       "value" : {
-         "id" : 2,
+         "id" : 1,
          "max" : 30,
          "min" : -30,
-         "offset" : -22.84,
+         "offset" : -29,
          "offsetInput" : 0,
-         "port" : "ttyMotor2",
-         "startValue" : 0
-      }
-   },
-   {
-      "key" : "BRHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 3,
-         "max" : 30,
-         "min" : -30,
-         "offset" : 14,
-         "offsetInput" : 0,
-         "port" : "ttyMotor3",
+         "port" : "ttyMotor1",
          "startValue" : 0
       }
    },
@@ -39,15 +26,28 @@
       }
    },
    {
-      "key" : "FRHip",
+      "key" : "BRHip",
       "type" : "motor",
       "value" : {
-         "id" : 1,
+         "id" : 3,
          "max" : 30,
          "min" : -30,
-         "offset" : -29,
+         "offset" : 14,
          "offsetInput" : 0,
-         "port" : "ttyMotor1",
+         "port" : "ttyMotor3",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FLHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 2,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -22.84,
+         "offsetInput" : 0,
+         "port" : "ttyMotor2",
          "startValue" : 0
       }
    }

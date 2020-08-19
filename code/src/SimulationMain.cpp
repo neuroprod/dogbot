@@ -3,7 +3,7 @@
 //
 
 #include "SimulationMain.h"
-#include "cinder/CinderImGui.h"
+
 #include "graph/GraphRenderer.h"
 
 using namespace ci;
@@ -15,13 +15,19 @@ void SimulationMain::setup() {
 
     ikControle.setup();
     modelRenderer.setup();
-
+    stateControle.setup(&ikControle);
 
 }
 void SimulationMain::update() {
 
+    stateControle.update();
     ikControle.update();
+
+
     modelRenderer.model->setPosition(ikControle.bodyMatrix,ikControle.angles);
+
+
+
     modelRenderer.update();
 
 }
@@ -29,6 +35,6 @@ void SimulationMain::draw() {
 
     ikControle.drawGui();
     modelRenderer.draw();
-
+    stateControle.draw();
 
 }
