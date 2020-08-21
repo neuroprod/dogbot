@@ -20,10 +20,22 @@ public:
     void setHomePosOffzet(ci::vec3 offset);
     void setNextState();
     void update(float timeNormal);
+
+
+    void prepStateSwitch();
+
+
+
     int state;
 
     ci::BSpline3f currentSpline;
-
+    ci::BSpline3f prevSpline;
+    ci::BSpline3f nextSpline;
+    float  currentLength=0;
+    float  prevLength =0;
+    float  lengthDif =0;
+    float  nextLength =0;
+    float  nextLengthDif =0;
     ci::vec3 homePosStart;
     ci::vec3 homePos;
 
@@ -35,8 +47,10 @@ public:
 
 
 
-    ci::vec3 targetPos;
+    ci::vec3 dirStartFalling;
 
+    ci::vec3 targetPos;
+    ci::vec3 prevTargetPos;
 
     bool debug =false;
     void draw();

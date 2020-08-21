@@ -12,7 +12,7 @@ void RiseState::start()
     //ikControle->lockUI();
     bodyY = ikController->bodyY;
 
-    timeline().apply(&bodyY,BOTSETTINGS()->bodyY,2.f,EaseInOutQuad()).finishFn( [&](){done=true;}).delay(2);
+    timeline().apply(&bodyY,BOTSETTINGS()->bodyY,1.f,EaseInOutQuad()).finishFn( [&](){done=true;}).delay(0);
 };
 void RiseState::update()
 {

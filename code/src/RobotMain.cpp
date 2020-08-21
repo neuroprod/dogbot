@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <JetsonGPIO.h>
 #include "cinder/CinderImGui.h"
-
+#include "graph/GraphRenderer.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -31,7 +31,7 @@ void RobotMain::update() {
     modelRenderer.model->setPosition(ikControle.bodyMatrix,ikControle.angles);
     modelRenderer.update();
 
-    motorControl.drawGui();
+
   /*int a = ci::app::getElapsedSeconds() ;
   if(a%2==0){
     GPIO::output(12, GPIO::HIGH);
@@ -43,6 +43,8 @@ void RobotMain::update() {
 }
 void RobotMain::draw()
 {
+    motorControl.drawGui();
+    GRAPH()->draw();
     ikControle.drawGui();
     modelRenderer.draw();
 

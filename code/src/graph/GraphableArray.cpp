@@ -43,7 +43,7 @@ void GraphableArray::gDraw(int width){
        float pos = 0;
         for (auto const& val : gData) {
 
-            gl::vertex(vec2(pos, val[i] * gScale[i]));
+            gl::vertex(vec2(pos, -val[i] * gScale[i]));
             pos +=  step;
         }
         gl::end();

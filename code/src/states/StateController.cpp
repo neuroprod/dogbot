@@ -19,10 +19,10 @@ void StateController::setup(IKController * ikController, GaitController *gaitCon
         state = riseState.state;
         currentState->start();
     }
-   /* currentState =&noneState;
+    currentState =&noneState;
     state = noneState.state;
 
-    currentState->start();*/
+    currentState->start();
 
 }
 void StateController::update()

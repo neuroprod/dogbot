@@ -14,6 +14,8 @@
 #include "cinder/BSpline.h"
 #include "LegController.h"
 #include "../modelrenderer/SymbolBatches.h"
+#include "../graph/GraphableArray.h"
+
 class GaitController
 {
 public:
@@ -26,6 +28,11 @@ public:
 
     float currentTime;
     double previousTime;
+
+
+
+
+
     float currentStepTime;
     float stepTimeTotal;
     bool debug;
@@ -34,10 +41,20 @@ public:
     ci::BSpline3f getHomeRise(StepInput &stepInput,LegControllerRef legController);
     ci::BSpline3f getWalkFall(StepInput &stepInput,LegControllerRef legController);
     std::vector<LegControllerRef> legs;
+    float walkRisingIn = 0.1;
+    float walkRisingOut = 0.4;
+    float walkRisingMidX = 0.1;
+    float  walkRisingMidY = 0.6;
 
+    float walkFalingIn = 0.32;
+    float walkFalingOut = 0.04;
+    float walkFalingMidX = 0.82;
+    float  walkFalingMidY = 0.89;
+
+    float delta;
     /////// gui debug stuff
     StepInput stepInput;
-
+    GraphableArray gaitGraph;
 
     int leg_combo= 0;
     int leg_combo_current= 0;
@@ -48,15 +65,13 @@ public:
     ImVec2 vMin;
     ImVec2 vMax;
     ci::gl::FboRef			mFbo;
-    float stepTime =150;
-    float stepHeight =20;
-    float moveAngle =0;
-    float moveLength =0;
-    float rotAngle =0;
-    float homeZOffset =0;
+
 
     OrbitCamera camera;
     float fboWidth =0;
+
+
+
 };
 
 

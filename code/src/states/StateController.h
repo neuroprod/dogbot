@@ -20,7 +20,7 @@ public:
     void update();
     void draw();
     void setNextState();
-    bool autoNextState =true;
+    bool autoNextState =false;
 
     STATE state;
     BaseState *currentState;

@@ -50,6 +50,6 @@ void MotorControl::drawGui()
 	}
     ImGui::End();
 
-	GRAPH()->draw();
+
 }
 

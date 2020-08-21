@@ -38,5 +38,6 @@ void SimulationMain::draw() {
     modelRenderer.draw();
     stateControle.draw();
     gaitControle.drawGui();
+    GRAPH()->draw();
 
 }
