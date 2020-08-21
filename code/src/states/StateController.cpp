@@ -2,25 +2,30 @@
 // Created by kris on 19.08.20.
 //
 
-#include "StateControle.h"
+#include "StateController.h"
 #include "StateEnum.h"
 #include "cinder/CinderImGui.h"
 #include "imgui/imgui_internal.h"
-void StateControle::setup(IKControle * ikControle ){
+void StateController::setup(IKController * ikController, GaitController *gaitController ){
 
-    riseState.ikControle  = ikControle;
+    riseState.ikController  = ikController;
 
+    stepState.ikController  = ikController;
+    stepState.gaitController  = gaitController;
 
-
-
-
-    currentState =&noneState;
+    if(true) //if simulation
+    {
+        currentState = &riseState;
+        state = riseState.state;
+        currentState->start();
+    }
+   /* currentState =&noneState;
     state = noneState.state;
 
-    currentState->start();
+    currentState->start();*/
 
 }
-void StateControle::update()
+void StateController::update()
 {
     currentState->update();
     if(currentState->isDone())
@@ -31,7 +36,7 @@ void StateControle::update()
 
 }
 
-void StateControle::setNextState()
+void StateController::setNextState()
 {
 
     if(autoNextState == false )
@@ -44,15 +49,25 @@ void StateControle::setNextState()
 
     switch ( state)
     {
-        case STATE::NONE:
+        case STATE::RISE:
         {
+            currentState =&stepState;
+            state = stepState.state;
+            currentState->start();
 
+            break;
         }
-        break;
+        case STATE::STEP:
+        {
+            //if(blabla):
+           currentState->start();
+            break;
+        }
+
     }
 }
 
-void StateControle::draw()
+void StateController::draw()
 {
     ImGui::Begin("State");
     std::string n = "current state: "+currentState->getName();
@@ -74,6 +89,12 @@ void StateControle::draw()
     if(ImGui::Button("rise")){
         currentState =&riseState;
         state = riseState.state;
+        currentState->start();
+
+    }
+    if(ImGui::Button("step")){
+        currentState =&stepState;
+        state = stepState.state;
         currentState->start();
 
     }

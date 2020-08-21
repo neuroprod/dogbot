@@ -288,33 +288,6 @@ src/gui/FBOWindow.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/gui/FBOWindow.cpp.s
 .PHONY : src/gui/FBOWindow.cpp.s
 
-src/ik/IKControle.o: src/ik/IKControle.cpp.o
-
-.PHONY : src/ik/IKControle.o
-
-# target to build an object file
-src/ik/IKControle.cpp.o:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKControle.cpp.o
-.PHONY : src/ik/IKControle.cpp.o
-
-src/ik/IKControle.i: src/ik/IKControle.cpp.i
-
-.PHONY : src/ik/IKControle.i
-
-# target to preprocess a source file
-src/ik/IKControle.cpp.i:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKControle.cpp.i
-.PHONY : src/ik/IKControle.cpp.i
-
-src/ik/IKControle.s: src/ik/IKControle.cpp.s
-
-.PHONY : src/ik/IKControle.s
-
-# target to generate assembly for a file
-src/ik/IKControle.cpp.s:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKControle.cpp.s
-.PHONY : src/ik/IKControle.cpp.s
-
 src/ik/IKControleLeg.o: src/ik/IKControleLeg.cpp.o
 
 .PHONY : src/ik/IKControleLeg.o
@@ -341,6 +314,33 @@ src/ik/IKControleLeg.s: src/ik/IKControleLeg.cpp.s
 src/ik/IKControleLeg.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKControleLeg.cpp.s
 .PHONY : src/ik/IKControleLeg.cpp.s
+
+src/ik/IKController.o: src/ik/IKController.cpp.o
+
+.PHONY : src/ik/IKController.o
+
+# target to build an object file
+src/ik/IKController.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKController.cpp.o
+.PHONY : src/ik/IKController.cpp.o
+
+src/ik/IKController.i: src/ik/IKController.cpp.i
+
+.PHONY : src/ik/IKController.i
+
+# target to preprocess a source file
+src/ik/IKController.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKController.cpp.i
+.PHONY : src/ik/IKController.cpp.i
+
+src/ik/IKController.s: src/ik/IKController.cpp.s
+
+.PHONY : src/ik/IKController.s
+
+# target to generate assembly for a file
+src/ik/IKController.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKController.cpp.s
+.PHONY : src/ik/IKController.cpp.s
 
 src/ik/IKLeg.o: src/ik/IKLeg.cpp.o
 
@@ -396,32 +396,32 @@ src/ik/IKModel.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/ik/IKModel.cpp.s
 .PHONY : src/ik/IKModel.cpp.s
 
-src/input/InputHandler.o: src/input/InputHandler.cpp.o
+src/input/StepInput.o: src/input/StepInput.cpp.o
 
-.PHONY : src/input/InputHandler.o
+.PHONY : src/input/StepInput.o
 
 # target to build an object file
-src/input/InputHandler.cpp.o:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/InputHandler.cpp.o
-.PHONY : src/input/InputHandler.cpp.o
+src/input/StepInput.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/StepInput.cpp.o
+.PHONY : src/input/StepInput.cpp.o
 
-src/input/InputHandler.i: src/input/InputHandler.cpp.i
+src/input/StepInput.i: src/input/StepInput.cpp.i
 
-.PHONY : src/input/InputHandler.i
+.PHONY : src/input/StepInput.i
 
 # target to preprocess a source file
-src/input/InputHandler.cpp.i:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/InputHandler.cpp.i
-.PHONY : src/input/InputHandler.cpp.i
+src/input/StepInput.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/StepInput.cpp.i
+.PHONY : src/input/StepInput.cpp.i
 
-src/input/InputHandler.s: src/input/InputHandler.cpp.s
+src/input/StepInput.s: src/input/StepInput.cpp.s
 
-.PHONY : src/input/InputHandler.s
+.PHONY : src/input/StepInput.s
 
 # target to generate assembly for a file
-src/input/InputHandler.cpp.s:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/InputHandler.cpp.s
-.PHONY : src/input/InputHandler.cpp.s
+src/input/StepInput.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/input/StepInput.cpp.s
+.PHONY : src/input/StepInput.cpp.s
 
 src/modelrenderer/FKLeg.o: src/modelrenderer/FKLeg.cpp.o
 
@@ -747,32 +747,113 @@ src/states/RiseState.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/RiseState.cpp.s
 .PHONY : src/states/RiseState.cpp.s
 
-src/states/StateControle.o: src/states/StateControle.cpp.o
+src/states/StateController.o: src/states/StateController.cpp.o
 
-.PHONY : src/states/StateControle.o
+.PHONY : src/states/StateController.o
 
 # target to build an object file
-src/states/StateControle.cpp.o:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateControle.cpp.o
-.PHONY : src/states/StateControle.cpp.o
+src/states/StateController.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateController.cpp.o
+.PHONY : src/states/StateController.cpp.o
 
-src/states/StateControle.i: src/states/StateControle.cpp.i
+src/states/StateController.i: src/states/StateController.cpp.i
 
-.PHONY : src/states/StateControle.i
+.PHONY : src/states/StateController.i
 
 # target to preprocess a source file
-src/states/StateControle.cpp.i:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateControle.cpp.i
-.PHONY : src/states/StateControle.cpp.i
+src/states/StateController.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateController.cpp.i
+.PHONY : src/states/StateController.cpp.i
 
-src/states/StateControle.s: src/states/StateControle.cpp.s
+src/states/StateController.s: src/states/StateController.cpp.s
 
-.PHONY : src/states/StateControle.s
+.PHONY : src/states/StateController.s
 
 # target to generate assembly for a file
-src/states/StateControle.cpp.s:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateControle.cpp.s
-.PHONY : src/states/StateControle.cpp.s
+src/states/StateController.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StateController.cpp.s
+.PHONY : src/states/StateController.cpp.s
+
+src/states/StepState.o: src/states/StepState.cpp.o
+
+.PHONY : src/states/StepState.o
+
+# target to build an object file
+src/states/StepState.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StepState.cpp.o
+.PHONY : src/states/StepState.cpp.o
+
+src/states/StepState.i: src/states/StepState.cpp.i
+
+.PHONY : src/states/StepState.i
+
+# target to preprocess a source file
+src/states/StepState.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StepState.cpp.i
+.PHONY : src/states/StepState.cpp.i
+
+src/states/StepState.s: src/states/StepState.cpp.s
+
+.PHONY : src/states/StepState.s
+
+# target to generate assembly for a file
+src/states/StepState.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/states/StepState.cpp.s
+.PHONY : src/states/StepState.cpp.s
+
+src/walking/GaitController.o: src/walking/GaitController.cpp.o
+
+.PHONY : src/walking/GaitController.o
+
+# target to build an object file
+src/walking/GaitController.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/walking/GaitController.cpp.o
+.PHONY : src/walking/GaitController.cpp.o
+
+src/walking/GaitController.i: src/walking/GaitController.cpp.i
+
+.PHONY : src/walking/GaitController.i
+
+# target to preprocess a source file
+src/walking/GaitController.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/walking/GaitController.cpp.i
+.PHONY : src/walking/GaitController.cpp.i
+
+src/walking/GaitController.s: src/walking/GaitController.cpp.s
+
+.PHONY : src/walking/GaitController.s
+
+# target to generate assembly for a file
+src/walking/GaitController.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/walking/GaitController.cpp.s
+.PHONY : src/walking/GaitController.cpp.s
+
+src/walking/LegController.o: src/walking/LegController.cpp.o
+
+.PHONY : src/walking/LegController.o
+
+# target to build an object file
+src/walking/LegController.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/walking/LegController.cpp.o
+.PHONY : src/walking/LegController.cpp.o
+
+src/walking/LegController.i: src/walking/LegController.cpp.i
+
+.PHONY : src/walking/LegController.i
+
+# target to preprocess a source file
+src/walking/LegController.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/walking/LegController.cpp.i
+.PHONY : src/walking/LegController.cpp.i
+
+src/walking/LegController.s: src/walking/LegController.cpp.s
+
+.PHONY : src/walking/LegController.s
+
+# target to generate assembly for a file
+src/walking/LegController.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/walking/LegController.cpp.s
+.PHONY : src/walking/LegController.cpp.s
 
 # Help Target
 help:
@@ -801,21 +882,21 @@ help:
 	@echo "... src/gui/FBOWindow.o"
 	@echo "... src/gui/FBOWindow.i"
 	@echo "... src/gui/FBOWindow.s"
-	@echo "... src/ik/IKControle.o"
-	@echo "... src/ik/IKControle.i"
-	@echo "... src/ik/IKControle.s"
 	@echo "... src/ik/IKControleLeg.o"
 	@echo "... src/ik/IKControleLeg.i"
 	@echo "... src/ik/IKControleLeg.s"
+	@echo "... src/ik/IKController.o"
+	@echo "... src/ik/IKController.i"
+	@echo "... src/ik/IKController.s"
 	@echo "... src/ik/IKLeg.o"
 	@echo "... src/ik/IKLeg.i"
 	@echo "... src/ik/IKLeg.s"
 	@echo "... src/ik/IKModel.o"
 	@echo "... src/ik/IKModel.i"
 	@echo "... src/ik/IKModel.s"
-	@echo "... src/input/InputHandler.o"
-	@echo "... src/input/InputHandler.i"
-	@echo "... src/input/InputHandler.s"
+	@echo "... src/input/StepInput.o"
+	@echo "... src/input/StepInput.i"
+	@echo "... src/input/StepInput.s"
 	@echo "... src/modelrenderer/FKLeg.o"
 	@echo "... src/modelrenderer/FKLeg.i"
 	@echo "... src/modelrenderer/FKLeg.s"
@@ -852,9 +933,18 @@ help:
 	@echo "... src/states/RiseState.o"
 	@echo "... src/states/RiseState.i"
 	@echo "... src/states/RiseState.s"
-	@echo "... src/states/StateControle.o"
-	@echo "... src/states/StateControle.i"
-	@echo "... src/states/StateControle.s"
+	@echo "... src/states/StateController.o"
+	@echo "... src/states/StateController.i"
+	@echo "... src/states/StateController.s"
+	@echo "... src/states/StepState.o"
+	@echo "... src/states/StepState.i"
+	@echo "... src/states/StepState.s"
+	@echo "... src/walking/GaitController.o"
+	@echo "... src/walking/GaitController.i"
+	@echo "... src/walking/GaitController.s"
+	@echo "... src/walking/LegController.o"
+	@echo "... src/walking/LegController.i"
+	@echo "... src/walking/LegController.s"
 .PHONY : help
 
 

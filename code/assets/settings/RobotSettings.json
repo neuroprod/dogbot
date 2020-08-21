@@ -1,5 +1,10 @@
 [
    {
+      "key" : "bodyXStart",
+      "type" : "float",
+      "value" : -27
+   },
+   {
       "key" : "hipOffsetX ",
       "type" : "float",
       "value" : 60
@@ -8,11 +13,6 @@
       "key" : "bodyWidth",
       "type" : "float",
       "value" : 120
-   },
-   {
-      "key" : "bodyXStart",
-      "type" : "float",
-      "value" : -27
    },
    {
       "key" : "hipOffsetZ",
@@ -35,11 +35,6 @@
       "value" : 80
    },
    {
-      "key" : "underLegLength",
-      "type" : "float",
-      "value" : 250
-   },
-   {
       "key" : "bodyY",
       "type" : "float",
       "value" : 300
@@ -48,5 +43,10 @@
       "key" : "footRadius",
       "type" : "float",
       "value" : 20
+   },
+   {
+      "key" : "underLegLength",
+      "type" : "float",
+      "value" : 250
    }
 ]

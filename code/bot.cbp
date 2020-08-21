@@ -5,7 +5,7 @@
 		<Option title="bot"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\x86_64\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\Cinder\;CMake Files\..\..\Cinder\proj\;CMake Files\..\..\Cinder\proj\cmake\;CMake Files\..\..\Cinder\proj\cmake\modules\;CMake Files\..\..\Cinder\lib\;CMake Files\..\..\Cinder\lib\linux\;CMake Files\..\..\Cinder\lib\linux\x86_64\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\;CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
@@ -38,7 +38,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="bot">
-				<Option output="/home/kris/Desktop/dogbot/code/Release/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
@@ -60,7 +60,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="bot/fast">
-				<Option output="/home/kris/Desktop/dogbot/code/Release/bot/bot" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/kris/Desktop/dogbot/code/Debug/bot/bot" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/kris/Desktop/dogbot/code"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
@@ -115,16 +115,16 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/gui/FBOWindow.h">
 			<Option target="bot"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControle.cpp">
-			<Option target="bot"/>
-		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControle.h">
-			<Option target="bot"/>
-		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.cpp">
 			<Option target="bot"/>
 		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKControleLeg.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKController.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKController.h">
 			<Option target="bot"/>
 		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKLeg.cpp">
@@ -139,10 +139,10 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/ik/IKModel.h">
 			<Option target="bot"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/src/input/InputHandler.cpp">
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/input/StepInput.cpp">
 			<Option target="bot"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/src/input/InputHandler.h">
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/input/StepInput.h">
 			<Option target="bot"/>
 		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/modelrenderer/FKLeg.cpp">
@@ -217,10 +217,28 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/RiseState.h">
 			<Option target="bot"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StateControle.cpp">
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StateController.cpp">
 			<Option target="bot"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StateControle.h">
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StateController.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StepState.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/states/StepState.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/walking/GaitController.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/walking/GaitController.h">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/walking/LegController.cpp">
+			<Option target="bot"/>
+		</Unit>
+		<Unit filename="/home/kris/Desktop/dogbot/code/src/walking/LegController.h">
 			<Option target="bot"/>
 		</Unit>
 		<Unit filename="/home/kris/Desktop/dogbot/code/CMakeLists.txt">
@@ -235,11 +253,11 @@
 		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/proj/cmake/modules/cinderMakeApp.cmake">
 			<Option virtualFolder="CMake Files\..\..\Cinder\proj\cmake\modules\"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Release/cinderConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\"/>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Debug/cinderConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\"/>
 		</Unit>
-		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Release/cinderTargets.cmake">
-			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Release\"/>
+		<Unit filename="/home/kris/Desktop/dogbot/code/../../Cinder/lib/linux/x86_64/ogl/Debug/cinderTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\Cinder\lib\linux\x86_64\ogl\Debug\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

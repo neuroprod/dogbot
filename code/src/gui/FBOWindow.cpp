@@ -48,10 +48,10 @@ bool FBOWindow::begin()
     }
 
      mFbo->bindFramebuffer();
-    // clear out the FBO with blue
+
     gl::clear( Color( 0.0, 0.0f, 0.0f ) );
 
-    // setup the viewport to match the dimensions of the FBO
+
     gl::viewport( ivec2( 0 ), mFbo->getSize() );
     gl::setMatricesWindow(mFbo->getSize(),true);
     return true;

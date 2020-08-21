@@ -79,6 +79,6 @@ shadow =1.0;
 		Color.rgb =vec3(diffuse)*shadow*vColor.xyz +spec	;
 	Color.a	= alpha;
 
-	//Color.rgb  =vec3(length(vPosition.xyz)/10000);
+	//Color.rgb  =vec3(spec);
 	
 }

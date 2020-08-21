@@ -11,13 +11,13 @@ void OrbitCamera::setup()
 }
 void OrbitCamera::drawGui()
 {
-	/*ui::ScopedWindow window("camera");
 
-	if (ui::DragFloat("fov", &fov, 1, 5, 170));
-	if (ui::DragFloat("theta", &theta, 0.01, 0.001, 3.1415 / 2)) ;
-	if (ui::DragFloat("phi", &phi, 0.01, 0, 3.1415*2)) ;
-	if (ui::DragFloat("distance", &cameraDistance, 1)) ;
-*/
+
+	if (ImGui::DragFloat("fov", &fov, 1, 5, 170));
+	if (ImGui::DragFloat("theta", &theta, 0.01, 0.001, 3.1415 / 2)) ;
+	if (ImGui::DragFloat("phi", &phi, 0.01, 0, 3.1415*2)) ;
+	if (ImGui::DragFloat("distance", &cameraDistance, 1)) ;
+
 
 }
 void OrbitCamera::update(ImVec2 vMin,ImVec2 vMax)
@@ -86,7 +86,7 @@ void OrbitCamera::update(ImVec2 vMin,ImVec2 vMax)
 void OrbitCamera::setBodyPos(ci::vec3 pos) 
 {
 	targetPos = pos;
-	targetPos.y /= 2.f;
+
 
 }
 void OrbitCamera::mouseDown(vec2 pos)

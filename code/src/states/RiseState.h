@@ -5,7 +5,7 @@
 #ifndef BOT_RISESTATE_H
 #define BOT_RISESTATE_H
 
-#include "../ik/IKControle.h"
+#include "../ik/IKController.h"
 #include "BaseState.h"
 #include "cinder/Timeline.h"
 
@@ -21,7 +21,7 @@ public:
 
     ci::Anim<float> bodyY;
 
-    IKControle * ikControle;
+    IKController * ikController;
     bool done ;
 };
 

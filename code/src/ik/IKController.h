@@ -3,13 +3,13 @@
 
 #include "IKControleLeg.h"
 #include "IKModel.h"
-class IKControle;
-typedef std::shared_ptr<IKControle  > IKControleRef;
+class IKController;
+typedef std::shared_ptr<IKController  > IKControleRef;
 
-class IKControle
+class IKController
 {
 public:
-    IKControle() {};
+    IKController() {};
 	void setup();
 	void setBase();
     void update();

@@ -1,4 +1,4 @@
-#include "IKControle.h"
+#include "IKController.h"
 #include "cinder/CinderImGui.h"
 #include "../RobotSettings.h"
 using namespace ci;
@@ -6,7 +6,7 @@ using namespace ci::app;
 using namespace std;
 
 
-void IKControle::setup()
+void IKController::setup()
 {
     angles.resize(12);
     model.setup();
@@ -25,7 +25,7 @@ void IKControle::setup()
 
 }
 
-void IKControle::setBase()
+void IKController::setBase()
 {
 	bodyX =BOTSETTINGS()->bodyXStart;;
 	bodyY = BOTSETTINGS()->bodyYStart;
@@ -44,7 +44,7 @@ void IKControle::setBase()
 	
 
 }
-void IKControle::update()
+void IKController::update()
 {
     bodyMatrix = mat4();
     bodyMatrix = glm::translate(bodyMatrix, vec3(bodyX, bodyY, bodyZ));
@@ -69,10 +69,10 @@ void IKControle::update()
 
 }
 
-void IKControle::drawGui()
+void IKController::drawGui()
 {
 
-    ImGui::Begin("IKControle");
+    ImGui::Begin("IKController");
 
 
 

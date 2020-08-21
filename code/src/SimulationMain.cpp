@@ -12,15 +12,16 @@ void SimulationMain::setup() {
    // ImGui::Initialize();
     setWindowSize(windowSizeX->value(),windowSizeY->value());
     setWindowPos(0,0);
-
+    gaitControle.setup();
     ikControle.setup();
     modelRenderer.setup();
-    stateControle.setup(&ikControle);
+    stateControle.setup(&ikControle ,&gaitControle);
 
 }
 void SimulationMain::update() {
 
     stateControle.update();
+
     ikControle.update();
 
 
@@ -36,5 +37,6 @@ void SimulationMain::draw() {
     ikControle.drawGui();
     modelRenderer.draw();
     stateControle.draw();
+    gaitControle.drawGui();
 
 }

@@ -142,7 +142,7 @@ void SymbolBatches::makeHome()
 {
 	struct VertexData {
 		vec3 position;
-		vec3 color;
+
 	};
 
 	float size = 40;
@@ -151,29 +151,29 @@ void SymbolBatches::makeHome()
 	{
 		VertexData v1;
 		v1.position = vec3(-size, 0, size);
-		v1.color = vec3(1, 1, 1);
+
 		vertices.push_back(v1);
 
 		VertexData v2;
 		v2.position = vec3(size, 0, -size);
-		v2.color = vec3(1, 1, 1);
+
 		vertices.push_back(v2);
 	}
 	{
 		VertexData v1;
 		v1.position = vec3(-size, 0, -size);
-		v1.color = vec3(1, 1, 1);
+
 		vertices.push_back(v1);
 
 		VertexData v2;
 		v2.position = vec3(size, 0, size);
-		v2.color = vec3(1, 1, 1);
+
 		vertices.push_back(v2);
 	}
 
 	auto layout = geom::BufferLayout();
 	layout.append(geom::Attrib::POSITION, 3, sizeof(VertexData), offsetof(VertexData, position));
-	layout.append(geom::Attrib::COLOR, 3, sizeof(VertexData), offsetof(VertexData, color));
+
 
 	auto buffer = gl::Vbo::create(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 

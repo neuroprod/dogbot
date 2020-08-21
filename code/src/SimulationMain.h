@@ -9,8 +9,10 @@
 #include "settings/SettingsHandler.h"
 #include "graph/GraphableArray.h"
 #include "modelrenderer/ModelRenderer.h"
-#include "ik/IKControle.h"
-#include "states/StateControle.h"
+#include "ik/IKController.h"
+#include "states/StateController.h"
+#include "input/StepInput.h"
+#include "walking/GaitController.h"
 class SimulationMain
 {
 public:
@@ -22,10 +24,10 @@ public:
     Sint windowSizeX=SETTINGS()->getInt("SimulationSettings","windowSizeX",2560);
     Sint windowSizeY=SETTINGS()->getInt("SimulationSettings","windowSizeY",1440);
 
-    IKControle ikControle;
+    IKController ikControle;
     ModelRenderer modelRenderer;
-    StateControle stateControle;
-
+    StateController stateControle;
+    GaitController gaitControle;
 };
 
 
