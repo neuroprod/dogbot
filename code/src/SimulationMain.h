@@ -13,6 +13,7 @@
 #include "states/StateController.h"
 #include "input/StepInput.h"
 #include "walking/GaitController.h"
+#include "physics/PhysicsWorld.h"
 class SimulationMain
 {
 public:
@@ -28,6 +29,7 @@ public:
     ModelRenderer modelRenderer;
     StateController stateControle;
     GaitController gaitControle;
+    PhysicsWorld world;
 };
 
 

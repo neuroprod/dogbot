@@ -49,7 +49,7 @@
 					<Add option="-DCINDER_GL_CORE"/>
 					<Add option="-D_UNIX"/>
 					<Add option="-D_GLFW_X11"/>
-					<Add directory="/home/kris/Desktop/dogbot/shared"/>
+					<Add directory="/home/kris/Desktop/dogbot/code/../../bullet3/src"/>
 					<Add directory="/home/kris/Desktop/Cinder/include"/>
 				</Compiler>
 				<MakeCommands>
@@ -71,7 +71,7 @@
 					<Add option="-DCINDER_GL_CORE"/>
 					<Add option="-D_UNIX"/>
 					<Add option="-D_GLFW_X11"/>
-					<Add directory="/home/kris/Desktop/dogbot/shared"/>
+					<Add directory="/home/kris/Desktop/dogbot/code/../../bullet3/src"/>
 					<Add directory="/home/kris/Desktop/Cinder/include"/>
 				</Compiler>
 				<MakeCommands>

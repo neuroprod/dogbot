@@ -16,7 +16,7 @@ void SimulationMain::setup() {
     ikControle.setup();
     modelRenderer.setup();
     stateControle.setup(&ikControle ,&gaitControle);
-
+    world.setup();
 }
 void SimulationMain::update() {
 
