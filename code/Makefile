@@ -153,6 +153,33 @@ src/BotApp.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/BotApp.cpp.s
 .PHONY : src/BotApp.cpp.s
 
+src/IMU.o: src/IMU.cpp.o
+
+.PHONY : src/IMU.o
+
+# target to build an object file
+src/IMU.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/IMU.cpp.o
+.PHONY : src/IMU.cpp.o
+
+src/IMU.i: src/IMU.cpp.i
+
+.PHONY : src/IMU.i
+
+# target to preprocess a source file
+src/IMU.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/IMU.cpp.i
+.PHONY : src/IMU.cpp.i
+
+src/IMU.s: src/IMU.cpp.s
+
+.PHONY : src/IMU.s
+
+# target to generate assembly for a file
+src/IMU.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/IMU.cpp.s
+.PHONY : src/IMU.cpp.s
+
 src/RobotMain.o: src/RobotMain.cpp.o
 
 .PHONY : src/RobotMain.o
@@ -720,6 +747,114 @@ src/motor/MotorControl.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/motor/MotorControl.cpp.s
 .PHONY : src/motor/MotorControl.cpp.s
 
+src/physics/Conv.o: src/physics/Conv.cpp.o
+
+.PHONY : src/physics/Conv.o
+
+# target to build an object file
+src/physics/Conv.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/Conv.cpp.o
+.PHONY : src/physics/Conv.cpp.o
+
+src/physics/Conv.i: src/physics/Conv.cpp.i
+
+.PHONY : src/physics/Conv.i
+
+# target to preprocess a source file
+src/physics/Conv.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/Conv.cpp.i
+.PHONY : src/physics/Conv.cpp.i
+
+src/physics/Conv.s: src/physics/Conv.cpp.s
+
+.PHONY : src/physics/Conv.s
+
+# target to generate assembly for a file
+src/physics/Conv.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/Conv.cpp.s
+.PHONY : src/physics/Conv.cpp.s
+
+src/physics/PhysicsController.o: src/physics/PhysicsController.cpp.o
+
+.PHONY : src/physics/PhysicsController.o
+
+# target to build an object file
+src/physics/PhysicsController.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsController.cpp.o
+.PHONY : src/physics/PhysicsController.cpp.o
+
+src/physics/PhysicsController.i: src/physics/PhysicsController.cpp.i
+
+.PHONY : src/physics/PhysicsController.i
+
+# target to preprocess a source file
+src/physics/PhysicsController.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsController.cpp.i
+.PHONY : src/physics/PhysicsController.cpp.i
+
+src/physics/PhysicsController.s: src/physics/PhysicsController.cpp.s
+
+.PHONY : src/physics/PhysicsController.s
+
+# target to generate assembly for a file
+src/physics/PhysicsController.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsController.cpp.s
+.PHONY : src/physics/PhysicsController.cpp.s
+
+src/physics/PhysicsModel.o: src/physics/PhysicsModel.cpp.o
+
+.PHONY : src/physics/PhysicsModel.o
+
+# target to build an object file
+src/physics/PhysicsModel.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsModel.cpp.o
+.PHONY : src/physics/PhysicsModel.cpp.o
+
+src/physics/PhysicsModel.i: src/physics/PhysicsModel.cpp.i
+
+.PHONY : src/physics/PhysicsModel.i
+
+# target to preprocess a source file
+src/physics/PhysicsModel.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsModel.cpp.i
+.PHONY : src/physics/PhysicsModel.cpp.i
+
+src/physics/PhysicsModel.s: src/physics/PhysicsModel.cpp.s
+
+.PHONY : src/physics/PhysicsModel.s
+
+# target to generate assembly for a file
+src/physics/PhysicsModel.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsModel.cpp.s
+.PHONY : src/physics/PhysicsModel.cpp.s
+
+src/physics/PhysicsWorld.o: src/physics/PhysicsWorld.cpp.o
+
+.PHONY : src/physics/PhysicsWorld.o
+
+# target to build an object file
+src/physics/PhysicsWorld.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsWorld.cpp.o
+.PHONY : src/physics/PhysicsWorld.cpp.o
+
+src/physics/PhysicsWorld.i: src/physics/PhysicsWorld.cpp.i
+
+.PHONY : src/physics/PhysicsWorld.i
+
+# target to preprocess a source file
+src/physics/PhysicsWorld.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsWorld.cpp.i
+.PHONY : src/physics/PhysicsWorld.cpp.i
+
+src/physics/PhysicsWorld.s: src/physics/PhysicsWorld.cpp.s
+
+.PHONY : src/physics/PhysicsWorld.s
+
+# target to generate assembly for a file
+src/physics/PhysicsWorld.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsWorld.cpp.s
+.PHONY : src/physics/PhysicsWorld.cpp.s
+
 src/states/RiseState.o: src/states/RiseState.cpp.o
 
 .PHONY : src/states/RiseState.o
@@ -867,6 +1002,9 @@ help:
 	@echo "... src/BotApp.o"
 	@echo "... src/BotApp.i"
 	@echo "... src/BotApp.s"
+	@echo "... src/IMU.o"
+	@echo "... src/IMU.i"
+	@echo "... src/IMU.s"
 	@echo "... src/RobotMain.o"
 	@echo "... src/RobotMain.i"
 	@echo "... src/RobotMain.s"
@@ -930,6 +1068,18 @@ help:
 	@echo "... src/motor/MotorControl.o"
 	@echo "... src/motor/MotorControl.i"
 	@echo "... src/motor/MotorControl.s"
+	@echo "... src/physics/Conv.o"
+	@echo "... src/physics/Conv.i"
+	@echo "... src/physics/Conv.s"
+	@echo "... src/physics/PhysicsController.o"
+	@echo "... src/physics/PhysicsController.i"
+	@echo "... src/physics/PhysicsController.s"
+	@echo "... src/physics/PhysicsModel.o"
+	@echo "... src/physics/PhysicsModel.i"
+	@echo "... src/physics/PhysicsModel.s"
+	@echo "... src/physics/PhysicsWorld.o"
+	@echo "... src/physics/PhysicsWorld.i"
+	@echo "... src/physics/PhysicsWorld.s"
 	@echo "... src/states/RiseState.o"
 	@echo "... src/states/RiseState.i"
 	@echo "... src/states/RiseState.s"

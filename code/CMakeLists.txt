@@ -3,16 +3,13 @@ set( CMAKE_VERBOSE_MAKEFILE ON )
 project(bot)
 
 set(CMAKE_CXX_STANDARD 17)
+find_package(OpenZen REQUIRED)
+find_package( Bullet REQUIRED )
+include_directories(${BULLET_INCLUDE_DIR} )
 
 get_filename_component( CINDER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../Cinder" ABSOLUTE )
 get_filename_component( APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE )
-INCLUDE_DIRECTORIES(
-        ../../bullet3/src
-)
 
-LINK_LIBRARIES(
-        BulletDynamics BulletCollision LinearMath
-)
 
 include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 
@@ -45,6 +42,11 @@ set(SRC_FILES
         ${APP_PATH}/src/input/StepInput.cpp
         ${APP_PATH}/src/walking/GaitController.cpp
         ${APP_PATH}/src/walking/LegController.cpp
+        ${APP_PATH}/src/physics/Conv.cpp
+        ${APP_PATH}/src/physics/PhysicsController.cpp
+        ${APP_PATH}/src/physics/PhysicsWorld.cpp
+        ${APP_PATH}/src/physics/PhysicsModel.cpp
+        ${APP_PATH}/src/IMU.cpp
         )
 
 ci_make_app(
@@ -52,4 +54,4 @@ ci_make_app(
         CINDER_PATH ${CINDER_PATH}
 
 )
-target_link_libraries(bot libJetsonGPIO.a )
+target_link_libraries(bot libJetsonGPIO.a OpenZen::OpenZen ${BULLET_LIBRARIES})

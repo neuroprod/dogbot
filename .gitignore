@@ -5,6 +5,10 @@ code/Release/
 code/Debug/
 
 code/CMakeCache.txt
+*.cbp
+*/cmake_install.cmake
+*/MakeFile
+imgui.ini
 
 *.ini
 .idea/

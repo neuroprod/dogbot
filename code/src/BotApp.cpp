@@ -13,6 +13,7 @@
 #include "SimulationMain.h"
 
 #include "RobotMain.h"
+//#include "IMU.h"
 
 
 using namespace ci;
@@ -29,19 +30,27 @@ public:
 
     RobotSettings settings; //auto init of settings
 
-
+   // IMU imu;
     SimulationMain simulation;
 
     RobotMain robot;
     bool isSimulation = true;
 
 
+    Sint windowSizeX=SETTINGS()->getInt("RobotDebugSettings","windowSizeX",1920);
+    Sint windowSizeY=SETTINGS()->getInt("RobotDebugSettings","windowSizeY",1080);
 };
 
 void BotApp::setup()
 {
     setFrameRate(120);
     gl::enableVerticalSync(false);
+
+
+    setWindowSize(windowSizeX->value(),windowSizeY->value());
+    setWindowPos(0,0);
+
+
     setupImGui();
 
 
@@ -51,6 +60,8 @@ void BotApp::setup()
 
 
     SETTINGS()->save();
+
+    //imu.start();
 }
 
 
@@ -59,7 +70,7 @@ void BotApp::update()
     imGuiUpdate();
 
     ImGui::ShowDemoWindow();
-
+  // console()<<imu.getEuler()<<std::endl;
 
     if (isSimulation)
     {

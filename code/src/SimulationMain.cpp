@@ -9,23 +9,25 @@
 using namespace ci;
 using namespace ci::app;
 void SimulationMain::setup() {
-   // ImGui::Initialize();
-    setWindowSize(windowSizeX->value(),windowSizeY->value());
-    setWindowPos(0,0);
-    gaitControle.setup();
-    ikControle.setup();
+
+    gaitController.setup();
+    ikController.setup();
     modelRenderer.setup();
-    stateControle.setup(&ikControle ,&gaitControle);
-    world.setup();
+    stateController.setup(&ikController ,&gaitController);
+    physicsController.setup();
+
+
+
 }
 void SimulationMain::update() {
 
-    stateControle.update();
+    stateController.update();
+    ikController.update();
 
-    ikControle.update();
+    physicsController.update();
 
 
-    modelRenderer.model->setPosition(ikControle.bodyMatrix,ikControle.angles);
+    modelRenderer.model->setPosition(ikController.bodyMatrix,ikController.angles);
 
 
 
@@ -34,10 +36,11 @@ void SimulationMain::update() {
 }
 void SimulationMain::draw() {
 
-    ikControle.drawGui();
+    physicsController.drawGui();
+    ikController.drawGui();
     modelRenderer.draw();
-    stateControle.draw();
-    gaitControle.drawGui();
+    stateController.draw();
+    gaitController.drawGui();
     GRAPH()->draw();
 
 }

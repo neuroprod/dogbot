@@ -13,7 +13,7 @@
 #include "states/StateController.h"
 #include "input/StepInput.h"
 #include "walking/GaitController.h"
-#include "physics/PhysicsWorld.h"
+#include "physics/PhysicsController.h"
 class SimulationMain
 {
 public:
@@ -22,14 +22,13 @@ public:
     void update();
     void draw();
 
-    Sint windowSizeX=SETTINGS()->getInt("SimulationSettings","windowSizeX",2560);
-    Sint windowSizeY=SETTINGS()->getInt("SimulationSettings","windowSizeY",1440);
 
-    IKController ikControle;
+
+    IKController ikController;
     ModelRenderer modelRenderer;
-    StateController stateControle;
-    GaitController gaitControle;
-    PhysicsWorld world;
+    StateController stateController;
+    GaitController gaitController;
+    PhysicsController physicsController;
 };
 
 

@@ -85,7 +85,7 @@ void FKModel::drawWire()
        n->setGlobalPos();
 
     }
-    gl::lineWidth(2);
+    gl::lineWidth(1);
     gl::color(1,1,1);
     gl::begin(GL_LINES);
 
@@ -119,12 +119,12 @@ void FKModel::drawWire()
     gl::end();
     gl::lineWidth(1);
     gl::color(0,0,0);
-    for (auto l : legs)
+   /* for (auto l : legs)
     {
 
         vec3 foot=  l->ankle->globalMatrix *vec4(0,-BOTSETTINGS()->underLegLength+BOTSETTINGS()->footRadius,0,1);
-       gl::drawSphere(foot,BOTSETTINGS()->footRadius);
+     //  gl::drawSphere(foot,BOTSETTINGS()->footRadius,);
 
-    }
+    }*/
 
 }

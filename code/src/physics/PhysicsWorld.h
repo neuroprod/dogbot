@@ -4,6 +4,9 @@
 
 #ifndef BOT_PHYSICSWORLD_H
 #define BOT_PHYSICSWORLD_H
+
+#include "cinder/app/App.h"
+
 #include "btBulletDynamicsCommon.h"
 #include "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
 #include "BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h"
@@ -11,6 +14,7 @@
 #include "BulletDynamics/Featherstone/btMultiBodyLinkCollider.h"
 #include "BulletDynamics/Featherstone/btMultiBodyJointMotor.h"
 #include "BulletDynamics/Featherstone/btMultiBodyJointFeedback.h"
+
 enum MyFilterModes
 {
     FILTER_GROUPAMASKB_AND_GROUPBMASKA2 = 0,
@@ -54,7 +58,9 @@ class PhysicsWorld
 {
 public:
     PhysicsWorld(){};
-    void setup(){};
+    void setup();
+    void update();
+    void clear();
     btAlignedObjectArray<btCollisionShape*> m_collisionShapes;
     MyOverlapFilterCallback2* m_filterCallback;
     btOverlappingPairCache* m_pairCache;
@@ -63,6 +69,8 @@ public:
     btMultiBodyConstraintSolver* m_solver;
     btDefaultCollisionConfiguration* m_collisionConfiguration;
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
+
+
 };
 
 

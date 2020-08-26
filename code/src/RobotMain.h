@@ -18,8 +18,6 @@ public:
     void update();
     void draw();
 
-    Sint windowSizeX=SETTINGS()->getInt("RobotDebugSettings","windowSizeX",1920);
-    Sint windowSizeY=SETTINGS()->getInt("RobotDebugSettings","windowSizeY",1080);
 
     IKController ikControle;
     ModelRenderer modelRenderer;

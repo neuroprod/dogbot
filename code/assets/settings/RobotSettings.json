@@ -1,43 +1,13 @@
 [
    {
-      "key" : "footRadius",
-      "type" : "float",
-      "value" : 20
-   },
-   {
-      "key" : "bodyY",
-      "type" : "float",
-      "value" : 300
-   },
-   {
-      "key" : "underLegLength",
-      "type" : "float",
-      "value" : 250
-   },
-   {
-      "key" : "bodyYStart",
-      "type" : "float",
-      "value" : 80
-   },
-   {
-      "key" : "upperLegLength",
-      "type" : "float",
-      "value" : 210
-   },
-   {
-      "key" : "bodyLength",
-      "type" : "float",
-      "value" : 352
-   },
-   {
-      "key" : "hipOffsetZ",
-      "type" : "float",
-      "value" : 79
-   },
-   {
       "key" : "hipOffsetX ",
       "type" : "float",
       "value" : 60
+   },
+   {
+      "key" : "bodyWidth",
+      "type" : "float",
+      "value" : 120
    },
    {
       "key" : "bodyXStart",
@@ -45,8 +15,38 @@
       "value" : -27
    },
    {
-      "key" : "bodyWidth",
+      "key" : "hipOffsetZ",
       "type" : "float",
-      "value" : 120
+      "value" : 79
+   },
+   {
+      "key" : "bodyLength",
+      "type" : "float",
+      "value" : 352
+   },
+   {
+      "key" : "upperLegLength",
+      "type" : "float",
+      "value" : 210
+   },
+   {
+      "key" : "bodyYStart",
+      "type" : "float",
+      "value" : 80
+   },
+   {
+      "key" : "underLegLength",
+      "type" : "float",
+      "value" : 250
+   },
+   {
+      "key" : "bodyY",
+      "type" : "float",
+      "value" : 300
+   },
+   {
+      "key" : "footRadius",
+      "type" : "float",
+      "value" : 20
    }
 ]
