@@ -22,6 +22,10 @@ void ::PhysicsModel::setup()
         shape->calculateLocalInertia(baseMass, baseInertiaDiag);
         delete shape;
     }
+    mMultiBody = new btMultiBody(numLinks, baseMass, baseInertiaDiag, false, false);
+    btQuaternion baseOriQuat(0.f, 0.f, 0.f, 1.f);
 
+    mMultiBody->setBasePos(basePosition);
+    mMultiBody->setWorldToBaseRot(baseOriQuat);
 
 }

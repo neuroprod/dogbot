@@ -12,6 +12,7 @@
 #include "../settings/SettingBase.h"
 #include "../settings/SettingFloat.h"
 #include "../settings/SettingInt.h"
+#include "../settings/SettingBoolean.h"
 #include "../settings/SettingMotor.h"
 class SettingsHandler
 {
@@ -47,6 +48,19 @@ public:
         settings.push_back(s);
         return s;
     }
+    Sbool getBool(std::string file, std::string key, bool defaultValue)
+    {
+        for (auto s:settings)
+        {
+            if (s->mFile == file && s->mKey == key)
+            {
+                return std::dynamic_pointer_cast<SettingBoolean>(s);
+            }
+        }
+        auto s = std::make_shared<SettingBoolean>(file, key, defaultValue);
+        settings.push_back(s);
+        return s;
+    }
     Smotor getMotor( std::string key)
     {
         for (auto s:settings)
@@ -65,7 +79,7 @@ public:
     {
         auto sortRule = [](std::shared_ptr<SettingBase> s1, std::shared_ptr<SettingBase> s2) -> bool
         {
-            return s1->mFile < s2->mFile;
+            return s1->mFile > s2->mFile;
         };
 
         std::sort(settings.begin(), settings.end(), sortRule);
@@ -144,14 +158,21 @@ public:
                         s->setFromJson(val);
                         settings.push_back(s);
                     }
-                    if (type == "int")
+                    else if (type == "int")
                     {
 
                         auto s = std::make_shared<SettingInt>(filename, key);
                         s->setFromJson(val);
                         settings.push_back(s);
                     }
-                    if (type == "motor")
+                    else if (type == "bool")
+                    {
+
+                        auto s = std::make_shared<SettingBoolean>(filename, key);
+                        s->setFromJson(val);
+                        settings.push_back(s);
+                    }
+                    else if (type == "motor")
                     {
 
                         auto s = std::make_shared<SettingMotor>( key);

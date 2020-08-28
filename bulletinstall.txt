@@ -1,0 +1,3 @@
+sudo make -j8 install
+cmake -DBUILD_SHARED_LIBS=on
+sudo make -j8 install

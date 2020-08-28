@@ -31,14 +31,12 @@ public:
     RobotSettings settings; //auto init of settings
 
    // IMU imu;
-    SimulationMain simulation;
-
+    SimulationMain simulation ;
     RobotMain robot;
-    bool isSimulation = true;
 
-
-    Sint windowSizeX=SETTINGS()->getInt("RobotDebugSettings","windowSizeX",1920);
-    Sint windowSizeY=SETTINGS()->getInt("RobotDebugSettings","windowSizeY",1080);
+    bool isSimulation = SETTINGS()->getBool("AppSettings","isSimulation",true)->value();
+    Sint windowSizeX=SETTINGS()->getInt("AppSettings","windowSizeX",1920);
+    Sint windowSizeY=SETTINGS()->getInt("AppSettings","windowSizeY",1080);
 };
 
 void BotApp::setup()
@@ -223,7 +221,7 @@ void BotApp::imGuiUpdate()
 
 CINDER_APP(BotApp, RendererGl, [](App::Settings *settings)
 {
-    SETTINGS()->load({"SimulationSettings", "RobotSettings", "RobotDebugSettings", "MotorSettings"});
+    SETTINGS()->load({"AppSettings", "RobotSettings", "MotorSettings"});
 
 }
 )

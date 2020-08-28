@@ -24,7 +24,7 @@ void SimulationMain::update() {
     stateController.update();
     ikController.update();
 
-    physicsController.update();
+   physicsController.update();
 
 
     modelRenderer.model->setPosition(ikController.bodyMatrix,ikController.angles);
@@ -36,11 +36,11 @@ void SimulationMain::update() {
 }
 void SimulationMain::draw() {
 
-    physicsController.drawGui();
+   physicsController.drawGui();
     ikController.drawGui();
     modelRenderer.draw();
-    stateController.draw();
-    gaitController.drawGui();
-    GRAPH()->draw();
+   stateController.draw();
+   gaitController.drawGui();
+   GRAPH()->draw();
 
 }

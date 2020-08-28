@@ -18,6 +18,8 @@ class PhysicsModel
 public:
     PhysicsModel(){}
     void setup();
+
+    btMultiBody* mMultiBody =nullptr;
 };
 
 

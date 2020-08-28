@@ -35,7 +35,7 @@ public:
 
     float currentStepTime;
     float stepTimeTotal;
-    bool debug;
+    bool debug =true;
     ci::BSpline3f getWalkStep(StepInput &stepInput,LegControllerRef legController);
     ci::BSpline3f getHomeStep(StepInput &stepInput,LegControllerRef legController);
     ci::BSpline3f getHomeRise(StepInput &stepInput,LegControllerRef legController);

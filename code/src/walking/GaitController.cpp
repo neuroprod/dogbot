@@ -402,9 +402,9 @@ void GaitController::drawGui()
                      tint_col, border_col);
 
 
-        ImGui::End();
+
 
 
     }
-
+    ImGui::End();
 };
