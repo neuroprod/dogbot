@@ -2,13 +2,13 @@
 // Created by kris on 22.07.20.
 //
 
-#include "SimulationMain.h"
+#include "Simulation.h"
 
 #include "graph/GraphRenderer.h"
 
 using namespace ci;
 using namespace ci::app;
-void SimulationMain::setup() {
+void Simulation::setup() {
 
     gaitController.setup();
     ikController.setup();
@@ -16,10 +16,10 @@ void SimulationMain::setup() {
     stateController.setup(&ikController ,&gaitController);
     physicsController.setup();
 
-
+    isReady =true;
 
 }
-void SimulationMain::update() {
+void Simulation::update() {
 
     stateController.update();
     ikController.update();
@@ -34,7 +34,7 @@ void SimulationMain::update() {
     modelRenderer.update();
 
 }
-void SimulationMain::draw() {
+void Simulation::draw() {
 
    physicsController.drawGui();
     ikController.drawGui();

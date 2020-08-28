@@ -2,8 +2,8 @@
 // Created by kris on 22.07.20.
 //
 
-#ifndef BOT_SIMULATIONMAIN_H
-#define BOT_SIMULATIONMAIN_H
+#ifndef BOT_SIMULATION_H
+#define BOT_SIMULATION_H
 
 #include "cinder/app/App.h"
 #include "settings/SettingsHandler.h"
@@ -14,10 +14,10 @@
 #include "input/StepInput.h"
 #include "walking/GaitController.h"
 #include "physics/PhysicsController.h"
-class SimulationMain
+class Simulation
 {
 public:
-    SimulationMain(){}
+    Simulation(){}
     void setup();
     void update();
     void draw();
@@ -29,7 +29,9 @@ public:
     StateController stateController;
     GaitController gaitController;
     PhysicsController physicsController;
+
+    bool isReady =false;
 };
 
 
-#endif //BOT_SIMULATIONMAIN_H
+#endif //BOT_SIMULATION_H

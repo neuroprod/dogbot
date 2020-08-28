@@ -1,3 +1,4 @@
+#include <imgui/imgui.h>
 #include "IMU.h"
 using namespace zen;
 using namespace std;
@@ -11,11 +12,11 @@ using namespace ci::app;
 
  void  IMU::start() 
  {
-     ZenSetLogLevel(ZenLogLevel_Info);
+     ZenSetLogLevel(ZenLogLevel_Warning);
      g_imuHandle = 0;
      pollingThread = std::thread(&IMU::pollLoop, this);
  }
- ci::vec3   IMU::getEuler() 
+ ci::vec3  IMU::getEuler()
  {
      vec3 e;
      dataMutex.lock();
@@ -23,7 +24,23 @@ using namespace ci::app;
      dataMutex.unlock();
      return e;
  }
-
+ci::vec3   IMU::getLinearAccel()
+{
+    vec3 e;
+    dataMutex.lock();
+    e = linearAcc;
+    dataMutex.unlock();
+    return e;
+}
+void IMU::drawGui()
+{
+     vec3 e =getEuler();
+     vec3 a =getLinearAccel();
+     ImGui::Begin("IMU");
+ImGui::InputFloat3("angle",&e[0]);
+    ImGui::InputFloat3("l",&a[0]);
+        ImGui::End();
+}
  void IMU::addDiscoveredSensor(const ZenEventData_SensorFound& desc)
  {
     
@@ -41,9 +58,10 @@ using namespace ci::app;
 
      if (auto error = client.listSensorsAsync())
      {
-         g_terminate = true;
+         console()<<"IMU FAILED: 1"<<endl;
          client.close();
-         //  pollingThread.join();
+         std::terminate();
+
 
      }
      bool nComplete = true;
@@ -74,9 +92,10 @@ using namespace ci::app;
 
      if (g_discoveredSensors.empty())
      {
-         g_terminate = true;
+         console()<<"IMU FAILED: 2"<<endl;
          client.close();
-         pollingThread.join();
+         std::terminate();
+
 
      }
 
@@ -88,19 +107,23 @@ using namespace ci::app;
      auto& sensor = sensorPair.second;
 
      auto imuPair = sensor.getAnyComponentOfType(g_zenSensorType_Imu);
-     auto hasImu = true;// imuPair.has_value();
-     auto imu = imuPair.value();
+     auto hasImu =  imuPair.has_value();
+
 
      if (!hasImu)
      {
-         g_terminate = true;
+         console()<<"IMU FAILED: 3"<<endl;
          client.close();
-         pollingThread.join();
-         // return ZenError_WrongSensorType;
+         g_terminate =true;
+
+     }else
+     {
+         auto imu = imuPair.value();
+
+
+         g_imuHandle = imu.component().handle;
+         console() << "IMU OK" << endl;
      }
-
-
-     g_imuHandle = imu.component().handle;
      while (!g_terminate)
      {
          unsigned int i = 0;
@@ -135,7 +158,9 @@ using namespace ci::app;
                      euler.x = event.data.imuData.r[0];
                      euler.y = event.data.imuData.r[1];
                      euler.z = event.data.imuData.r[2];
-
+                     linearAcc.x  =event.data.imuData.linAcc[0];
+                     linearAcc.y  =event.data.imuData.linAcc[1];
+                     linearAcc.z  =event.data.imuData.linAcc[2];
 
                      dataMutex.unlock();
 

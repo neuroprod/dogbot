@@ -2,7 +2,7 @@
 // Created by kris on 22.07.20.
 //
 #include "cinder/gl/gl.h"
-#include "RobotMain.h"
+#include "Robot.h"
 #include "cinder/Serial.h"
 #include <signal.h>
 #include <JetsonGPIO.h>
@@ -12,7 +12,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-void RobotMain::setup() {
+void Robot::setup() {
 
 
 
@@ -21,14 +21,26 @@ void RobotMain::setup() {
     modelRenderer.showMesh =false;
     modelRenderer.showWire =true;
     motorControl.setup();
+
+    imu.start();
+
    // GPIO::setmode(GPIO::BOARD);
     //GPIO::setup(12, GPIO::OUT, GPIO::HIGH);
+
+    isReady =true;
 }
 
-void RobotMain::update() {
+void Robot::update() {
     ikControle.update();
-    modelRenderer.model->setPosition(ikControle.bodyMatrix,ikControle.angles);
+
+    vec3 e = imu.getEuler();
+    mat4 mat;
+    mat =glm::eulerAngleXYZ(e.x/180.f*3.1415f,e.z/180.f*3.1415f,e.y/180.f*3.1415f);
+
+
+    modelRenderer.model->setPosition(mat,ikControle.angles);
     modelRenderer.update();
+
 
 
   /*int a = ci::app::getElapsedSeconds() ;
@@ -40,12 +52,12 @@ void RobotMain::update() {
 
       }*/
 }
-void RobotMain::draw()
+void Robot::draw()
 {
     motorControl.drawGui();
     GRAPH()->draw();
     ikControle.drawGui();
     modelRenderer.draw();
-
+    imu.drawGui();
 }
 

@@ -7,7 +7,7 @@ class IMU
     void addDiscoveredSensor(const ZenEventData_SensorFound& desc);
 
     ci::vec3 euler;
-
+    ci::vec3 linearAcc;
     std::mutex dataMutex;
 
     std::mutex g_discoverMutex;
@@ -19,13 +19,13 @@ class IMU
 
     std::atomic<uintptr_t> g_imuHandle;
 
-
-
     std::thread pollingThread;
 public:
     IMU();
     void start();
-    ci::vec3  getEuler();
+    void drawGui();
+    ci::vec3 getEuler();
+    ci::vec3 getLinearAccel();
    
 };
 

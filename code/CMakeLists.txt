@@ -16,8 +16,8 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 
 set(SRC_FILES
         ${APP_PATH}/src/BotApp.cpp
-        ${APP_PATH}/src/SimulationMain.cpp
-        ${APP_PATH}/src/RobotMain.cpp
+        ${APP_PATH}/src/Simulation.cpp
+        ${APP_PATH}/src/Robot.cpp
         ${APP_PATH}/src/graph/GraphableArray.cpp
         ${APP_PATH}/src/graph/GraphRenderer.cpp
         ${APP_PATH}/src/motor/Motor.cpp
@@ -46,7 +46,7 @@ set(SRC_FILES
         ${APP_PATH}/src/physics/PhysicsController.cpp
         ${APP_PATH}/src/physics/PhysicsWorld.cpp
         ${APP_PATH}/src/physics/PhysicsModel.cpp
-        ${APP_PATH}/src/IMU.cpp
+        ${APP_PATH}/src/balance/IMU.cpp
         )
 
 ci_make_app(

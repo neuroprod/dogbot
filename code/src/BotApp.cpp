@@ -10,10 +10,10 @@
 #include "cinder/gl/gl.h"
 
 
-#include "SimulationMain.h"
+#include "Simulation.h"
 
-#include "RobotMain.h"
-//#include "IMU.h"
+#include "Robot.h"
+
 
 
 using namespace ci;
@@ -30,9 +30,9 @@ public:
 
     RobotSettings settings; //auto init of settings
 
-   // IMU imu;
-    SimulationMain simulation ;
-    RobotMain robot;
+
+    Simulation simulation ;
+    Robot robot;
 
     bool isSimulation = SETTINGS()->getBool("AppSettings","isSimulation",true)->value();
     Sint windowSizeX=SETTINGS()->getInt("AppSettings","windowSizeX",1920);
@@ -51,13 +51,17 @@ void BotApp::setup()
 
     setupImGui();
 
+    if(isSimulation)
+    {
+        simulation.setup();
+    }else{
 
-    simulation.setup();
+        robot.setup();
+    }
 
-    robot.setup();
 
 
-    SETTINGS()->save();
+    //SETTINGS()->save();
 
     //imu.start();
 }
@@ -72,9 +76,11 @@ void BotApp::update()
 
     if (isSimulation)
     {
+        if( !simulation.isReady)simulation.setup();
         simulation.update();
     } else
     {
+        if( !robot.isReady)robot.setup();
         robot.update();
     }
 

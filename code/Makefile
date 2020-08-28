@@ -153,86 +153,86 @@ src/BotApp.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/BotApp.cpp.s
 .PHONY : src/BotApp.cpp.s
 
-src/IMU.o: src/IMU.cpp.o
+src/Robot.o: src/Robot.cpp.o
 
-.PHONY : src/IMU.o
-
-# target to build an object file
-src/IMU.cpp.o:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/IMU.cpp.o
-.PHONY : src/IMU.cpp.o
-
-src/IMU.i: src/IMU.cpp.i
-
-.PHONY : src/IMU.i
-
-# target to preprocess a source file
-src/IMU.cpp.i:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/IMU.cpp.i
-.PHONY : src/IMU.cpp.i
-
-src/IMU.s: src/IMU.cpp.s
-
-.PHONY : src/IMU.s
-
-# target to generate assembly for a file
-src/IMU.cpp.s:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/IMU.cpp.s
-.PHONY : src/IMU.cpp.s
-
-src/RobotMain.o: src/RobotMain.cpp.o
-
-.PHONY : src/RobotMain.o
+.PHONY : src/Robot.o
 
 # target to build an object file
-src/RobotMain.cpp.o:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/RobotMain.cpp.o
-.PHONY : src/RobotMain.cpp.o
+src/Robot.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/Robot.cpp.o
+.PHONY : src/Robot.cpp.o
 
-src/RobotMain.i: src/RobotMain.cpp.i
+src/Robot.i: src/Robot.cpp.i
 
-.PHONY : src/RobotMain.i
+.PHONY : src/Robot.i
 
 # target to preprocess a source file
-src/RobotMain.cpp.i:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/RobotMain.cpp.i
-.PHONY : src/RobotMain.cpp.i
+src/Robot.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/Robot.cpp.i
+.PHONY : src/Robot.cpp.i
 
-src/RobotMain.s: src/RobotMain.cpp.s
+src/Robot.s: src/Robot.cpp.s
 
-.PHONY : src/RobotMain.s
+.PHONY : src/Robot.s
 
 # target to generate assembly for a file
-src/RobotMain.cpp.s:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/RobotMain.cpp.s
-.PHONY : src/RobotMain.cpp.s
+src/Robot.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/Robot.cpp.s
+.PHONY : src/Robot.cpp.s
 
-src/SimulationMain.o: src/SimulationMain.cpp.o
+src/Simulation.o: src/Simulation.cpp.o
 
-.PHONY : src/SimulationMain.o
+.PHONY : src/Simulation.o
 
 # target to build an object file
-src/SimulationMain.cpp.o:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/SimulationMain.cpp.o
-.PHONY : src/SimulationMain.cpp.o
+src/Simulation.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/Simulation.cpp.o
+.PHONY : src/Simulation.cpp.o
 
-src/SimulationMain.i: src/SimulationMain.cpp.i
+src/Simulation.i: src/Simulation.cpp.i
 
-.PHONY : src/SimulationMain.i
+.PHONY : src/Simulation.i
 
 # target to preprocess a source file
-src/SimulationMain.cpp.i:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/SimulationMain.cpp.i
-.PHONY : src/SimulationMain.cpp.i
+src/Simulation.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/Simulation.cpp.i
+.PHONY : src/Simulation.cpp.i
 
-src/SimulationMain.s: src/SimulationMain.cpp.s
+src/Simulation.s: src/Simulation.cpp.s
 
-.PHONY : src/SimulationMain.s
+.PHONY : src/Simulation.s
 
 # target to generate assembly for a file
-src/SimulationMain.cpp.s:
-	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/SimulationMain.cpp.s
-.PHONY : src/SimulationMain.cpp.s
+src/Simulation.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/Simulation.cpp.s
+.PHONY : src/Simulation.cpp.s
+
+src/balance/IMU.o: src/balance/IMU.cpp.o
+
+.PHONY : src/balance/IMU.o
+
+# target to build an object file
+src/balance/IMU.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/balance/IMU.cpp.o
+.PHONY : src/balance/IMU.cpp.o
+
+src/balance/IMU.i: src/balance/IMU.cpp.i
+
+.PHONY : src/balance/IMU.i
+
+# target to preprocess a source file
+src/balance/IMU.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/balance/IMU.cpp.i
+.PHONY : src/balance/IMU.cpp.i
+
+src/balance/IMU.s: src/balance/IMU.cpp.s
+
+.PHONY : src/balance/IMU.s
+
+# target to generate assembly for a file
+src/balance/IMU.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/balance/IMU.cpp.s
+.PHONY : src/balance/IMU.cpp.s
 
 src/graph/GraphRenderer.o: src/graph/GraphRenderer.cpp.o
 
@@ -1002,15 +1002,15 @@ help:
 	@echo "... src/BotApp.o"
 	@echo "... src/BotApp.i"
 	@echo "... src/BotApp.s"
-	@echo "... src/IMU.o"
-	@echo "... src/IMU.i"
-	@echo "... src/IMU.s"
-	@echo "... src/RobotMain.o"
-	@echo "... src/RobotMain.i"
-	@echo "... src/RobotMain.s"
-	@echo "... src/SimulationMain.o"
-	@echo "... src/SimulationMain.i"
-	@echo "... src/SimulationMain.s"
+	@echo "... src/Robot.o"
+	@echo "... src/Robot.i"
+	@echo "... src/Robot.s"
+	@echo "... src/Simulation.o"
+	@echo "... src/Simulation.i"
+	@echo "... src/Simulation.s"
+	@echo "... src/balance/IMU.o"
+	@echo "... src/balance/IMU.i"
+	@echo "... src/balance/IMU.s"
 	@echo "... src/graph/GraphRenderer.o"
 	@echo "... src/graph/GraphRenderer.i"
 	@echo "... src/graph/GraphRenderer.s"
