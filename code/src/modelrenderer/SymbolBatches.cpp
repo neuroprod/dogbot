@@ -11,12 +11,20 @@ void SymbolBatches::setup()
 	makeTarget();
 	makeCoordinateFrame();
 	makeCOF();
+    makeSphere();
 }
 
 void SymbolBatches::makeFloor()
 {
-	
-	floorBatch = gl::Batch::create(geom::Plane().size(vec2(100000, 100000)), MDP()->mGlsl);
+    ci::gl::GlslProgRef mGlsl;
+    mGlsl = gl::GlslProg::create(loadAsset("shaders/floorShader.vert.glsl"), loadAsset("shaders/floorShader.frag.glsl"));
+
+    floorBatch = gl::Batch::create(geom::Plane().size(vec2(100000, 100000)), mGlsl);
+}
+void SymbolBatches::makeSphere()
+{
+    sphereBatch= gl::Batch::create(geom::Sphere().subdivisions(8), gl::getStockShader(gl::ShaderDef().color()));
+
 }
 void SymbolBatches::makeCOF() 
 {

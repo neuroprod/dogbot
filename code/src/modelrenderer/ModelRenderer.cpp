@@ -4,6 +4,7 @@
 
 #include "ModelRenderer.h"
 #include "MeshDataPool.h"
+#include "cinder/gl/GlslProg.h"
 using namespace ci;
 using namespace ci::app;
 
@@ -56,7 +57,7 @@ void ModelRenderer::draw() {
     if(  fboWindow.begin())
   {
       camera.aspect = (float)fboWindow.width / (float)fboWindow.height;
-      camera.setBodyPos(vec3(0,200,0));
+      camera.setBodyPos(vec3(0,0,0));
       camera.update(fboWindow.vMin,fboWindow.vMax);
 
 
@@ -72,8 +73,13 @@ void ModelRenderer::draw() {
           }
           ImGui::EndMenuBar();
       }
-      gl::clear(Color(0.65, 	0.9 ,	0.98));
+      if(showFloor)
+      {
+          gl::clear(Color(0.65, 0.9, 0.98));
+      }else{
 
+          gl::clear(Color(0.0, 0.0, 0.0));
+      }
       gl::pushMatrices();
       gl::setMatrices(camera.mCam);
       gl::drawCoordinateFrame(1000);
@@ -101,19 +107,27 @@ void ModelRenderer::draw() {
           mat4 shadowMatrix = mLightCam.getProjectionMatrix() * mLightCam.getViewMatrix();
 
 
-          MDP()->mGlsl->uniform("uShadowMap", 0);
-          MDP()->mGlsl->uniform("uLightPos", mLightPos);
-          MDP()->mGlsl->uniform("uShadowMatrix", shadowMatrix);
-          MDP()->mGlsl->uniform("uViewPos", camera.mCam.getEyePoint());
-          MDP()->mGlsl->uniform("alpha", 1.f);
+
           if (showFloor)
           {
-              MDP()->mGlsl->uniform("spec", 0.01f);
+
+              auto glsl = symbols.floorBatch->getGlslProg();
+              glsl->uniform("uShadowMap", 0);
+              glsl->uniform("uLightPos", mLightPos);
+              glsl->uniform("uShadowMatrix", shadowMatrix);
+              glsl->uniform("uViewPos", camera.mCam.getEyePoint());
+              glsl->uniform("alpha", 1.f);
+              glsl->uniform("spec", 0.01f);
               gl::color(Color::gray(0.4));
               symbols.floorBatch->draw();
           }
           if (showMesh)
           {
+              MDP()->mGlsl->uniform("uShadowMap", 0);
+              MDP()->mGlsl->uniform("uLightPos", mLightPos);
+              MDP()->mGlsl->uniform("uShadowMatrix", shadowMatrix);
+              MDP()->mGlsl->uniform("uViewPos", camera.mCam.getEyePoint());
+              MDP()->mGlsl->uniform("alpha", 1.f);
               for (auto n : model->nodes)
               {
                   gl::pushMatrices();

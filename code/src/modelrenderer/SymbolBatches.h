@@ -17,9 +17,11 @@ public:
 	void makeCoordinateFrame();
 	void makeTarget();
 	void makeCOF();
+    void makeSphere();
 	ci::gl::BatchRef floorBatch;
 	ci::gl::BatchRef homeBatch;
 	ci::gl::BatchRef targetBatch;
 	ci::gl::BatchRef coordinateFrame;
 	ci::gl::BatchRef COFBatch;
+    ci::gl::BatchRef sphereBatch;
 };

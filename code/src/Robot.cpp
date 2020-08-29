@@ -37,7 +37,7 @@ void Robot::update() {
     mat4 mat;
     mat = glm::toMat4(imu.getQuat());
     modelRenderer.model->setPosition(mat,ikControle.angles);
-    
+
     modelRenderer.update();
 
 
