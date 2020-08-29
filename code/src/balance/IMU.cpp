@@ -19,11 +19,19 @@ using namespace ci::app;
  ci::vec3  IMU::getEuler()
  {
      vec3 e;
-     dataMutex.lock();
+    /* dataMutex.lock();
      e = euler;
-     dataMutex.unlock();
+     dataMutex.unlock();*/
      return e;
  }
+glm::quat IMU::getQuat()
+{
+     glm::quat q;
+    dataMutex.lock();
+    q=quaternion;
+    dataMutex.unlock();
+     return q;
+}
 ci::vec3   IMU::getLinearAccel()
 {
     vec3 e;
@@ -34,11 +42,13 @@ ci::vec3   IMU::getLinearAccel()
 }
 void IMU::drawGui()
 {
-     vec3 e =getEuler();
+   //  vec3 e =getEuler();
      vec3 a =getLinearAccel();
+   glm::quat q=getQuat();
      ImGui::Begin("IMU");
-ImGui::InputFloat3("angle",&e[0]);
-    ImGui::InputFloat3("l",&a[0]);
+//ImGui::InputFloat3("angle",&e[0]);
+    ImGui::InputFloat4("quat",&q[0]);
+    ImGui::InputFloat3("linearAcc",&a[0]);
         ImGui::End();
 }
  void IMU::addDiscoveredSensor(const ZenEventData_SensorFound& desc)
@@ -155,9 +165,14 @@ ImGui::InputFloat3("angle",&e[0]);
                  {
                  case ZenImuEvent_Sample:
                      dataMutex.lock();
-                     euler.x = event.data.imuData.r[0];
-                     euler.y = event.data.imuData.r[1];
-                     euler.z = event.data.imuData.r[2];
+
+
+                      quaternion.y = event.data.imuData.q[0];
+                      quaternion.z = event.data.imuData.q[1];
+                      quaternion.x = event.data.imuData.q[2];
+                      quaternion.w = event.data.imuData.q[3];
+
+
                      linearAcc.x  =event.data.imuData.linAcc[0];
                      linearAcc.y  =event.data.imuData.linAcc[1];
                      linearAcc.z  =event.data.imuData.linAcc[2];

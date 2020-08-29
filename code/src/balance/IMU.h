@@ -1,5 +1,6 @@
 #pragma once
 #include <OpenZen.h>
+
 #include "cinder/app/App.h"
 class IMU
 {
@@ -7,7 +8,9 @@ class IMU
     void addDiscoveredSensor(const ZenEventData_SensorFound& desc);
 
     ci::vec3 euler;
+    glm::quat quaternion;
     ci::vec3 linearAcc;
+    ci::vec3 angularVel;
     std::mutex dataMutex;
 
     std::mutex g_discoverMutex;
@@ -24,8 +27,9 @@ public:
     IMU();
     void start();
     void drawGui();
-    ci::vec3 getEuler();
+
+    glm::quat getQuat();
     ci::vec3 getLinearAccel();
-   
+    ci::vec3 getEuler();
 };
 

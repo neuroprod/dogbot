@@ -33,12 +33,11 @@ void Robot::setup() {
 void Robot::update() {
     ikControle.update();
 
-    vec3 e = imu.getEuler();
+
     mat4 mat;
-    mat =glm::eulerAngleXYZ(e.x/180.f*3.1415f,e.z/180.f*3.1415f,e.y/180.f*3.1415f);
-
-
+    mat = glm::toMat4(imu.getQuat());
     modelRenderer.model->setPosition(mat,ikControle.angles);
+    
     modelRenderer.update();
 
 
