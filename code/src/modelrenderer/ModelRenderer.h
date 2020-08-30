@@ -31,11 +31,12 @@ public:
     ci::gl::Texture2dRef	mShadowMapTex;
     int	fboSize = 2048;
 
-    SymbolBatches symbols;
+
 
     bool showFloor = true;
     bool showMesh = true;
     bool showWire = false;
+    bool showCOM = true;
 };
 
 

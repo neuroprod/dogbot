@@ -39,6 +39,10 @@ public:
     {
         return mValue;
     }
+    void setValue( float val)
+    {
+        mValue =val;
+    }
 
 
 };

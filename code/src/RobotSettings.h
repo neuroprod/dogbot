@@ -23,6 +23,26 @@ public:
 
     float footRadius =SETTINGS()->getFloat("RobotSettings","footRadius",20.f)->value();
 
+    float bodyMass =SETTINGS()->getFloat("RobotSettings","bodyMass",4.f)->value();
+    ci::vec3 bodyCOM = SETTINGS()->getVec3("RobotSettings","bodyCOM",ci::vec3(0,0,0))->mValue;
+
+    float hipMass = SETTINGS()->getFloat("RobotSettings","hipMass",1.f)->value();
+    ci::vec3 hipCOM =SETTINGS()->getVec3("RobotSettings","hipCOM",ci::vec3( 50, 0, 0))->mValue;
+
+    float kneeMass = SETTINGS()->getFloat("RobotSettings","kneeMass",1.f)->value();
+    ci::vec3 kneeCOM =SETTINGS()->getVec3("RobotSettings","kneeCOM",ci::vec3(0, -120, 0))->mValue;
+
+
+    float ankleMass = SETTINGS()->getFloat("RobotSettings","ankleMass",1.f)->value();;
+    ci::vec3 ankleCOM =SETTINGS()->getVec3("RobotSettings","ankleCOM",ci::vec3(0, -120, 0))->mValue;
+
+
+    float toeMass = SETTINGS()->getFloat("RobotSettings","toeMass",0.5f)->value();
+    ci::vec3 toeCOM =SETTINGS()->getVec3("RobotSettings","toeCOM",ci::vec3(0, -0, 0))->mValue;
+
+
+
+
 };
 typedef Singleton<RobotSettings > RobotSettingsSingleton;
 

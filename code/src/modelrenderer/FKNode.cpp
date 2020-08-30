@@ -83,12 +83,21 @@ void FKNode::update()
 	}
 
 }
-
-void FKNode::setGlobalPos()
+void  FKNode::setMass(float mass,ci::vec3 com)
 {
-    vec4 pos = globalMatrix *vec4(0,0,0,1);
-    globalPos = pos;
+    mMass = mass;
+    mCOM =vec4( com.x,com.y,com.z,1.0);
+}
+void FKNode::calcGlobalPos()
+{
+
+    globalPos = globalMatrix *vec4(0,0,0,1);
 
 }
+void FKNode::calcCOM()
+{
 
+    globalCOM= globalMatrix *mCOM;
+
+}
 

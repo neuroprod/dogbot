@@ -22,5 +22,5 @@ public:
 	FKNodeRef hip;
 	FKNodeRef knee ;
 	FKNodeRef ankle;
-
+    FKNodeRef toe;
 };

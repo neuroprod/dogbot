@@ -19,7 +19,14 @@ public:
 	void setRotation(float r);
 
 	void update();
-	void setGlobalPos();
+
+	void setMass(float mass,ci::vec3 com);
+    float mMass  =0;
+    ci::vec4 mCOM  =ci::vec4(0);
+    void calcCOM();
+    ci::vec3 globalCOM;
+
+	void calcGlobalPos();
 	ci::vec3 globalPos;
 	
 

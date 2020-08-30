@@ -12,12 +12,20 @@
 #include "BulletDynamics/Featherstone/btMultiBodyLinkCollider.h"
 #include "BulletDynamics/Featherstone/btMultiBodyJointMotor.h"
 #include "BulletDynamics/Featherstone/btMultiBodyJointFeedback.h"
+#include "PhysicsLeg.h"
 
 class PhysicsModel
 {
 public:
     PhysicsModel(){}
-    void setup();
+    void setup(  btMultiBodyDynamicsWorld* world);
+    void clean();
+
+    PhysicsLegRef FRLeg;
+    PhysicsLegRef FLLeg;
+    PhysicsLegRef BRLeg;
+    PhysicsLegRef BLLeg;
+    std::vector<PhysicsLegRef> legs;
 
     btMultiBody* mMultiBody =nullptr;
 };

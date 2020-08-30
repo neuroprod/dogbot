@@ -315,6 +315,33 @@ src/gui/FBOWindow.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/gui/FBOWindow.cpp.s
 .PHONY : src/gui/FBOWindow.cpp.s
 
+src/gui/GuiSetup.o: src/gui/GuiSetup.cpp.o
+
+.PHONY : src/gui/GuiSetup.o
+
+# target to build an object file
+src/gui/GuiSetup.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/gui/GuiSetup.cpp.o
+.PHONY : src/gui/GuiSetup.cpp.o
+
+src/gui/GuiSetup.i: src/gui/GuiSetup.cpp.i
+
+.PHONY : src/gui/GuiSetup.i
+
+# target to preprocess a source file
+src/gui/GuiSetup.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/gui/GuiSetup.cpp.i
+.PHONY : src/gui/GuiSetup.cpp.i
+
+src/gui/GuiSetup.s: src/gui/GuiSetup.cpp.s
+
+.PHONY : src/gui/GuiSetup.s
+
+# target to generate assembly for a file
+src/gui/GuiSetup.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/gui/GuiSetup.cpp.s
+.PHONY : src/gui/GuiSetup.cpp.s
+
 src/ik/IKControleLeg.o: src/ik/IKControleLeg.cpp.o
 
 .PHONY : src/ik/IKControleLeg.o
@@ -801,6 +828,33 @@ src/physics/PhysicsController.cpp.s:
 	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsController.cpp.s
 .PHONY : src/physics/PhysicsController.cpp.s
 
+src/physics/PhysicsLeg.o: src/physics/PhysicsLeg.cpp.o
+
+.PHONY : src/physics/PhysicsLeg.o
+
+# target to build an object file
+src/physics/PhysicsLeg.cpp.o:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsLeg.cpp.o
+.PHONY : src/physics/PhysicsLeg.cpp.o
+
+src/physics/PhysicsLeg.i: src/physics/PhysicsLeg.cpp.i
+
+.PHONY : src/physics/PhysicsLeg.i
+
+# target to preprocess a source file
+src/physics/PhysicsLeg.cpp.i:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsLeg.cpp.i
+.PHONY : src/physics/PhysicsLeg.cpp.i
+
+src/physics/PhysicsLeg.s: src/physics/PhysicsLeg.cpp.s
+
+.PHONY : src/physics/PhysicsLeg.s
+
+# target to generate assembly for a file
+src/physics/PhysicsLeg.cpp.s:
+	$(MAKE) -f CMakeFiles/bot.dir/build.make CMakeFiles/bot.dir/src/physics/PhysicsLeg.cpp.s
+.PHONY : src/physics/PhysicsLeg.cpp.s
+
 src/physics/PhysicsModel.o: src/physics/PhysicsModel.cpp.o
 
 .PHONY : src/physics/PhysicsModel.o
@@ -1020,6 +1074,9 @@ help:
 	@echo "... src/gui/FBOWindow.o"
 	@echo "... src/gui/FBOWindow.i"
 	@echo "... src/gui/FBOWindow.s"
+	@echo "... src/gui/GuiSetup.o"
+	@echo "... src/gui/GuiSetup.i"
+	@echo "... src/gui/GuiSetup.s"
 	@echo "... src/ik/IKControleLeg.o"
 	@echo "... src/ik/IKControleLeg.i"
 	@echo "... src/ik/IKControleLeg.s"
@@ -1074,6 +1131,9 @@ help:
 	@echo "... src/physics/PhysicsController.o"
 	@echo "... src/physics/PhysicsController.i"
 	@echo "... src/physics/PhysicsController.s"
+	@echo "... src/physics/PhysicsLeg.o"
+	@echo "... src/physics/PhysicsLeg.i"
+	@echo "... src/physics/PhysicsLeg.s"
 	@echo "... src/physics/PhysicsModel.o"
 	@echo "... src/physics/PhysicsModel.i"
 	@echo "... src/physics/PhysicsModel.s"

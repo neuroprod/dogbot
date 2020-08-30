@@ -38,6 +38,10 @@ public:
     {
         return mValue;
     }
+    void setValue( bool val)
+    {
+        mValue =val;
+    }
 
 
 };

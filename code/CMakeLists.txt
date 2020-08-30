@@ -23,6 +23,7 @@ set(SRC_FILES
         ${APP_PATH}/src/motor/Motor.cpp
         ${APP_PATH}/src/motor/MotorControl.cpp
         ${APP_PATH}/src/gui/FBOWindow.cpp
+        ${APP_PATH}/src/gui/GuiSetup.cpp
         ${APP_PATH}/src/modelrenderer/ModelRenderer.cpp
         ${APP_PATH}/src/modelrenderer/OrbitCamera.cpp
         ${APP_PATH}/src/modelrenderer/FKModel.cpp
@@ -46,6 +47,7 @@ set(SRC_FILES
         ${APP_PATH}/src/physics/PhysicsController.cpp
         ${APP_PATH}/src/physics/PhysicsWorld.cpp
         ${APP_PATH}/src/physics/PhysicsModel.cpp
+        ${APP_PATH}/src/physics/PhysicsLeg.cpp
         ${APP_PATH}/src/balance/IMU.cpp
         )
 

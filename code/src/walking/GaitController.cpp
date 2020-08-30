@@ -29,7 +29,7 @@ void GaitController::setup()
     currentLeg = fr;
     if(debug) currentLeg->debug =true;
     camera.setBodyPos(currentLeg->homePos);
-    drawBatches.makeHome();
+
 
 
 

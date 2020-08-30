@@ -12,7 +12,7 @@ void ModelRenderer::setup() {
 
     fboWindow.setup("ModelRenderer");
     MDP()->setup();
-    symbols.setup();
+
     model = std::make_shared<FKModel>();
     model->setup();
     mat4 posM ;
@@ -69,6 +69,7 @@ void ModelRenderer::draw() {
               if (ImGui::MenuItem("Show Floor", NULL, showFloor)) {showFloor = !showFloor;}
               if (ImGui::MenuItem("Show Mesh", NULL, showMesh)) {showMesh = !showMesh;}
               if (ImGui::MenuItem("Show Wire", NULL, showWire)) {showWire = !showWire;}
+              if (ImGui::MenuItem("Show COM", NULL, showCOM)) {showCOM = !showCOM;}
               ImGui::EndMenu();
           }
           ImGui::EndMenuBar();
@@ -82,22 +83,28 @@ void ModelRenderer::draw() {
       }
       gl::pushMatrices();
       gl::setMatrices(camera.mCam);
-      gl::drawCoordinateFrame(1000);
-
+      gl::pushMatrices();
+      gl::scale(1000,1000,1000);
+      SYMBOLBATCHES()->coordinateFrame->draw();
+      gl::popMatrices();
     if(showWire)
     {
         for (auto n : model->nodes)
         {
             gl::pushMatrices();
             gl::setModelMatrix(n->globalMatrix);
-            symbols.coordinateFrame->draw();
+            SYMBOLBATCHES()->coordinateFrame->draw();
             gl::popMatrices();
 
         }
 
         model->drawWire();
     }
+      if(showCOM)
+      {
 
+          model->drawCOM();
+      }
 
       if (showMesh || showFloor)
       {
@@ -111,7 +118,7 @@ void ModelRenderer::draw() {
           if (showFloor)
           {
 
-              auto glsl = symbols.floorBatch->getGlslProg();
+              auto glsl = SYMBOLBATCHES()->floorBatch->getGlslProg();
               glsl->uniform("uShadowMap", 0);
               glsl->uniform("uLightPos", mLightPos);
               glsl->uniform("uShadowMatrix", shadowMatrix);
@@ -119,7 +126,7 @@ void ModelRenderer::draw() {
               glsl->uniform("alpha", 1.f);
               glsl->uniform("spec", 0.01f);
               gl::color(Color::gray(0.4));
-              symbols.floorBatch->draw();
+              SYMBOLBATCHES()->floorBatch->draw();
           }
           if (showMesh)
           {

@@ -39,7 +39,10 @@ public:
     {
         return mValue;
     }
-
+    void setValue( int val)
+    {
+        mValue =val;
+    }
 
 };
 

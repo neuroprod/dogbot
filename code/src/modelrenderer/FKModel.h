@@ -19,8 +19,13 @@ public:
 	void setPosition(glm::mat4 bodyMatrix, std::vector<float> &jointAngles);
 
 	void update();
+
+    void calcCOM();
+    void drawCOM();
     void drawWire();
 
+    ci::vec3 COM =ci::vec3(0);
+    float totalMass;
 
 	FKNodeRef root;
 	FKNodeRef body;

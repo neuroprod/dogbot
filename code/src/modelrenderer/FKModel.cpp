@@ -1,7 +1,7 @@
 #include "FKModel.h"
 #include "cinder/gl/gl.h"
 
-#include "MeshDataPool.h"
+#include "SymbolBatches.h"
 #include "../RobotSettings.h"
 
 using namespace ci;
@@ -54,6 +54,7 @@ void FKModel::build()
 
 	body = FKNode::create("body", "body");
 	body->setBase(vec3(0, 0, 0));
+    body->setMass(BOTSETTINGS()->bodyMass,BOTSETTINGS()->bodyCOM);
 	nodes.push_back(body);
 	root->addChild(body);
 
@@ -77,12 +78,48 @@ void FKModel::build()
 
 
 }
+void FKModel::calcCOM()
+{
+    COM.x =0;
+    COM.y =0;
+    COM.z=0;
+    totalMass =0;
+    for (auto n : nodes)
+    {
+        n->calcCOM();
+        COM += (n->globalCOM *n->mMass);
+        totalMass+=n->mMass;
+    }
+    COM/= totalMass;
 
+}
+void FKModel::drawCOM()
+{
+    calcCOM();
+    gl::color(0,1,1);
+    gl::pushMatrices();
+    gl::translate(COM);
+    gl::scale(vec3( std::cbrt(totalMass)*10));
+    SYMBOLBATCHES()->sphereBatch->draw();
+    gl::popMatrices();
+
+    gl::color(0,0,1);
+    for (auto n : nodes)
+    {
+
+
+        gl::pushMatrices();
+        gl::translate(n->globalCOM);
+        gl::scale(vec3( std::cbrt(n->mMass)*10));
+        SYMBOLBATCHES()->sphereBatch->draw();
+        gl::popMatrices();
+    }
+}
 void FKModel::drawWire()
 {
     for (auto n : nodes)
     {
-       n->setGlobalPos();
+       n->calcGlobalPos();
 
     }
     gl::lineWidth(1);
@@ -111,20 +148,24 @@ void FKModel::drawWire()
         gl::vertex( l->ankle->globalPos);
 
         gl::vertex( l->ankle->globalPos);
-        vec3 foot=  l->ankle->globalMatrix *vec4(0,-BOTSETTINGS()->underLegLength+BOTSETTINGS()->footRadius,0,1);
-        gl::vertex(foot);
+
+        gl::vertex(l->toe->globalPos);
 
     }
 
     gl::end();
     gl::lineWidth(1);
-    gl::color(0,0,0);
-   /* for (auto l : legs)
+    gl::enableAlphaBlending(true);
+    gl::color(1,1,1,0.2);
+    for (auto l : legs)
     {
 
-        vec3 foot=  l->ankle->globalMatrix *vec4(0,-BOTSETTINGS()->underLegLength+BOTSETTINGS()->footRadius,0,1);
-     //  gl::drawSphere(foot,BOTSETTINGS()->footRadius,);
-
-    }*/
-
+        vec3 foot=  l->toe->globalPos;
+        gl::pushMatrices();
+        gl::translate(foot);
+        gl::scale(vec3(BOTSETTINGS()->footRadius));
+        SYMBOLBATCHES()->sphereBatch->draw();
+        gl::popMatrices();
+    }
+    gl::enableAlphaBlending(false);
 }

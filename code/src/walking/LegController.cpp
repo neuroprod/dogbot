@@ -3,6 +3,7 @@
 //
 #include "LegController.h"
 #include "cinder/gl/gl.h"
+#include "../modelrenderer/SymbolBatches.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -107,17 +108,24 @@ void  LegController::draw()
     }
     gl::end();
     gl::color(1,1,1);
-    gl::drawSphere(targetPos,2);
-    gl::color(1,1,1);
+    gl::pushMatrices();
+    gl::translate(targetPos);
+    gl::scale(vec3(2.f));
+    SYMBOLBATCHES()->sphereBatch->draw();
+    gl::popMatrices();
 
     int  s = drawArray.size();
     if(s>50)
     {
         for (int i =0; i < 50; i++)
         {
-            gl::drawSphere(drawArray[s-1-i],2.f-(float)i/25.f);
+            gl::pushMatrices();
+            gl::translate(drawArray[s-1-i]);
+            gl::scale(vec3(2.f-(float)i/25.f));
+            SYMBOLBATCHES()->sphereBatch->draw();
+           // gl::drawSphere(drawArray[s-1-i],2.f-(float)i/25.f);
 
-
+            gl::popMatrices();
 
         }
     }

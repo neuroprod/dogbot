@@ -85,7 +85,10 @@ void main( void )
 	col2 =col2 *(1.0-(uv2.x +uv2.y)*0.5 );
 	col2=col2 +0.5;
 
-col+=col2*0.2;
+    col+=col2*0.2;
+
+
+
 
 
 	Color.rgb =vec3(diffuse)*col*shadow*vColor.xyz +spec	;

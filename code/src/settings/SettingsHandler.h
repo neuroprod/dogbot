@@ -14,6 +14,7 @@
 #include "../settings/SettingInt.h"
 #include "../settings/SettingBoolean.h"
 #include "../settings/SettingMotor.h"
+#include "../settings/SettingVec3.h"
 class SettingsHandler
 {
 
@@ -74,6 +75,20 @@ public:
         settings.push_back(s);
         return s;
     }
+    Svec3 getVec3( std::string file, std::string key, ci::vec3 defaultValue)
+    {
+        for (auto s:settings)
+        {
+            if (s->mFile == file && s->mKey == key)
+            {
+                return std::dynamic_pointer_cast<SettingVec3>(s);
+            }
+        }
+        auto s = std::make_shared<SettingVec3>(file, key, defaultValue);
+        settings.push_back(s);
+        return s;
+    }
+
 
     void save()
     {
@@ -176,6 +191,13 @@ public:
                     {
 
                         auto s = std::make_shared<SettingMotor>( key);
+                        s->setFromJson(val);
+                        settings.push_back(s);
+                    }
+                    else if (type == "vec3")
+                    {
+
+                        auto s = std::make_shared<SettingVec3>(filename, key);
                         s->setFromJson(val);
                         settings.push_back(s);
                     }

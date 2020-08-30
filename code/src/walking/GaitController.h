@@ -60,7 +60,7 @@ public:
     int leg_combo_current= 0;
     LegControllerRef currentLeg;
 
-    SymbolBatches drawBatches;
+
 
     ImVec2 vMin;
     ImVec2 vMax;
