@@ -1,3 +1,16 @@
-sudo make -j8 install
+
+//openzen
+git clone https://bitbucket.org/lpresearch/openzen.git
+cd openzen
+git submodule update --init
+mkdir build && cd build
+cmake ..
+make -j8
+sudo make install
+
+
+//bullet
+git clone https://github.com/bulletphysics/bullet3.git
+cd bullet3
 cmake -DBUILD_SHARED_LIBS=on
 sudo make -j8 install

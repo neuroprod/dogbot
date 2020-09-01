@@ -71,7 +71,7 @@ void StateController::draw()
 {
     ImGui::Begin("State");
     std::string n = "current state: "+currentState->getName();
-    ImGui::Text( n.c_str());
+    ImGui::Text( "%s", n.c_str());
 
     ImGui::Checkbox("auto next state",&autoNextState);
     ImGui::Separator();
