@@ -122,9 +122,13 @@ void Motor::loop()
         motorData.z = Uencoder.r;
         outMutex.unlock();
 
-
+        if(test) {
+            console()  << (float)Uencoder.r << endl;
+            shutDown( id);
+        }
       //  console() << (float)Utorque.r / 2048.f * 33.f << " " << (float)Uspeed.r << " " << (float)Uencoder.r << endl;
       /*  std::this_thread::sleep_for (std::chrono::seconds(5));
+       *
         shutDown( id);
         my_serial->writeBytes(&data[0], data.size());*/
     }

@@ -7,7 +7,7 @@ class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
 
 class Motor {
-
+    bool test =true;
 	float motorAngle = 0;
 	float motorSpeed = 1600;
 	void setPosition(uint8_t id, int64_t angle, int32_t speed);
