@@ -14,7 +14,7 @@ public:
 	void setBase();
     void update();
 	void drawGui();
-
+    void reset();
     IKModel model;
 
 	float bodyX = 50;
@@ -35,4 +35,6 @@ public:
 
     glm::mat4 bodyMatrix;
     std::vector<float> angles;
+
+
 };

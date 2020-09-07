@@ -4,7 +4,7 @@
 
 #include "PhysicsController.h"
 
-void PhysicsController::setup()
+void PhysicsController::setup(  ci::mat4 defaultmatrix ,std::vector<float>  defaultAngles)
 {
 
 
@@ -14,7 +14,7 @@ void PhysicsController::setup()
    floor.setup();
    world.m_dynamicsWorld->addRigidBody(floor.body);
 
-
+model.setDefaultAngles(defaultmatrix , defaultAngles);
    model.setup(world.m_dynamicsWorld);
 
 
@@ -23,12 +23,12 @@ void PhysicsController::setup()
 void PhysicsController::update()
 {
    world.update();
-
+    model.updateData();
 }
 
 void PhysicsController::reset()
 {
-    model.clean();
+    model.clean(world.m_dynamicsWorld);
     model.setup(world.m_dynamicsWorld);
 }
 void PhysicsController::drawGui(){}

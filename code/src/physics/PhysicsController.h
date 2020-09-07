@@ -12,8 +12,8 @@
 class PhysicsController
 {
 public:
-    PhysicsController(){}
-    void setup();
+    PhysicsController( ){}
+    void setup(ci::mat4 defaultmatrix ,std::vector<float>  defaultAngles);
     void reset();
     void update();
     void drawGui();

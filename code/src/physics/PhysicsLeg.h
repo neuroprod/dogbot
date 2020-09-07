@@ -15,7 +15,8 @@ public:
 
 	static PhysicsLegRef create();
 	void setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, int linkIndex);
-	void clean();
+    void updateData();
+    void clean();
 	float tHip1;
 	float tHip2;
 	float tKnee;

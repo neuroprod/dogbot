@@ -1,4 +1,5 @@
 #include "PhysicsLeg.h"
+#include "../RobotSettings.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -6,7 +7,7 @@ PhysicsLegRef PhysicsLeg::create()
 {
 	PhysicsLegRef ref = std::make_shared<PhysicsLeg>();
 	return ref;
-}/*
+}
 void PhysicsLeg::updateData() 
 {
 	tHip1 = motorHip1->getAppliedImpulse(0) * 120;
@@ -16,10 +17,10 @@ void PhysicsLeg::updateData()
 	torque.x = tHip1;
 	torque.y = tHip2;
 	torque.z = tKnee;
-}*/
+}
 void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, int linkIndex)
 {
-	/*
+
 	float  PI = glm::pi<float>();
 
 	float hipOffsetZFlip = 1;
@@ -35,7 +36,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkInertiaDiag(0.f, 0.f, 0.f);
 		btCollisionShape* shape = 0;
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
-		float linkMass = modelConfig->hip1Mass;
+		float linkMass = BOTSETTINGS()->hipMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
 		shape->calculateLocalInertia(0.6, linkInertiaDiag);
 		delete shape;
@@ -44,7 +45,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		c = glm::rotate(c, hip1Rot, vec3(0, 1, 0));
 		btVector3 hingeJointAxis(1, 0, 0);
 		btVector3 parentComToCurrentPivot(pos.x / 1000.f, pos.y / 1000.f, pos.z / 1000.f);
-		vec3 com = modelConfig->hip1COM;
+		vec3 com = BOTSETTINGS()->hipCOM;
 		btVector3 currentPivotToCurrentCom(com.x / 1000.f, com.y / 1000.f, com.z / 1000.f);
 
 
@@ -60,7 +61,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkInertiaDiag(0.f, 0.f, 0.f);
 		btCollisionShape* shape = 0;
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
-		float linkMass = modelConfig->hip2Mass;
+		float linkMass = BOTSETTINGS()->kneeMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
 		shape->calculateLocalInertia(0.6, linkInertiaDiag);
 		delete shape;
@@ -68,12 +69,12 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		glm::quat c;
 		c = glm::rotate(c, -PI / 2 * hipOffsetZFlip, vec3(0, 1, 0));
 		btVector3 hingeJointAxis(-1, 0, 0);
-		vec3 com1 = modelConfig->hip1COM;
-		vec3 comAdj = (vec3(modelConfig->hipOffsetX, 0, modelConfig->hipOffsetZ * hipOffsetZFlip) - com1);
+		vec3 com1 =BOTSETTINGS()->hipCOM;
+		vec3 comAdj = (vec3(BOTSETTINGS()->hipOffsetX, 0, BOTSETTINGS()->hipOffsetZ * hipOffsetZFlip) - com1);
 
 		btVector3 parentComToCurrentPivot(comAdj.x / 1000.f, comAdj.y / 1000.f, comAdj.z / 1000.f);
 
-		vec3 com2 = modelConfig->hip2COM;
+		vec3 com2 = BOTSETTINGS()->kneeCOM;
 		btVector3 currentPivotToCurrentCom(com2.x / 1000.f, com2.y / 1000.f, com2.z / 1000.f);
 
 
@@ -90,7 +91,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkInertiaDiag(0.f, 0.f, 0.f);
 		btCollisionShape* shape = 0;
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
-		float linkMass = modelConfig->kneeMass;;
+		float linkMass = BOTSETTINGS()->ankleMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
 		shape->calculateLocalInertia(0.6, linkInertiaDiag);
 		delete shape;
@@ -98,14 +99,14 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		glm::quat c;
 		//c = glm::rotate(c, -PI / 2 * hipOffsetZFlip, vec3(0, 1, 0));
 		btVector3 hingeJointAxis(-1, 0, 0);
-		vec3 com1 = modelConfig->hip2COM;;
+		vec3 com1 = BOTSETTINGS()->kneeCOM;;
 
-		com1.y = (modelConfig->upperLegLength + com1.y) * -1;
+		com1.y = (BOTSETTINGS()->upperLegLength + com1.y) * -1;
 
 
 		btVector3 parentComToCurrentPivot(com1.x / 1000.f, com1.y / 1000.f, com1.z / 1000.f);
 
-		vec3 com2 = modelConfig->kneeCOM;
+		vec3 com2 = BOTSETTINGS()->ankleCOM;
 		btVector3 currentPivotToCurrentCom(com2.x / 1000.f, com2.y / 1000.f, com2.z / 1000.f);
 
 
@@ -120,7 +121,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkInertiaDiag(0.f, 0.f, 0.f);
 		btCollisionShape* shape = 0;
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
-		float linkMass = modelConfig->footMass;
+		float linkMass = BOTSETTINGS()->toeMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
 		shape->calculateLocalInertia(0.6, linkInertiaDiag);
 		delete shape;
@@ -129,12 +130,12 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 
 		vec3 com1 = vec3();
 
-		com1.y = (modelConfig->upperLegLength + modelConfig->kneeCOM.y - modelConfig->footRadius) * -1;
+		com1.y = (BOTSETTINGS()->upperLegLength + BOTSETTINGS()->ankleCOM.y - BOTSETTINGS()->footRadius) * -1;
 
 
 		btVector3 parentComToCurrentPivot(com1.x / 1000.f, com1.y / 1000.f, com1.z / 1000.f);
 
-		vec3 com2 = modelConfig->kneeCOM;
+		vec3 com2 = BOTSETTINGS()->toeCOM;
 		btVector3 currentPivotToCurrentCom(0, 0, 0);
 
 
@@ -148,7 +149,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 	////////////////////////////////////////////
 
 
-*/
+
 
 
 
@@ -156,9 +157,9 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 
 void PhysicsLeg::clean()
 {
-    /*btMultiBodyJointMotor* motorHip1;
+    delete motorHip1;
     btMultiBodyJointMotor* motorHip2;
     btMultiBodyJointMotor* motorKnee;
-    */
+
 
 }

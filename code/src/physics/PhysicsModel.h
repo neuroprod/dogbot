@@ -19,8 +19,10 @@ class PhysicsModel
 public:
     PhysicsModel(){}
     void setup(  btMultiBodyDynamicsWorld* world);
-    void clean();
-
+    void setDefaultAngles(ci::mat4 defaultmatrix ,std::vector<float>  defaultAngles);
+    void setMotorTargets(std::vector<float> &targets);
+    void clean(btMultiBodyDynamicsWorld* world);
+    void updateData();
     PhysicsLegRef FRLeg;
     PhysicsLegRef FLLeg;
     PhysicsLegRef BRLeg;
@@ -28,6 +30,19 @@ public:
     std::vector<PhysicsLegRef> legs;
 
     btMultiBody* mMultiBody =nullptr;
+
+    btCollisionShape* shape ;
+    btMultiBodyLinkCollider* col;
+
+    std::vector<btMultiBodyLinkCollider*> linkColiders;
+    std::vector< btMultiBodyJointMotor*>motors;
+
+    glm::mat4 bodyMatrix;
+    std::vector<float> angles;
+    std::vector<float>  defaultAngles;
+    ci::vec3 bodyPos;
+    float angleX =0;
+    float angleZ=0;
 };
 
 

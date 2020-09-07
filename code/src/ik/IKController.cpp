@@ -44,6 +44,11 @@ void IKController::setBase()
 	
 
 }
+void IKController::reset()
+{
+    setBase();
+
+}
 void IKController::update()
 {
     bodyMatrix = mat4();
@@ -85,7 +90,7 @@ void IKController::drawGui()
     ImGui::DragFloat("body rotX", &bodyRotX, 0.01, -3.1415, 3.1415);
     ImGui::DragFloat("body rotY", &bodyRotY, 0.01, -3.1415, 3.1415) ;
     ImGui::DragFloat("body rotZ", &bodyRotZ, 0.01, -3.1415, 3.1415) ;
-	if (ImGui::Button("resetBody"))
+/*	if (ImGui::Button("resetBody"))
 	{
 		bodyRotX = 0;
 		bodyRotY =0;
@@ -93,14 +98,14 @@ void IKController::drawGui()
 		bodyX = 0;
 		bodyY = BOTSETTINGS()->bodyY;
 		bodyZ = 0;
-	}
+	}*/
     ImGui::Separator();
     ImGui::DragFloat3("FR Target", &FR->targetPos[0], 1.f,-1000, 1000);
     ImGui::DragFloat3("FL Target", &FL->targetPos[0], 1.f, -1000, 1000);
 
     ImGui::DragFloat3("BR Target", &BR->targetPos[0], 1.f, -1000, 1000);
     ImGui::DragFloat3("BL Target", &BL->targetPos[0], 1.f, -1000, 1000);
-	if (ImGui::Button("resetTargets"))
+	/*if (ImGui::Button("resetTargets"))
 	{
 	
 		FR->targetPos = FR->homePos;
@@ -124,7 +129,7 @@ void IKController::drawGui()
 		bodyZ = 0;
 
 
-	}
+	}*/
     ImGui::Separator();
 	float toDeg = 180./3.1415;
 

@@ -21,7 +21,7 @@ public:
     void setup();
     void update();
     void draw();
-
+    void drawSimGui();
 
 
     IKController ikController;
@@ -31,6 +31,7 @@ public:
     PhysicsController physicsController;
 
     bool isReady =false;
+    bool usePhysics =true;
 };
 
 

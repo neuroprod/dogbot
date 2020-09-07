@@ -8,39 +8,68 @@
 
 using namespace ci;
 using namespace ci::app;
-void Simulation::setup() {
+
+void Simulation::setup()
+{
 
     gaitController.setup();
     ikController.setup();
+    ikController.update();
     modelRenderer.setup();
-    stateController.setup(&ikController ,&gaitController);
-    physicsController.setup();
+    stateController.setup(&ikController, &gaitController);
+    physicsController.setup( ikController.bodyMatrix, ikController.angles);
 
-    isReady =true;
+    isReady = true;
 
 }
-void Simulation::update() {
+
+void Simulation::update()
+{
 
     stateController.update();
     ikController.update();
 
-   physicsController.update();
 
-
-    modelRenderer.model->setPosition(ikController.bodyMatrix,ikController.angles);
-
+    if (usePhysics)
+    {
+        physicsController.model.setMotorTargets( ikController.angles);
+        physicsController.update();
+        modelRenderer.model->setPosition(physicsController.model.bodyMatrix, physicsController.model.angles);
+    } else
+    {
+        modelRenderer.model->setPosition(ikController.bodyMatrix, ikController.angles);
+    }
 
 
     modelRenderer.update();
 
 }
-void Simulation::draw() {
 
-   physicsController.drawGui();
+void Simulation::draw()
+{
+    drawSimGui();
+    physicsController.drawGui();
     ikController.drawGui();
     modelRenderer.draw();
-   stateController.draw();
-   gaitController.drawGui();
-   GRAPH()->draw();
+    stateController.draw();
+    gaitController.drawGui();
+    GRAPH()->draw();
+
+}
+
+void Simulation::drawSimGui()
+{
+    ImGui::Begin("Simulation");
+    ImGui::Checkbox("use physics", &usePhysics);
+    if (ImGui::Button("reset"))
+    {
+        ikController.reset();
+        ikController.update();
+        physicsController.reset();
+
+    }
+
+
+    ImGui::End();
 
 }
