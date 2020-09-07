@@ -14,7 +14,7 @@ void PhysicsController::setup(  ci::mat4 defaultmatrix ,std::vector<float>  defa
    floor.setup();
    world.m_dynamicsWorld->addRigidBody(floor.body);
 
-model.setDefaultAngles(defaultmatrix , defaultAngles);
+model.setDefaultAngles( defaultAngles);
    model.setup(world.m_dynamicsWorld);
 
 

@@ -66,6 +66,7 @@ void Simulation::drawSimGui()
         ikController.reset();
         ikController.update();
         physicsController.reset();
+        stateController.reset();
 
     }
 

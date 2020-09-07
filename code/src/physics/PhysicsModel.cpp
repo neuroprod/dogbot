@@ -73,7 +73,7 @@ void PhysicsModel::setMotorTargets(std::vector<float> &targets)
     }
 
 }
-void PhysicsModel::setDefaultAngles(ci::mat4 defaultmatrix ,std::vector<float>  targets)
+void PhysicsModel::setDefaultAngles(std::vector<float>  targets)
 {
 
     defaultAngles = targets;
@@ -123,7 +123,7 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
     BLLeg->setup("BL", vec3(-BOTSETTINGS()->bodyLength / 2, 0, -BOTSETTINGS()->bodyWidth / 2), mMultiBody, 12);
     legs.push_back(BLLeg);
     mMultiBody->finalizeMultiDof();
-    //world->addMultiBody(mMultiBody);
+    world->addMultiBody(mMultiBody);
 
     mMultiBody->setCanSleep(false);
     mMultiBody->setHasSelfCollision(false);
@@ -172,8 +172,8 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
         btCollisionShape* shape = new btSphereShape(BOTSETTINGS()->footRadius / 1000.f);
 
         btMultiBodyLinkCollider* col = new btMultiBodyLinkCollider(mMultiBody, i);
-        col->setFriction(0.9);
-        col->setRestitution(0.1f);
+        col->setFriction(1.0);
+        col->setRestitution(0.0f);
         col->setCollisionShape(shape);
 
         btTransform tr;
@@ -252,7 +252,7 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
         mMultiBody->setJointVel(i * 4+1, 0.f);
         mMultiBody->setJointVel(i * 4+2, 0.f);
     }
-    world->addMultiBody(mMultiBody);
+
 }
 
 void PhysicsModel::clean(btMultiBodyDynamicsWorld* world)

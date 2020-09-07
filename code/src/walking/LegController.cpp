@@ -19,7 +19,14 @@ void LegController::setup(ci::vec3 pos)
     targetPos =homePos=homePosStart =pos;
     prevTargetPos = targetPos;
 }
-
+void LegController::reset()
+{
+    targetPos =homePos=homePosStart;
+    prevTargetPos = targetPos;
+    currentSpline = ci::BSpline3f ();
+    prevSpline= ci::BSpline3f ();
+    nextSpline= ci::BSpline3f ();
+}
 void  LegController::setNextState(){
     state ++;
     if (state>3)state =0;

@@ -18,7 +18,7 @@
 
       "key" : "ankleMass",
       "type" : "float",
-      "value" : 1
+      "value" : 0.29
    },
    {
       "key" : "bodyY",
@@ -94,7 +94,7 @@
    {
       "key" : "toeMass",
       "type" : "float",
-      "value" : 0.5
+      "value" : 0.082
    },
    {
       "key" : "footCOM",
@@ -108,7 +108,7 @@
    {
       "key" : "footMass",
       "type" : "float",
-      "value" : 1
+      "value" : 0.29
    },
    {
       "key" : "kneeCOM",
@@ -122,7 +122,7 @@
    {
       "key" : "kneeMass",
       "type" : "float",
-      "value" : 1
+      "value" : 1.33
    },
    {
       "key" : "hipCOM",

@@ -19,7 +19,7 @@ class PhysicsModel
 public:
     PhysicsModel(){}
     void setup(  btMultiBodyDynamicsWorld* world);
-    void setDefaultAngles(ci::mat4 defaultmatrix ,std::vector<float>  defaultAngles);
+    void setDefaultAngles(std::vector<float>  defaultAngles);
     void setMotorTargets(std::vector<float> &targets);
     void clean(btMultiBodyDynamicsWorld* world);
     void updateData();

@@ -17,6 +17,7 @@ public:
     LegController(){};
     static LegControllerRef create();
     void setup(ci::vec3 pos);
+    void reset();
     void setHomePosOffzet(ci::vec3 offset);
     void setNextState();
     void update(float timeNormal);

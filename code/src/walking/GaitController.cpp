@@ -44,9 +44,13 @@ void GaitController::reset()
     currentStepTime = stepTimeTotal;
 
     legs[0]->state =3;
+    legs[0]->reset();
     legs[1]->state =1;
+    legs[1]->reset();
     legs[2]->state =1;
+    legs[2]->reset();
     legs[3]->state =3;
+    legs[3]->reset();
 
     //next step is update stepState
 

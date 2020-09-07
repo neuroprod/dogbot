@@ -19,6 +19,7 @@ public:
     void setup(IKController * ikController,GaitController *gaitController);
     void update();
     void draw();
+    void reset();
     void setNextState();
     bool autoNextState =false;
 

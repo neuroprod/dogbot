@@ -35,7 +35,13 @@ void StateController::update()
     }
 
 }
+void StateController::reset()
+{
+    currentState =&noneState;
+    state = noneState.state;
+    currentState->start();
 
+}
 void StateController::setNextState()
 {
 
@@ -60,6 +66,7 @@ void StateController::setNextState()
         case STATE::STEP:
         {
             //if(blabla):
+
            currentState->start();
             break;
         }
