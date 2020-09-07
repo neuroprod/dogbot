@@ -1,0 +1,5 @@
+/home/kris/Desktop/clion-2020.1.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/kris/Desktop/dogbot/robot
+/usr/local/lib/libBulletDynamics.so/usr/local/lib/libBulletCollision.so/usr/local/lib/libLinearMath.so/usr/local/lib/libBulletSoftBody.so
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kris/Desktop/dogbot/robot

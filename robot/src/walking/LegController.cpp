@@ -21,11 +21,24 @@ void LegController::setup(ci::vec3 pos)
 }
 void LegController::reset()
 {
+    drawArray.clear();
     targetPos =homePos=homePosStart;
     prevTargetPos = targetPos;
     currentSpline = ci::BSpline3f ();
     prevSpline= ci::BSpline3f ();
     nextSpline= ci::BSpline3f ();
+
+     currentLength=0;
+    prevLength =0;
+      lengthDif =0;
+    nextLength =0;
+     nextLengthDif =0;
+
+     stepHeight =50;
+     moveAngle =0;
+    moveLength =0;
+    rotAngle =0;
+     homeZOffset =0;
 }
 void  LegController::setNextState(){
     state ++;

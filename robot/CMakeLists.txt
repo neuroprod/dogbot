@@ -57,3 +57,4 @@ ci_make_app(
 
 )
 target_link_libraries(bot libJetsonGPIO.a OpenZen::OpenZen ${BULLET_LIBRARIES})
+message(${BULLET_LIBRARIES})

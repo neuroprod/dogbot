@@ -96,13 +96,14 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
     btVector3 basePosition = btVector3(BOTSETTINGS()->bodyXStart/1000, BOTSETTINGS()->bodyYStart/1000, 0.f);
 
     btVector3 baseInertiaDiag(0.f, 0.f, 0.f);
-    float baseMass = 6;
+    btScalar baseMass = btScalar (BOTSETTINGS()->bodyMass);
     if (baseMass)
     {
         btCollisionShape* shape = new btBoxShape(btVector3(baseHalfExtents[0], baseHalfExtents[1], baseHalfExtents[2]));
         shape->calculateLocalInertia(baseMass, baseInertiaDiag);
         delete shape;
     }
+
     mMultiBody = new btMultiBody(numLinks, baseMass, baseInertiaDiag, false, false);
     btQuaternion baseOriQuat(0.f, 0.f, 0.f, 1.f);
 
@@ -178,7 +179,7 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
         btMultiBodyLinkCollider* col = new btMultiBodyLinkCollider(mMultiBody, i);
         col->setFriction(1.0);
 
-        col->setRestitution(0.0f);
+        col->setRestitution(0.01f);
         col->setCollisionShape(shape);
 
         btTransform tr;

@@ -35,7 +35,7 @@ public:
         body->setFriction(1.f);
 
 
-        body->setRestitution(0.0f);
+        body->setRestitution(0.01f);
       //  m_dynamicsWorld->addRigidBody(body);
 
     }

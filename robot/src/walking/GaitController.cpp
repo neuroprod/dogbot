@@ -59,7 +59,7 @@ void GaitController::update()
 {
     double currentTime = getElapsedSeconds();
     delta =(currentTime - previousTime) *1000;
-   // console()<<delta <<" " <<1000.f/120.f<<endl;
+
     delta =1000.f/120.f;
 
     previousTime =currentTime;

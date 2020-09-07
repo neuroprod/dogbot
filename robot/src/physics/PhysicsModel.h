@@ -6,6 +6,7 @@
 #define BOT_PHYSICSMODEL_H
 
 #include "btBulletDynamicsCommon.h"
+#include "BulletDynamics/Featherstone/btMultiBody.h"
 #include "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
 #include "BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h"
 #include "BulletDynamics/Featherstone/btMultiBodyPoint2Point.h"
