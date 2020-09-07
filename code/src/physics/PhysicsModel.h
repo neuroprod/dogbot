@@ -39,6 +39,7 @@ public:
 
     glm::mat4 bodyMatrix;
     std::vector<float> angles;
+    std::vector<ci::vec3> positions;
     std::vector<float>  defaultAngles;
     ci::vec3 bodyPos;
     float angleX =0;

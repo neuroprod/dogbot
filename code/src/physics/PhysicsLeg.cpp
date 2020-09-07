@@ -38,7 +38,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
 		float linkMass = BOTSETTINGS()->hipMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
-		shape->calculateLocalInertia(0.6, linkInertiaDiag);
+		shape->calculateLocalInertia(BOTSETTINGS()->hipMass, linkInertiaDiag);
 		delete shape;
 
 		glm::quat c;
@@ -63,7 +63,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
 		float linkMass = BOTSETTINGS()->kneeMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
-		shape->calculateLocalInertia(0.6, linkInertiaDiag);
+		shape->calculateLocalInertia(BOTSETTINGS()->kneeMass, linkInertiaDiag);
 		delete shape;
 
 		glm::quat c;
@@ -93,7 +93,7 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
 		float linkMass = BOTSETTINGS()->ankleMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
-		shape->calculateLocalInertia(0.6, linkInertiaDiag);
+		shape->calculateLocalInertia(linkMass, linkInertiaDiag);
 		delete shape;
 
 		glm::quat c;
@@ -123,14 +123,14 @@ void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, 
 		btVector3 linkHalfExtents(0.05, 0.05, 0.05);
 		float linkMass = BOTSETTINGS()->toeMass;
 		shape = new btBoxShape(btVector3(linkHalfExtents[0], linkHalfExtents[1], linkHalfExtents[2]));  //
-		shape->calculateLocalInertia(0.6, linkInertiaDiag);
+		shape->calculateLocalInertia(BOTSETTINGS()->toeMass, linkInertiaDiag);
 		delete shape;
 
 		glm::quat c;
 
 		vec3 com1 = vec3();
 
-		com1.y = (BOTSETTINGS()->upperLegLength + BOTSETTINGS()->ankleCOM.y - BOTSETTINGS()->footRadius) * -1;
+		com1.y = (BOTSETTINGS()->underLegLength + BOTSETTINGS()->ankleCOM.y - BOTSETTINGS()->footRadius) * -1;
 
 
 		btVector3 parentComToCurrentPivot(com1.x / 1000.f, com1.y / 1000.f, com1.z / 1000.f);

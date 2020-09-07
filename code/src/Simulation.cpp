@@ -35,6 +35,7 @@ void Simulation::update()
         physicsController.model.setMotorTargets( ikController.angles);
         physicsController.update();
         modelRenderer.model->setPosition(physicsController.model.bodyMatrix, physicsController.model.angles);
+        modelRenderer.physicsPositions = physicsController.model.positions;
     } else
     {
         modelRenderer.model->setPosition(ikController.bodyMatrix, ikController.angles);

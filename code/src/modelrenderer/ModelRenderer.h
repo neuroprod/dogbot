@@ -30,7 +30,7 @@ public:
 
     ci::gl::Texture2dRef	mShadowMapTex;
     int	fboSize = 2048;
-
+    std::vector<ci::vec3> physicsPositions;
 
 
     bool showFloor = true;

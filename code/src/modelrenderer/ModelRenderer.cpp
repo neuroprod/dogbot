@@ -100,6 +100,18 @@ void ModelRenderer::draw() {
 
         model->drawWire();
     }
+
+    gl::color(0,1,0);
+        for(vec3 p:physicsPositions)
+        {
+            gl::pushMatrices();
+           gl::translate(p);
+           gl::scale(vec3(20));
+            SYMBOLBATCHES()->sphereBatch->draw();
+            gl::popMatrices();
+
+        }
+
       if(showCOM)
       {
 

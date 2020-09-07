@@ -42,7 +42,7 @@ void PhysicsModel::updateData()
         if (lPosXN.y < 0) angleZ *= -1.f;
     }
 
-
+    positions.clear();
     int count = 0;
     for (int i = 0; i <16; i++)
     {
@@ -50,6 +50,10 @@ void PhysicsModel::updateData()
             angles[count++] = mMultiBody->getJointPos(i);
 
         }
+        btVector3 w = mMultiBody->getLinkCollider(i)->getWorldTransform().getOrigin();
+
+
+        positions.push_back(vec3(w.x()*1000,w.y()*1000,w.z()*1000));
     }
 
     for (int i = 0; i < legs.size(); i++)
