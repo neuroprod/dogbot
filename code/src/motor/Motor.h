@@ -35,7 +35,7 @@ class Motor {
 	float prevAngleTarget = 0;
 	float kpTarget = 580;
 	float kp = kpTarget;
-	ci::vec4 motorData;
+	ci::vec3 motorData;
 
     Smotor mSettings;
 
@@ -50,7 +50,7 @@ public:
 	void setMotorAngle(float angle);
 
 	void setMotorMaxSpeed(float speed);
-	ci::vec4 getData();
+	ci::vec3 getData();
 	
 	///////////////////////
 	

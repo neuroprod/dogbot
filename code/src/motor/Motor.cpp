@@ -123,7 +123,7 @@ void Motor::loop()
         outMutex.unlock();
 
         if(test) {
-            console()  << (float)Uencoder.r << endl;
+
             shutDown( id);
         }
       //  console() << (float)Utorque.r / 2048.f * 33.f << " " << (float)Uspeed.r << " " << (float)Uencoder.r << endl;
@@ -139,19 +139,24 @@ void Motor::drawGui()
 {
     ImGui::PushID(name.c_str());
     ImGui::SetNextTreeNodeOpen(true);
+    ci::vec3 mData = getData();
+
     if (ImGui::CollapsingHeader(name.c_str()))
     {
-
+       float angle = (float)mData.z*360.f /65536.f/6.f;
+        ImGui::Text("tes %f",angle );
         if (ImGui::SliderFloat("motorAngle", &angleTarget, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
         if (ImGui::SliderFloat("motorSpeed", &speedTarget, 0.f, 200000.f)) { setMotorMaxSpeed(speedTarget); }
         if (ImGui::SliderFloat("motorKp", &kpTarget, 0.f, 2000.f)) { inMutex.lock(); kp = kpTarget;     inMutex.unlock();}
-        if (ImGui::SliderFloat("motorOffset", &mSettings->mOffset, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
+        if (ImGui::SliderFloat("motorOffset", &mSettings->mOffset, 0, 60)) { setMotorAngle(angleTarget); }
         if (ImGui::InputFloat("inputOffset", &mSettings->mOffsetInput)) {  }
     }
+    if(motorGraph.gVisible)
+    {
 
-    outMutex.lock();
-    motorGraph.addData({ motorData.x,motorData.y,motorData.z  });
-    outMutex.unlock();
+        motorGraph.addData({ mData.x,mData.y,mData.z  });
+
+    }
     ImGui::PopID();
 
 
@@ -174,9 +179,9 @@ void Motor::setMotorMaxSpeed(float target)
     inMutex.unlock();
 }
 
-vec4 Motor::getData() 
+vec3 Motor::getData()
 {
-    vec4 data;
+    vec3 data;
     outMutex.lock();
     data = motorData;
     outMutex.unlock();
