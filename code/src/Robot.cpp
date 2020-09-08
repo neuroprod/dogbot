@@ -14,8 +14,9 @@ using namespace std;
 
 void Robot::setup() {
 
-
-
+    GPIO::setmode(GPIO::BOARD);
+    GPIO::setup(12, GPIO::OUT, GPIO::HIGH);
+sleep(1000);
     ikControle.setup();
     modelRenderer.setup();
     modelRenderer.showMesh =false;
@@ -24,8 +25,7 @@ void Robot::setup() {
 
     imu.start();
 
-   // GPIO::setmode(GPIO::BOARD);
-    //GPIO::setup(12, GPIO::OUT, GPIO::HIGH);
+
 
     isReady =true;
 }

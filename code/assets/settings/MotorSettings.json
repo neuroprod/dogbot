@@ -26,6 +26,45 @@
       }
    },
    {
+      "key" : "FRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 5,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMotor6",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "BRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 7,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMotor7",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "BLKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 8,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMotor8",
+         "startValue" : 0
+      }
+   },
+   {
       "key" : "BRHip",
       "type" : "motor",
       "value" : {

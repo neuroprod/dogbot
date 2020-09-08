@@ -18,7 +18,21 @@ void MotorControl::setup()
 	// SUBSYSTEM=="tty", ATTRS{idVendor}=="1234", ATTRS{idProduct}=="5678", SYMLINK+="your_device_name"
 	//reload: sudo udevadm trigger
     for( const auto &dev : Serial::getDevices() )
-        console() << "Device: " << dev.getName() << endl;
+    {
+
+        string name =  dev.getName();
+        string t =name.substr(3,3);
+        if(t=="USB" || t=="Mot")
+        {
+            console() << "Device: " << name<< endl;
+
+        }
+
+
+
+
+    }
+
 
 
 
