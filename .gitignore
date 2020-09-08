@@ -1,10 +1,19 @@
-code/cmake-build-debug/
-code/cmake-build-release/
-code/CMakeFiles/
-code/Release/
-code/Debug/
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+Debug
+Release
+cmake-build-debug
+cmake-build-release
 
-code/CMakeCache.txt
 *.cbp
 */cmake_install.cmake
 */MakeFile
