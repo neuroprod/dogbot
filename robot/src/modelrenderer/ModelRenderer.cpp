@@ -47,6 +47,8 @@ void ModelRenderer::draw() {
     gl::enableDepthRead();
     gl::enableDepthWrite();
 
+
+    mLightCam.lookAt(mLightPos+model->bodyPos, vec3(0.0f)+model->bodyPos);
     if(fboWindow.width !=0 || fboWindow.height !=0)
     {
        drawShadow();
@@ -57,7 +59,7 @@ void ModelRenderer::draw() {
     if(  fboWindow.begin())
   {
       camera.aspect = (float)fboWindow.width / (float)fboWindow.height;
-      camera.setBodyPos(vec3(0,0,0));
+      camera.setBodyPos(model->bodyPos);
       camera.update(fboWindow.vMin,fboWindow.vMax);
 
 
@@ -70,6 +72,7 @@ void ModelRenderer::draw() {
               if (ImGui::MenuItem("Show Mesh", NULL, showMesh)) {showMesh = !showMesh;}
               if (ImGui::MenuItem("Show Wire", NULL, showWire)) {showWire = !showWire;}
               if (ImGui::MenuItem("Show COM", NULL, showCOM)) {showCOM = !showCOM;}
+              if (ImGui::MenuItem("Show CollisionShapes", NULL, showCollisionShapes)) {showCollisionShapes= !showCollisionShapes;}
               ImGui::EndMenu();
           }
           ImGui::EndMenuBar();
@@ -100,18 +103,19 @@ void ModelRenderer::draw() {
 
         model->drawWire();
     }
+      if(showCollisionShapes)
+      {
+          gl::color(0, 1, 0);
+          for (vec3 p:physicsPositions)
+          {
+              gl::pushMatrices();
+              gl::translate(p);
+              gl::scale(vec3(20));
+              SYMBOLBATCHES()->sphereBatch->draw();
+              gl::popMatrices();
 
-    gl::color(0,1,0);
-        for(vec3 p:physicsPositions)
-        {
-            gl::pushMatrices();
-           gl::translate(p);
-           gl::scale(vec3(20));
-            SYMBOLBATCHES()->sphereBatch->draw();
-            gl::popMatrices();
-
-        }
-
+          }
+      }
       if(showCOM)
       {
 

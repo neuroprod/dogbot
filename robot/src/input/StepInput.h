@@ -10,10 +10,10 @@ class StepInput
 {
 public :
     StepInput(){}
-    float stepTime =200;
-    float stepHeight =60;
+    float stepTime =150;
+    float stepHeight =30;
     float moveAngle =0;
-    float moveLength =80;
+    float moveLength =0;
     float rotAngle =0;
     float homeZOffset =30;
 

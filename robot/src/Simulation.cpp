@@ -18,15 +18,25 @@ void Simulation::setup()
     modelRenderer.setup();
     stateController.setup(&ikController, &gaitController);
     physicsController.setup( ikController.bodyMatrix, ikController.angles);
-
+    balanceController.setup(false);
     isReady = true;
 
 }
 
 void Simulation::update()
 {
+    if (!play && !step) return;
+    step = false;
 
     stateController.update();
+    if (usePhysics &&  getElapsedSeconds()>5)
+    {
+
+        balanceController.update(physicsController.model.angleX, physicsController.model.angleZ);
+
+        ikController.setBalance(balanceController.offsetX,balanceController.offsetZ);
+
+    }
     ikController.update();
 
 
@@ -36,6 +46,8 @@ void Simulation::update()
         physicsController.update();
         modelRenderer.model->setPosition(physicsController.model.bodyMatrix, physicsController.model.angles);
         modelRenderer.physicsPositions = physicsController.model.positions;
+
+
     } else
     {
         modelRenderer.model->setPosition(ikController.bodyMatrix, ikController.angles);
@@ -49,6 +61,7 @@ void Simulation::update()
 void Simulation::draw()
 {
     drawSimGui();
+    balanceController.drawGui();
     physicsController.drawGui();
     ikController.drawGui();
     modelRenderer.draw();
@@ -70,7 +83,9 @@ void Simulation::drawSimGui()
         stateController.reset();
 
     }
-
+    if (ImGui::Button("play")) { play = true; } ImGui::SameLine();
+    if (ImGui::Button("pauze")) { play = false; }ImGui::SameLine();
+    if (ImGui::Button("step")) { step = true; };
 
     ImGui::End();
 

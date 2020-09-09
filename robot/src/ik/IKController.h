@@ -15,8 +15,11 @@ public:
     void update();
 	void drawGui();
     void reset();
+    void setBalance(float offsetX,float offsetZ);
     IKModel model;
 
+    float mOffsetX =0;
+    float mOffsetZ=0;
 	float bodyX = 50;
 	float bodyY = 0;
 	float bodyZ = 0;

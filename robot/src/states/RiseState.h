@@ -20,7 +20,7 @@ public:
     bool isDone();
 
     ci::Anim<float> bodyY;
-
+    ci::Anim<float> bodyX;
     IKController * ikController;
     bool done ;
 };

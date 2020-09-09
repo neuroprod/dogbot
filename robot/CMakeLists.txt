@@ -49,6 +49,8 @@ set(SRC_FILES
         ${APP_PATH}/src/physics/PhysicsModel.cpp
         ${APP_PATH}/src/physics/PhysicsLeg.cpp
         ${APP_PATH}/src/balance/IMU.cpp
+        ${APP_PATH}/src/balance/PID.cpp
+        ${APP_PATH}/src/balance/BalanceController.cpp
         )
 
 ci_make_app(

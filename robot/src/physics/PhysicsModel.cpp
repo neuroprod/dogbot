@@ -177,9 +177,9 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
         btCollisionShape* shape = new btSphereShape(BOTSETTINGS()->footRadius / 1000.f);
 
         btMultiBodyLinkCollider* col = new btMultiBodyLinkCollider(mMultiBody, i);
-        col->setFriction(1.0);
+        col->setFriction(0.9);
 
-        col->setRestitution(0.01f);
+        col->setRestitution(0.001f);
         col->setCollisionShape(shape);
 
         btTransform tr;

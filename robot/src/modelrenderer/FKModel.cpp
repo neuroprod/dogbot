@@ -24,6 +24,8 @@ void FKModel::setup() {
 void FKModel::setPosition(mat4 bodyMatrix,vector<float> &jointAngles) 
 {
 	body->baseMatrix = bodyMatrix;
+    bodyPos = bodyMatrix * vec4(0,0,0,1);
+
 	for (int i = 0; i < legs.size(); i++)
 	{
 		int index = i * 3;
