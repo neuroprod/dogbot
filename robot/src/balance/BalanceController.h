@@ -5,6 +5,7 @@
 #ifndef BOT_BALANCECONTROLLER_H
 #define BOT_BALANCECONTROLLER_H
 #include "PID.h"
+#include "../graph/GraphableArray.h"
 
 class BalanceController
 {
@@ -17,6 +18,7 @@ public:
     PID pidZ;
     float offsetX =0;
     float offsetZ =0;
+    GraphableArray balanceGraph;
 };
 
 

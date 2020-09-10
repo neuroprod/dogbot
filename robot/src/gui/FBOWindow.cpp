@@ -43,7 +43,7 @@ bool FBOWindow::begin()
     if (needResize)
     {
         gl::Fbo::Format format;
-        format.setSamples( 4 );
+        format.setSamples( 16 );
         mFbo = gl::Fbo::create(  width, height, format.depthTexture() );
     }
 

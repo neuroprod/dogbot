@@ -67,7 +67,7 @@ void Simulation::draw()
     modelRenderer.draw();
     stateController.draw();
     gaitController.drawGui();
-    GRAPH()->draw();
+    GRAPH()->draw("simulation");
 
 }
 

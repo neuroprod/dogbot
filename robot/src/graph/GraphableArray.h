@@ -7,12 +7,13 @@
 #include "Graphable.h"
 #include <list>
 #include <cinder/Font.h>
+#include <cinder/gl/Batch.h>
 
 class GraphableArray: public Graphable
 {
 public:
     GraphableArray(){}
-    void prepGraph(std::string name, int length, std::vector<float> scale, std::vector<ci::Color> color, std::vector<std::string> names);
+    void prepGraph(std::string name,std::string type, int length, std::vector<float> scale, std::vector<ci::Color> color, std::vector<std::string> names);
     void addData(std::vector<float> data);
     void gDraw(int width);
 
@@ -21,7 +22,7 @@ public:
     std::vector<ci::Color> gColors;
     std::vector<std::string> gNames;
     int gSize;
-
+    ci::gl::BatchRef rectBatch;
     ci::Font fontL;
     ci::Font fontS;
 };

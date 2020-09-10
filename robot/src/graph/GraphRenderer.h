@@ -12,7 +12,7 @@ class GraphRenderer
 public :
     GraphRenderer();
     void reg(Graphable * graphable);
-    void draw();
+    void draw(std::string type);
     FBOWindow fboWindow;
     std::vector<Graphable *> graphables;
 };

@@ -17,7 +17,7 @@ void GraphRenderer::reg(Graphable * graphable)
     graphables.push_back(graphable);
 
 }
-void GraphRenderer::draw()
+void GraphRenderer::draw(std::string type)
 {
 
     fboWindow.begin();
@@ -30,6 +30,7 @@ void GraphRenderer::draw()
 
             for(auto g:graphables)
             {
+                if(g->gType ==type);
                 ImGui::Checkbox(g->gName.c_str(),&g->gVisible);
             }
             ImGui::EndMenu();
@@ -45,11 +46,11 @@ void GraphRenderer::draw()
     float pos =0;
     for(auto g:graphables)
     {
-        if(g->gVisible)
+        if(g->gVisible && g->gType ==type)
         {
 
          g->gDraw(fboWindow.width);
-            ci::gl::translate(pos,200);
+            ci::gl::translate(pos,g->height);
         }
     }
     fboWindow.end();
