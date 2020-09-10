@@ -22,5 +22,5 @@ ci_make_app(
         CINDER_PATH ${CINDER_PATH}
 
 )
-
+target_link_libraries(remote stdc++fs )
 
