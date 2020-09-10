@@ -9,7 +9,7 @@ public:
     void drawGui(std::string name);
     float  output =0;
     float dt = 1.0f/120.f;
-	float max =30;
+	float max =150;
 	float min = -30;
 	float Kp =55;
 	float Ki = 0.0;

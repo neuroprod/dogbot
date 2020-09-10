@@ -116,6 +116,38 @@ void FKModel::drawCOM()
         SYMBOLBATCHES()->sphereBatch->draw();
         gl::popMatrices();
     }
+
+
+    nodes[5]->calcGlobalPos();
+    vec3 posFR = nodes[5]->globalPos;
+    posFR.y-=BOTSETTINGS()->footRadius;
+    nodes[9]->calcGlobalPos();
+    vec3 posFL = nodes[9]->globalPos;
+    posFL.y-=BOTSETTINGS()->footRadius;
+    nodes[13]->calcGlobalPos();
+    vec3 posBR = nodes[13]->globalPos;
+    posBR.y-=BOTSETTINGS()->footRadius;
+    nodes[17]->calcGlobalPos();
+    vec3 posBL = nodes[17]->globalPos;
+    posBL.y-=BOTSETTINGS()->footRadius;
+
+    vec3 c1 =  (posFR+posBL)/2.f;
+    vec3 c1R = c1;
+    c1R.y+=300;
+
+    gl::color(1,1,1);
+    gl::begin(GL_LINES);
+
+    gl::vertex( posFR);
+    gl::vertex( posBL);
+
+    gl::vertex( posFL);
+    gl::vertex( posBR);
+
+    gl::vertex( c1);
+    gl::vertex( c1R);
+
+    gl::end();
 }
 void FKModel::drawWire()
 {

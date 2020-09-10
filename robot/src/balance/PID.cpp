@@ -15,14 +15,14 @@ float PID::calculate(float target, float current)
 	float Pout = Kp * error;
 
 	// Integral term
-	integral += error * dt;
+	integral -= error * dt*50.0;
 	float Iout = Ki * integral;
 	//if (Iout < 0 && Pout>0)Iout = 0;
 	//if (Iout > 0 && Pout<0)Iout = 0;
 	// Derivative term
-	float derivative = (error - pre_error) / dt;
+	float derivative = (error - pre_error) ;
 	float Dout = 0;
-	 Dout = Kd * derivative;
+	 Dout = Kd * -derivative;
 
 
 	// Calculate total output
@@ -46,6 +46,7 @@ void PID::drawGui(string name)
 {
 	ImGui::PushID(name.c_str());
     ImGui::Text("%s error=%f",name.c_str() ,error/3.1415f*180.f);
+    ImGui::Text("integral =%f output =%f ",integral,output);
     ImGui::DragFloat("p", &Kp, 1.0f, 0, 2000);
     ImGui::DragFloat("i", &Ki, 0.1f, 0, 1000);
     ImGui::DragFloat("d", &Kd, 0.1f, 0, 1000);

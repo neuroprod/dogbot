@@ -9,12 +9,12 @@
 void BalanceController::setup( bool isRobot)
 {
    // SETTINGS()->getFloat("RobotSettings","bodyY",300)
-    pidX.Kp = 0;
+    pidX.Kp = 50;
     pidX.Kd = 0;
     pidX.inv = true;
     pidZ.Kp = 1000;
     pidZ.Kd = 0;
-
+    pidZ.Ki = 50;
     balanceGraph.prepGraph("Balance","simulation",2,{1000,1000},{ci::Color(1,0,0),ci::Color(0,1,0)},{"rotX","rotZ"} );
     balanceGraph.gVisible =true;
     balanceGraph.drawZero =true;
