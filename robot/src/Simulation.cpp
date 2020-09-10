@@ -56,6 +56,7 @@ void Simulation::update()
 
     modelRenderer.update();
 
+
 }
 
 void Simulation::draw()

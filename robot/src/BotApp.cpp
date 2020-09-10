@@ -97,6 +97,6 @@ void BotApp::draw()
 CINDER_APP(BotApp, RendererGl, [](App::Settings *settings)
 {
     SETTINGS()->load({"AppSettings", "RobotSettings", "MotorSettings"});
-    settings->setWindowPosUnspecified();
+    settings->setWindowPos(0,0);
 }
 )
