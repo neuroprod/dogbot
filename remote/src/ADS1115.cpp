@@ -12,7 +12,7 @@ void ADS1115::setup()
 
 
     m_i2cAddress = ADS1015_ADDRESS;
-    m_conversionDelay = ADS1115_CONVERSIONDELAY;
+    m_conversionDelay = ADS1115_CONVERSIONDELAY +20;
     m_bitShift = 0;
     m_gain = GAIN_TWOTHIRDS; /* +/- 6.144V range (limited to VDD +0.3V max!) */
     fd = wiringPiI2CSetup(m_i2cAddress);
@@ -83,6 +83,6 @@ uint16_t ADS1115::readRegister(uint8_t i2cFd, uint8_t reg)
 {
     wiringPiI2CWrite(i2cFd, ADS1015_REG_POINTER_CONVERT);
     uint16_t reading = wiringPiI2CReadReg16(i2cFd, reg);
-   // reading = (reading >> 8) | (reading << 8); // yes, wiringPi did not assemble the bytes as we want
+    reading = (reading >> 8) | (reading << 8); // yes, wiringPi did not assemble the bytes as we want
     return reading;
 }
