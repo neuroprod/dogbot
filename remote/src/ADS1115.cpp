@@ -9,6 +9,7 @@ using namespace ci::app;
 
 void ADS1115::setup()
 {
+    wiringPiI2CSetup (1);
     m_i2cAddress = ADS1015_ADDRESS;
     m_conversionDelay = ADS1115_CONVERSIONDELAY;
     m_bitShift = 0;
