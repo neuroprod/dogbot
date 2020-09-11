@@ -42,7 +42,7 @@ void RemoteApp::update()
 {
     #ifdef CINDER_GL_ES_3_RPI
     joysticks.update();
-#endif CINDER_GL_ES_3_RPI
+#endif 
 }
 
 void RemoteApp::draw()
