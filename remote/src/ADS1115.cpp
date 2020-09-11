@@ -29,6 +29,7 @@ void ADS1115::update()
 
 int ADS1115::readADC_SingleEnded(uint8_t channel)
 {
+    std::this_thread::sleep_for(std::chrono::milliseconds(m_conversionDelay));
     uint16_t config =
             ADS1015_REG_CONFIG_CQUE_NONE |    // Disable the comparator (default val)
             ADS1015_REG_CONFIG_CLAT_NONLAT |  // Non-latching (default val)
