@@ -124,7 +124,7 @@ public:
     void setup();
     void update();
     int readADC_SingleEnded(uint8_t channel);
-
+    int fd;
     uint8_t m_i2cAddress;      ///< the I2C address
     uint8_t m_conversionDelay; ///< conversion deay
     uint8_t m_bitShift;        ///< bit shift amount

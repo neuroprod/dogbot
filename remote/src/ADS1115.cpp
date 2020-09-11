@@ -15,7 +15,7 @@ void ADS1115::setup()
     m_conversionDelay = ADS1115_CONVERSIONDELAY;
     m_bitShift = 0;
     m_gain = GAIN_TWOTHIRDS; /* +/- 6.144V range (limited to VDD +0.3V max!) */
-    int s= wiringPiI2CSetup ( m_i2cAddress);
+    fd= wiringPiI2CSetup ( m_i2cAddress);
 }
 void ADS1115::update()
 {
@@ -58,14 +58,14 @@ int ADS1115::readADC_SingleEnded(uint8_t channel)
     config |= ADS1015_REG_CONFIG_OS_SINGLE;
 
     // Write config register to the ADC
-    wiringPiI2CWriteReg8(m_i2cAddress, ADS1015_REG_POINTER_CONFIG, config);
+    wiringPiI2CWriteReg8( fd, ADS1015_REG_POINTER_CONFIG, config);
 
     // Wait for the conversion to complete
    // delay(m_conversionDelay);
     std::this_thread::sleep_for(std::chrono::milliseconds(m_conversionDelay));
     // Read the conversion results
     // Shift 12-bit results right 4 bits for the ADS1015
-    return wiringPiI2CReadReg8(m_i2cAddress, ADS1015_REG_POINTER_CONVERT) ;
+    return wiringPiI2CReadReg8( fd, ADS1015_REG_POINTER_CONVERT) ;
 
 
 }
