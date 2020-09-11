@@ -9,7 +9,8 @@ using namespace ci::app;
 
 void ADS1115::setup()
 {
-    wiringPiI2CSetup (1);
+    int s= wiringPiI2CSetup (1);
+    console()<<s <<std::endl;
     m_i2cAddress = ADS1015_ADDRESS;
     m_conversionDelay = ADS1115_CONVERSIONDELAY;
     m_bitShift = 0;
@@ -21,7 +22,7 @@ void ADS1115::update()
     int b =readADC_SingleEnded(1);
     int c =readADC_SingleEnded(2);
     int d =readADC_SingleEnded(3);
-    console()<<a <<" "<<b <<" "<<c <<" "<<d <<std::endl;
+   /// console()<<a <<" "<<b <<" "<<c <<" "<<d <<std::endl;
 }
 int ADS1115::readADC_SingleEnded(uint8_t channel)
 {
