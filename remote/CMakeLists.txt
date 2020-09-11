@@ -14,14 +14,19 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 
 set(SRC_FILES
         ${APP_PATH}/src/RemoteApp.cpp
+        )
+if(CINDER_GL_ES_3_RPI)
+set(SRC_FILES_PI
+
         ${APP_PATH}/src/ADS1115.cpp
         )
-
+endif()
 ci_make_app(
-        SOURCES     ${SRC_FILES}
+        SOURCES     ${SRC_FILES} ${SRC_FILES_PI}
         CINDER_PATH ${CINDER_PATH}
 
 )
 
-
+if(CINDER_GL_ES_3_RPI)
 target_link_libraries(remote stdc++fs wiringPi)
+endif()

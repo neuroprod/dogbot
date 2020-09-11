@@ -21,8 +21,9 @@ public:
     void update() override;
 
     void draw() override;
-
+#ifdef CINDER_GL_ES_3_RPI
     ADS1115 joysticks;
+#endif
 };
 
 void RemoteApp::setup()
