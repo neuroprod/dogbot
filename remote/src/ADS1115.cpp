@@ -22,7 +22,7 @@ void ADS1115::update()
     int d =readADC_SingleEnded(3);
     console()<<a <<" "<<b <<" "<<c <<" "<<d <<std::endl;
 }
-int readADC_SingleEnded(uint8_t channel)
+int ADS1115::readADC_SingleEnded(uint8_t channel)
 {
     uint16_t config =
             ADS1015_REG_CONFIG_CQUE_NONE |    // Disable the comparator (default val)
