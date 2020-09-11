@@ -9,7 +9,7 @@ using namespace ci::app;
 
 void ADS1115::setup()
 {
-    m_i2cAddress = i2cAddress;
+    m_i2cAddress = ADS1015_ADDRESS;
     m_conversionDelay = ADS1115_CONVERSIONDELAY;
     m_bitShift = 0;
     m_gain = GAIN_TWOTHIRDS; /* +/- 6.144V range (limited to VDD +0.3V max!) */
