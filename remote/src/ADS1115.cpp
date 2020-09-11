@@ -58,7 +58,7 @@ int ADS1115::readADC_SingleEnded(uint8_t channel)
     config |= ADS1015_REG_CONFIG_OS_SINGLE;
 
     // Write config register to the ADC
-    wiringPiI2CWriteReg8( fd, ADS1015_REG_POINTER_CONFIG, config);
+    wiringPiI2CWriteReg16( fd, ADS1015_REG_POINTER_CONFIG, config);
 
     // Wait for the conversion to complete
    // delay(m_conversionDelay);
