@@ -20,7 +20,7 @@ public:
     void update() override;
 
     void draw() override;
-
+ console()<<"ok"<<endl;
     ADS1115 joysticks;
 };
 
@@ -32,7 +32,7 @@ void RemoteApp::setup()
     setWindowSize(500, 300);
 
     joysticks.setup();
-
+    
 }
 
 
