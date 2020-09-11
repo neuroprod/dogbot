@@ -4,6 +4,8 @@
 #include <wiringPiI2C.h>
 #include "ADS1115.h"
 
+using namespace ci;
+using namespace ci::app;
 
 void ADS1115::setup()
 {

@@ -120,9 +120,15 @@ class ADS1115
 {
 public:
     ADS1115(){}
+
     void setup();
     void update();
     uint16_t readADC_SingleEnded(uint8_t channel);
+
+    uint8_t m_i2cAddress;      ///< the I2C address
+    uint8_t m_conversionDelay; ///< conversion deay
+    uint8_t m_bitShift;        ///< bit shift amount
+    adsGain_t m_gain;          ///< ADC gain
 };
 
 
