@@ -14,7 +14,7 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 
 set(SRC_FILES
         ${APP_PATH}/src/RemoteApp.cpp
-        
+        ${APP_PATH}/src/ADS1115.cpp
         )
 
 ci_make_app(
