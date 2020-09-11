@@ -123,7 +123,7 @@ public:
 
     void setup();
     void update();
-    uint16_t readADC_SingleEnded(uint8_t channel);
+    int readADC_SingleEnded(uint8_t channel);
 
     uint8_t m_i2cAddress;      ///< the I2C address
     uint8_t m_conversionDelay; ///< conversion deay
