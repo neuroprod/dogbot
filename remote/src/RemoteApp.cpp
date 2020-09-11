@@ -7,8 +7,9 @@
 #include "cinder/app/RendererGl.h"
 
 #include "cinder/gl/gl.h"
+#ifdef CINDER_GL_ES_3_RPI
 #include "ADS1115.h"
-
+#endif  
 using namespace ci;
 using namespace ci::app;
 
@@ -20,7 +21,7 @@ public:
     void update() override;
 
     void draw() override;
- console()<<"ok"<<endl;
+
     ADS1115 joysticks;
 };
 
@@ -30,16 +31,17 @@ void RemoteApp::setup()
     gl::enableVerticalSync(false);
 
     setWindowSize(500, 300);
-
+#ifdef CINDER_GL_ES_3_RPI
     joysticks.setup();
-    
+ #endif   
 }
 
 
 void RemoteApp::update()
 {
+    #ifdef CINDER_GL_ES_3_RPI
     joysticks.update();
-
+#endif CINDER_GL_ES_3_RPI
 }
 
 void RemoteApp::draw()
