@@ -62,7 +62,7 @@ int ADS1115::readADC_SingleEnded(uint8_t channel)
     std::this_thread::sleep_for(std::chrono::milliseconds(m_conversionDelay));
     // Read the conversion results
     // Shift 12-bit results right 4 bits for the ADS1015
-    return wiringPiI2CReadReg(m_i2cAddress, ADS1015_REG_POINTER_CONVERT) ;
+    return wiringPiI2CReadReg8(m_i2cAddress, ADS1015_REG_POINTER_CONVERT) ;
 
 
 }
