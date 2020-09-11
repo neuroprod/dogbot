@@ -4,7 +4,7 @@
 
 #ifndef REMOTE_ADS1115_H
 #define REMOTE_ADS1115_H
-
+#include "cinder/app/App.h"
 
 /*=========================================================================
     I2C ADDRESS/BITS
