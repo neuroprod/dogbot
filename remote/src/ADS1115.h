@@ -124,7 +124,9 @@ public:
     void setup();
     void update();
     int readADC_SingleEnded(uint8_t channel);
-    int fd;
+    void writeRegister(uint8_t i2cFd, uint8_t reg, uint16_t value);
+    uint16_t readRegister(uint8_t i2cFd, uint8_t reg);
+    uint16_t fd;
     uint8_t m_i2cAddress;      ///< the I2C address
     uint8_t m_conversionDelay; ///< conversion deay
     uint8_t m_bitShift;        ///< bit shift amount
