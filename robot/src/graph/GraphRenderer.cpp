@@ -14,6 +14,15 @@ GraphRenderer::GraphRenderer()
 
 void GraphRenderer::reg(Graphable * graphable)
 {
+   
+    for(int i =0;i< graphables.size();i++){
+        if(graphables[i]->gName ==graphable->gName  )
+        {
+            graphables.erase(graphables.begin()+i);
+
+        }
+    }
+
     graphables.push_back(graphable);
 
 }
