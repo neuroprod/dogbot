@@ -40,7 +40,7 @@ void GraphableArray::gDraw(int width){
     gl::color(Color::gray(0.2));
     gl::drawLine(vec2(0,0),vec2(width,0));
    gl::drawString(gName, vec2(10, -90), Color(1, 1, 1), fontL);
-   float step = (float)(width-10)/500.f;
+   float step = (float)(width-20)/500.f;
     for (int i = 0; i < gSize; i++) {
         gl::color(gColors[i]);
         gl::pushMatrices();
@@ -52,11 +52,17 @@ void GraphableArray::gDraw(int width){
 
         gl::begin(GL_LINE_STRIP);
        float pos = 0;
-        for (auto const& val : gData) {
 
-            gl::vertex(vec2(pos, -val[i] * gScale[i]));
+        for (auto rit=gData.rbegin(); rit!=gData.rend(); ++rit)
+        {
+
+            gl::vertex(vec2(width-pos-10, (*rit)[i] * gScale[i]));
             pos +=  step;
+
+
         }
+
+
         gl::end();
 
 

@@ -47,12 +47,12 @@ void PID::reset(){
 void PID::drawGui(string name)
 {
 	ImGui::PushID(name.c_str());
-    ImGui::Text("%s error=%f",name.c_str() ,error/3.1415f*180.f);
+    ImGui::Text("%s error=%f",name.c_str() ,error);
     ImGui::Text("integral =%f derivative =%f",integral,derivative);
     ImGui::Text("P=%f I=%f  D=%f  out=%f",Pout,Iout,Dout,output);
-    ImGui::DragFloat("p", &Kp, 1.0f, 0, 2000);
-    ImGui::DragFloat("i", &Ki, 0.1f, 0, 1000);
-    ImGui::DragFloat("d", &Kd, 0.1f, 0, 1000);
+    ImGui::DragFloat("p", &Kp, 0.001f, -2.f, 2.f);
+    ImGui::DragFloat("i", &Ki, 0.001f, 0, 1);
+    ImGui::DragFloat("d", &Kd, 0.001f, 0, 1);
     ImGui::Checkbox("invert", &inv);
 	/*float errorSum = 0;
 	{

@@ -17,6 +17,7 @@ void PhysicsWorld::setup() {
     m_pairCache->setOverlapFilterCallback(m_filterCallback);
     m_broadphase = new btDbvtBroadphase(m_pairCache);
     m_solver = new btMultiBodyConstraintSolver;
+
     m_dynamicsWorld = new btMultiBodyDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
     m_dynamicsWorld->setGravity(btVector3(0, -10.f, 0));
     m_dynamicsWorld->getSolverInfo().m_jointFeedbackInWorldSpace = true;
@@ -27,8 +28,9 @@ void PhysicsWorld::setup() {
 }
 void PhysicsWorld::update()
 {
-    m_dynamicsWorld->stepSimulation(1. / 240, 0);
-    m_dynamicsWorld->stepSimulation(1. / 240, 0);
+    m_dynamicsWorld->stepSimulation(1. / 120, 5,1.f/480);
+
+   // m_dynamicsWorld->stepSimulation(1. / 240, 0);
 
 };
 

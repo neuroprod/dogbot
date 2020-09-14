@@ -66,7 +66,13 @@ void GaitController::update()
     currentStepTime+=delta;
     if(currentStepTime> stepTimeTotal)//switch internal stepStates
     {
-
+        int state = legs[0]->state;
+        if(state==3 || state==1)
+        {
+            GRAPH()->pulse(1);
+        }else{
+            GRAPH()->pulse(2);
+        }
         currentStepTime-= stepTimeTotal;
         stepTimeTotal =stepInput.stepTime;
         for(int i=0;i<4;i++)
@@ -97,7 +103,11 @@ void GaitController::update()
             }
             legs[i]->prepStateSwitch();
         }
-    }
+    }else
+        {
+        GRAPH()->pulse(0);
+
+        }
 
     for(int i=0;i<4;i++)
     {

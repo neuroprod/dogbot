@@ -93,7 +93,7 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
     btVector3 baseHalfExtents(BOTSETTINGS()->bodyLength/ 2000.f, 80.0f / 2000.f, BOTSETTINGS()->bodyWidth / 2000.f);
     BOTSETTINGS()->bodyXStart;;
 
-    btVector3 basePosition = btVector3(BOTSETTINGS()->bodyXStart/1000, BOTSETTINGS()->bodyYStart/1000, 0.f);
+    btVector3 basePosition = btVector3(BOTSETTINGS()->bodyXStart/1000, BOTSETTINGS()->bodyYStart/1000 +0.1, 0.f);
 
     btVector3 baseInertiaDiag(0.f, 0.f, 0.f);
     btScalar baseMass = btScalar (BOTSETTINGS()->bodyMass);
@@ -115,7 +115,7 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
     FRLeg = PhysicsLeg::create();
     FRLeg->setup("FR", vec3(BOTSETTINGS()->bodyLength / 2, 0, BOTSETTINGS()->bodyWidth / 2),  mMultiBody, 0);
     legs.push_back(FRLeg);
-
+    FRLeg->torqueGraph.gVisible =true;
     FLLeg = PhysicsLeg::create();
     FLLeg->setup("FL", vec3(BOTSETTINGS()->bodyLength / 2, 0, -BOTSETTINGS()->bodyWidth / 2),  mMultiBody, 4);
     legs.push_back(FLLeg);
@@ -177,9 +177,9 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
         btCollisionShape* shape = new btSphereShape(BOTSETTINGS()->footRadius / 1000.f);
 
         btMultiBodyLinkCollider* col = new btMultiBodyLinkCollider(mMultiBody, i);
-        col->setFriction(0.9);
+        col->setFriction(0.99);
 
-        col->setRestitution(0.001f);
+        col->setRestitution(0.000f);
         col->setCollisionShape(shape);
 
         btTransform tr;
@@ -195,7 +195,7 @@ void PhysicsModel::setup(btMultiBodyDynamicsWorld* world)
 
 
     }
-    float mTor = 1.000f;
+    float mTor = 1.0f;
 
     FRLeg->motorHip1 = new btMultiBodyJointMotor(mMultiBody, 0, 0, mTor);
     FRLeg->motorHip2 = new btMultiBodyJointMotor(mMultiBody, 1, 0, mTor);
@@ -265,7 +265,7 @@ void PhysicsModel::clean(btMultiBodyDynamicsWorld* world)
 {
 
 
-
+angles.clear();
 
     world->removeMultiBody(mMultiBody);
     for(auto coll:linkColiders)

@@ -32,6 +32,7 @@ public:
     GaitController gaitController;
     PhysicsController physicsController;
     BalanceController balanceController;
+    float waitTime =3;
     bool isReady =false;
     bool usePhysics =true;
     bool play =true;

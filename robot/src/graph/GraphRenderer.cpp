@@ -5,7 +5,7 @@
 #include "GraphRenderer.h"
 #include "cinder/CinderImGui.h"
 #include "cinder/gl/gl.h"
-
+using namespace ci;
 GraphRenderer::GraphRenderer()
 {
 
@@ -16,6 +16,14 @@ void GraphRenderer::reg(Graphable * graphable)
 {
     graphables.push_back(graphable);
 
+}
+void GraphRenderer::pulse(int i)
+{
+    pulseData.push_back(i);
+    if (pulseData.size() > 500)
+    {
+        pulseData.pop_front();
+    }
 }
 void GraphRenderer::draw(std::string type)
 {
@@ -38,18 +46,43 @@ void GraphRenderer::draw(std::string type)
         ImGui::EndMenuBar();
     }
 
+    float step = (float) (fboWindow.width -20) / 500.f;
+    int pos = 0;
+    for (auto rit=pulseData.rbegin(); rit!=pulseData.rend(); ++rit)
+    {
+
+
+        pos++;
+        if (*rit != 0)
+        {
+            if(*rit == 1)
+            {
+
+                gl::color(Color::gray(0.3));
+            }
+            else
+                {
+                    gl::color(Color::gray(0.1));
+                }
+
+            ci::gl::drawLine(vec2(fboWindow.width-10 -step * pos, 10),vec2(fboWindow.width -step * pos-10, fboWindow.height));
+
+        }
+
+
+    }
 
 
 
 
 
-    float pos =0;
+    pos =0;
     for(auto g:graphables)
     {
         if(g->gVisible && g->gType ==type)
         {
 
-         g->gDraw(fboWindow.width);
+            g->gDraw(fboWindow.width);
             ci::gl::translate(pos,g->height);
         }
     }

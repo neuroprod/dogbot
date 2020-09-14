@@ -14,7 +14,7 @@ void StepInput::drawGui(bool ownPannel )
     ImGui::Separator();
 
     ImGui::SliderFloat("stepTime",&stepTime,100,2000);
-    ImGui::SliderFloat("stepHeight",&stepHeight,10,200);
+    ImGui::SliderFloat("stepHeight",&stepHeight,0,200);
     ImGui::SliderFloat("homeZOffset",&homeZOffset,0,50);
     if(ownPannel) ImGui::End();
 

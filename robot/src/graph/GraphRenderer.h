@@ -7,14 +7,17 @@
 #include "../utils/Singleton.h"
 #include "Graphable.h"
 #include "../gui/FBOWindow.h"
+#include <list>
 class GraphRenderer
 {
 public :
     GraphRenderer();
     void reg(Graphable * graphable);
     void draw(std::string type);
+    void pulse(int i);
     FBOWindow fboWindow;
     std::vector<Graphable *> graphables;
+    std::list<int> pulseData;
 };
 typedef Singleton<GraphRenderer> GraphRendererSingleton;
 
