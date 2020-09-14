@@ -19,6 +19,7 @@ public:
     float offsetX =0;
     float offsetZ =0;
     GraphableArray balanceGraph;
+    void reset();
 };
 
 

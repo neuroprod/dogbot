@@ -82,7 +82,7 @@ void Simulation::drawSimGui()
         ikController.update();
         physicsController.reset();
         stateController.reset();
-
+        balanceController.reset();
     }
     if (ImGui::Button("play")) { play = true; } ImGui::SameLine();
     if (ImGui::Button("pauze")) { play = false; }ImGui::SameLine();

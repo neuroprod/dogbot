@@ -7,22 +7,20 @@ using namespace ci::app;
 using namespace std;
 float PID::calculate(float target, float current) 
 {
-	
+    if (inv)current *= -1;
 	// Calculate error
 	error = target - current;
 
 	// Proportional term
-	float Pout = Kp * error;
+	 Pout = Kp * error;
 
 	// Integral term
-	integral -= error * dt*50.0;
-	float Iout = Ki * integral;
-	//if (Iout < 0 && Pout>0)Iout = 0;
-	//if (Iout > 0 && Pout<0)Iout = 0;
-	// Derivative term
-	float derivative = (error - pre_error) ;
-	float Dout = 0;
-	 Dout = Kd * -derivative;
+	integral += error * dt;
+	Iout = Ki * integral;
+
+	derivative = (error - pre_error)/dt ;
+	 Dout = 0;
+	 Dout = Kd * derivative;
 
 
 	// Calculate total output
@@ -36,17 +34,22 @@ float PID::calculate(float target, float current)
 
 	// Save error to previous error
 	pre_error = error;
-	if (inv)output *= -1;
+
 	
 	return output;
 
 
 }
+void PID::reset(){
+    pre_error =0;
+    integral=0;
+}
 void PID::drawGui(string name)
 {
 	ImGui::PushID(name.c_str());
     ImGui::Text("%s error=%f",name.c_str() ,error/3.1415f*180.f);
-    ImGui::Text("integral =%f output =%f ",integral,output);
+    ImGui::Text("integral =%f derivative =%f",integral,derivative);
+    ImGui::Text("P=%f I=%f  D=%f  out=%f",Pout,Iout,Dout,output);
     ImGui::DragFloat("p", &Kp, 1.0f, 0, 2000);
     ImGui::DragFloat("i", &Ki, 0.1f, 0, 1000);
     ImGui::DragFloat("d", &Kd, 0.1f, 0, 1000);

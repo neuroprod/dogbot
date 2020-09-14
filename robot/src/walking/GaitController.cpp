@@ -34,7 +34,7 @@ void GaitController::setup()
 
 
     gaitGraph.prepGraph("Gait","simulation",4,{1,1,1,1},{Color(1,0,0),Color(0,1,0),Color(0,0,1),Color(1,1,1)},{"DerX","DerY","DerZ","Speed"} );
-    gaitGraph.gVisible =true;
+    gaitGraph.gVisible =false;
     GRAPH()->reg(&gaitGraph);
 }
 void GaitController::reset()
