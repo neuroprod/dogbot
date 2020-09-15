@@ -7,12 +7,10 @@
 #include "cinder/app/RendererGl.h"
 
 #include "cinder/gl/gl.h"
-#ifdef CINDER_GL_ES_3_RPI
-#include "ADS1115.h"
-#endif  
+#include "cinder/Serial.h"
 using namespace ci;
 using namespace ci::app;
-
+using namespace std;
 class RemoteApp : public App
 {
 public:
@@ -21,9 +19,7 @@ public:
     void update() override;
 
     void draw() override;
-#ifdef CINDER_GL_ES_3_RPI
-    ADS1115 joysticks;
-#endif
+    SerialRef	mSerial;
 };
 
 void RemoteApp::setup()
@@ -31,18 +27,35 @@ void RemoteApp::setup()
     setFrameRate(60);
     gl::enableVerticalSync(false);
 
-    setWindowSize(500, 300);
-#ifdef CINDER_GL_ES_3_RPI
-    joysticks.setup();
- #endif   
+    setWindowSize(500, 500);
+//sudo usermod -a -G dialout $USER
+//reboot
+    for( const auto &dev : Serial::getDevices() )
+        console() << "Device: " << dev.getName() << endl;
+
+    try {
+
+        mSerial = Serial::create(Serial::Device("ttyACM0"), 115200 );
+    }
+    catch( SerialExc &exc ) {
+      console()<< "coult not initialize the serial device"<<endl;
+
+    }
 }
 
 
 void RemoteApp::update()
 {
-    #ifdef CINDER_GL_ES_3_RPI
-    joysticks.update();
-#endif 
+    if(mSerial)
+    {
+        std::string mLastString= mSerial->readStringUntil('\n',80);
+        if(mLastString.length()>1){
+
+            console() << "last string: " << mLastString ;
+        }
+
+    }
+
 }
 
 void RemoteApp::draw()
