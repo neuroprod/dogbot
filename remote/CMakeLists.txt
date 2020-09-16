@@ -14,13 +14,16 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 
 set(SRC_FILES
         ${APP_PATH}/src/RemoteApp.cpp
+        ${APP_PATH}/src/serialInput/RSerial.cpp
+        ${APP_PATH}/src/communication/OSCReceiver.cpp
+        ${APP_PATH}/src/communication/OSCSender.cpp
         )
 
 
 ci_make_app(
-        SOURCES     ${SRC_FILES} ${SRC_FILES_PI}
+        SOURCES     ${SRC_FILES}
         CINDER_PATH ${CINDER_PATH}
-
+        BLOCKS OSC
 )
 
 

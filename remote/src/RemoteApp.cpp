@@ -7,7 +7,11 @@
 #include "cinder/app/RendererGl.h"
 
 #include "cinder/gl/gl.h"
-#include "cinder/Serial.h"
+
+#include "communication/OSCReceiver.h"
+#include "cinder/CinderImGui.h"
+#include "settings/SettingsHandler.h"
+#include "serialInput/RSerial.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -19,48 +23,39 @@ public:
     void update() override;
 
     void draw() override;
-    SerialRef	mSerial;
+    RSerial serial;
+    OSCReceiver receiver;
+
+    bool isFS =false;
 };
 
 void RemoteApp::setup()
 {
+
+    ImGui::Initialize();
+
     setFrameRate(60);
-    gl::enableVerticalSync(false);
 
-    setWindowSize(500, 500);
-//sudo usermod -a -G dialout $USER
-//reboot
-    for( const auto &dev : Serial::getDevices() )
-        console() << "Device: " << dev.getName() << endl;
 
-    try {
+    setWindowSize(800, 480);
 
-        mSerial = Serial::create(Serial::Device("ttyACM0"), 115200 );
-    }
-    catch( SerialExc &exc ) {
-      console()<< "coult not initialize the serial device"<<endl;
-
-    }
+    serial.setup();
+    receiver.setup();
 }
 
 
 void RemoteApp::update()
 {
-    if(mSerial)
-    {
-        std::string mLastString= mSerial->readStringUntil('\n',80);
-        if(mLastString.length()>1){
 
-            console() << "last string: " << mLastString ;
-        }
-
-    }
+    ImGui::Begin("Settings");
+    if(ImGui::Checkbox("fullscreen", &isFS)){setFullScreen(isFS);}
+    ImGui::End();
 
 }
 
 void RemoteApp::draw()
 {
-
+    gl::clear();
 
 }
 
@@ -68,6 +63,6 @@ void RemoteApp::draw()
 CINDER_APP(RemoteApp, RendererGl, [](App::Settings *settings)
 {
 
-
+    SETTINGS()->load({"AppSettings"});
 }
 )

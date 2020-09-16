@@ -13,6 +13,7 @@
 #include "Simulation.h"
 
 #include "Robot.h"
+#include "communication/OSCSender.h"
 
 
 using namespace ci;
@@ -40,10 +41,14 @@ public:
     Sbool isSimulation = SETTINGS()->getBool("AppSettings", "isSimulation", true);
     Sint windowSizeX = SETTINGS()->getInt("AppSettings", "windowSizeX", 1920);
     Sint windowSizeY = SETTINGS()->getInt("AppSettings", "windowSizeY", 1080);
+
+    OSCSender sender = OSCSender (10000,"127.0.0.1",10001);
+
 };
 
 void BotApp::setup()
 {
+sender.setup();
     setFrameRate(120);
     gl::enableVerticalSync(false);
 
@@ -64,6 +69,11 @@ void BotApp::setup()
 
 void BotApp::update()
 {
+    ci::osc::Message msg( "/mousemove/1" );
+    msg.append( 101 );
+    msg.append( 100 );
+    sender.send(msg);
+
     guiSetup.update();
 
     if (isSimulation->value())

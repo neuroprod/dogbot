@@ -51,12 +51,13 @@ set(SRC_FILES
         ${APP_PATH}/src/balance/IMU.cpp
         ${APP_PATH}/src/balance/PID.cpp
         ${APP_PATH}/src/balance/BalanceController.cpp
+        ${APP_PATH}/src/communication/OSCSender.cpp
         )
 
 ci_make_app(
         SOURCES     ${SRC_FILES}
         CINDER_PATH ${CINDER_PATH}
-
+        BLOCKS OSC
 )
 target_link_libraries(bot libJetsonGPIO.a OpenZen::OpenZen ${BULLET_LIBRARIES})
 
