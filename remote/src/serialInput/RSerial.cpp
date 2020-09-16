@@ -4,17 +4,19 @@
 
 #include "RSerial.h"
 #include "cinder/Utilities.h"
+using namespace ci;
+using namespace ci::app;
 void RSerial::setup()
 {
     for( const auto &dev : Serial::getDevices() )
-        console() << "Device: " << dev.getName() << endl;
+        console() << "Device: " << dev.getName() << std::endl;
 
     try {
 
         mSerial = Serial::create(Serial::Device("ttyACM0"), 115200 );
     }
     catch( SerialExc &exc ) {
-        console()<< "coult not initialize the serial device"<<endl;
+        console()<< "coult not initialize the serial device"<<std::endl;
 
     }
     if(mSerial)
@@ -37,7 +39,7 @@ void RSerial::worker()
                 if(strings.size()==5)
                 {
                     float i1 = std::stof(strings[0]);
-                    console() << i1 << endl;
+                    console() << i1 << std::endl;
                 }
             }
 
