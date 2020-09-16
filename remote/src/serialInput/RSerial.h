@@ -5,13 +5,15 @@
 #ifndef REMOTE_RSERIAL_H
 #define REMOTE_RSERIAL_H
 #include "cinder/app/App.h"
-
+#include "cinder/Serial.h"
 class RSerial
 {
 public:
     RSerial(){};
     void setup();
     void worker();
+
+    ci::SerialRef mSerial;
     ci::vec2 getRightJoystick();
     ci::vec2 getLeftJoystick();
     float getBatteryStatus();
