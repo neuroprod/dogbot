@@ -12,14 +12,22 @@ public:
     RSerial(){};
     void setup();
     void worker();
+    float clampJoystick(float in);
+    bool isConnected =false;
 
     ci::SerialRef mSerial;
     ci::vec2 getRightJoystick();
     ci::vec2 getLeftJoystick();
+    bool getLeftJoystickDown();
+    bool getRightJoystickDown();
+    
     float getBatteryStatus();
 
-    ci::vec2 mRightJoyStick;
-    ci::vec2 mLeftJoyStick;
+    ci::vec2 mRightJoystick;
+    ci::vec2 mLeftJoystick;
+    bool mLeftJoystickDown =false;
+    bool mRightJoystickDown=false;
+    
     float mBattery =0;
 
     std::thread thread;
