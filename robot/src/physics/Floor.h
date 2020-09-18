@@ -32,7 +32,7 @@ public:
         btRigidBody::btRigidBodyConstructionInfo rbInfo(btmass, myMotionState, colShape, localInertia);
         body= new btRigidBody(rbInfo);
         body->setActivationState(DISABLE_DEACTIVATION);
-        body->setFriction(1.f);
+        body->setFriction(0.9f);
 
 
         body->setRestitution(0.01f);

@@ -1,5 +1,7 @@
 #include "PhysicsLeg.h"
 #include "../RobotSettings.h"
+#include "../graph/GraphRenderer.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -17,9 +19,16 @@ void PhysicsLeg::updateData()
 	torque.x = tHip1;
 	torque.y = tHip2;
 	torque.z = tKnee;
+    torqueGraph.addData({tHip1,tHip2,tKnee});
 }
 void PhysicsLeg::setup(std::string name, glm::vec3 pos, btMultiBody* multiBody, int linkIndex)
 {
+
+    torqueGraph.prepGraph("t :"+ name,"simulation",3,{5,5,5},{ci::Color(1,0,0),ci::Color(0,1,0),ci::Color(0,0,1)},{"hip","knee","ankle"} );
+    torqueGraph.gVisible =false;
+    torqueGraph.drawZero =true;
+    GRAPH()->reg(&torqueGraph);
+
 
 	float  PI = glm::pi<float>();
 

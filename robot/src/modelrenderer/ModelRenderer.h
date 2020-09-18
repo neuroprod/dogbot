@@ -32,7 +32,7 @@ public:
     int	fboSize = 2048;
     std::vector<ci::vec3> physicsPositions;
 
-
+    bool showCollisionShapes= false;
     bool showFloor = true;
     bool showMesh = true;
     bool showWire = false;

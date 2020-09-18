@@ -14,6 +14,8 @@
 #include "input/StepInput.h"
 #include "walking/GaitController.h"
 #include "physics/PhysicsController.h"
+#include "balance/BalanceController.h"
+
 class Simulation
 {
 public:
@@ -29,9 +31,12 @@ public:
     StateController stateController;
     GaitController gaitController;
     PhysicsController physicsController;
-
+    BalanceController balanceController;
+    float waitTime =3;
     bool isReady =false;
     bool usePhysics =true;
+    bool play =true;
+    bool step =false;
 };
 
 

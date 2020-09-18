@@ -49,10 +49,15 @@ void IKController::reset()
     setBase();
 
 }
+void IKController::setBalance(float offsetX,float offsetZ)
+{
+    mOffsetX =offsetX;
+    mOffsetZ =offsetZ;
+}
 void IKController::update()
 {
     bodyMatrix = mat4();
-    bodyMatrix = glm::translate(bodyMatrix, vec3(bodyX, bodyY, bodyZ));
+    bodyMatrix = glm::translate(bodyMatrix, vec3(bodyX+mOffsetX, bodyY, bodyZ+mOffsetZ ));
 
     bodyMatrix = glm::rotate(bodyMatrix, bodyRotX, vec3(1, 0, 0));
     bodyMatrix = glm::rotate(bodyMatrix, bodyRotY, vec3(0, 1, 0));

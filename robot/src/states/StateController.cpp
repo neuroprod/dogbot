@@ -13,7 +13,7 @@ void StateController::setup(IKController * ikController, GaitController *gaitCon
     stepState.ikController  = ikController;
     stepState.gaitController  = gaitController;
 
-    if(true) //if simulation
+    if(false) //if simulation
     {
         currentState = &riseState;
         state = riseState.state;

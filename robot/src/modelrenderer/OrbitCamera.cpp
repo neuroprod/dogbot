@@ -59,12 +59,13 @@ void OrbitCamera::update(ImVec2 vMin,ImVec2 vMax)
     }
 
 
-	offsetPos += ( targetPos-offsetPos) / 20.f;
+	offsetPos += ( targetPos-offsetPos) / 5.f;
 
-	
+
 	phi += deltaPhi;
 	phi = glm::mod(phi, 3.1415f*2);
 	theta += deltaTheta;
+
 
 	theta = glm::clamp(theta, 0.01f, 3.1415f / 2);
 

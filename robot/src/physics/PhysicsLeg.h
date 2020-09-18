@@ -2,6 +2,7 @@
 #include "cinder/app/App.h"
 #include "PhysicsWorld.h"
 #include "cinder/app/App.h"
+#include "../graph/GraphableArray.h"
 
 class PhysicsLeg;
 typedef std::shared_ptr<PhysicsLeg> PhysicsLegRef;
@@ -24,6 +25,6 @@ public:
 	btMultiBodyJointMotor* motorHip1;
 	btMultiBodyJointMotor* motorHip2;
 	btMultiBodyJointMotor* motorKnee;
-
+    GraphableArray torqueGraph;
 
 }; 

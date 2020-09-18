@@ -50,7 +50,7 @@ void Robot::update() {
 void Robot::draw()
 {
     motorControl.drawGui();
-    GRAPH()->draw();
+    GRAPH()->draw("motors");
     ikControle.drawGui();
     modelRenderer.draw();
     imu.drawGui();

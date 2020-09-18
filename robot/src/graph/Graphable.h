@@ -15,7 +15,9 @@ public:
     Graphable() {};
     virtual void gDraw(int width) {};
     std::string gName;
+    std::string gType;
+    int height =200;
     bool gVisible = false;
-
+bool drawZero = false;
 };
 #endif //BOT_GRAPHABLE_H
