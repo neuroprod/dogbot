@@ -21,7 +21,7 @@ void Motor::setup(Smotor settings)
     mSettings =settings;
     id =   mSettings->mID  ;
 	name = mSettings->mKey;
-    port =  mSettings->mPort;
+    port ="ttyUSB0";//  mSettings->mPort;
     angleTarget = mSettings->mStartValue;
     motorAngle = angleTarget+mSettings->mOffset;
 
@@ -64,8 +64,8 @@ void Motor::loop()
 
     bool nComplete = true;
     std::vector<uint8_t> buffer;
-    std::this_thread::sleep_for (std::chrono::seconds(1));
 
+    std::this_thread::sleep_for (std::chrono::milliseconds(1000));
 
 
     while (nComplete)
@@ -93,8 +93,9 @@ void Motor::loop()
         my_serial->writeBytes(&data[0], data.size());
 
 
-
-
+       /* std::this_thread::sleep_for (std::chrono::milliseconds(16));
+         console()<<my_serial->getNumBytesAvailable()<<endl;
+        my_serial->flush();*/
 
       while ((my_serial->getNumBytesAvailable() != 13)) {
           std::this_thread::sleep_for (std::chrono::milliseconds(1));

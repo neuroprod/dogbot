@@ -15,15 +15,18 @@ using namespace std;
 void Robot::setup() {
 
     GPIO::setmode(GPIO::BOARD);
-    GPIO::setup(12, GPIO::OUT, GPIO::HIGH);
-sleep(1000);
+
+    GPIO::setup(15, GPIO::OUT, GPIO::HIGH);
+   // GPIO::setup(13, GPIO::OUT, GPIO::HIGH);
+
+
     ikControle.setup();
     modelRenderer.setup();
     modelRenderer.showMesh =false;
     modelRenderer.showWire =true;
     motorControl.setup();
 
-    imu.start();
+   // imu.start();
 
 
 
@@ -42,14 +45,7 @@ void Robot::update() {
 
 
 
-  /*int a = ci::app::getElapsedSeconds() ;
-  if(a%2==0){
-    GPIO::output(12, GPIO::HIGH);
-  }else
-      {
-          GPIO::output(12, GPIO::LOW);
 
-      }*/
 }
 void Robot::draw()
 {

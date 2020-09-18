@@ -1,31 +1,5 @@
 [
    {
-      "key" : "FLHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 2,
-         "max" : 30,
-         "min" : -30,
-         "offset" : -22.84,
-         "offsetInput" : 0,
-         "port" : "ttyMotor2",
-         "startValue" : 0
-      }
-   },
-   {
-      "key" : "BLHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 4,
-         "max" : 30,
-         "min" : -30,
-         "offset" : -17,
-         "offsetInput" : 0,
-         "port" : "ttyMotor4",
-         "startValue" : 0
-      }
-   },
-   {
       "key" : "FRKnee",
       "type" : "motor",
       "value" : {
@@ -48,6 +22,19 @@
          "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMotor7",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FRHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 1,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -29,
+         "offsetInput" : 0,
+         "port" : "ttyMotor1",
          "startValue" : 0
       }
    },
@@ -78,15 +65,28 @@
       }
    },
    {
-      "key" : "FRHip",
+      "key" : "BLHip",
       "type" : "motor",
       "value" : {
-         "id" : 1,
+         "id" : 4,
          "max" : 30,
          "min" : -30,
-         "offset" : -29,
+         "offset" : -17,
          "offsetInput" : 0,
-         "port" : "ttyMotor1",
+         "port" : "ttyMotor4",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FLHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 2,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -22.84,
+         "offsetInput" : 0,
+         "port" : "ttyMotor2",
          "startValue" : 0
       }
    }
