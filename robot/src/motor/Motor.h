@@ -5,7 +5,7 @@
 #include "../graph/GraphableArray.h"
 class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
-
+enum class MOTOR_STATE { NONE, POSITION,KILL,SET_ZERO };
 class Motor {
     bool doShutdown =false;
     bool doWritePosition =false;
@@ -13,13 +13,19 @@ class Motor {
 
 	float motorAngle = 0;
 	float motorSpeed = 1600;
-	void setPosition(uint8_t id, int64_t angle, int32_t speed);
-    void readAngle(uint8_t id);
-    void shutDown(uint8_t id);
+
+
+    void updatePosition();
+    void shutDown();
+    void setZero();
+
+	void setPositionData( int64_t angle, int32_t speed);
 	void makeHeader(uint8_t command, uint8_t id, uint8_t dataLength);
 	void addCheckSum();
 	void logData();
 	std::string toHexString(uint8_t b);
+
+
 	void loop();
 
 	uint8_t id;
@@ -45,6 +51,9 @@ class Motor {
     GraphableArray motorGraph;
 
     double prevTime =0;
+
+    MOTOR_STATE currentState = MOTOR_STATE::NONE;
+
 public:
 	Motor() {};
 

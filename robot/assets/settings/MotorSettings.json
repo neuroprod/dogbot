@@ -6,7 +6,7 @@
          "id" : 3,
          "max" : 30,
          "min" : -30,
-         "offset" : 14,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot3",
          "startValue" : 0
@@ -20,7 +20,7 @@
          "id" : 4,
          "max" : 30,
          "min" : -30,
-         "offset" : -17,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot4",
          "startValue" : 0
@@ -33,7 +33,7 @@
          "id" : 2,
          "max" : 30,
          "min" : -30,
-         "offset" : -22.84,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot2",
          "startValue" : 0
@@ -46,7 +46,7 @@
          "id" : 1,
          "max" : 30,
          "min" : -30,
-         "offset" : -29,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot1",
          "startValue" : 0
@@ -59,7 +59,7 @@
          "id" : 4,
          "max" : 30,
          "min" : -30,
-         "offset" : -17,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot8",
          "startValue" : 0
@@ -72,7 +72,7 @@
          "id" : 4,
          "max" : 30,
          "min" : -30,
-         "offset" : -17,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot7",
          "startValue" : 0
@@ -85,7 +85,7 @@
          "id" : 2,
          "max" : 30,
          "min" : -30,
-         "offset" : -22.84,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot6",
          "startValue" : 0
@@ -98,7 +98,7 @@
          "id" : 1,
          "max" : 30,
          "min" : -30,
-         "offset" : -29,
+         "offset" : 0,
          "offsetInput" : 0,
          "port" : "ttyMot5",
          "startValue" : 0
