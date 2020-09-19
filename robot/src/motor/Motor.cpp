@@ -21,7 +21,7 @@ void Motor::setup(Smotor settings)
     mSettings =settings;
     id =   mSettings->mID  ;
 	name = mSettings->mKey;
-    port = mSettings->mPort;
+    port =mSettings->mPort;
     angleTarget = mSettings->mStartValue;
     motorAngle = angleTarget+mSettings->mOffset;
 
@@ -65,51 +65,62 @@ void Motor::loop()
 
     while (nComplete)
     {
-        inMutex.lock();
-        float maxSpeed = motorSpeed;
-        float  angleTarget = motorAngle;
-        float  kpR = kp;
-        inMutex.unlock();
 
-
-        uint32_t speedR= maxSpeed;
-        int64_t  angleR = (angleTarget ) * 100.f * 6.f;
-        float angleChange = abs(prevAngleTarget - angleTarget);
-        uint32_t speed = angleChange *60 * kpR;
-        if (speed < speedR && speed !=0)speedR = speed;
-
-        prevAngleTarget = angleTarget;
-        setPosition(id, angleR, speedR);
-        my_serial->writeBytes(&data[0], data.size());
-
-
-        while ((my_serial->getNumBytesAvailable() != 13)) {
-          std::this_thread::sleep_for (std::chrono::milliseconds(1));
+       // if(id==1)
+        {
+            double now =getElapsedSeconds();
+console()<<now- prevTime<<endl;
+            prevTime =now;
         }
 
-        buffer.clear();
-        buffer.resize(13);
-        my_serial->readBytes(&buffer[0], 13);
+        if(doWritePositon) {
 
-        Union16 Utorque;
-        Utorque.b[0] = buffer[6];
-        Utorque.b[1] = buffer[7];
+            inMutex.lock();
+            float maxSpeed = motorSpeed;
+            float angleTarget = motorAngle;
+            float kpR = kp;
+            inMutex.unlock();
 
-        Union16 Uspeed;
-        Uspeed.b[0] = buffer[8];
-        Uspeed.b[1] = buffer[9];
 
-        UnionU16 Uencoder;
-        Uencoder.b[0] = buffer[10];
-        Uencoder.b[1] = buffer[11];
+            uint32_t speedR = maxSpeed;
+            int64_t angleR = (angleTarget) * 100.f * 6.f;
+            float angleChange = abs(prevAngleTarget - angleTarget);
+            uint32_t speed = angleChange * 60 * kpR;
+            if (speed < speedR && speed != 0)speedR = speed;
 
-        outMutex.lock();
-        motorData.x = Utorque.r;
-        motorData.y = Uspeed.r;
-        motorData.z = Uencoder.r;
-        outMutex.unlock();
+            prevAngleTarget = angleTarget;
+            setPosition(id, angleR, speedR);
+            my_serial->writeBytes(&data[0], data.size());
 
-        if(test) {
+
+            while ((my_serial->getNumBytesAvailable() != 13)) {
+                console() << my_serial->getNumBytesAvailable() << endl;
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
+
+            buffer.clear();
+            buffer.resize(13);
+            my_serial->readBytes(&buffer[0], 13);
+
+            Union16 Utorque;
+            Utorque.b[0] = buffer[6];
+            Utorque.b[1] = buffer[7];
+
+            Union16 Uspeed;
+            Uspeed.b[0] = buffer[8];
+            Uspeed.b[1] = buffer[9];
+
+            UnionU16 Uencoder;
+            Uencoder.b[0] = buffer[10];
+            Uencoder.b[1] = buffer[11];
+
+            outMutex.lock();
+            motorData.x = Utorque.r;
+            motorData.y = Uspeed.r;
+            motorData.z = Uencoder.r;
+            outMutex.unlock();
+        }
+        if(doShutdown) {
 
             shutDown( id);
         }
@@ -191,7 +202,6 @@ void Motor::readAngle(uint8_t id)
 {
 
     makeHeader(0x92, 1, 0x00);
-
     addCheckSum();
 
 }
@@ -199,7 +209,6 @@ void Motor::shutDown(uint8_t id)
 {
 
     makeHeader(0x80, 1, 0x00);
-
     addCheckSum();
 
 }

@@ -8,23 +8,11 @@
          "min" : -30,
          "offset" : 14,
          "offsetInput" : 0,
-         "port" : "ttyMotor3",
+         "port" : "ttyMot3",
          "startValue" : 0
       }
    },
-   {
-      "key" : "FRKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 0,
-         "max" : 30,
-         "min" : -30,
-         "offset" : 0,
-         "offsetInput" : 0,
-         "port" : "ttyMotorName",
-         "startValue" : 0
-      }
-   },
+
    {
       "key" : "BLHip",
       "type" : "motor",
@@ -34,7 +22,7 @@
          "min" : -30,
          "offset" : -17,
          "offsetInput" : 0,
-         "port" : "ttyMotor4",
+         "port" : "ttyMot4",
          "startValue" : 0
       }
    },
@@ -47,7 +35,7 @@
          "min" : -30,
          "offset" : -22.84,
          "offsetInput" : 0,
-         "port" : "ttyMotor2",
+         "port" : "ttyMot2",
          "startValue" : 0
       }
    },
@@ -60,7 +48,59 @@
          "min" : -30,
          "offset" : -29,
          "offsetInput" : 0,
-         "port" : "ttyMotor1",
+         "port" : "ttyMot1",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "BLKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -17,
+         "offsetInput" : 0,
+         "port" : "ttyMot8",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "BRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -17,
+         "offsetInput" : 0,
+         "port" : "ttyMot7",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FLKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 2,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -22.84,
+         "offsetInput" : 0,
+         "port" : "ttyMot6",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 1,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -29,
+         "offsetInput" : 0,
+         "port" : "ttyMot5",
          "startValue" : 0
       }
    }

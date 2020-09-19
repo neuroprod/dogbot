@@ -17,7 +17,7 @@ void MotorControl::setup()
 	///set device in: etc/udev/rules.d/99-usb-serial.rules
 	// SUBSYSTEM=="tty", ATTRS{idVendor}=="1234", ATTRS{idProduct}=="5678", SYMLINK+="your_device_name"
 	//reload: sudo udevadm trigger
-    if(false)
+    if(true)
     {
         for (const auto &dev : Serial::getDevices())
         {
@@ -33,23 +33,44 @@ void MotorControl::setup()
     }
 
 
-
-
+/*
+//fr
 	MotorRef FRHip = Motor::create();
 	FRHip->setup(SETTINGS()->getMotor("FRHip"));
 	motors.push_back(FRHip);
 
+
+    MotorRef FRKnee = Motor::create();
+    FRKnee->setup(SETTINGS()->getMotor("FRKnee"));
+    motors.push_back(FRKnee);
+
+
+    //fl
     MotorRef FLHip = Motor::create();
     FLHip->setup(SETTINGS()->getMotor("FLHip"));
     motors.push_back(FLHip);
 
+    MotorRef FLKnee = Motor::create();
+    FLKnee->setup(SETTINGS()->getMotor("FLKnee"));
+    motors.push_back(FLKnee);
+
+    //br
     MotorRef BRHip = Motor::create();
     BRHip->setup(SETTINGS()->getMotor("BRHip"));
     motors.push_back(BRHip);
-
+*/
+    MotorRef BRKnee = Motor::create();
+    BRKnee->setup(SETTINGS()->getMotor("BRKnee"));
+    motors.push_back(BRKnee);
+/*
+    //bl
     MotorRef BLHip = Motor::create();
     BLHip->setup(SETTINGS()->getMotor("BLHip"));
     motors.push_back(BLHip);
+
+    MotorRef BLKnee = Motor::create();
+    BLKnee->setup(SETTINGS()->getMotor("BLKnee"));
+    motors.push_back(BLKnee);*/
 }
 
 void MotorControl::drawGui()

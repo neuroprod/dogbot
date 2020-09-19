@@ -7,7 +7,10 @@ class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
 
 class Motor {
-    bool test =false;
+    bool doShutdown =false;
+    bool doWritePosition =false;
+
+
 	float motorAngle = 0;
 	float motorSpeed = 1600;
 	void setPosition(uint8_t id, int64_t angle, int32_t speed);
@@ -40,6 +43,8 @@ class Motor {
     Smotor mSettings;
 
     GraphableArray motorGraph;
+
+    double prevTime =0;
 public:
 	Motor() {};
 
