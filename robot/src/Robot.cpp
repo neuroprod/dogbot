@@ -14,11 +14,11 @@ using namespace std;
 
 void Robot::setup() {
 
-    GPIO::setmode(GPIO::BOARD);
+/*    GPIO::setmode(GPIO::BOARD);
 
     GPIO::setup(15, GPIO::OUT, GPIO::HIGH);
    // GPIO::setup(13, GPIO::OUT, GPIO::HIGH);
-
+*/
 
     ikControle.setup();
     modelRenderer.setup();

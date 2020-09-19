@@ -15,7 +15,7 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 set(SRC_FILES
         ${APP_PATH}/src/RemoteApp.cpp
         ${APP_PATH}/src/serialInput/RSerial.cpp
-        ${APP_PATH}/src/communication/OSCReceiver.cpp
+           ${APP_PATH}/src/communication/OSCReceiver.cpp
         ${APP_PATH}/src/communication/OSCSender.cpp
         )
 

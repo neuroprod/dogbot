@@ -1,57 +1,5 @@
 [
    {
-      "key" : "FRKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 5,
-         "max" : 30,
-         "min" : -30,
-         "offset" : 0,
-         "offsetInput" : 0,
-         "port" : "ttyMotor6",
-         "startValue" : 0
-      }
-   },
-   {
-      "key" : "BRKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 7,
-         "max" : 30,
-         "min" : -30,
-         "offset" : 0,
-         "offsetInput" : 0,
-         "port" : "ttyMotor7",
-         "startValue" : 0
-      }
-   },
-   {
-      "key" : "FRHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 1,
-         "max" : 30,
-         "min" : -30,
-         "offset" : -29,
-         "offsetInput" : 0,
-         "port" : "ttyMotor1",
-         "startValue" : 0
-      }
-   },
-   {
-      "key" : "BLKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 8,
-         "max" : 30,
-         "min" : -30,
-         "offset" : 0,
-         "offsetInput" : 0,
-         "port" : "ttyMotor8",
-         "startValue" : 0
-      }
-   },
-   {
       "key" : "BRHip",
       "type" : "motor",
       "value" : {
@@ -61,6 +9,19 @@
          "offset" : 14,
          "offsetInput" : 0,
          "port" : "ttyMotor3",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 0,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMotorName",
          "startValue" : 0
       }
    },
@@ -87,6 +48,19 @@
          "offset" : -22.84,
          "offsetInput" : 0,
          "port" : "ttyMotor2",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FRHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 1,
+         "max" : 30,
+         "min" : -30,
+         "offset" : -29,
+         "offsetInput" : 0,
+         "port" : "ttyMotor1",
          "startValue" : 0
       }
    }

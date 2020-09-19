@@ -21,14 +21,13 @@ void Motor::setup(Smotor settings)
     mSettings =settings;
     id =   mSettings->mID  ;
 	name = mSettings->mKey;
-    port ="ttyUSB0";//  mSettings->mPort;
+    port = mSettings->mPort;
     angleTarget = mSettings->mStartValue;
     motorAngle = angleTarget+mSettings->mOffset;
 
 
 
     motorGraph.prepGraph(name,"motors",3,{0.5f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
-
     GRAPH()->reg(&motorGraph);
 
     unsigned long baud = 115200;
@@ -37,11 +36,8 @@ void Motor::setup(Smotor settings)
     try {
         Serial::Device dev = Serial::findDeviceByNameContains( port );
         my_serial = Serial::create(dev, baud);
-
-
-
-           my_serial->flush();
-            motorThread = std::thread(&Motor::loop, this);
+        my_serial->flush();
+        motorThread = std::thread(&Motor::loop, this);
 
     }
     catch (...)
@@ -64,7 +60,6 @@ void Motor::loop()
 
     bool nComplete = true;
     std::vector<uint8_t> buffer;
-
     std::this_thread::sleep_for (std::chrono::milliseconds(1000));
 
 
@@ -76,30 +71,21 @@ void Motor::loop()
         float  kpR = kp;
         inMutex.unlock();
 
-        //speed = dps*100
 
         uint32_t speedR= maxSpeed;
         int64_t  angleR = (angleTarget ) * 100.f * 6.f;
-
         float angleChange = abs(prevAngleTarget - angleTarget);
         uint32_t speed = angleChange *60 * kpR;
         if (speed < speedR && speed !=0)speedR = speed;
-       // console() << angleChange <<" "<< speed << " " << speedR << " "<< my_serial->getNumBytesAvailable() << endl;
+
         prevAngleTarget = angleTarget;
-
-
         setPosition(id, angleR, speedR);
-
         my_serial->writeBytes(&data[0], data.size());
 
 
-       /* std::this_thread::sleep_for (std::chrono::milliseconds(16));
-         console()<<my_serial->getNumBytesAvailable()<<endl;
-        my_serial->flush();*/
-
-      while ((my_serial->getNumBytesAvailable() != 13)) {
+        while ((my_serial->getNumBytesAvailable() != 13)) {
           std::this_thread::sleep_for (std::chrono::milliseconds(1));
-      }
+        }
 
         buffer.clear();
         buffer.resize(13);
@@ -127,11 +113,7 @@ void Motor::loop()
 
             shutDown( id);
         }
-      //  console() << (float)Utorque.r / 2048.f * 33.f << " " << (float)Uspeed.r << " " << (float)Uencoder.r << endl;
-      /*  std::this_thread::sleep_for (std::chrono::seconds(5));
-       *
-        shutDown( id);
-        my_serial->writeBytes(&data[0], data.size());*/
+
     }
 }
 
@@ -154,9 +136,7 @@ void Motor::drawGui()
     }
     if(motorGraph.gVisible)
     {
-
         motorGraph.addData({ mData.x,mData.y,mData.z  });
-
     }
     ImGui::PopID();
 
@@ -167,16 +147,12 @@ void Motor::setMotorAngle(float target)
 {
     inMutex.lock();
     motorAngle = target+mSettings->mOffset;
-
-   
     inMutex.unlock();
 }
 void Motor::setMotorMaxSpeed(float target)
 {
     inMutex.lock();
     motorSpeed =target;
-
-   
     inMutex.unlock();
 }
 
