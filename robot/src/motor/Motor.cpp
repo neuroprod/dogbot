@@ -180,7 +180,7 @@ void Motor::updatePosition()
 
     Union16 Utorque;
     Utorque.b[0] = buffer[6];
-    Utorque.b[1] = buffer[7];
+    Utorque.b[1] = buffer[7];a
 
     Union16 Uspeed;
     Uspeed.b[0] = buffer[8];
