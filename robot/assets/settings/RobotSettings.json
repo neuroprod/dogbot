@@ -1,5 +1,14 @@
 [
    {
+      "key" : "toeCOM",
+      "type" : "vec3",
+      "value" : {
+         "x" : 0,
+         "y" : 0,
+         "z" : 0
+      }
+   },
+   {
       "key" : "underLegLength",
       "type" : "float",
       "value" : 250
@@ -53,11 +62,6 @@
       "value" : 80
    },
    {
-      "key" : "hipOffsetX ",
-      "type" : "float",
-      "value" : 60
-   },
-   {
       "key" : "hipOffsetZ",
       "type" : "float",
       "value" : 79
@@ -66,15 +70,6 @@
       "key" : "hipMass",
       "type" : "float",
       "value" : 1
-   },
-   {
-      "key" : "toeCOM",
-      "type" : "vec3",
-      "value" : {
-         "x" : 0,
-         "y" : 0,
-         "z" : 0
-      }
    },
    {
       "key" : "toeMass",
@@ -127,6 +122,11 @@
       "key" : "bodyXStart",
       "type" : "float",
       "value" : -27
+   },
+   {
+      "key" : "hipOffsetX ",
+      "type" : "float",
+      "value" : 60
    },
    {
       "key" : "bodyWidth",

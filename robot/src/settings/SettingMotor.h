@@ -28,13 +28,13 @@ public:
         //mValue = json.getValue<int>();
         mID =json.getChild("id").getValue<int>();
         mPort =json.getChild("port").getValue<std::string>();
-        mOffset =json.getChild("offset").getValue<float>();
+
         mMin =json.getChild("min").getValue<float>();
         mMax =json.getChild("max").getValue<float>();
-        mStartValue =json.getChild("startValue").getValue<float>();
-        if(json.hasChild("offsetInput")){
+
         mOffsetInput =json.getChild("offsetInput").getValue<float>();
-        }
+        reverse =json.getChild("reverse").getValue<bool>();
+
 
     }
 
@@ -49,22 +49,21 @@ public:
 
         jsonVal.addChild(ci::JsonTree("id",mID));
         jsonVal.addChild(ci::JsonTree("port",mPort));
-        jsonVal.addChild(ci::JsonTree("offset",mOffset));
+        jsonVal.addChild(ci::JsonTree("reverse",reverse));
         jsonVal.addChild(ci::JsonTree("offsetInput",mOffsetInput));
         jsonVal.addChild(ci::JsonTree("min",mMin));
         jsonVal.addChild(ci::JsonTree("max",mMax));
-        jsonVal.addChild(ci::JsonTree("startValue",mStartValue));
+
         json.addChild(jsonVal);
 
         return json;
     }
 
     int mID =0;
-    float mOffset=0.f ;
     float mOffsetInput=0.f ;
     float mMin=-30.f ;
     float mMax=30.f ;
-    float mStartValue=0.f ;
+  bool reverse =false;
 
     std::string mPort="ttyMotorName" ;
 

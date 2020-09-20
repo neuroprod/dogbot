@@ -16,6 +16,8 @@ public:
 	void drawGui();
     void reset();
     void setBalance(float offsetX,float offsetZ);
+    float clampAngle(float);
+
     IKModel model;
 
     float mOffsetX =0;
@@ -34,7 +36,7 @@ public:
 	IKControleLegRef BL;
 
 	std::vector<IKControleLegRef> legs;
-
+    float PI = 3.14159265359;
 
     glm::mat4 bodyMatrix;
     std::vector<float> angles;

@@ -71,14 +71,18 @@ void IKController::update()
         target.y += BOTSETTINGS()->footRadius;
         model.legs[i]->resolve(target, invBodyMatrix);
 
-        angles[count++] = model.legs[i]->angleHip1;
-        angles[count++] = model.legs[i]->angleHip2;
-        angles[count++] = model.legs[i]->angleKnee;
+        angles[count++] =clampAngle( model.legs[i]->angleHip1);
+        angles[count++] =clampAngle( model.legs[i]->angleHip2);
+        angles[count++] =clampAngle( model.legs[i]->angleKnee);
     }
 
 
 }
-
+float IKController::clampAngle(float angle)
+{
+    if (angle< -PI ){angle += PI*2;}
+    else if (angle> PI ){angle -= PI*2;}
+}
 void IKController::drawGui()
 {
 
@@ -141,7 +145,7 @@ void IKController::drawGui()
 	ImGui::Text("FR  H:%f K:%f A:%f", angles[0]*toDeg ,angles[1]*toDeg,angles[2]*toDeg );
     ImGui::Text("FL  H:%f K:%f A:%f", angles[3]*toDeg ,angles[4]*toDeg,angles[5]*toDeg );
     ImGui::Text("BR  H:%f K:%f A:%f", angles[6]*toDeg ,angles[7]*toDeg,angles[8]*toDeg );
-    ImGui::Text("FL  H:%f K:%f A:%f", angles[9]*toDeg ,angles[10]*toDeg,angles[11]*toDeg );
+    ImGui::Text("BL  H:%f K:%f A:%f", angles[9]*toDeg ,angles[10]*toDeg,angles[11]*toDeg );
 
 	ImGui::End();
 }

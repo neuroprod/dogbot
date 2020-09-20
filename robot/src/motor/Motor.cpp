@@ -22,9 +22,9 @@ void Motor::setup(Smotor settings)
     id =   mSettings->mID  ;
 	name = mSettings->mKey;
     port =mSettings->mPort;
-    angleTarget = mSettings->mStartValue;
-    motorAngle = angleTarget+mSettings->mOffset;
-
+    angleUI =mSettings->mOffsetInput;
+    motorAngle = 0;
+console()<< angleUI<<endl;
 
 
     motorGraph.prepGraph(name,"motors",3,{0.5f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
@@ -109,11 +109,11 @@ void Motor::drawGui()
     {
        float angle = (float)mData.z*360.f /65536.f/6.f;
         ImGui::Text("tes %f",angle );
-        if (ImGui::SliderFloat("motorAngle", &angleTarget, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleTarget); }
-        if (ImGui::SliderFloat("motorSpeed", &speedTarget, 0.f, 200000.f)) { setMotorMaxSpeed(speedTarget); }
+        if (ImGui::SliderFloat("motorAngle", &angleUI, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleUI/180.f*3.1415f); }
+        if (ImGui::SliderFloat("motorSpeed", &speedUI, 0.f, 200000.f)) { setMotorMaxSpeed(speedUI); }
         if (ImGui::SliderFloat("motorKp", &kpTarget, 0.f, 2000.f)) { inMutex.lock(); kp = kpTarget;     inMutex.unlock();}
-        if (ImGui::SliderFloat("motorOffset", &mSettings->mOffset, 0, 60)) { setMotorAngle(angleTarget); }
         if (ImGui::InputFloat("inputOffset", &mSettings->mOffsetInput)) {  }
+        if (ImGui::Checkbox("reverse", &mSettings->reverse)) {  }
     }
     if(motorGraph.gVisible)
     {
@@ -126,8 +126,14 @@ void Motor::drawGui()
 
 void Motor::setMotorAngle(float target)
 {
+    float deg = target*180.f/3.14159265359;
+    float result = deg - mSettings->mOffsetInput;
+    if(mSettings->reverse)  result*=-1;
+
+
+console()<<result <<" "<<deg <<endl;
     inMutex.lock();
-    motorAngle = target+mSettings->mOffset;
+    motorAngle = deg;
     inMutex.unlock();
 }
 void Motor::setMotorMaxSpeed(float target)
@@ -180,7 +186,7 @@ void Motor::updatePosition()
 
     Union16 Utorque;
     Utorque.b[0] = buffer[6];
-    Utorque.b[1] = buffer[7];a
+    Utorque.b[1] = buffer[7];
 
     Union16 Uspeed;
     Uspeed.b[0] = buffer[8];

@@ -38,8 +38,9 @@ class Motor {
 	ci::SerialRef my_serial;
 	bool connectionFailed = false;
 
-	float angleTarget = 0;
-	float speedTarget = motorSpeed;
+	float angleUI = 0;
+	float speedUI = motorSpeed;
+
 	float prevAngleTarget = 0;
 	float kpTarget = 580;
 	float kp = kpTarget;
