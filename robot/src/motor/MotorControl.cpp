@@ -87,7 +87,20 @@ void MotorControl::setup()
     BLAnkle->setup(SETTINGS()->getMotor("BLAnkle"));
     motors.push_back(BLAnkle);
 }
+void MotorControl::setAngle(std::vector<float>angles)
+{
+    if(motors.size()==angles.size())
+    {
+        for(int i=0;i<angles.size();i++)
+        {
+            motors[i]->setMotorAngle(angles[i]);
 
+        }
+
+    }
+
+
+}
 void MotorControl::drawGui()
 {
     ImGui::Begin( "motors" );

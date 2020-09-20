@@ -95,7 +95,7 @@ void IKController::drawGui()
 
 
     ImGui::DragFloat("body X", &bodyX, 1, -100, 100) ;
-    ImGui::DragFloat("body Y", &bodyY, 1, 0, 700);
+    ImGui::DragFloat("body Y", &bodyY, 1, 80, 400);
     ImGui::DragFloat("body Z", &bodyZ, 1, -100, 100);
 
     ImGui::DragFloat("body rotX", &bodyRotX, 0.01, -3.1415, 3.1415);

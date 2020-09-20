@@ -127,6 +127,8 @@ void Motor::drawGui()
 void Motor::setMotorAngle(float target)
 {
     float deg = target*180.f/3.14159265359;
+    angleUI =  deg ;
+
     float result = mSettings->mOffsetInput -deg ;
     if(mSettings->reverse)  result*=-1;
 
