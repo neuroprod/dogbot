@@ -60,7 +60,7 @@ void Motor::loop()
 
     bool nComplete = true;
     std::vector<uint8_t> buffer;
-    std::this_thread::sleep_for (std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for (std::chrono::milliseconds(2000));
 
 
     while (nComplete)
@@ -170,8 +170,8 @@ void Motor::updatePosition()
     my_serial->writeBytes(&data[0], data.size());
 
     //TODO make non blocking
-    while ((my_serial->getNumBytesAvailable() != 13)) {
-        console() << my_serial->getNumBytesAvailable() << endl;
+    while ((my_serial->getNumBytesAvailable() < 13)) {
+
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     std::vector<uint8_t> buffer;
@@ -208,7 +208,7 @@ void Motor::shutDown()
 void Motor::setZero()
 {
 
-    makeHeader(0x80, 1, 0x00);
+    makeHeader(0x19, 1, 0x00);
     addCheckSum();
     my_serial->writeBytes(&data[0], data.size());
 }
