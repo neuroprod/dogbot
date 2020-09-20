@@ -55,7 +55,7 @@
          "max" : 20,
          "min" : -20,
          "offsetInput" : 0,
-         "port" : "ttyMot1",
+         "port" : "ttyMota",
          "reverse" : false
       }
    },

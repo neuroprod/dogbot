@@ -11,7 +11,7 @@ class Motor {
 
 
 	float motorAngle = 0;
-	float motorSpeed = 1600;
+	float motorSpeed = 1000;
 
 
     void updatePosition();

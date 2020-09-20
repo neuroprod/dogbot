@@ -24,7 +24,7 @@ void Motor::setup(Smotor settings)
     port =mSettings->mPort;
     angleUI =mSettings->mOffsetInput;
     motorAngle = 0;
-console()<< angleUI<<endl;
+
 
 
     motorGraph.prepGraph(name,"motors",3,{0.5f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
@@ -127,13 +127,13 @@ void Motor::drawGui()
 void Motor::setMotorAngle(float target)
 {
     float deg = target*180.f/3.14159265359;
-    float result = deg - mSettings->mOffsetInput;
+    float result = mSettings->mOffsetInput -deg ;
     if(mSettings->reverse)  result*=-1;
 
 
-console()<<result <<" "<<deg <<endl;
+
     inMutex.lock();
-    motorAngle = deg;
+    motorAngle = result;
     inMutex.unlock();
 }
 void Motor::setMotorMaxSpeed(float target)

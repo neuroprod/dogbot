@@ -82,6 +82,8 @@ float IKController::clampAngle(float angle)
 {
     if (angle< -PI ){angle += PI*2;}
     else if (angle> PI ){angle -= PI*2;}
+
+    return angle;
 }
 void IKController::drawGui()
 {
