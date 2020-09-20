@@ -33,7 +33,7 @@ void MotorControl::setup()
     }
 
 
-/*
+
 //fr
 	MotorRef FRHip = Motor::create();
 	FRHip->setup(SETTINGS()->getMotor("FRHip"));
@@ -44,6 +44,9 @@ void MotorControl::setup()
     FRKnee->setup(SETTINGS()->getMotor("FRKnee"));
     motors.push_back(FRKnee);
 
+    MotorRef FRAnkle = Motor::create();
+    FRAnkle->setup(SETTINGS()->getMotor("FRAnkle"));
+    motors.push_back(FRAnkle);
 
     //fl
     MotorRef FLHip = Motor::create();
@@ -54,15 +57,23 @@ void MotorControl::setup()
     FLKnee->setup(SETTINGS()->getMotor("FLKnee"));
     motors.push_back(FLKnee);
 
+    MotorRef FLAnkle = Motor::create();
+    FLAnkle->setup(SETTINGS()->getMotor("FLAnkle"));
+    motors.push_back(FLAnkle);
+
     //br
     MotorRef BRHip = Motor::create();
     BRHip->setup(SETTINGS()->getMotor("BRHip"));
     motors.push_back(BRHip);
-*/
+
     MotorRef BRKnee = Motor::create();
     BRKnee->setup(SETTINGS()->getMotor("BRKnee"));
     motors.push_back(BRKnee);
-/*
+
+    MotorRef BRAnkle= Motor::create();
+    BRAnkle->setup(SETTINGS()->getMotor("BRAnkle"));
+    motors.push_back(BRAnkle);
+
     //bl
     MotorRef BLHip = Motor::create();
     BLHip->setup(SETTINGS()->getMotor("BLHip"));
@@ -70,7 +81,11 @@ void MotorControl::setup()
 
     MotorRef BLKnee = Motor::create();
     BLKnee->setup(SETTINGS()->getMotor("BLKnee"));
-    motors.push_back(BLKnee);*/
+    motors.push_back(BLKnee);
+
+    MotorRef BLAnkle = Motor::create();
+    BLAnkle->setup(SETTINGS()->getMotor("BLAnkle"));
+    motors.push_back(BLAnkle);
 }
 
 void MotorControl::drawGui()

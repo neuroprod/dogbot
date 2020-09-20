@@ -7,8 +7,7 @@ class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
 enum class MOTOR_STATE { NONE, POSITION,KILL,SET_ZERO };
 class Motor {
-    bool doShutdown =false;
-    bool doWritePosition =false;
+
 
 
 	float motorAngle = 0;
@@ -52,7 +51,7 @@ class Motor {
 
     double prevTime =0;
 
-    MOTOR_STATE currentState = MOTOR_STATE::NONE;
+    MOTOR_STATE currentState = MOTOR_STATE::POSITION;
 
 public:
 	Motor() {};

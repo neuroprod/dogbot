@@ -103,5 +103,57 @@
          "port" : "ttyMot5",
          "startValue" : 0
       }
+   },
+   {
+   "key" : "BLAnkle",
+   "type" : "motor",
+   "value" : {
+      "id" : 4,
+      "max" : 30,
+      "min" : -30,
+      "offset" : 0,
+      "offsetInput" : 0,
+      "port" : "ttyMot12",
+      "startValue" : 0
+   }
+},
+   {
+      "key" : "BRAnkle",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMot11",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FLAnkle",
+      "type" : "motor",
+      "value" : {
+         "id" : 2,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMot10",
+         "startValue" : 0
+      }
+   },
+   {
+      "key" : "FRAnkle",
+      "type" : "motor",
+      "value" : {
+         "id" : 1,
+         "max" : 30,
+         "min" : -30,
+         "offset" : 0,
+         "offsetInput" : 0,
+         "port" : "ttyMot9",
+         "startValue" : 0
+      }
    }
 ]
