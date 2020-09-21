@@ -48,13 +48,26 @@ public:
 
 void BotApp::setup()
 {
+    std::vector<std::string> args = getCommandLineArgs();
+    for(auto s: args)
+    {
+        console()<<s<<std::endl;
+
+    }
+    bool useDevIP =false;
+    if (std::find(args.begin(), args.end(), "devIP") !=args.end())
+    {
+        useDevIP =true;
+    }
+    COM()->setup(useDevIP);
+
 
     setFrameRate(120);
     gl::enableVerticalSync(false);
 
     setWindowSize(windowSizeX->value(), windowSizeY->value());
     guiSetup.setup();
-    COM()->setup();
+
     if (isSimulation->value())
     {
         simulation.setup();

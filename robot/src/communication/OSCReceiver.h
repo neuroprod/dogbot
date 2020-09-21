@@ -16,7 +16,8 @@ public:
     OSCReceiver(int port): mIoService( new asio::io_service ), mWork( new asio::io_service::work( *mIoService ) ),
     mReceiver( port, protocol::v4(), *mIoService ){};
     void setup();
-
+    std::atomic<bool> hasNewCommand =false;
+    std::atomic<bool> hasNewJoystick=false;
 
     std::shared_ptr<asio::io_service>		mIoService;
     std::shared_ptr<asio::io_service::work>	mWork;

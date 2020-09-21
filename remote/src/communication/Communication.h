@@ -12,7 +12,7 @@ class Communication
 {
 public:
     Communication();
-    void setup();
+    void setup(bool useDevIP);
     void update();
     void send( ci::osc::Message &message);
     OSCReceiver * receiver;

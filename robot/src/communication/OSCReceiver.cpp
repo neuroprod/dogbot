@@ -16,14 +16,15 @@ void OSCReceiver::setup()
                                int type = msg[0].int32();
                                int command = msg[1].int32();
                                console()<<"reseive command:"<< type <<" " <<command<<endl;
+                               hasNewCommand =true;
 
                            });
 
     mReceiver.setListener( "/joystick",
                            [&]( const osc::Message &msg ){
                                std::lock_guard<std::mutex> lock( mMutex );
-                               console()<<"j"<<endl;
-
+                               //console()<<"j"<<endl;
+                               hasNewJoystick=true;
                            });
 
     try {

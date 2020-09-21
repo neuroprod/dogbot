@@ -15,6 +15,7 @@
 #include "../settings/SettingBoolean.h"
 #include "../settings/SettingMotor.h"
 #include "../settings/SettingVec3.h"
+#include "../settings/SettingString.h"
 class SettingsHandler
 {
 
@@ -33,6 +34,19 @@ public:
             }
         }
         auto s = std::make_shared<SettingFloat>(file, key, defaultValue);
+        settings.push_back(s);
+        return s;
+    }
+    Sstring getString(std::string file, std::string key, std::string defaultValue)
+    {
+        for (auto s:settings)
+        {
+            if (s->mFile == file && s->mKey == key)
+            {
+                return std::dynamic_pointer_cast<SettingString>(s);
+            }
+        }
+        auto s = std::make_shared<SettingString>(file, key, defaultValue);
         settings.push_back(s);
         return s;
     }
@@ -184,6 +198,12 @@ public:
                     {
 
                         auto s = std::make_shared<SettingBoolean>(filename, key);
+                        s->setFromJson(val);
+                        settings.push_back(s);
+                    } else if (type == "string")
+                    {
+
+                        auto s = std::make_shared<SettingString>(filename, key);
                         s->setFromJson(val);
                         settings.push_back(s);
                     }

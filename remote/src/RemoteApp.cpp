@@ -28,15 +28,29 @@ public:
 
 void RemoteApp::setup()
 {
+    std::vector<std::string> args = getCommandLineArgs();
+    for(auto s: args)
+    {
+        console()<<s<<std::endl;
+
+    }
+    bool useDevIP =false;
+    if (std::find(args.begin(), args.end(), "devIP") !=args.end())
+    {
+        useDevIP =true;
+    }
+    COM()->setup(useDevIP);
+
     setFrameRate(60);
     setWindowSize(800, 480);
     ImGui::Initialize();
     serial.setup();
-    COM()->setup();
+
 
 }
 void RemoteApp::sendCommand(int type,int command)
 {
+
     ci::osc::Message msg("/command");
     msg.append( type);
     msg.append(command );
@@ -52,8 +66,12 @@ void RemoteApp::update()
 
 
     COM()->update();
+
     ImGui::Begin("Settings");
-    if(ImGui::Checkbox("fullscreen", &isFS)){setFullScreen(isFS);}
+    if(ImGui::Button("toggle fullscreen",ImVec2(ImGui::GetWindowSize().x, 25))){
+        setFullScreen(!isFullScreen());
+        hideCursor();
+    }
     ImGui::End();
     ImGui::Begin("controll");
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8,0,0,1));

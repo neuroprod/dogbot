@@ -12,8 +12,9 @@ class Communication
 {
 public:
     Communication();
-    void setup();
+    void setup(bool UseDevIP);
     void update();
+
 
     OSCReceiver * receiver;
     OSCSender * sender;
