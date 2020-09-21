@@ -27,7 +27,7 @@ void Motor::setup(Smotor settings)
 
 
 
-    motorGraph.prepGraph(name,"motors",3,{0.5f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
+    motorGraph.prepGraph(name,"motors",3,{0.1f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
     GRAPH()->reg(&motorGraph);
 
     unsigned long baud = 115200;

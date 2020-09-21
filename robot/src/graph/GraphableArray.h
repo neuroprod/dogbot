@@ -8,6 +8,7 @@
 #include <list>
 #include <cinder/Font.h>
 #include <cinder/gl/Batch.h>
+#include <cinder/gl/gl.h>
 
 class GraphableArray: public Graphable
 {
@@ -16,6 +17,9 @@ public:
     void prepGraph(std::string name,std::string type, int length, std::vector<float> scale, std::vector<ci::Color> color, std::vector<std::string> names);
     void addData(std::vector<float> data);
     void gDraw(int width);
+    void drawLegend(int width);
+
+    ci::gl::FboRef			mLegendFbo;
 
     std::list<std::vector<float>> gData;
     std::vector<float> gScale;
@@ -25,6 +29,9 @@ public:
     ci::gl::BatchRef rectBatch;
     ci::Font fontL;
     ci::Font fontS;
+
+
+
 };
 
 

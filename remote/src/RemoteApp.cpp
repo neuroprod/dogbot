@@ -72,6 +72,9 @@ void RemoteApp::update()
         setFullScreen(!isFullScreen());
         hideCursor();
     }
+    if(ImGui::Button("save settings",ImVec2(ImGui::GetWindowSize().x, 25))){
+        SETTINGS()->save();
+    }
     ImGui::End();
     ImGui::Begin("controll");
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8,0,0,1));
@@ -79,6 +82,7 @@ void RemoteApp::update()
         sendCommand(0,0);
 
     }
+
     ImGui::PopStyleColor(1);
     ImGui::Dummy(ImVec2(0.0f, 40.0f));
     if(ImGui::Button("test1",ImVec2(ImGui::GetWindowSize().x, 30))){
@@ -90,11 +94,11 @@ void RemoteApp::update()
 
     }
     if(ImGui::Button("test3",ImVec2(ImGui::GetWindowSize().x, 30))){
-        sendCommand(1,2);
+        sendCommand(1,3);
 
     }
     if(ImGui::Button("test4",ImVec2(ImGui::GetWindowSize().x, 30))){
-        sendCommand(1,2);
+        sendCommand(1,3);
 
     }
     ImGui::End();

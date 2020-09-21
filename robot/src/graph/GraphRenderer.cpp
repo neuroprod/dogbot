@@ -36,6 +36,18 @@ void GraphRenderer::pulse(int i)
 }
 void GraphRenderer::draw(std::string type)
 {
+    for(auto g:graphables)
+    {
+        if(g->gVisible && g->gType ==type)
+        {
+            if(fboWindow.width != g->currentWidth)
+            {
+                g->drawLegend(fboWindow.width);
+            }
+
+        }
+
+    }
 
     fboWindow.begin();
     if (ImGui::BeginMenuBar())
@@ -86,6 +98,7 @@ void GraphRenderer::draw(std::string type)
 
 
     pos =0;
+
     for(auto g:graphables)
     {
         if(g->gVisible && g->gType ==type)
