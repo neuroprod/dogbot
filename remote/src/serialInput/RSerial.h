@@ -6,6 +6,8 @@
 #define REMOTE_RSERIAL_H
 #include "cinder/app/App.h"
 #include "cinder/Serial.h"
+#include "Joystick.h"
+
 class RSerial
 {
 public:
@@ -16,17 +18,12 @@ public:
     bool isConnected =false;
 
     ci::SerialRef mSerial;
-    ci::vec2 getRightJoystick();
-    ci::vec2 getLeftJoystick();
-    bool getLeftJoystickDown();
-    bool getRightJoystickDown();
+    Joystick  getJoystick();
+
     
     float getBatteryStatus();
+    Joystick joystick;
 
-    ci::vec2 mRightJoystick;
-    ci::vec2 mLeftJoystick;
-    bool mLeftJoystickDown =false;
-    bool mRightJoystickDown=false;
     
     float mBattery =0;
 

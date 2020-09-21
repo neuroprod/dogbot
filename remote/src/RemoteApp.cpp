@@ -2,16 +2,13 @@
 
 
 #include "cinder/CinderImGui.h"
-
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
-
 #include "cinder/gl/gl.h"
-
-#include "communication/OSCReceiver.h"
-#include "cinder/CinderImGui.h"
 #include "settings/SettingsHandler.h"
 #include "serialInput/RSerial.h"
+#include "communication/Communication.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -23,30 +20,26 @@ public:
     void update() override;
 
     void draw() override;
-    RSerial serial;
-    OSCReceiver receiver;
+
 
     bool isFS =false;
+    RSerial serial;
 };
 
 void RemoteApp::setup()
 {
-
-    ImGui::Initialize();
-
     setFrameRate(60);
-
-
     setWindowSize(800, 480);
-
+    ImGui::Initialize();
     serial.setup();
-    receiver.setup();
+    COM()->setup();
+
 }
 
 
 void RemoteApp::update()
 {
-
+    COM()->update();
     ImGui::Begin("Settings");
     if(ImGui::Checkbox("fullscreen", &isFS)){setFullScreen(isFS);}
     ImGui::End();
@@ -63,6 +56,6 @@ void RemoteApp::draw()
 CINDER_APP(RemoteApp, RendererGl, [](App::Settings *settings)
 {
 
-    SETTINGS()->load({"AppSettings"});
+    SETTINGS()->load({"AppSettings","ComSettings"});
 }
 )

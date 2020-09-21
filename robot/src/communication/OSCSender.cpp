@@ -10,16 +10,24 @@ using namespace std;
 
 void OSCSender::setup()
 {
-    try
-    {
+    // For a description of the below setup, take a look at SimpleReceiver. The only difference
+    // is the usage of the atomic_bool around the connection map.
+    try {
         mSender.bind();
-        mIsConnected = true;
-        console() << "OSC success"<<endl;
     }
-    catch (const osc::Exception &ex)
-    {
-        console() << "OSC Error binding: " << ex.what() << " val: " << ex.value() << endl;
+    catch ( const osc::Exception &ex ) {
+        console( )<<"Error binding: " << ex.what() << " val: " << ex.value() <<endl;
+       return;
     }
+
+
+    mIsConnected = true;
+
+
+    mThread = std::thread( std::bind(
+            []( std::shared_ptr<asio::io_service> &service ){
+                service->run();
+            }, mIoService ));
 }
 
 void OSCSender::send(osc::Message &msg )

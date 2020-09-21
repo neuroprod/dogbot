@@ -13,7 +13,7 @@
 #include "Simulation.h"
 
 #include "Robot.h"
-#include "communication/OSCSender.h"
+#include "communication/Communication.h"
 
 
 using namespace ci;
@@ -42,19 +42,19 @@ public:
     Sint windowSizeX = SETTINGS()->getInt("AppSettings", "windowSizeX", 1920);
     Sint windowSizeY = SETTINGS()->getInt("AppSettings", "windowSizeY", 1080);
 
-    OSCSender sender = OSCSender (10000,"127.0.0.1",10001);
+
 
 };
 
 void BotApp::setup()
 {
-sender.setup();
+
     setFrameRate(120);
     gl::enableVerticalSync(false);
 
     setWindowSize(windowSizeX->value(), windowSizeY->value());
     guiSetup.setup();
-
+    COM()->setup();
     if (isSimulation->value())
     {
         simulation.setup();
@@ -69,10 +69,7 @@ sender.setup();
 
 void BotApp::update()
 {
-    ci::osc::Message msg( "/mousemove/1" );
-    msg.append( 101 );
-    msg.append( 100 );
-    sender.send(msg);
+    COM()->update();
 
     guiSetup.update();
 
