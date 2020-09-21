@@ -14,7 +14,7 @@ public:
     Communication();
     void setup();
     void update();
-
+    void send( ci::osc::Message &message);
     OSCReceiver * receiver;
     OSCSender * sender;
 };

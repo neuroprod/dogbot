@@ -17,7 +17,7 @@ void Communication::setup()
     int receivePort =10001;
     int receivePortDest =10002;
     int sendPort =10000;
-    std::string destinationHost = "127.0.0.1";
+    std::string destinationHost = "192.168.1.80";
     receiver =new OSCReceiver(receivePort );
     receiver->setup();
     sender =new OSCSender(sendPort,destinationHost,receivePortDest );
@@ -26,8 +26,5 @@ void Communication::setup()
 
 void Communication::update()
 {
-   ci::osc::Message msg("/mouse/1");
-    msg.append(1);
-    msg.append(-1);
-    sender->send(msg);
+
 }

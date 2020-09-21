@@ -23,13 +23,13 @@ void Communication::setup()
     sender =new OSCSender(sendPort,destinationHost,receivePortDest );
     sender->setup();
 }
+void Communication::send(ci::osc::Message &message)
+{
+    sender->send(message);
 
+}
 void Communication::update()
 {
 
-    console()<<"sendd"<<endl;
-    ci::osc::Message msg("/mousemove/1");
-    msg.append(123);
-    msg.append(-123);
-    sender->send(msg);
+
 }

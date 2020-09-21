@@ -10,16 +10,21 @@ using namespace std;
 
 void OSCReceiver::setup()
 {
-    mReceiver.setListener( "/mousemove/1",
+    mReceiver.setListener( "/command",
                            [&]( const osc::Message &msg ){
                                std::lock_guard<std::mutex> lock( mMutex );
-                               int x = msg[0].int32();
-                               int y = msg[1].int32();
-                               console()<<"resieve" << x<<endl;
+                               int type = msg[0].int32();
+                               int command = msg[1].int32();
+                               console()<<"reseive command:"<< type <<" " <<command<<endl;
 
                            });
 
+    mReceiver.setListener( "/joystick",
+                           [&]( const osc::Message &msg ){
+                               std::lock_guard<std::mutex> lock( mMutex );
+                               console()<<"j"<<endl;
 
+                           });
 
     try {
         mReceiver.bind();

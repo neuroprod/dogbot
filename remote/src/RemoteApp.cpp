@@ -18,7 +18,7 @@ public:
     void setup() override;
 
     void update() override;
-
+    void sendCommand(int type,int command ) ;
     void draw() override;
 
 
@@ -35,13 +35,50 @@ void RemoteApp::setup()
     COM()->setup();
 
 }
+void RemoteApp::sendCommand(int type,int command)
+{
+    ci::osc::Message msg("/command");
+    msg.append( type);
+    msg.append(command );
+    COM()->send(msg);
 
-
+}
 void RemoteApp::update()
 {
+    Joystick joystick =serial.getJoystick();
+    ci::osc::Message msg =joystick.getMessage();
+    COM()->send(msg);
+
+
+
     COM()->update();
     ImGui::Begin("Settings");
     if(ImGui::Checkbox("fullscreen", &isFS)){setFullScreen(isFS);}
+    ImGui::End();
+    ImGui::Begin("controll");
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8,0,0,1));
+    if(ImGui::Button("abort",ImVec2(ImGui::GetWindowSize().x, 40))){
+        sendCommand(0,0);
+
+    }
+    ImGui::PopStyleColor(1);
+    ImGui::Dummy(ImVec2(0.0f, 40.0f));
+    if(ImGui::Button("test1",ImVec2(ImGui::GetWindowSize().x, 30))){
+        sendCommand(1,1);
+
+    }
+    if(ImGui::Button("test2",ImVec2(ImGui::GetWindowSize().x, 30))){
+        sendCommand(1,2);
+
+    }
+    if(ImGui::Button("test3",ImVec2(ImGui::GetWindowSize().x, 30))){
+        sendCommand(1,2);
+
+    }
+    if(ImGui::Button("test4",ImVec2(ImGui::GetWindowSize().x, 30))){
+        sendCommand(1,2);
+
+    }
     ImGui::End();
 
 }

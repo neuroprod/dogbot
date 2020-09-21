@@ -10,12 +10,11 @@ using namespace std;
 
 void OSCReceiver::setup()
 {
-    mReceiver.setListener( "/mouse/1",
+    mReceiver.setListener( "/status/",
                            [&]( const osc::Message &msg ){
                                std::lock_guard<std::mutex> lock( mMutex );
-                               int x = msg[0].int32();
-                               int y = msg[1].int32();
-                               console()<<"resieve"<< x<<endl;
+                               int status = msg[0].int32();
+                               console()<<"status:" <<status<<endl;
 
                            });
 

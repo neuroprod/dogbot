@@ -35,7 +35,8 @@ void OSCSender::send(osc::Message &msg )
     if(!mIsConnected)return;
     mSender.send( msg, std::bind( &OSCSender::onSendError,
                                   this, std::placeholders::_1 ) );
-console()<<"send"<<endl;
+
+
 }
 void OSCSender::onSendError( asio::error_code error )
 {

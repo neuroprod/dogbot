@@ -55,7 +55,6 @@ set(SRC_FILES
         ${APP_PATH}/src/communication/OSCReceiver.cpp
         ${APP_PATH}/src/communication/Communication.cpp
         )
-
 ci_make_app(
         SOURCES     ${SRC_FILES}
         CINDER_PATH ${CINDER_PATH}
