@@ -1,6 +1,6 @@
 
 
-
+#include "gui/GuiSetup.h"
 #include "cinder/CinderImGui.h"
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
@@ -20,7 +20,7 @@ public:
     void update() override;
     void sendCommand(int type,int command ) ;
     void draw() override;
-
+    GuiSetup guiSetup;
 
     bool isFS =false;
     RSerial serial;
@@ -43,7 +43,7 @@ void RemoteApp::setup()
 
     setFrameRate(60);
     setWindowSize(800, 480);
-    ImGui::Initialize();
+    guiSetup.setup();
     serial.setup();
 
 
@@ -67,40 +67,77 @@ void RemoteApp::update()
 
     COM()->update();
 
-    ImGui::Begin("Settings");
+    ImGuiWindowFlags window_flags = 0;
+
+    window_flags |= ImGuiWindowFlags_NoTitleBar;
+    window_flags |= ImGuiWindowFlags_NoMove;
+    window_flags |= ImGuiWindowFlags_NoResize;
+    window_flags |= ImGuiWindowFlags_NoCollapse;
+    window_flags |= ImGuiWindowFlags_NoNav;
+    window_flags |= ImGuiWindowFlags_NoBackground;
+
+    bool open = true;
+    /*ImGui::Begin("Settings",&open,window_flags);
     if(ImGui::Button("toggle fullscreen",ImVec2(ImGui::GetWindowSize().x, 25))){
         setFullScreen(!isFullScreen());
-        hideCursor();
+       // hideCursor();
     }
     if(ImGui::Button("save settings",ImVec2(ImGui::GetWindowSize().x, 25))){
         SETTINGS()->save();
     }
-    ImGui::End();
-    ImGui::Begin("controll");
+    ImGui::End();*/
+
+    float firstColumnWidth =600;
+    float secondColumnWith =800-firstColumnWidth-1;
+    float firstColumnWidthP =firstColumnWidth-15;
+    float secondColumnWidthP =secondColumnWith-15;
+    ImGui::Begin("controll",&open,window_flags);
+
+    ImGui::Columns(2);
+    static unsigned short initial_column_spacing = 0;
+
+    if (initial_column_spacing < 2)
+    {
+        ImGui::SetColumnWidth(0, firstColumnWidth);
+        initial_column_spacing++;
+    }
+
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8,0,0,1));
-    if(ImGui::Button("abort",ImVec2(ImGui::GetWindowSize().x, 40))){
+    if(ImGui::Button("abort",ImVec2(firstColumnWidthP , 40))){
         sendCommand(0,0);
 
     }
 
     ImGui::PopStyleColor(1);
     ImGui::Dummy(ImVec2(0.0f, 40.0f));
-    if(ImGui::Button("test1",ImVec2(ImGui::GetWindowSize().x, 30))){
+    if(ImGui::Button("test1",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,1);
 
     }
-    if(ImGui::Button("test2",ImVec2(ImGui::GetWindowSize().x, 30))){
+    if(ImGui::Button("test2",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,2);
 
     }
-    if(ImGui::Button("test3",ImVec2(ImGui::GetWindowSize().x, 30))){
+    if(ImGui::Button("test3",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,3);
 
     }
-    if(ImGui::Button("test4",ImVec2(ImGui::GetWindowSize().x, 30))){
+    if(ImGui::Button("test4",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,3);
 
     }
+    ImGui::NextColumn();
+    if(ImGui::Button("toggle fullscreen",ImVec2(secondColumnWidthP , 25))){
+        setFullScreen(!isFullScreen());
+        if(isFullScreen()){
+            hideCursor();
+        }else
+            {showCursor();}
+    }
+    if(ImGui::Button("save settings",ImVec2(secondColumnWidthP , 25))){
+        SETTINGS()->save();
+    }
+    ImGui::Columns(1);
     ImGui::End();
 
 }
@@ -108,6 +145,8 @@ void RemoteApp::update()
 void RemoteApp::draw()
 {
     gl::clear();
+
+
 
 }
 
