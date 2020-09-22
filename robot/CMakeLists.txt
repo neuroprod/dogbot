@@ -60,5 +60,5 @@ ci_make_app(
         CINDER_PATH ${CINDER_PATH}
         BLOCKS OSC
 )
-target_link_libraries(bot libJetsonGPIO.a OpenZen::OpenZen ${BULLET_LIBRARIES})
+target_link_libraries(bot  OpenZen::OpenZen ${BULLET_LIBRARIES})
 

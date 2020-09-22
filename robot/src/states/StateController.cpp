@@ -47,9 +47,9 @@ void StateController::setNextState()
     {
         case STATE::RISE:
         {
-           /* currentState =&stepState;
-            state = stepState.state;
-            currentState->start();*/
+            currentState =&noneState;
+            state = noneState.state;
+            currentState->start();
 
             break;
         }

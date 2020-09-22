@@ -1,11 +1,9 @@
 //
 // Created by kris on 22.07.20.
 //
-#include "cinder/gl/gl.h"
+
 #include "Robot.h"
-#include "cinder/Serial.h"
-#include <signal.h>
-#include <JetsonGPIO.h>
+
 #include "cinder/CinderImGui.h"
 #include "graph/GraphRenderer.h"
 using namespace ci;
@@ -40,6 +38,7 @@ void Robot::update() {
 
     mat4 mat;
     mat = glm::toMat4(  imu.getQuat());
+    mat = glm::translate(mat,vec3(  ikController.bodyX,ikController.bodyY,ikController.bodyZ)  );
 
 
     modelRenderer.model->setPosition(mat,ikController.angles);
