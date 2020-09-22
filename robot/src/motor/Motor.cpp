@@ -7,6 +7,7 @@
 #include <sys/fcntl.h>    // Used for UART
 #include <termios.h>      // Used for UART
 #include "../graph/GraphRenderer.h"
+#include "../Status.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -45,11 +46,12 @@ void Motor::setup(Smotor settings)
         connectionFailed = true;
     }
     if (connectionFailed) {
-        console() << "Failed to connect to " << (int)id << " " << name << " " << port << endl;
+
+        STATUS()->logError("Failed to connect Motor: " + name +" "+ port ,true);
     }
     else
     {
-        console() << "Connected to " << (int)id << " " << name << " " << port << endl;
+
 
     }
 

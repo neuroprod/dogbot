@@ -126,7 +126,7 @@ void GuiSetup::update()
     }
     ImGui::End();
 
-
+    ImGui::ShowDemoWindow();
     ImGui::Begin("performance");
     ImGui::Text("fps:%f", ImGui::GetIO().Framerate);
     ImGui::End();

@@ -14,6 +14,7 @@
 
 #include "Robot.h"
 #include "communication/Communication.h"
+#include "Status.h"
 
 
 using namespace ci;
@@ -51,7 +52,7 @@ void BotApp::setup()
     std::vector<std::string> args = getCommandLineArgs();
     for(auto s: args)
     {
-        console()<<s<<std::endl;
+       STATUS()->log("arg:"+s);
 
     }
     bool useDevIP =false;

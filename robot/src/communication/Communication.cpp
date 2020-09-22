@@ -23,7 +23,7 @@ void Communication::setup(bool useDevIP)
     {
         destinationHost = SETTINGS()->getString("AppSettings", "devRemoteIP", "192.168.1.80")->value();
     }
-    console()<<destinationHost<<endl;
+
     receiver =new OSCReceiver(receivePort );
     receiver->setup();
     sender =new OSCSender(sendPort,destinationHost,receivePortDest );

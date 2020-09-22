@@ -6,6 +6,7 @@
 
 #include "cinder/CinderImGui.h"
 #include "graph/GraphRenderer.h"
+#include "Status.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -61,5 +62,6 @@ void Robot::draw()
     modelRenderer.draw();
     stateController.draw();
     balanceController.drawGui();
+    STATUS()->drawGui();
 }
 

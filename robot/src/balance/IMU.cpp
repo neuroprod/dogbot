@@ -1,5 +1,6 @@
 #include <imgui/imgui.h>
 #include "IMU.h"
+#include "../Status.h"
 
 using namespace zen;
 using namespace std;
@@ -75,7 +76,8 @@ void IMU::pollLoop()
 
     if (auto error = client.listSensorsAsync())
     {
-        console() << "IMU FAILED: 1" << endl;
+
+        STATUS()->logError("IMU FAILED: 1",true);
         client.close();
         std::terminate();
 
@@ -109,7 +111,7 @@ void IMU::pollLoop()
 
     if (g_discoveredSensors.empty())
     {
-        console() << "IMU FAILED: 2" << endl;
+        STATUS()->logError("IMU FAILED: 2",true);
         client.close();
         g_terminate = true;
 
@@ -127,7 +129,7 @@ void IMU::pollLoop()
 
     if (!hasImu)
     {
-        console() << "IMU FAILED: 3" << endl;
+        STATUS()->logError("IMU FAILED: 3",true);
         client.close();
         g_terminate = true;
 
@@ -137,7 +139,7 @@ void IMU::pollLoop()
 
 
         g_imuHandle = imu.component().handle;
-        console() << "IMU OK" << endl;
+
     }
     while (!g_terminate)
     {

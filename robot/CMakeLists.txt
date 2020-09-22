@@ -15,6 +15,7 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 
 
 set(SRC_FILES
+        ${APP_PATH}/src/Status.cpp
         ${APP_PATH}/src/BotApp.cpp
         ${APP_PATH}/src/Simulation.cpp
         ${APP_PATH}/src/Robot.cpp
@@ -24,6 +25,7 @@ set(SRC_FILES
         ${APP_PATH}/src/motor/MotorControl.cpp
         ${APP_PATH}/src/gui/FBOWindow.cpp
         ${APP_PATH}/src/gui/GuiSetup.cpp
+        ${APP_PATH}/src/gui/Logger.cpp
         ${APP_PATH}/src/modelrenderer/ModelRenderer.cpp
         ${APP_PATH}/src/modelrenderer/OrbitCamera.cpp
         ${APP_PATH}/src/modelrenderer/FKModel.cpp
