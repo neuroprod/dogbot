@@ -5,25 +5,46 @@
 #include <imgui/imgui.h>
 #include "StepInput.h"
 
+using namespace ci;
+using namespace ci::app;
+using namespace std;
+
 void StepInput::update(JoystickRef joystick)
 {
+    const float PI = 3.14159265359;
+    vec2 p = joystick->mLeftJoystick;
+    if (p.x != 0 || p.y != 0)
+    {
+        vec2 pn = glm::normalize(p);
+        moveAngle = atan2(pn.y, pn.x) + PI / 2;
+        if (moveAngle > PI)moveAngle -= 2 * PI;
+        if (moveAngle < -PI)moveAngle += 2 * PI;
 
-    rotAngle = joystick->mRightJoystick.x *10.f/180.f*3.1415;
+        p.x *= 0.2;
+        moveLength = glm::length(p) * 100;
+
+    } else
+    {
+        moveAngle = 0;
+        moveLength = 0;
+    }
+    rotAngle = joystick->mRightJoystick.x * 5.f / 180.f * PI;
 
 }
-void StepInput::drawGui(bool ownPannel )
-{
-    if(ownPannel)ImGui::Begin("StepInput");
 
-    ImGui::SliderFloat("moveLength",&moveLength,0,300);
-    ImGui::SliderAngle("angleMove",&moveAngle,-180,180);
-    ImGui::SliderAngle("rotate",&rotAngle,-10,10);
+void StepInput::drawGui(bool ownPannel)
+{
+    if (ownPannel)ImGui::Begin("StepInput");
+
+    ImGui::SliderFloat("moveLength", &moveLength, 0, 300);
+    ImGui::SliderAngle("angleMove", &moveAngle, -180, 180);
+    ImGui::SliderAngle("rotate", &rotAngle, -10, 10);
     ImGui::Separator();
 
-    ImGui::SliderFloat("stepTime",&stepTime,100,2000);
-    ImGui::SliderFloat("stepHeight",&stepHeight,0,200);
-    ImGui::SliderFloat("homeZOffset",&homeZOffset,0,50);
-    if(ownPannel) ImGui::End();
+    ImGui::SliderFloat("stepTime", &stepTime, 100, 2000);
+    ImGui::SliderFloat("stepHeight", &stepHeight, 0, 200);
+    ImGui::SliderFloat("homeZOffset", &homeZOffset, 0, 50);
+    if (ownPannel) ImGui::End();
 
 
 }

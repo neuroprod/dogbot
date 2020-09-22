@@ -317,7 +317,7 @@ void GaitController::drawGui()
     stepInput.drawGui(false);
     ImGui::Separator();
 
-    ImGui::Checkbox("edit Gate", &editGate);
+    ImGui::Checkbox("edit Gait", &editGate);
     if(editGate)
     {
     if ( ImGui::DragFloat("walkRisingIn", &walkRisingIn,0.01,0,1));

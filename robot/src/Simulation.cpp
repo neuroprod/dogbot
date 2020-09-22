@@ -3,8 +3,8 @@
 //
 
 #include "Simulation.h"
-
 #include "graph/GraphRenderer.h"
+#include "communication/Communication.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -26,6 +26,13 @@ void Simulation::setup()
 
 void Simulation::update()
 {
+    if(COM()->receiver->hasNewJoystick)
+    {
+        COM()->receiver->updateJoystick( joystick );
+        gaitController.stepInput.update(joystick);
+
+    }
+
     if (!play && !step) return;
     step = false;
 
