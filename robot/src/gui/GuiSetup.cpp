@@ -14,7 +14,7 @@ void GuiSetup::setup()
 
     io.Fonts->AddFontFromFileTTF(ci::app::getAssetPath("fonts/Ubuntu-R.ttf").c_str(), 16.0f);
 
- 
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImVec4 *colors = ImGui::GetStyle().Colors;
     colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
     colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
