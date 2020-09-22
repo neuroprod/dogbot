@@ -21,7 +21,7 @@ public:
     void draw();
     void reset();
     void setNextState();
-    bool autoNextState =false;
+
 
     STATE state;
     BaseState *currentState;

@@ -13,12 +13,7 @@ void StateController::setup(IKController * ikController, GaitController *gaitCon
     stepState.ikController  = ikController;
     stepState.gaitController  = gaitController;
 
-    if(false) //if simulation
-    {
-        currentState = &riseState;
-        state = riseState.state;
-        currentState->start();
-    }
+
     currentState =&noneState;
     state = noneState.state;
 
@@ -45,21 +40,16 @@ void StateController::reset()
 void StateController::setNextState()
 {
 
-    if(autoNextState == false )
-    {
-        currentState =&noneState;
-        state = noneState.state;
-        return;
-    }
+
 
 
     switch ( state)
     {
         case STATE::RISE:
         {
-            currentState =&stepState;
+           /* currentState =&stepState;
             state = stepState.state;
-            currentState->start();
+            currentState->start();*/
 
             break;
         }
@@ -80,7 +70,7 @@ void StateController::draw()
     std::string n = "current state: "+currentState->getName();
     ImGui::Text( "%s", n.c_str());
 
-    ImGui::Checkbox("auto next state",&autoNextState);
+
     ImGui::Separator();
 
     bool disabled =true;

@@ -89,22 +89,34 @@ void MotorControl::setup()
 }
 void MotorControl::setAngle(std::vector<float>angles)
 {
+    if(!enableInput)return;
     if(motors.size()==angles.size())
     {
         for(int i=0;i<angles.size();i++)
         {
             motors[i]->setMotorAngle(angles[i]);
-
         }
-
     }
-
-
 }
 void MotorControl::drawGui()
 {
     ImGui::Begin( "motors" );
+    ImGui::Checkbox("enable input",&enableInput);
+    if (ImGui::SliderFloat("all_MaxMotorSpeed", &motorSpeed, 0.f, 200000.f))
+    {
+        for(auto m:motors)
+        {
+            m->setMotorMaxSpeed(motorSpeed);
+        }
+    }
+    if (ImGui::SliderFloat("all_motorKp", &kp, 0.f, 2000.f))
+    {
+        for(auto m:motors)
+        {
+            m->setMotorKp(kp);
+        }
 
+    }
 	for (auto m : motors)
 	{
 		m->drawGui();

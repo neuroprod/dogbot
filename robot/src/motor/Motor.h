@@ -12,6 +12,9 @@ class Motor {
 
 	float motorAngle = 0;
 	float motorSpeed = 5000;
+    float motorSpeedUI = motorSpeed;
+    float kp = 580;
+    float kpUI= kp ;
 
 
     void updatePosition();
@@ -39,11 +42,10 @@ class Motor {
 	bool connectionFailed = false;
 
 	float angleUI = 0;
-	float speedUI = motorSpeed;
+
 
 	float prevAngleTarget = 0;
-	float kpTarget = 580;
-	float kp = kpTarget;
+
 	ci::vec3 motorData;
 
     Smotor mSettings;
@@ -62,7 +64,7 @@ public:
 	void drawGui();
 
 	void setMotorAngle(float angle);
-
+    void setMotorKp(float target);
 	void setMotorMaxSpeed(float speed);
 	ci::vec3 getData();
 	

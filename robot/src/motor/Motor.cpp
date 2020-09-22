@@ -102,16 +102,15 @@ void Motor::loop()
 void Motor::drawGui()
 {
     ImGui::PushID(name.c_str());
-    ImGui::SetNextTreeNodeOpen(true);
+  //  ImGui::SetNextTreeNodeOpen(true);
     ci::vec3 mData = getData();
 
     if (ImGui::CollapsingHeader(name.c_str()))
     {
-       float angle = (float)mData.z*360.f /65536.f/6.f;
-        ImGui::Text("tes %f",angle );
+
         if (ImGui::SliderFloat("motorAngle", &angleUI, mSettings->mMin, mSettings->mMax)) { setMotorAngle(angleUI/180.f*3.1415f); }
-        if (ImGui::SliderFloat("motorSpeed", &speedUI, 0.f, 200000.f)) { setMotorMaxSpeed(speedUI); }
-        if (ImGui::SliderFloat("motorKp", &kpTarget, 0.f, 2000.f)) { inMutex.lock(); kp = kpTarget;     inMutex.unlock();}
+        if (ImGui::SliderFloat("motorSpeed", &motorSpeedUI, 0.f, 200000.f)) { setMotorMaxSpeed(motorSpeedUI); }
+        if (ImGui::SliderFloat("motorKp", &kpUI, 0.f, 2000.f)) { setMotorKp(kpUI);}
         if (ImGui::InputFloat("inputOffset", &mSettings->mOffsetInput)) {  }
         if (ImGui::Checkbox("reverse", &mSettings->reverse)) {  }
     }
@@ -132,19 +131,25 @@ void Motor::setMotorAngle(float target)
     float result = mSettings->mOffsetInput -deg ;
     if(mSettings->reverse)  result*=-1;
 
-
-
     inMutex.lock();
     motorAngle = result;
     inMutex.unlock();
+
 }
 void Motor::setMotorMaxSpeed(float target)
 {
+    motorSpeedUI =target;
     inMutex.lock();
     motorSpeed =target;
     inMutex.unlock();
 }
-
+void Motor::setMotorKp(float target)
+{
+    kpUI = target;
+    inMutex.lock();
+    kp = target;
+    inMutex.unlock();
+}
 vec3 Motor::getData()
 {
     vec3 data;
