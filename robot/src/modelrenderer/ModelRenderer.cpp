@@ -10,7 +10,7 @@ using namespace ci::app;
 
 void ModelRenderer::setup() {
 
-    fboWindow.setup("ModelRenderer");
+    fboWindow.setup("ModelRenderer",false);
     MDP()->setup();
 
     model = std::make_shared<FKModel>();

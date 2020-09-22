@@ -9,7 +9,7 @@ using namespace ci;
 GraphRenderer::GraphRenderer()
 {
 
-    fboWindow.setup("Graphs");
+    fboWindow.setup("Graphs",true);
 }
 
 void GraphRenderer::reg(Graphable * graphable)
@@ -36,10 +36,12 @@ void GraphRenderer::pulse(int i)
 }
 void GraphRenderer::draw(std::string type)
 {
+    int activeGraphs =0;
     for(auto g:graphables)
     {
         if(g->gVisible && g->gType ==type)
         {
+            activeGraphs ++;
             if(fboWindow.width != g->currentWidth)
             {
                 g->drawLegend(fboWindow.width);
@@ -49,7 +51,7 @@ void GraphRenderer::draw(std::string type)
 
     }
 
-    fboWindow.begin();
+    fboWindow.begin(activeGraphs*200);
     if (ImGui::BeginMenuBar())
     {
 

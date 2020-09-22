@@ -8,7 +8,7 @@
 
 void BalanceController::setup( bool isRobot)
 {
-   // SETTINGS()->getFloat("RobotSettings","bodyY",300)
+
     pidX.Kp = 0;
     pidX.Ki = 0;
     pidX.Kd = 0;
@@ -27,7 +27,7 @@ void BalanceController::setup( bool isRobot)
 void BalanceController::update(float rotX,float rotZ)
 {
    // offsetX =  pidZ.calculate(0, rotZ);
-    offsetZ = pidX.calculate(0, tan(rotX)*300);
+   // offsetZ = pidX.calculate(0, tan(rotX)*300);
 
     balanceGraph.addData({rotX,rotZ});
 }

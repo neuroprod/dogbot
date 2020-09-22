@@ -14,19 +14,18 @@ using namespace std;
 
 void Robot::setup() {
 
-/*    GPIO::setmode(GPIO::BOARD);
 
-    GPIO::setup(15, GPIO::OUT, GPIO::HIGH);
-   // GPIO::setup(13, GPIO::OUT, GPIO::HIGH);
-*/
+    gaitController.setup();
 
-    ikControle.setup();
+    imu.start();
+    ikController.setup();
     modelRenderer.setup();
     modelRenderer.showMesh =false;
     modelRenderer.showWire =true;
     motorControl.setup();
 
-   imu.start();
+    stateController.setup(&ikController, &gaitController);
+    balanceController.setup(true);
 
 
 
@@ -34,13 +33,21 @@ void Robot::setup() {
 }
 
 void Robot::update() {
-    ikControle.update();
+
+    stateController.update();
+    ikController.update();
 
 
     mat4 mat;
-    mat = glm::toMat4(imu.getQuat());
-    modelRenderer.model->setPosition(mat,ikControle.angles);
-    motorControl.setAngle(ikControle.angles);
+    mat = glm::toMat4(  imu.getQuat());
+
+
+    modelRenderer.model->setPosition(mat,ikController.angles);
+
+
+
+
+    motorControl.setAngle(ikController.angles);
     modelRenderer.update();
 
 
@@ -51,8 +58,9 @@ void Robot::draw()
 {
     motorControl.drawGui();
     GRAPH()->draw("motors");
-    ikControle.drawGui();
+    ikController.drawGui();
     modelRenderer.draw();
-    imu.drawGui();
+    stateController.draw();
+    balanceController.drawGui();
 }
 

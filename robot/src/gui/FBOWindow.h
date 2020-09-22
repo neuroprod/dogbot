@@ -12,12 +12,13 @@ class FBOWindow
 {
 public:
     FBOWindow(){};
-    void setup(std::string name);
-    bool begin();
+    void setup(std::string name,bool hasScroll);
+    bool begin(int targetHeight =0);
     void end();
     int width=0;
     int height=0;
     bool needResize =true;
+bool mHasScroll;
 
     std::string mName;
     ImVec2 vMin;

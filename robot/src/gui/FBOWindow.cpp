@@ -9,27 +9,35 @@
 using namespace ci;
 using namespace ci::app;
 
-void FBOWindow::setup(std::string name)
+void FBOWindow::setup(std::string name,bool hasScroll)
 {
 
     mName = name;
-
+    mHasScroll =hasScroll;
 };
 
-bool FBOWindow::begin()
+bool FBOWindow::begin(int targetHeight )
 {
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
     ImGuiWindowFlags window_flags = 0;
-    window_flags |= ImGuiWindowFlags_NoScrollbar;
-    window_flags |= ImGuiWindowFlags_NoScrollWithMouse;
     window_flags |= ImGuiWindowFlags_MenuBar;
+    if(!mHasScroll)
+    {
+        window_flags |= ImGuiWindowFlags_NoScrollbar;
+        window_flags |= ImGuiWindowFlags_NoScrollWithMouse;
+    }
+
+
     ImGui::Begin(mName.c_str(), __null, window_flags);
     vMin = ImGui::GetWindowContentRegionMin();
     vMax = ImGui::GetWindowContentRegionMax();
 
     int widthNew = vMax.x - vMin.x;
     int heightNew = vMax.y - vMin.y;
-
+    if( targetHeight !=0)
+    {
+        heightNew = targetHeight;
+    }
     if (widthNew != width  || heightNew != height )
     {
         needResize = true;

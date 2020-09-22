@@ -10,6 +10,9 @@
 #include "modelrenderer/ModelRenderer.h"
 #include "ik/IKController.h"
 #include "balance/IMU.h"
+#include "walking/GaitController.h"
+#include "balance/BalanceController.h"
+#include "states/StateController.h"
 
 class Robot
 {
@@ -19,11 +22,14 @@ public:
     void update();
     void draw();
 
-
-    IKController ikControle;
+    IMU imu;
+    IKController ikController;
     ModelRenderer modelRenderer;
     MotorControl motorControl;
-    IMU imu;
+    StateController stateController;
+    GaitController gaitController;
+    BalanceController balanceController;
+
     bool isReady =false;
 };
 
