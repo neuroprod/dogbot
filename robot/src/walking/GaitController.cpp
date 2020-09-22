@@ -11,6 +11,8 @@ using namespace ci::app;
 using namespace std;
 void GaitController::setup()
 {
+
+
     LegControllerRef fr =LegController::create();
     fr->setup(vec3(BOTSETTINGS()->bodyLength / 2 +BOTSETTINGS()->hipOffsetX, 0, BOTSETTINGS()->bodyWidth / 2 + BOTSETTINGS()->hipOffsetZ));
     LegControllerRef fl=LegController::create();
@@ -27,7 +29,7 @@ void GaitController::setup()
 
     //vv debug stuff
     currentLeg = fr;
-    if(debug) currentLeg->debug =true;
+    if(editGate) currentLeg->debug =true;
     camera.setBodyPos(currentLeg->homePos);
 
 
@@ -57,6 +59,7 @@ void GaitController::reset()
 }
 void GaitController::update()
 {
+
     double currentTime = getElapsedSeconds();
     delta =(currentTime - previousTime) *1000;
 
@@ -314,7 +317,9 @@ void GaitController::drawGui()
     stepInput.drawGui(false);
     ImGui::Separator();
 
-
+    ImGui::Checkbox("edit Gate", &editGate);
+    if(editGate)
+    {
     if ( ImGui::DragFloat("walkRisingIn", &walkRisingIn,0.01,0,1));
     if ( ImGui::DragFloat("walkRisingOut", &walkRisingOut, 0.01, 0, 1));
     if ( ImGui::DragFloat("walkRisingMidX", &walkRisingMidX, 0.01, 0, 1));
@@ -326,10 +331,9 @@ void GaitController::drawGui()
     if ( ImGui::DragFloat("walkFalingMidX", &walkFalingMidX, 0.01, 0, 1));
     if ( ImGui::DragFloat("walkFalingMidY", &walkFalingMidY, 0.01, 0, 1));
     ImGui::Separator();
-    ImGui::Checkbox("debug", &debug);
 
-    if(debug)
-    {
+
+
         vec3 graphDir = currentLeg->targetPos -currentLeg->prevTargetPos;
         float l = glm::length(graphDir)*delta;
         graphDir = glm::normalize(graphDir);

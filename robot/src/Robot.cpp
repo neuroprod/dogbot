@@ -7,15 +7,15 @@
 #include "cinder/CinderImGui.h"
 #include "graph/GraphRenderer.h"
 #include "Status.h"
+#include "communication/Communication.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
 void Robot::setup() {
 
-
-    gaitController.setup();
-
+    joystick =std::make_shared<Joystick>();
+    gaitController.setup( );
     imu.start();
     ikController.setup();
     modelRenderer.setup();
@@ -32,6 +32,14 @@ void Robot::setup() {
 }
 
 void Robot::update() {
+
+
+    if(COM()->receiver->hasNewJoystick)
+    {
+        COM()->receiver->updateJoystick( joystick );
+        gaitController.stepInput.update(joystick);
+
+    }
 
     stateController.update();
     ikController.update();
@@ -59,6 +67,7 @@ void Robot::draw()
     motorControl.drawGui();
     GRAPH()->draw("motors");
     ikController.drawGui();
+    gaitController.drawGui();
     modelRenderer.draw();
     stateController.draw();
     balanceController.drawGui();

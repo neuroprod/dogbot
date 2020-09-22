@@ -55,12 +55,12 @@ void RSerial::worker()
                     bool lDown = false;
                     if (i3 > 900)lDown = true;
 
-                    float xr = clampJoystick(i1 - 515.f);
-                    float yr = clampJoystick((i2 - 512.f) * -1.f);
+                    float xl = clampJoystick(i1 - 515.f)*-1;
+                    float yl = clampJoystick((i2 - 512.f) * -1.f);
 
 
-                    float xl = clampJoystick(i4 - 505.f);
-                    float yl = clampJoystick((i3 - 515.f) * -1.f);
+                    float xr = clampJoystick(i4 - 505.f)*-1;
+                    float yr = clampJoystick((i3 - 515.f) * -1.f);
 
 
                     std::lock_guard<std::mutex> lock(dataMutex);

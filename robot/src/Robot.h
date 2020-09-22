@@ -13,7 +13,7 @@
 #include "walking/GaitController.h"
 #include "balance/BalanceController.h"
 #include "states/StateController.h"
-
+#include "input/Joystick.h"
 class Robot
 {
 public:
@@ -29,7 +29,7 @@ public:
     StateController stateController;
     GaitController gaitController;
     BalanceController balanceController;
-
+    JoystickRef joystick;
     bool isReady =false;
 };
 

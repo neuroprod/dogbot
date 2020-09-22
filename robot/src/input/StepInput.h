@@ -5,7 +5,7 @@
 #ifndef BOT_STEPINPUT_H
 #define BOT_STEPINPUT_H
 
-
+#include "Joystick.h"
 class StepInput
 {
 public :
@@ -16,7 +16,7 @@ public :
     float moveLength =0;
     float rotAngle =0;
     float homeZOffset =30;
-
+void update(JoystickRef joystick);
     void drawGui(bool ownPannel =true) ;
 
 

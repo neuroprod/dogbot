@@ -18,14 +18,15 @@ struct Joystick
 
     ci::osc::Message getMessage()
     {
-    ci::osc::Message msg("/joystick");
-    msg.append( mLeftJoystick.x );
-    msg.append( mLeftJoystick.y );
-    msg.append( mLeftJoystickDown );
-    msg.append( mRightJoystick.x );
-    msg.append( mRightJoystick.y );
-    msg.append( mRightJoystickDown );
-    return msg;
+        ci::osc::Message msg("/joystick");
+        msg.append(mLeftJoystick.x);
+        msg.append(mLeftJoystick.y);
+        msg.append(mLeftJoystickDown);
+        msg.append(mRightJoystick.x);
+        msg.append(mRightJoystick.y);
+        msg.append(mRightJoystickDown);
+        return msg;
     }
 };
+
 #endif //REMOTE_JOYSTICK_H

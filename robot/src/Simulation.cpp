@@ -12,7 +12,8 @@ using namespace ci::app;
 void Simulation::setup()
 {
 
-    gaitController.setup();
+    joystick =std::make_shared<Joystick>();
+    gaitController.setup( );
     ikController.setup();
     ikController.update();
     modelRenderer.setup();

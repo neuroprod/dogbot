@@ -15,6 +15,7 @@
 #include "LegController.h"
 #include "../modelrenderer/SymbolBatches.h"
 #include "../graph/GraphableArray.h"
+#include "../input/Joystick.h"
 
 class GaitController
 {
@@ -35,7 +36,7 @@ public:
 
     float currentStepTime;
     float stepTimeTotal;
-    bool debug =true;
+    bool editGate =false;
     ci::BSpline3f getWalkStep(StepInput &stepInput,LegControllerRef legController);
     ci::BSpline3f getHomeStep(StepInput &stepInput,LegControllerRef legController);
     ci::BSpline3f getHomeRise(StepInput &stepInput,LegControllerRef legController);

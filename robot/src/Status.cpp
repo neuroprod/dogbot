@@ -9,6 +9,7 @@ using namespace std;
 void Status::drawGui()
 {
     ImGui::Begin("Status");
+    ImGui::Text("fps:%f", ImGui::GetIO().Framerate);
     logger.draw();
 
     ImGui::End();

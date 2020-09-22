@@ -12,6 +12,7 @@
 #include "ik/IKController.h"
 #include "states/StateController.h"
 #include "input/StepInput.h"
+#include "input/Joystick.h"
 #include "walking/GaitController.h"
 #include "physics/PhysicsController.h"
 #include "balance/BalanceController.h"
@@ -37,6 +38,7 @@ public:
     bool usePhysics =true;
     bool play =true;
     bool step =false;
+    JoystickRef joystick;
 };
 
 
