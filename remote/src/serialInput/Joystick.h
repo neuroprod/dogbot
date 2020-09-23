@@ -27,6 +27,17 @@ public:
     Sfloat cLv =SETTINGS()->getFloat("AppSettings","cLv",0);
     Sfloat cRh =SETTINGS()->getFloat("AppSettings","cRh",0);
     Sfloat cRv =SETTINGS()->getFloat("AppSettings","cRv",0);
+
+    Sfloat minLh =SETTINGS()->getFloat("AppSettings","minLh",0);
+    Sfloat minLv =SETTINGS()->getFloat("AppSettings","minLv",0);
+    Sfloat minRh =SETTINGS()->getFloat("AppSettings","minRh",0);
+    Sfloat minRv =SETTINGS()->getFloat("AppSettings","minRv",0);
+
+    Sfloat maxLh =SETTINGS()->getFloat("AppSettings","maxLh",0);
+    Sfloat maxLv =SETTINGS()->getFloat("AppSettings","maxLv",0);
+    Sfloat maxRh =SETTINGS()->getFloat("AppSettings","maxRh",0);
+    Sfloat maxRv =SETTINGS()->getFloat("AppSettings","maxRv",0);
+
     float mLh=0;
     float mLv=0;
     float mRh=0;

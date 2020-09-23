@@ -15,17 +15,17 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
     mRv = rv;
 
 
-    /*bool rDown = false;
-    if (i2 > 900)rDown = true;
+    bool rDown = false;
+    if (rv > 900)rDown = true;
 
     bool lDown = false;
-    if (i3 > 900)lDown = true;
-*/
-    float xl = clampJoystick(lh -cLh->value() ,0,0);
+    if (lv > 900)lDown = true;
+
+    float xl = clampJoystick((lh -cLh->value())*-1 ,0,0);
     float yl = clampJoystick(lv -cLv->value() ,0,0);
 
 
-    float xr = clampJoystick(rh -cRh->value() ,0,0);
+    float xr = clampJoystick((rh -cRh->value())*-1 ,0,0);
     float yr = clampJoystick(rv -cRv->value() ,0,0);
 
 
@@ -36,8 +36,8 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
     mRightJoystick.y = yr;
     mLeftJoystick.x = xl;
     mLeftJoystick.y = yl;
-  //  joystick.mLeftJoystickDown = lDown;
-    //joystick.mRightJoystickDown = rDown;*/
+    mLeftJoystickDown = lDown;
+    mRightJoystickDown = rDown;
 
 
 
