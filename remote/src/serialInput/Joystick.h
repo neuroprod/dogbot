@@ -9,24 +9,27 @@
 #include "cinder/app/App.h"
 
 
-struct Joystick
+class Joystick
 {
+
+public:
+    Joystick(){};
+    void setRaw(float lh,float lv,float rh,float rv);
+    ci::osc::Message getMessage();
+    void drawDebugGui();
+
     ci::vec2 mRightJoystick;
     ci::vec2 mLeftJoystick;
     bool mLeftJoystickDown = false;
     bool mRightJoystickDown = false;
 
-    ci::osc::Message getMessage()
-    {
-        ci::osc::Message msg("/joystick");
-        msg.append(mLeftJoystick.x);
-        msg.append(mLeftJoystick.y);
-        msg.append(mLeftJoystickDown);
-        msg.append(mRightJoystick.x);
-        msg.append(mRightJoystick.y);
-        msg.append(mRightJoystickDown);
-        return msg;
-    }
+
+    float mLh=0;
+    float mLv=0;
+    float mRh=0;
+    float mRv=0;
+
+
 };
 
 #endif //REMOTE_JOYSTICK_H

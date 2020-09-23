@@ -43,12 +43,20 @@ void RSerial::worker()
                 std::vector<std::string> strings = ci::split(mLastString, ' ');
                 if (strings.size() == 5)
                 {
+
+
+                    float i5 = std::stof(strings[4]);
+                    mBattery = i5 / 1024.f;
+
+
+
                     float i1 = std::stof(strings[0]);//right hor
                     float i2 = std::stof(strings[1]);//right vert
                     float i3 = std::stof(strings[2]);//left vert
                     float i4 = std::stof(strings[3]);//left hor
-                    float i5 = std::stof(strings[4]);
 
+                    joystick.setRaw(i4,i3,i1,i2);
+                    /*
                     bool rDown = false;
                     if (i2 > 900)rDown = true;
 
@@ -65,13 +73,13 @@ void RSerial::worker()
 
                     std::lock_guard<std::mutex> lock(dataMutex);
 
-                    mBattery = i5 / 1024.f;
+
                     joystick.mRightJoystick.x = xr;
                     joystick.mRightJoystick.y = yr;
                     joystick.mLeftJoystick.x = xl;
                     joystick.mLeftJoystick.y = yl;
                     joystick.mLeftJoystickDown = lDown;
-                    joystick.mRightJoystickDown = rDown;
+                    joystick.mRightJoystickDown = rDown;*/
 
 
                 }

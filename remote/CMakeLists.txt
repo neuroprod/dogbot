@@ -16,6 +16,7 @@ set(SRC_FILES
         ${APP_PATH}/src/RemoteApp.cpp
         ${APP_PATH}/src/gui/GuiSetup.cpp
         ${APP_PATH}/src/serialInput/RSerial.cpp
+        ${APP_PATH}/src/serialInput/Joystick.cpp
         ${APP_PATH}/src/communication/Communication.cpp
         ${APP_PATH}/src/communication/OSCReceiver.cpp
         ${APP_PATH}/src/communication/OSCSender.cpp

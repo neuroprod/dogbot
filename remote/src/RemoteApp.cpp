@@ -7,6 +7,7 @@
 #include "cinder/gl/gl.h"
 #include "settings/SettingsHandler.h"
 #include "serialInput/RSerial.h"
+#include "serialInput/Joystick.h"
 #include "communication/Communication.h"
 
 using namespace ci;
@@ -20,10 +21,17 @@ public:
     void update() override;
     void sendCommand(int type,int command ) ;
     void draw() override;
+    void drawMain();
+    void drawJoystick();
+
     GuiSetup guiSetup;
 
-    bool isFS =false;
+
     RSerial serial;
+    Joystick joystick;
+
+
+    int  currentGui =0;
 };
 
 void RemoteApp::setup()
@@ -59,14 +67,22 @@ void RemoteApp::sendCommand(int type,int command)
 }
 void RemoteApp::update()
 {
-    Joystick joystick =serial.getJoystick();
+    joystick =serial.getJoystick();
     ci::osc::Message msg =joystick.getMessage();
     COM()->send(msg);
-
-
-
     COM()->update();
+    if( currentGui ==0)
+    {
+        drawMain();
+    }else
+        {
 
+        drawJoystick();
+        }
+
+}
+void  RemoteApp::drawMain()
+{
     ImGuiWindowFlags window_flags = 0;
 
     window_flags |= ImGuiWindowFlags_NoTitleBar;
@@ -77,21 +93,13 @@ void RemoteApp::update()
     window_flags |= ImGuiWindowFlags_NoBackground;
 
     bool open = true;
-    /*ImGui::Begin("Settings",&open,window_flags);
-    if(ImGui::Button("toggle fullscreen",ImVec2(ImGui::GetWindowSize().x, 25))){
-        setFullScreen(!isFullScreen());
-       // hideCursor();
-    }
-    if(ImGui::Button("save settings",ImVec2(ImGui::GetWindowSize().x, 25))){
-        SETTINGS()->save();
-    }
-    ImGui::End();*/
+
 
     float firstColumnWidth =600;
     float secondColumnWith =800-firstColumnWidth-1;
     float firstColumnWidthP =firstColumnWidth-15;
     float secondColumnWidthP =secondColumnWith-15;
-    ImGui::Begin("controll",&open,window_flags);
+    ImGui::Begin("cont",&open,window_flags);
 
     ImGui::Columns(2);
     static unsigned short initial_column_spacing = 0;
@@ -132,7 +140,10 @@ void RemoteApp::update()
         if(isFullScreen()){
             hideCursor();
         }else
-            {showCursor();}
+        {showCursor();}
+    }
+    if(ImGui::Button("joystick settings",ImVec2(secondColumnWidthP , 25))){
+       currentGui=1;
     }
     if(ImGui::Button("save settings",ImVec2(secondColumnWidthP , 25))){
         SETTINGS()->save();
@@ -141,7 +152,28 @@ void RemoteApp::update()
     ImGui::End();
 
 }
+void  RemoteApp::drawJoystick()
+{
+    ImGuiWindowFlags window_flags = 0;
 
+    window_flags |= ImGuiWindowFlags_NoTitleBar;
+    window_flags |= ImGuiWindowFlags_NoMove;
+    window_flags |= ImGuiWindowFlags_NoResize;
+    window_flags |= ImGuiWindowFlags_NoCollapse;
+    window_flags |= ImGuiWindowFlags_NoNav;
+    window_flags |= ImGuiWindowFlags_NoBackground;
+
+    bool open = true;
+
+
+    ImGui::Begin("cont",&open,window_flags);
+    if(ImGui::Button("back",ImVec2(0 , 25))){
+        currentGui=0;
+    }
+    joystick.drawDebugGui();
+    ImGui::End();
+
+}
 void RemoteApp::draw()
 {
     gl::clear();
