@@ -44,7 +44,7 @@ void RSerial::worker()
                 if (strings.size() == 5)
                 {
 
-console()<<mLastString<<std::endl;
+
                     float i5 = std::stof(strings[4]);
                     mBattery = i5 / 1024.f;
 
