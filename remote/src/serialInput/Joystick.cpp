@@ -58,8 +58,8 @@ float Joystick::clampJoystick(float in,float min,float max)
 {
     if(!testMinMax)
     {
-        if (in < 0)in / min;
-        if (in > 0)in / max;
+        if (in < 0)in /= min;
+        if (in > 0)in /= max;
     }
     return in;
 
