@@ -4,6 +4,8 @@
 
 #include "Joystick.h"
 #include "cinder/CinderImGui.h"
+
+
 void Joystick::setRaw(float lh, float lv, float rh, float rv)
 {
 
@@ -18,37 +20,55 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
 
     bool lDown = false;
     if (i3 > 900)lDown = true;
-
-    float xl = clampJoystick(i1 - 515.f)*-1;
-    float yl = clampJoystick((i2 - 512.f) * -1.f);
-
-
-    float xr = clampJoystick(i4 - 505.f)*-1;
-    float yr = clampJoystick((i3 - 515.f) * -1.f);
+*/
+    float xl = clampJoystick(lh -cLh->value() ,0,0);
+    float yl = clampJoystick(lv -cLv->value() ,0,0);
 
 
-    std::lock_guard<std::mutex> lock(dataMutex);
+    float xr = clampJoystick(rh -cRh->value() ,0,0);
+    float yr = clampJoystick(rv -cRv->value() ,0,0);
 
 
-    joystick.mRightJoystick.x = xr;
-    joystick.mRightJoystick.y = yr;
-    joystick.mLeftJoystick.x = xl;
-    joystick.mLeftJoystick.y = yl;
-    joystick.mLeftJoystickDown = lDown;
-    joystick.mRightJoystickDown = rDown;*/
+
+
+
+    mRightJoystick.x = xr;
+    mRightJoystick.y = yr;
+    mLeftJoystick.x = xl;
+    mLeftJoystick.y = yl;
+  //  joystick.mLeftJoystickDown = lDown;
+    //joystick.mRightJoystickDown = rDown;*/
 
 
 
 
 
 }
+float Joystick::clampJoystick(float in,float min,float max)
+{
+    return in;
 
+}
 void Joystick::drawDebugGui()
 {
 
     ImGui::Text("raw input: ");
     ImGui::Text("Lhor:%f  Lver:%f  Rhor:%f  Rver:%f", mLh, mLv, mRh, mRv);
 
+    if(ImGui::Button("save settings"))
+    {
+        SETTINGS()->save();
+    }
+    if(ImGui::Button("set center"))
+    {
+        cLh->setValue(mLh);
+        cLv->setValue(mLv);
+        cRh->setValue(mRh);
+        cRv->setValue(mRv);
+    }
+
+    ImGui::Text("output: ");
+    ImGui::Text("Lhor:%f  Lver:%f  Rhor:%f  Rver:%f", mLeftJoystick.x ,mLeftJoystick.y,     mRightJoystick.x,  mRightJoystick.y);
 }
 
 ci::osc::Message Joystick::getMessage()
