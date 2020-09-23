@@ -31,13 +31,13 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
     {
         if (abs(xl) < 8 && abs(yl) < 8)
         {
-            xl = 0;
-            yl = 0;
+   //         xl = 0;
+    //        yl = 0;
         }
         if (abs(xr) < 8 && abs(yr) < 8)
         {
-            xr = 0;
-            yr = 0;
+      //      xr = 0;
+       //     yr = 0;
         }
     }
 
