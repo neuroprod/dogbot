@@ -16,7 +16,8 @@ public :
     float moveLength =0;
     float rotAngle =0;
     float homeZOffset =30;
-void update(JoystickRef joystick);
+    bool useJoystick =true;
+    void update(JoystickRef joystick);
     void drawGui(bool ownPannel =true) ;
 
 

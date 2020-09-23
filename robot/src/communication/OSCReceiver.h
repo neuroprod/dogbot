@@ -18,6 +18,7 @@ public:
     void setup();
 
     void updateJoystick(JoystickRef joystick );
+    ci::ivec2 getCommand( );
     std::atomic<bool> hasNewCommand =false;
     std::atomic<bool> hasNewJoystick=false;
 
@@ -36,6 +37,9 @@ public:
     float JRightX =0;
     float  JRightY =0;
     bool JRightDown =0;
+bool btnDown =false;
+    int commandType;
+    int command;
 };
 
 

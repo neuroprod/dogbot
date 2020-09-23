@@ -29,8 +29,19 @@ void Simulation::update()
     if(COM()->receiver->hasNewJoystick)
     {
         COM()->receiver->updateJoystick( joystick );
-        gaitController.stepInput.update(joystick);
 
+        if(joystick->mLeftJoystickDown ||joystick->mRightJoystickDown )
+        {
+            //ignore for now
+        }else
+        {
+            gaitController.stepInput.update(joystick);
+        }
+    }
+    if(COM()->receiver->hasNewCommand)
+    {
+        ivec2 com = COM()->receiver->getCommand();
+        stateController.setCommand(com.x,com.y);
     }
 
     if (!play && !step) return;

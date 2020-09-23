@@ -14,13 +14,13 @@ void OSCReceiver::setup()
                           [&](const osc::Message &msg)
                           {
                               mCommandMutex.lock();
-                              int typeTemp = msg[0].int32();
-                              int commandTemp = msg[1].int32();
+                              commandType = msg[0].int32();
+                             command = msg[1].int32();
                               mCommandMutex.unlock();
                               hasNewCommand = true;
 
 
-                              console() << "reseive command:" << typeTemp << " " << commandTemp << endl;
+
                           });
 
     mReceiver.setListener("/joystick",
@@ -34,7 +34,6 @@ void OSCReceiver::setup()
                               JRightX = msg[3].flt();
                               JRightY = msg[4].flt();
                               JRightDown = msg[5].boolean();
-                              hasNewJoystick = true;
 
                               mJoystickMutex.unlock();
                           });
@@ -82,4 +81,14 @@ void OSCReceiver::updateJoystick(JoystickRef joystick )
     joystick->mRightJoystickDown = JRightDown;
     hasNewJoystick = false;
     mJoystickMutex.unlock();
+}
+ivec2 OSCReceiver::getCommand( )
+{
+    mCommandMutex.lock();
+    ivec2 a;
+    a.x = commandType;
+    a.y =command;
+    mCommandMutex.unlock();
+    hasNewCommand = false;
+    return a;
 }

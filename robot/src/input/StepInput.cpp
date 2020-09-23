@@ -11,15 +11,18 @@ using namespace std;
 
 void StepInput::update(JoystickRef joystick)
 {
+    if(!useJoystick)return;
     const float PI = 3.14159265359;
     vec2 p = joystick->mLeftJoystick;
     if (p.x != 0 || p.y != 0)
     {
         vec2 pn = glm::normalize(p);
-        moveAngle = atan2(pn.y, pn.x) + PI / 2;
+        moveAngle = atan2(-pn.y, pn.x) +  PI/2;
         if (moveAngle > PI)moveAngle -= 2 * PI;
         if (moveAngle < -PI)moveAngle += 2 * PI;
-
+        float factor = powf(pn.y,4.f);
+    //    console()<<factor<<" "<<pn.y<<endl;
+        p.y  *=factor;
         p.x *= 0.2;
         moveLength = glm::length(p) * 100;
 
@@ -36,6 +39,7 @@ void StepInput::drawGui(bool ownPannel)
 {
     if (ownPannel)ImGui::Begin("StepInput");
 
+    ImGui::Checkbox("use remote",&useJoystick);
     ImGui::SliderFloat("moveLength", &moveLength, 0, 300);
     ImGui::SliderAngle("angleMove", &moveAngle, -180, 180);
     ImGui::SliderAngle("rotate", &rotAngle, -10, 10);

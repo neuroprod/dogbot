@@ -30,6 +30,12 @@ void StateController::update()
     }
 
 }
+void StateController::setCommand(int type,int com)
+{
+
+    ci::app::console()<<"command " <<type<<" "<<com<<std::endl;
+
+}
 void StateController::reset()
 {
     currentState =&noneState;

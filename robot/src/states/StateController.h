@@ -17,6 +17,7 @@ class StateController
 public:
     StateController(){};
     void setup(IKController * ikController,GaitController *gaitController);
+    void setCommand(int type,int com);
     void update();
     void draw();
     void reset();
