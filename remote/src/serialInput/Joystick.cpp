@@ -29,12 +29,12 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
     float yr = clampJoystick(rv -cRv->value() ,minRv->value(),maxRv->value());
     if(!testMinMax)
     {
-        if (abs(xl) < 0.04 && abs(yl) < 0.04 )
+        if ((abs(xl) < 0.04 )&& (abs(yl) < 0.04) )
         {
            xl = 0;
            yl = 0;
         }
-        if (abs(xr) < 0.04  && abs(yr) < 0.04 )
+        if ((abs(xr) < 0.04 ) && (abs(yr) < 0.04) )
         {
           xr = 0;
            yr = 0;
