@@ -111,29 +111,43 @@ void  RemoteApp::drawMain()
     }
 
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8,0,0,1));
-    if(ImGui::Button("abort",ImVec2(firstColumnWidthP , 40))){
+    if(ImGui::Button("abort",ImVec2(firstColumnWidthP , 60))){
         sendCommand(0,0);
 
     }
 
     ImGui::PopStyleColor(1);
-    ImGui::Dummy(ImVec2(0.0f, 40.0f));
-    if(ImGui::Button("test1",ImVec2(firstColumnWidthP , 30))){
+    ImGui::Dummy(ImVec2(0.0f, 50.0f));
+    if(ImGui::Button("stand",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,1);
 
     }
-    if(ImGui::Button("test2",ImVec2(firstColumnWidthP , 30))){
+    if(ImGui::Button("laydown",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,2);
 
     }
-    if(ImGui::Button("test3",ImVec2(firstColumnWidthP , 30))){
+    if(ImGui::Button("walk",ImVec2(firstColumnWidthP , 30))){
         sendCommand(1,3);
+
+    }
+    ImGui::Dummy(ImVec2(0.0f, 50.0f));
+    if(ImGui::Button("test1",ImVec2(firstColumnWidthP , 30))){
+        sendCommand(2,1);
+
+    }
+    if(ImGui::Button("test2",ImVec2(firstColumnWidthP , 30))){
+        sendCommand(2,2);
+
+    }
+    if(ImGui::Button("test3",ImVec2(firstColumnWidthP , 30))){
+        sendCommand(2,3);
 
     }
     if(ImGui::Button("test4",ImVec2(firstColumnWidthP , 30))){
-        sendCommand(1,3);
+        sendCommand(2,4);
 
     }
+    ImGui::Dummy(ImVec2(0.0f, 50.0f));
     ImGui::NextColumn();
     if(ImGui::Button("toggle fullscreen",ImVec2(secondColumnWidthP , 25))){
         setFullScreen(!isFullScreen());
@@ -142,9 +156,11 @@ void  RemoteApp::drawMain()
         }else
         {showCursor();}
     }
+    ImGui::Dummy(ImVec2(0.0f, 2.0f));
     if(ImGui::Button("joystick settings",ImVec2(secondColumnWidthP , 25))){
        currentGui=1;
     }
+    ImGui::Dummy(ImVec2(0.0f, 2.0f));
     if(ImGui::Button("save settings",ImVec2(secondColumnWidthP , 25))){
         SETTINGS()->save();
     }
