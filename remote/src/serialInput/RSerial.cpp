@@ -50,12 +50,12 @@ void RSerial::worker()
 
 
 
-                    float i1 = std::stof(strings[0]);//right hor
-                    float i2 = std::stof(strings[1]);//right vert
-                    float i3 = std::stof(strings[2]);//left vert
-                    float i4 = std::stof(strings[3]);//left hor
+                    float i1 = std::stof(strings[0]);//left hor
+                    float i2 = std::stof(strings[1]);//left vert
+                    float i3 = std::stof(strings[2]);//right vert
+                    float i4 = std::stof(strings[3]);//right hor
 
-                    joystick.setRaw(i4,i3,i1,i2);
+                    joystick.setRaw(i1,i2,i4,i3);
                     /*
                     bool rDown = false;
                     if (i2 > 900)rDown = true;
