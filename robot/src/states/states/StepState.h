@@ -6,10 +6,10 @@
 #define BOT_STEPSTATE_H
 
 
-#include "../ik/IKController.h"
+#include "../../ik/IKController.h"
 #include "BaseState.h"
 #include "cinder/Timeline.h"
-#include "../walking/GaitController.h"
+#include "../../walking/GaitController.h"
 
 class StepState : public BaseState
 {
@@ -20,8 +20,8 @@ public:
     void start();
     void update();
     bool isDone();
-
-
+    bool hasGui() {return true;};
+    void drawGui();
 
     IKController * ikController;
     GaitController * gaitController;

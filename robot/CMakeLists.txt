@@ -40,8 +40,8 @@ set(SRC_FILES
         ${APP_PATH}/src/ik/IKLeg.cpp
         ${APP_PATH}/src/ik/IKModel.cpp
         ${APP_PATH}/src/states/StateController.cpp
-        ${APP_PATH}/src/states/RiseState.cpp
-        ${APP_PATH}/src/states/StepState.cpp
+        ${APP_PATH}/src/states/states/StandupState.cpp
+        ${APP_PATH}/src/states/states/StepState.cpp
         ${APP_PATH}/src/input/StepInput.cpp
         ${APP_PATH}/src/walking/GaitController.cpp
         ${APP_PATH}/src/walking/LegController.cpp

@@ -4,8 +4,9 @@
 
 #ifndef BOT_BASESTATE_H
 #define BOT_BASESTATE_H
-#include "StateEnum.h"
+#include "../StateEnum.h"
 #include "cinder/app/App.h"
+#include "cinder/CinderImGui.h"
 class BaseState
 {
 public:
@@ -13,12 +14,13 @@ public:
 
     STATE state= STATE::BASE;
     std::string name ="BASE";
-
-
+    bool showGui =false;
+    virtual bool hasGui() {return false;};
+    virtual void drawGui(){};
     virtual void start(){};
     virtual void update(){};
     virtual bool isDone(){};
-    std::string  virtual getName(){return name ;};
+    std::string  virtual getName()=0;
 };
 
 

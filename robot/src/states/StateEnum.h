@@ -4,7 +4,7 @@
 
 #ifndef BOT_STATEENUM_H
 #define BOT_STATEENUM_H
-enum class STATE { BASE,NONE, RISE,STEP };
+enum class STATE { BASE,NONE,LAYDOWN, STANDUP,SIT,STEP };
 
 
 

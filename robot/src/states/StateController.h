@@ -8,10 +8,11 @@
 #include "cinder/app/App.h"
 #include "../ik/IKController.h"
 #include "../walking/GaitController.h"
-#include "BaseState.h"
-#include "NoneState.h"
-#include "RiseState.h"
-#include "StepState.h"
+#include "states/BaseState.h"
+#include "states/StartState.h"
+#include "states/StandupState.h"
+#include "states/StepState.h"
+#include "states/LaydownState.h"
 class StateController
 {
 public:
@@ -21,16 +22,18 @@ public:
     void update();
     void draw();
     void reset();
-    void setNextState();
+    void setNewState(std::shared_ptr<BaseState> state);
 
+    std::vector<std::shared_ptr<BaseState>> states;
 
     STATE state;
-    BaseState *currentState;
+    std::shared_ptr<BaseState> currentState;
 
 
-    NoneState noneState;
-    RiseState riseState;
-    StepState stepState;
+    std::shared_ptr<StartState> sitState;
+    std::shared_ptr<StandupState> standupState;
+    std::shared_ptr<StepState> stepState;
+    std::shared_ptr<LaydownState> laydownState;
 
 };
 

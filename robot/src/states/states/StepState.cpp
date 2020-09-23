@@ -5,7 +5,7 @@
 #include "StepState.h"
 
 
-#include "../RobotSettings.h"
+#include "../../RobotSettings.h"
 using namespace ci;
 using namespace ci::app;
 void StepState::start()
@@ -24,5 +24,10 @@ void StepState::update()
 }
 bool StepState::isDone()
 {
-    return  done;
+    return   !gaitController->isWalking;
+}
+void StepState::drawGui(){
+
+    ImGui::Text("-> GaitController panel");
+
 }
