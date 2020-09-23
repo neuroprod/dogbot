@@ -28,22 +28,22 @@ public:
     Sfloat cRh =SETTINGS()->getFloat("AppSettings","cRh",0);
     Sfloat cRv =SETTINGS()->getFloat("AppSettings","cRv",0);
 
-    Sfloat minLh =SETTINGS()->getFloat("AppSettings","minLh",0);
-    Sfloat minLv =SETTINGS()->getFloat("AppSettings","minLv",0);
-    Sfloat minRh =SETTINGS()->getFloat("AppSettings","minRh",0);
-    Sfloat minRv =SETTINGS()->getFloat("AppSettings","minRv",0);
+    Sfloat minLh =SETTINGS()->getFloat("AppSettings","minLh",255);
+    Sfloat minLv =SETTINGS()->getFloat("AppSettings","minLv",268);
+    Sfloat minRh =SETTINGS()->getFloat("AppSettings","minRh",263);
+    Sfloat minRv =SETTINGS()->getFloat("AppSettings","minRv",267);
 
-    Sfloat maxLh =SETTINGS()->getFloat("AppSettings","maxLh",0);
-    Sfloat maxLv =SETTINGS()->getFloat("AppSettings","maxLv",0);
-    Sfloat maxRh =SETTINGS()->getFloat("AppSettings","maxRh",0);
-    Sfloat maxRv =SETTINGS()->getFloat("AppSettings","maxRv",0);
+    Sfloat maxLh =SETTINGS()->getFloat("AppSettings","maxLh",264);
+    Sfloat maxLv =SETTINGS()->getFloat("AppSettings","maxLv",265);
+    Sfloat maxRh =SETTINGS()->getFloat("AppSettings","maxRh",252);
+    Sfloat maxRv =SETTINGS()->getFloat("AppSettings","maxRv",285);
 
     float mLh=0;
     float mLv=0;
     float mRh=0;
     float mRv=0;
 
-
+    bool testMinMax =false;
 };
 
 #endif //REMOTE_JOYSTICK_H

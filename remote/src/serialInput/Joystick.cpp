@@ -21,15 +21,25 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
     bool lDown = false;
     if (lv > 900)lDown = true;
 
-    float xl = clampJoystick((lh -cLh->value())*-1 ,0,0);
-    float yl = clampJoystick(lv -cLv->value() ,0,0);
+    float xl = clampJoystick((lh -cLh->value())*-1 ,minLh->value(),maxLh->value());
+    float yl = clampJoystick(lv -cLv->value() ,minLv->value(),maxLv->value());
 
 
-    float xr = clampJoystick((rh -cRh->value())*-1 ,0,0);
-    float yr = clampJoystick(rv -cRv->value() ,0,0);
-
-
-
+    float xr = clampJoystick((rh -cRh->value())*-1 ,minRh->value(),maxRh->value());
+    float yr = clampJoystick(rv -cRv->value() ,minRv->value(),maxRv->value());
+    if(!testMinMax)
+    {
+        if (abs(xl) < 8 && abs(yl) < 8)
+        {
+            xl = 0;
+            yl = 0;
+        }
+        if (abs(xr) < 8 && abs(yr) < 8)
+        {
+            xr = 0;
+            yr = 0;
+        }
+    }
 
 
     mRightJoystick.x = xr;
@@ -46,6 +56,11 @@ void Joystick::setRaw(float lh, float lv, float rh, float rv)
 }
 float Joystick::clampJoystick(float in,float min,float max)
 {
+    if(!testMinMax)
+    {
+        if (in < 0)in / min;
+        if (in > 0)in / max;
+    }
     return in;
 
 }
@@ -66,7 +81,7 @@ void Joystick::drawDebugGui()
         cRh->setValue(mRh);
         cRv->setValue(mRv);
     }
-
+    ImGui::Checkbox("test min/max",&testMinMax);
     ImGui::Text("output: ");
     ImGui::Text("Lhor:%f  Lver:%f  Rhor:%f  Rver:%f", mLeftJoystick.x ,mLeftJoystick.y,     mRightJoystick.x,  mRightJoystick.y);
 }
