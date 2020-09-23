@@ -47,7 +47,7 @@ void Joystick::drawDebugGui()
 {
 
     ImGui::Text("raw input: ");
-    ImGui::Text("Lver:%f  Lhor:%f  Rver:%f  Rhor:%f", mLh, mLv, mRh, mRv);
+    ImGui::Text("Lhor:%f  Lver:%f  Rhor:%f  Rver:%f", mLh, mLv, mRh, mRv);
 
 }
 
