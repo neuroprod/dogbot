@@ -1,103 +1,28 @@
 [
    {
-      "key" : "footCOM",
-      "type" : "vec3",
-      "value" : {
-         "x" : 0,
-         "y" : -120,
-         "z" : 0
-      }
-   },
-   {
-      "key" : "toeCOM",
-      "type" : "vec3",
-      "value" : {
-         "x" : 0,
-         "y" : 0,
-         "z" : 0
-      }
-   },
-   {
-      "key" : "underLegLength",
-      "type" : "float",
-      "value" : 250
-   },
-   {
-      "key" : "ankleCOM",
-      "type" : "vec3",
-      "value" : {
-         "x" : 0,
-         "y" : -120,
-         "z" : 0
-      }
-   },
-   {
-      "key" : "ankleMass",
-      "type" : "float",
-      "value" : 0.28999999999999998
-   },
-   {
-      "key" : "bodyY",
-      "type" : "float",
-      "value" : 300
-   },
-   {
-      "key" : "bodyCOM",
-      "type" : "vec3",
-      "value" : {
-         "x" : 20,
-         "y" : 0,
-         "z" : 0
-      }
-   },
-   {
-      "key" : "bodyMass",
-      "type" : "float",
-      "value" : 6.5
-   },
-   {
       "key" : "bodyLength",
       "type" : "float",
       "value" : 352
    },
    {
-      "key" : "upperLegLength",
+      "key" : "bodyYStart",
       "type" : "float",
-      "value" : 210
+      "value" : 80
    },
    {
-      "key" : "hipOffsetZ",
+      "key" : "hipOffsetX ",
       "type" : "float",
-      "value" : 79
+      "value" : 60
    },
    {
-      "key" : "hipMass",
+      "key" : "bodyXStart",
       "type" : "float",
-      "value" : 1
+      "value" : -27
    },
    {
-      "key" : "toeMass",
+      "key" : "footRadius",
       "type" : "float",
-      "value" : 0.082000000000000003
-   },
-   {
-      "key" : "footMass",
-      "type" : "float",
-      "value" : 0.28999999999999998
-   },
-   {
-      "key" : "kneeCOM",
-      "type" : "vec3",
-      "value" : {
-         "x" : 0,
-         "y" : -120,
-         "z" : 0
-      }
-   },
-   {
-      "key" : "kneeMass",
-      "type" : "float",
-      "value" : 1.3300000000000001
+      "value" : 20
    },
    {
       "key" : "hipCOM",
@@ -109,24 +34,99 @@
       }
    },
    {
-      "key" : "footRadius",
+      "key" : "kneeMass",
       "type" : "float",
-      "value" : 20
+      "value" : 1.3300000000000001
    },
    {
-      "key" : "bodyXStart",
-      "type" : "float",
-      "value" : -27
+      "key" : "kneeCOM",
+      "type" : "vec3",
+      "value" : {
+         "x" : 0,
+         "y" : -120,
+         "z" : 0
+      }
    },
    {
-      "key" : "hipOffsetX ",
+      "key" : "footMass",
       "type" : "float",
-      "value" : 60
+      "value" : 0.28999999999999998
    },
    {
-      "key" : "bodyYStart",
+      "key" : "toeMass",
       "type" : "float",
-      "value" : 80
+      "value" : 0.082000000000000003
+   },
+   {
+      "key" : "hipMass",
+      "type" : "float",
+      "value" : 1
+   },
+   {
+      "key" : "hipOffsetZ",
+      "type" : "float",
+      "value" : 79
+   },
+   {
+      "key" : "upperLegLength",
+      "type" : "float",
+      "value" : 210
+   },
+   {
+      "key" : "bodyMass",
+      "type" : "float",
+      "value" : 6.5
+   },
+   {
+      "key" : "bodyCOM",
+      "type" : "vec3",
+      "value" : {
+         "x" : 20,
+         "y" : 0,
+         "z" : 0
+      }
+   },
+   {
+      "key" : "bodyY",
+      "type" : "float",
+      "value" : 300
+   },
+   {
+      "key" : "ankleMass",
+      "type" : "float",
+      "value" : 0.28999999999999998
+   },
+   {
+      "key" : "ankleCOM",
+      "type" : "vec3",
+      "value" : {
+         "x" : 0,
+         "y" : -120,
+         "z" : 0
+      }
+   },
+   {
+      "key" : "underLegLength",
+      "type" : "float",
+      "value" : 250
+   },
+   {
+      "key" : "toeCOM",
+      "type" : "vec3",
+      "value" : {
+         "x" : 0,
+         "y" : 0,
+         "z" : 0
+      }
+   },
+   {
+      "key" : "footCOM",
+      "type" : "vec3",
+      "value" : {
+         "x" : 0,
+         "y" : -120,
+         "z" : 0
+      }
    },
    {
       "key" : "bodyWidth",

@@ -76,6 +76,7 @@ void LegController::prepStateSwitch()
 }
 void  LegController::update(float timeNormal)
 {
+
     prevTargetPos = targetPos;
 
 

@@ -34,7 +34,7 @@ void OSCReceiver::setup()
                               JRightX = msg[3].flt();
                               JRightY = msg[4].flt();
                               JRightDown = msg[5].boolean();
-
+                              hasNewJoystick= true;
                               mJoystickMutex.unlock();
                           });
 

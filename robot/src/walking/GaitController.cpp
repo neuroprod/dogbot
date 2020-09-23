@@ -53,13 +53,42 @@ void GaitController::reset()
     legs[2]->reset();
     legs[3]->state =3;
     legs[3]->reset();
-
+    isWalking =false;
     //next step is update stepState
 
 }
 void GaitController::update()
 {
+    if(!isWalking)
+    {
+        if(stepInput.moveLength ==0 && stepInput.moveAngle ==0)
+        {
+            return;
 
+        }
+        reset();
+        isWalking =true;
+        console()<<"  "<<endl;
+        for(int i=0;i<4;i++)
+        {
+           legs[i]->stoped =false;
+        }
+    }
+    bool tryStop =false;
+    if(stepInput.moveLength ==0 && stepInput.moveAngle ==0)
+    {
+        tryStop =true;
+        bool isStoped =true;
+        for(int i=0;i<4;i++)
+        {
+         if( !  legs[i]->stoped ) isStoped =false;
+        }
+        if(isStoped)   {
+            reset();
+            isWalking =false;
+            return;
+        }
+    }
     double currentTime = getElapsedSeconds();
     delta =(currentTime - previousTime) *1000;
 
@@ -69,7 +98,11 @@ void GaitController::update()
     currentStepTime+=delta;
     if(currentStepTime> stepTimeTotal)//switch internal stepStates
     {
+
+
+
         int state = legs[0]->state;
+
         if(state==3 || state==1)
         {
             GRAPH()->pulse(1);
@@ -78,10 +111,24 @@ void GaitController::update()
         }
         currentStepTime-= stepTimeTotal;
         stepTimeTotal =stepInput.stepTime;
+
+
+
         for(int i=0;i<4;i++)
         {
+            if(  legs[i]->stoped ==true){continue;}
+            int prevState = legs[i]->state;
+
+            if( prevState ==2 &&  tryStop==true )
+            {
+
+                legs[i]->stoped =true;
+
+                continue;
+            }
             legs[i]->setNextState();
             int state = legs[i]->state;
+
             legs[i]->prevSpline=legs[i]->currentSpline;
 
 
@@ -114,7 +161,14 @@ void GaitController::update()
 
     for(int i=0;i<4;i++)
     {
-        legs[i]->update( currentStepTime/stepTimeTotal);
+        if(legs[i]->stoped) {
+
+            legs[i]->update( 1);
+        }else{
+            legs[i]->update( currentStepTime/stepTimeTotal);
+
+        }
+
 
     }
 

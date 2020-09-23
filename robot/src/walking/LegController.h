@@ -22,7 +22,7 @@ public:
     void setNextState();
     void update(float timeNormal);
 
-
+    bool stoped =true;
     void prepStateSwitch();
 
 
