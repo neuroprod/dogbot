@@ -18,7 +18,7 @@ public:
     std::string gName;
     std::string gType;
     int height =200;
-    bool gVisible = true;
+    bool gVisible = false;
     bool drawZero = false;
     int currentWidth=-1;
 };

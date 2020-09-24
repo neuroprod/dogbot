@@ -12,15 +12,17 @@ class BaseState
 public:
     BaseState(){};
 
-    STATE state= STATE::BASE;
+    STATE state= STATE::NONE;
     std::string name ="BASE";
     bool showGui =false;
     virtual bool hasGui() {return false;};
     virtual void drawGui(){};
     virtual void start(){};
     virtual void update(){};
-    virtual bool isDone(){};
-    std::string  virtual getName()=0;
+    virtual bool isDone()=0;
+    virtual std::string getName()=0;
+    virtual bool canHaveNextState(  STATE nextState)=0;
+
 };
 
 

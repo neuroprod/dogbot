@@ -10,9 +10,9 @@
 #include "../walking/GaitController.h"
 #include "states/BaseState.h"
 #include "states/StartState.h"
-#include "states/StandupState.h"
+#include "states/StandUpState.h"
 #include "states/StepState.h"
-#include "states/LaydownState.h"
+#include "states/LayDownState.h"
 class StateController
 {
 public:
@@ -22,7 +22,7 @@ public:
     void update();
     void draw();
     void reset();
-    void setNewState(std::shared_ptr<BaseState> state);
+    void trySetNewState(STATE state);
 
     std::vector<std::shared_ptr<BaseState>> states;
 
@@ -31,9 +31,9 @@ public:
 
 
     std::shared_ptr<StartState> sitState;
-    std::shared_ptr<StandupState> standupState;
+    std::shared_ptr<StandUpState> standupState;
     std::shared_ptr<StepState> stepState;
-    std::shared_ptr<LaydownState> laydownState;
+    std::shared_ptr<LayDownState> laydownState;
 
 };
 

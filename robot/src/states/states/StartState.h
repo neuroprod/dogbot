@@ -11,13 +11,18 @@ class StartState : public BaseState
 {
 public:
     StartState(){}
-    STATE state = STATE::SIT;
+    STATE state = STATE::START;
     std::string getName(){return "START" ;};
     void start(){};
     void update(){};
-    bool isDone()
-    { return true; }
+    bool isDone(){
+        return true;
+    }
+    bool canHaveNextState(  STATE nextState){
 
+        if(nextState== STATE::STANDUP)return true;
+        return false;
+    }
 
 
 };

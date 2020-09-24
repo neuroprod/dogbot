@@ -14,15 +14,19 @@
 class StepState : public BaseState
 {
 public:
-    STATE state= STATE::STEP;
-    StepState(){};
+
+    StepState(){state= STATE::STEP;};
     std::string getName(){return "STEP" ;};
     void start();
     void update();
     bool isDone();
     bool hasGui() {return true;};
     void drawGui();
+    bool canHaveNextState(  STATE nextState){
+        if(nextState ==STATE::STANDUP){ return false;}
 
+        return true;
+    }
     IKController * ikController;
     GaitController * gaitController;
     bool done ;

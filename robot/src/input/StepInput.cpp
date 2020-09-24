@@ -24,14 +24,14 @@ void StepInput::update(JoystickRef joystick)
     //    console()<<factor<<" "<<pn.y<<endl;
         p.y  *=factor;
         p.x *= 0.2;
-        moveLength = glm::length(p) * 100;
+        moveLength = glm::length(p) * 1;
 
     } else
     {
         moveAngle = 0;
         moveLength = 0;
     }
-    rotAngle = joystick->mRightJoystick.x * 5.f / 180.f * PI;
+    rotAngle = joystick->mRightJoystick.x * 0.f / 180.f * PI;
 
 }
 

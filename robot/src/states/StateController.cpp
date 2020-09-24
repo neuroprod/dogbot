@@ -6,14 +6,18 @@
 #include "StateEnum.h"
 #include "cinder/CinderImGui.h"
 #include "imgui/imgui_internal.h"
+#include "../Status.h"
+using namespace std;
+using namespace ci;
+using namespace ci::app;
 
 void StateController::setup(IKController *ikController, GaitController *gaitController)
 {
 
     sitState = std::make_shared<StartState>();
-   // states.push_back(sitState);
+    // states.push_back(sitState);
 
-    standupState = std::make_shared<StandupState>();
+    standupState = std::make_shared<StandUpState>();
     standupState->ikController = ikController;
     states.push_back(standupState);
 
@@ -22,7 +26,7 @@ void StateController::setup(IKController *ikController, GaitController *gaitCont
     stepState->gaitController = gaitController;
     states.push_back(stepState);
 
-    laydownState = std::make_shared<LaydownState>();
+    laydownState = std::make_shared<LayDownState>();
     laydownState->ikController = ikController;
     states.push_back(laydownState);
 
@@ -43,18 +47,64 @@ void StateController::update()
 
 void StateController::setCommand(int type, int com)
 {
+    if(type==1)
+    {
+        if(com==1)
+        {
+            trySetNewState(STATE::STANDUP);
+        }  else if(com==2)
+        {
+            trySetNewState(STATE::LAYDOWN);
+        } else if(com==3)
+        {
+            trySetNewState(STATE::STEP);
+        }
 
+    }
     ci::app::console() << "command " << type << " " << com << std::endl;
 
 }
 
-void StateController::setNewState(std::shared_ptr<BaseState> state)
+void StateController::trySetNewState(STATE state)
 {
 
-    currentState = state;
+    auto it = find_if(states.begin(), states.end(), [&, state](const std::shared_ptr<BaseState>& obj) {return obj->state == state;});
+
+    bool setNewState =true;
+    std::string error ="";
+    if(!currentState->isDone())
+    {
+        setNewState =false;
+        error ="current state ("+ currentState->getName()+ ") busy";
+
+    }else if(state== currentState->state)
+    {
+        setNewState =false;
+        error ="already in state " +currentState->getName();
+    }else if (!currentState->canHaveNextState(state))
+    {
+        setNewState =false;
+        error ="can't go from "+currentState->getName()+" to " +it->get()->getName() ;
+    }
 
 
-    currentState->start();
+
+
+
+    if(setNewState)
+    {
+        STATUS()->log("set new state " +it->get()->getName() );
+        currentState = *it;
+        currentState->start();
+
+
+
+    }else
+        {
+        STATUS()->logWarning(error );
+
+        }
+
 
 }
 
@@ -75,7 +125,7 @@ void StateController::draw()
     ImGui::Text("%s", n.c_str());
     if (currentState->isDone())
     {
-        ImGui::TextColored(ImVec4(0, 1, 0, 1), "DONE");
+        ImGui::TextColored(ImVec4(0, 1, 0, 1), "FREE");
     } else
     {
         ImGui::TextColored(ImVec4(1, 0, 0, 1), "BUSY");
@@ -83,12 +133,44 @@ void StateController::draw()
 
 
     ImGui::Separator();
+    bool forceDisable = false;
+    if (!currentState->isDone())
+    {
+        forceDisable = true;
+    }
+
     for (int i = 0; i < states.size(); i++)
     {
         ImGui::PushID(i);
+
+        bool disable = true;
+        if (!forceDisable)
+        {
+            if(currentState->state   !=states[i]->state)
+            {
+                if (currentState->canHaveNextState(states[i]->state))
+                {
+                    disable = false;
+                }
+            }
+        }
+
+        if (disable)
+        {
+
+            ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
+            ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.5f);
+
+        }
         if (ImGui::Button(states[i]->getName().c_str(), ImVec2(150.f, 0.0f)))
         {
-            setNewState(states[i]);
+            trySetNewState(states[i]->state);
+        }
+        if (disable)
+        {
+            ImGui::PopItemFlag();
+            ImGui::PopStyleVar();
+
         }
         if (states[i]->hasGui())
         {

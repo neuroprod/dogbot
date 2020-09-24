@@ -11,6 +11,7 @@ class Logger
 public:
     Logger(){};
     void log(std::string entry);
+    void logWarning(std::string entry);
     void logError(std::string entry);
     void draw();
     ImVector<int>       LineOffsets;

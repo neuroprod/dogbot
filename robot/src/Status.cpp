@@ -21,7 +21,12 @@ void Status::log(string entry)
     logger.log(entry+"\n");
 
 }
+void Status::logWarning(string entry)
+{
+    std::lock_guard<std::mutex> lock(logMutex);
+    logger.logWarning(entry+"\n");
 
+}
 void Status::logError(string entry, bool isFatal)
 {
 

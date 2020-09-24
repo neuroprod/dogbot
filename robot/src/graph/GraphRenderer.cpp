@@ -61,8 +61,7 @@ void GraphRenderer::draw(std::string type)
 
             for(auto g:graphables)
             {
-                if(g->gType ==type);
-                ImGui::Checkbox(g->gName.c_str(),&g->gVisible);
+                if(g->gType ==type) ImGui::Checkbox(g->gName.c_str(),&g->gVisible);
             }
             ImGui::EndMenu();
         }

@@ -13,6 +13,17 @@ void Logger::log(std::string entry)
         if (Buf[old_size] == '\n')
             LineOffsets.push_back(old_size + 1);
 }
+void Logger::logWarning(std::string entry)
+{
+    entry = "[WARNING] "+entry;
+    int old_size = Buf.size();
+    Buf.append(entry.c_str());
+
+    for (int new_size = Buf.size(); old_size < new_size; old_size++)
+        if (Buf[old_size] == '\n')
+            LineOffsets.push_back(old_size + 1);
+
+}
 void Logger::logError(std::string entry)
 {
     entry = "[ERROR] "+entry;

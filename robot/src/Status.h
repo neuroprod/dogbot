@@ -14,6 +14,7 @@ public:
 
     void log(std::string entry);
     void logError(std::string entry,bool fatal);
+    void logWarning(std::string entry);
     std::mutex logMutex;
     Logger logger;
     bool isFatalError();

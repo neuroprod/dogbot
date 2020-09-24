@@ -8,12 +8,12 @@
 #include "../../ik/IKController.h"
 #include "BaseState.h"
 #include "cinder/Timeline.h"
-
-class StandupState : public BaseState
+#include "../../settings/SettingsHandler.h"
+class StandUpState : public BaseState
 {
 public:
-    STATE state= STATE::STANDUP;
-    StandupState(){};
+
+    StandUpState(){ state= STATE::STANDUP;};
     std::string getName(){return "STANDUP" ;};
     void start();
     void update();
@@ -21,6 +21,10 @@ public:
 
     bool hasGui() {return true;};
     void drawGui();
+
+    bool canHaveNextState(  STATE nextState){return true;}
+
+    Sfloat standUpTime = SETTINGS()->getFloat("RobotSettings","standUpTime",2);
 
     ci::Anim<float> bodyY;
     ci::Anim<float> bodyX;
