@@ -26,8 +26,28 @@ void GraphRenderer::reg(Graphable * graphable)
     graphables.push_back(graphable);
 
 }
+void GraphRenderer::pauze()
+{
+    for(auto g:graphables)
+    {
+        g->pauze();
+
+    }
+    isPauze =true;
+}
+void GraphRenderer::play()
+{
+    for(auto g:graphables)
+    {
+        g->play();
+
+    }
+    isPauze =false;
+
+}
 void GraphRenderer::pulse(int i)
 {
+    if(isPauze) return;
     pulseData.push_back(i);
     if (pulseData.size() > 500)
     {

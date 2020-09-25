@@ -13,7 +13,7 @@ void StandUpState::start()
     float time = standUpTime->value();
     bodyY = ikController->bodyY;
     bodyX = ikController->bodyX;
-    timeline().apply(&bodyX,BOTSETTINGS()->bodyX,0.7f*time,EaseInOutQuad()).delay(0.3*time);
+    timeline().apply(&bodyX,BOTSETTINGS()->bodyX,0.5f*time,EaseInOutQuad()).delay(0.5*time);
     timeline().apply(&bodyY,BOTSETTINGS()->bodyY,time,EaseInOutQuad()).finishFn( [&](){done=true;}).delay(0);
 };
 void StandUpState::update()

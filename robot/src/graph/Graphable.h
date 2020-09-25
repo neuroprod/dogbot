@@ -15,11 +15,18 @@ public:
     Graphable() {};
     virtual void drawLegend(int width) {};
     virtual void gDraw(int width) {};
+    virtual void pauze(){};
+    virtual void play(){};
+    bool isPauze =false;
+
+
     std::string gName;
     std::string gType;
     int height =200;
     bool gVisible = false;
     bool drawZero = false;
     int currentWidth=-1;
+
+
 };
 #endif //BOT_GRAPHABLE_H

@@ -18,7 +18,8 @@ public:
     void addData(std::vector<float> data);
     void gDraw(int width);
     void drawLegend(int width);
-
+    void pauze();
+    void play();
     ci::gl::FboRef			mLegendFbo;
 
     std::list<std::vector<float>> gData;
