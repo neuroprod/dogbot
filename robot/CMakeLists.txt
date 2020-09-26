@@ -26,6 +26,7 @@ set(SRC_FILES
         ${APP_PATH}/src/gui/FBOWindow.cpp
         ${APP_PATH}/src/gui/GuiSetup.cpp
         ${APP_PATH}/src/gui/Logger.cpp
+        ${APP_PATH}/src/gui/SoundHandler.cpp
         ${APP_PATH}/src/modelrenderer/ModelRenderer.cpp
         ${APP_PATH}/src/modelrenderer/OrbitCamera.cpp
         ${APP_PATH}/src/modelrenderer/FKModel.cpp

@@ -77,7 +77,7 @@ void BotApp::setup()
         robot.setup();
     }
 
-
+    STATUS()->soundHandler.play(SOUND::START_UP);
 }
 
 

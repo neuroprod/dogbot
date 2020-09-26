@@ -7,6 +7,7 @@
 #include "cinder/app/App.h"
 #include "utils/Singleton.h"
 #include "gui/Logger.h"
+#include "gui/SoundHandler.h"
 class Status
 {
 public:
@@ -19,6 +20,7 @@ public:
     Logger logger;
     bool isFatalError();
     std::atomic<bool> mHasFatal =false;
+    SoundHandler soundHandler;
 
     void drawGui();
 

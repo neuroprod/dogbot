@@ -8,6 +8,7 @@
 void GuiSetup::setup()
 {
     isSimulation = SETTINGS()->getBool("AppSettings", "isSimulation", true);
+    isSound = SETTINGS()->getBool("AppSettings", "sound", true);
     ImGui::Initialize();
     ImGuiIO &io = ImGui::GetIO();
 
@@ -119,6 +120,8 @@ void GuiSetup::update()
             { SETTINGS()->save(); };
             if (ImGui::MenuItem("Simulation", NULL, isSimulation->value()))
             { isSimulation->setValue( !isSimulation->value()); };
+            if (ImGui::MenuItem("Sound", NULL, isSound->value()))
+            { isSound->setValue( !isSound->value()); };
             ImGui::EndMenu();
         }
 

@@ -7,6 +7,7 @@
 #include "cinder/CinderImGui.h"
 #include "imgui/imgui_internal.h"
 #include "../Status.h"
+
 using namespace std;
 using namespace ci;
 using namespace ci::app;
@@ -47,15 +48,15 @@ void StateController::update()
 
 void StateController::setCommand(int type, int com)
 {
-    if(type==1)
+    if (type == 1)
     {
-        if(com==1)
+        if (com == 1)
         {
             trySetNewState(STATE::STANDUP);
-        }  else if(com==2)
+        } else if (com == 2)
         {
             trySetNewState(STATE::LAYDOWN);
-        } else if(com==3)
+        } else if (com == 3)
         {
             trySetNewState(STATE::STEP);
         }
@@ -68,42 +69,41 @@ void StateController::setCommand(int type, int com)
 void StateController::trySetNewState(STATE state)
 {
 
-    auto it = find_if(states.begin(), states.end(), [&, state](const std::shared_ptr<BaseState>& obj) {return obj->state == state;});
+    auto it = find_if(states.begin(), states.end(), [&, state](const std::shared_ptr<BaseState> &obj)
+    { return obj->state == state; });
 
-    bool setNewState =true;
-    std::string error ="";
-    if(!currentState->isDone())
+    bool setNewState = true;
+    std::string error = "";
+    if (!currentState->isDone())
     {
-        setNewState =false;
-        error ="current state ("+ currentState->getName()+ ") busy";
+        setNewState = false;
+        error = "current state (" + currentState->getName() + ") busy";
 
-    }else if(state== currentState->state)
+    } else if (state == currentState->state)
     {
-        setNewState =false;
-        error ="already in state " +currentState->getName();
-    }else if (!currentState->canHaveNextState(state))
+        setNewState = false;
+        error = "already in state " + currentState->getName();
+    } else if (!currentState->canHaveNextState(state))
     {
-        setNewState =false;
-        error ="can't go from "+currentState->getName()+" to " +it->get()->getName() ;
+        setNewState = false;
+        error = "can't go from " + currentState->getName() + " to " + it->get()->getName();
     }
 
 
-
-
-
-    if(setNewState)
+    if (setNewState)
     {
-        STATUS()->log("set new state " +it->get()->getName() );
+        STATUS()->soundHandler.play(SOUND::BEEP);
+        STATUS()->log("set new state " + it->get()->getName());
         currentState = *it;
         currentState->start();
 
 
+    } else
+    {
+        STATUS()->soundHandler.play(SOUND::ERROR);
+        STATUS()->logWarning(error);
 
-    }else
-        {
-        STATUS()->logWarning(error );
-
-        }
+    }
 
 
 }
@@ -146,7 +146,7 @@ void StateController::draw()
         bool disable = true;
         if (!forceDisable)
         {
-            if(currentState->state   !=states[i]->state)
+            if (currentState->state != states[i]->state)
             {
                 if (currentState->canHaveNextState(states[i]->state))
                 {

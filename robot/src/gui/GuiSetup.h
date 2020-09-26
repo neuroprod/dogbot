@@ -15,5 +15,6 @@ class GuiSetup
             void setup();
             void update();
             Sbool isSimulation;
+            Sbool isSound;
         };
 #endif //BOT_GUISETUP_H
