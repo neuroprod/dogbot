@@ -20,7 +20,7 @@ public :
     void update(JoystickRef joystick);
     void drawGui(bool ownPannel =true) ;
 
-
+bool test =false;
 
 };
 

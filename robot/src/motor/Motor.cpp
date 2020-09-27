@@ -28,7 +28,7 @@ void Motor::setup(Smotor settings)
 
 
 
-    motorGraph.prepGraph(name,"motors",3,{0.1f,0.4f,100.f/65000.f},{Color(1,0,0),Color(0,1,0),Color(0,0,1)},{"Torque","Speed","Encoder"} );
+    motorGraph.prepGraph(name,"motors",4,{0.1f,0.4f,100.f/65000.f,0.5},{Color(1,0,0),Color(0,1,0),Color(0,0,1),Color(1,1,1)},{"Torque","Speed","Encoder","tar angle"} );
     GRAPH()->reg(&motorGraph);
 
     unsigned long baud = 115200;
@@ -118,7 +118,7 @@ void Motor::drawGui()
     }
     if(motorGraph.gVisible)
     {
-        motorGraph.addData({ mData.x,mData.y,mData.z  });
+        motorGraph.addData({ mData.x,mData.y,mData.z ,angleUI });
     }
     ImGui::PopID();
 

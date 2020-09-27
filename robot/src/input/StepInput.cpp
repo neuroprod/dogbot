@@ -41,6 +41,17 @@ void StepInput::drawGui(bool ownPannel)
 
     ImGui::Checkbox("use remote",&useJoystick);
     ImGui::SliderFloat("moveLength", &moveLength, 0, 300);
+    if(ImGui::Button("testMove"))
+    {
+
+        if(test)
+        {
+            moveLength=0;
+        }else{
+                moveLength=1;
+            }
+        test =!test;
+    }
     ImGui::SliderAngle("angleMove", &moveAngle, -180, 180);
     ImGui::SliderAngle("rotate", &rotAngle, -10, 10);
     ImGui::Separator();

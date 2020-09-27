@@ -5,10 +5,12 @@
 #include "StandUpState.h"
 #include "../../RobotSettings.h"
 #include "cinder/CinderImGui.h"
+#include "../../graph/GraphRenderer.h"
 using namespace ci;
 using namespace ci::app;
 void StandUpState::start()
 {
+
     done =false;
     float time = standUpTime->value();
     bodyY = ikController->bodyY;
@@ -20,9 +22,13 @@ void StandUpState::update()
 {
     ikController->bodyY  =bodyY;
     ikController->bodyX  =bodyX;
+
+
 };
 bool StandUpState::isDone()
 {
+
+    GRAPH()->pauze();
     return  done;
 }
 
