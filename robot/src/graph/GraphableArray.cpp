@@ -84,6 +84,10 @@ void GraphableArray::play()
 void GraphableArray::addData(std::vector<float> _data)
 {
     if (isPauze) return;
+    if (gData.size() >= 500)
+    {
+        return;
+    }
     gData.push_back(_data);
     if (gData.size() > 500)
     {

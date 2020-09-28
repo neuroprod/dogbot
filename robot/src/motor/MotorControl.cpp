@@ -38,16 +38,17 @@ void MotorControl::setup()
 	MotorRef FRHip = Motor::create();
 	FRHip->setup(SETTINGS()->getMotor("FRHip"));
 	motors.push_back(FRHip);
-
+    FRHip->motorGraph.gVisible =true;
 
     MotorRef FRKnee = Motor::create();
     FRKnee->setup(SETTINGS()->getMotor("FRKnee"));
     motors.push_back(FRKnee);
+    FRKnee->motorGraph.gVisible =true;
 
     MotorRef FRAnkle = Motor::create();
     FRAnkle->setup(SETTINGS()->getMotor("FRAnkle"));
     motors.push_back(FRAnkle);
-
+    FRAnkle->motorGraph.gVisible =true;
     //fl
     MotorRef FLHip = Motor::create();
     FLHip->setup(SETTINGS()->getMotor("FLHip"));

@@ -11,7 +11,7 @@ class Motor {
 
 
 	float motorAngle = 0;
-	float motorSpeed = 5000;
+	float motorSpeed = 150000;
     float motorSpeedUI = motorSpeed;
     float kp = 580;
     float kpUI= kp ;
@@ -50,7 +50,7 @@ class Motor {
 
     Smotor mSettings;
 
-    GraphableArray motorGraph;
+
 
     double prevTime =0;
 
@@ -58,7 +58,7 @@ class Motor {
 
 public:
 	Motor() {};
-
+    GraphableArray motorGraph;
 	static MotorRef create();
 	void setup(Smotor settings);
 	void drawGui();

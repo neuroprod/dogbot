@@ -24,7 +24,7 @@ public:
 
     bool canHaveNextState(  STATE nextState){return true;}
 
-    Sfloat standUpTime = SETTINGS()->getFloat("RobotSettings","standUpTime",2);
+    Sfloat standUpTime = SETTINGS()->getFloat("RobotSettings","standUpTime",3);
 
     ci::Anim<float> bodyY;
     ci::Anim<float> bodyX;

@@ -17,7 +17,7 @@ public :
     void pulse(int i);
     void pauze();
     void play();
-    bool isPauze =false;
+    bool isPauze =true;
 
     FBOWindow fboWindow;
     std::vector<Graphable *> graphables;

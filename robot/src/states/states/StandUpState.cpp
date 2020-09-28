@@ -28,7 +28,7 @@ void StandUpState::update()
 };
 bool StandUpState::isDone()
 {
-    if(done)GRAPH()->pauze();
+   // if(done)GRAPH()->pauze();
     return  done;
 }
 
