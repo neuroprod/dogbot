@@ -16,8 +16,8 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 20,
-         "min" : -20,
+         "max" : 90,
+         "min" : -90,
          "offsetInput" : 0,
          "port" : "ttyMot4",
          "reverse" : false
@@ -52,8 +52,8 @@
       "type" : "motor",
       "value" : {
          "id" : 2,
-         "max" : 20,
-         "min" : -20,
+         "max" : 90,
+         "min" : -90,
          "offsetInput" : 0,
          "port" : "ttyMot2",
          "reverse" : false
@@ -112,8 +112,8 @@
       "type" : "motor",
       "value" : {
          "id" : 3,
-         "max" : 20,
-         "min" : -20,
+         "max" : 90,
+         "min" : -90,
          "offsetInput" : 0,
          "port" : "ttyMot3",
          "reverse" : false
@@ -136,8 +136,8 @@
       "type" : "motor",
       "value" : {
          "id" : 1,
-         "max" : 20,
-         "min" : -20,
+         "max" : 90,
+         "min" : -90,
          "offsetInput" : 0,
          "port" : "ttyMota",
          "reverse" : false

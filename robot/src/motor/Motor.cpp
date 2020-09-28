@@ -179,7 +179,9 @@ void Motor::updatePosition()
     float angleChange = abs(prevAngleTarget - angleTarget);
     uint32_t speed = angleChange * 60 * kpR;
     if (speed < speedR && speed != 0)speedR = speed;
-
+if(speed==0){
+    speedR=5000;
+}
     prevAngleTarget = angleTarget;
     setPositionData( angleR, speedR);
     my_serial->writeBytes(&data[0], data.size());
