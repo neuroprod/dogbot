@@ -10,7 +10,7 @@ using namespace ci;
 using namespace ci::app;
 void StandUpState::start()
 {
-    GRAPH()->play();
+  //  GRAPH()->play();
     done =false;
     float time = standUpTime->value();
     bodyY = ikController->bodyY;

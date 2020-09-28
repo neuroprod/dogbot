@@ -89,10 +89,10 @@ void GraphableArray::addData(std::vector<float> _data)
         return;
     }
     gData.push_back(_data);
-    if (gData.size() > 500)
+  /*  if (gData.size() > 500)
     {
         gData.pop_front();
-    }
+    }*/
 
 }
 
