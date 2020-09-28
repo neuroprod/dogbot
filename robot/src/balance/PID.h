@@ -22,6 +22,9 @@ void reset();
 	float Iout =0;
     float Dout =0;
 
+    float maxI =10;
+    float minI = -10;
+
 	bool inv = false;
 	std::vector<float> errors;
 };

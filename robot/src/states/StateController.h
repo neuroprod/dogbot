@@ -8,6 +8,7 @@
 #include "cinder/app/App.h"
 #include "../ik/IKController.h"
 #include "../walking/GaitController.h"
+#include "../balance/BalanceController.h"
 #include "states/BaseState.h"
 #include "states/StartState.h"
 #include "states/StandUpState.h"
@@ -17,7 +18,7 @@ class StateController
 {
 public:
     StateController(){};
-    void setup(IKController * ikController,GaitController *gaitController);
+    void setup(IKController * ikController,GaitController *gaitController,BalanceController *balanceController);
     void setCommand(int type,int com);
     void update();
     void draw();

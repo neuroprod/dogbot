@@ -16,6 +16,8 @@ float PID::calculate(float target, float current)
 
 	// Integral term
 	integral += error * dt;
+	if(integral>maxI)integral=maxI;
+    if(integral<minI)integral=minI;
 	Iout = Ki * integral;
 
 	derivative = (error - pre_error)/dt ;

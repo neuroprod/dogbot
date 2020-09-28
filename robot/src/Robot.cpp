@@ -23,7 +23,7 @@ void Robot::setup() {
     modelRenderer.showWire =true;
     motorControl.setup();
 
-    stateController.setup(&ikController, &gaitController);
+    stateController.setup(&ikController, &gaitController,&balanceController);
     balanceController.setup(true);
 
 
@@ -33,6 +33,8 @@ void Robot::setup() {
 
 void Robot::update() {
 
+    vec3  euler=imu.getEuler();
+    balanceController.update(euler.x,euler.y);
 
     if(COM()->receiver->hasNewJoystick)
     {
@@ -56,7 +58,7 @@ void Robot::update() {
 
 
     mat4 mat;
-    mat = glm::toMat4(  imu.getQuat());
+ //   mat = glm::toMat4(  imu.getQuat());
     mat = glm::translate(mat,vec3(  ikController.bodyX,ikController.bodyY,ikController.bodyZ)  );
 
 

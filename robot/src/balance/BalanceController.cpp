@@ -19,14 +19,15 @@ void BalanceController::setup( bool isRobot)
     pidZ.Ki = 0;
     pidZ.Kd = 0;
     pidZ.inv = true;
-    balanceGraph.prepGraph("Balance","simulation",2,{1000,1000},{ci::Color(1,0,0),ci::Color(0,1,0)},{"rotX","rotZ"} );
+    balanceGraph.prepGraph("Balance","robot",2,{1000,1000},{ci::Color(1,0,0),ci::Color(0,1,0)},{"rotX","rotZ"} );
     balanceGraph.gVisible =true;
     balanceGraph.drawZero =true;
     GRAPH()->reg(&balanceGraph);
 }
 void BalanceController::update(float rotX,float rotZ)
 {
-   // offsetX =  pidZ.calculate(0, rotZ);
+if(rotX>30 ||rotX<-30   ){return;}
+    offsetX =  pidX.calculate(0, rotX);
    // offsetZ = pidX.calculate(0, tan(rotX)*300);
 
     balanceGraph.addData({rotX,rotZ});

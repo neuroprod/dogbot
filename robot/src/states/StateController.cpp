@@ -12,7 +12,7 @@ using namespace std;
 using namespace ci;
 using namespace ci::app;
 
-void StateController::setup(IKController *ikController, GaitController *gaitController)
+void StateController::setup(IKController *ikController, GaitController *gaitController,BalanceController *balanceController)
 {
 
     sitState = std::make_shared<StartState>();

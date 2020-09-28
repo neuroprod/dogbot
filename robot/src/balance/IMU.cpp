@@ -23,9 +23,9 @@ void IMU::start()
 ci::vec3 IMU::getEuler()
 {
     vec3 e;
-    /* dataMutex.lock();
+     dataMutex.lock();
      e = euler;
-     dataMutex.unlock();*/
+     dataMutex.unlock();
     return e;
 }
 
@@ -173,10 +173,10 @@ void IMU::pollLoop()
                         dataMutex.lock();
 
 
-                        quaternion.y = event.data.imuData.q[0];
-                        quaternion.z = event.data.imuData.q[1];
-                        quaternion.x = event.data.imuData.q[2];
-                        quaternion.w = event.data.imuData.q[3];
+                        euler.x = event.data.imuData.r[0];
+                        euler.y = event.data.imuData.r[1];
+                        euler.z = event.data.imuData.r[2];
+
 
 
                         linearAcc.x = event.data.imuData.linAcc[0];

@@ -17,7 +17,7 @@ void Simulation::setup()
     ikController.setup();
     ikController.update();
     modelRenderer.setup();
-    stateController.setup(&ikController, &gaitController);
+    stateController.setup(&ikController, &gaitController,&balanceController);
     physicsController.setup( ikController.bodyMatrix, ikController.angles);
     balanceController.setup(false);
     isReady = true;
