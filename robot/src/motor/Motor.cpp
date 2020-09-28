@@ -177,43 +177,49 @@ void Motor::updatePosition()
     uint32_t speedR = maxSpeed;
     int64_t angleR = (angleTarget) * 100.f * 6.f;
     float angleChange = abs(prevAngleTarget - angleTarget);
-    uint32_t speed = angleChange * 60 * kpR;
-    if (speed < speedR && speed != 0)speedR = speed;
-if(speed==0){
-    speedR=5000;
-}
-    prevAngleTarget = angleTarget;
-    setPositionData( angleR, speedR);
-    my_serial->writeBytes(&data[0], data.size());
 
-    //TODO make non blocking
-    while ((my_serial->getNumBytesAvailable() < 13)) {
+    if(angleChange !=0) {
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        uint32_t speed = angleChange * 60 * kpR;
+        if (speed < speedR && speed != 0)speedR = speed;
+        if (speed == 0) {
+            speedR = 5000;
+        }
+        prevAngleTarget = angleTarget;
+        setPositionData(angleR, speedR);
+        my_serial->writeBytes(&data[0], data.size());
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+        //TODO make non blocking
+        while ((my_serial->getNumBytesAvailable() < 13)) {
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
+        std::vector<uint8_t> buffer;
+        buffer.resize(13);
+        my_serial->readBytes(&buffer[0], 13);
+
+        Union16 Utorque;
+        Utorque.b[0] = buffer[6];
+        Utorque.b[1] = buffer[7];
+
+        Union16 Uspeed;
+        Uspeed.b[0] = buffer[8];
+        Uspeed.b[1] = buffer[9];
+
+        UnionU16 Uencoder;
+        Uencoder.b[0] = buffer[10];
+        Uencoder.b[1] = buffer[11];
+
+        outMutex.lock();
+        motorData.x = Utorque.r;
+        motorData.y = Uspeed.r;
+        motorData.z = Uencoder.r;
+        outMutex.unlock();
+
+    }else{
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
     }
-    std::vector<uint8_t> buffer;
-    buffer.resize(13);
-    my_serial->readBytes(&buffer[0], 13);
-
-    Union16 Utorque;
-    Utorque.b[0] = buffer[6];
-    Utorque.b[1] = buffer[7];
-
-    Union16 Uspeed;
-    Uspeed.b[0] = buffer[8];
-    Uspeed.b[1] = buffer[9];
-
-    UnionU16 Uencoder;
-    Uencoder.b[0] = buffer[10];
-    Uencoder.b[1] = buffer[11];
-
-    outMutex.lock();
-    motorData.x = Utorque.r;
-    motorData.y = Uspeed.r;
-    motorData.z = Uencoder.r;
-    outMutex.unlock();
-
-
 }
 void Motor::shutDown()
 {
