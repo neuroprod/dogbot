@@ -4,7 +4,7 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 163,
+         "max" : 173,
          "min" : 0,
          "offsetInput" : 163,
          "port" : "ttyMot11",
@@ -29,7 +29,7 @@
       "value" : {
          "id" : 1,
          "max" : 0,
-         "min" : -76,
+         "min" : -86,
          "offsetInput" : -75.079999999999998,
          "port" : "ttyMot5",
          "reverse" : false
@@ -40,7 +40,7 @@
       "type" : "motor",
       "value" : {
          "id" : 1,
-         "max" : 163,
+         "max" : 173,
          "min" : 0,
          "offsetInput" : 163,
          "port" : "ttyMot9",
@@ -64,7 +64,7 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 76,
+         "max" : 86,
          "min" : 0,
          "offsetInput" : 75.079999999999998,
          "port" : "ttyMot8",
@@ -76,7 +76,7 @@
       "type" : "motor",
       "value" : {
          "id" : 2,
-         "max" : 76,
+         "max" : 86,
          "min" : 0,
          "offsetInput" : 75.079999999999998,
          "port" : "ttyMot6",
@@ -89,7 +89,7 @@
       "value" : {
          "id" : 4,
          "max" : 0,
-         "min" : -76,
+         "min" : -86,
          "offsetInput" : -75.079999999999998,
          "port" : "ttyMot7",
          "reverse" : false
@@ -101,7 +101,7 @@
       "value" : {
          "id" : 4,
          "max" : 0,
-         "min" : -163,
+         "min" : -173,
          "offsetInput" : -163,
          "port" : "ttyMot12",
          "reverse" : false
@@ -125,7 +125,7 @@
       "value" : {
          "id" : 2,
          "max" : 0,
-         "min" : -163,
+         "min" : -173,
          "offsetInput" : -163,
          "port" : "ttyMot10",
          "reverse" : false
