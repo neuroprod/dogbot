@@ -44,7 +44,7 @@
    {
       "key" : "bodyY",
       "type" : "float",
-      "value" : 300
+      "value" : 350
    },
    {
       "key" : "bodyCOM",

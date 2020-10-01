@@ -13,7 +13,7 @@ class Motor {
 	float motorAngle = 0;
 	float motorSpeed = 150000;
     float motorSpeedUI = motorSpeed;
-    float kp = 580;
+    float kp = 650;
     float kpUI= kp ;
 
 
@@ -53,7 +53,7 @@ class Motor {
 
 
     double prevTime =0;
-
+    //MOTOR_STATE currentState = MOTOR_STATE::SET_ZERO;
     MOTOR_STATE currentState = MOTOR_STATE::POSITION;
 
 public:

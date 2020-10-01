@@ -36,6 +36,7 @@ void OSCReceiver::setup()
                               JRightDown = msg[5].boolean();
                               hasNewJoystick= true;
                               mJoystickMutex.unlock();
+                           
                           });
 
     try

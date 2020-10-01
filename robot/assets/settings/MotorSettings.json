@@ -4,8 +4,8 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 173,
-         "min" : 0,
+         "max" : 163,
+         "min" : -10,
          "offsetInput" : 163,
          "port" : "ttyMot11",
          "reverse" : false
@@ -28,8 +28,8 @@
       "type" : "motor",
       "value" : {
          "id" : 1,
-         "max" : 0,
-         "min" : -86,
+         "max" : 10,
+         "min" : -75.079999999999998,
          "offsetInput" : -75.079999999999998,
          "port" : "ttyMot5",
          "reverse" : false
@@ -40,8 +40,8 @@
       "type" : "motor",
       "value" : {
          "id" : 1,
-         "max" : 173,
-         "min" : 0,
+         "max" : 163,
+         "min" : -10,
          "offsetInput" : 163,
          "port" : "ttyMot9",
          "reverse" : false
@@ -64,8 +64,8 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 86,
-         "min" : 0,
+         "max" : 75,
+         "min" : -10,
          "offsetInput" : 75.079999999999998,
          "port" : "ttyMot8",
          "reverse" : false
@@ -76,8 +76,8 @@
       "type" : "motor",
       "value" : {
          "id" : 2,
-         "max" : 86,
-         "min" : 0,
+         "max" : 75,
+         "min" : -10,
          "offsetInput" : 75.079999999999998,
          "port" : "ttyMot6",
          "reverse" : false
@@ -88,8 +88,8 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 0,
-         "min" : -86,
+         "max" : 10,
+         "min" : -75,
          "offsetInput" : -75.079999999999998,
          "port" : "ttyMot7",
          "reverse" : false
@@ -100,8 +100,8 @@
       "type" : "motor",
       "value" : {
          "id" : 4,
-         "max" : 0,
-         "min" : -173,
+         "max" : 10,
+         "min" : -163,
          "offsetInput" : -163,
          "port" : "ttyMot12",
          "reverse" : false
@@ -124,8 +124,8 @@
       "type" : "motor",
       "value" : {
          "id" : 2,
-         "max" : 0,
-         "min" : -173,
+         "max" : 10,
+         "min" : -163,
          "offsetInput" : -163,
          "port" : "ttyMot10",
          "reverse" : false

@@ -15,6 +15,6 @@ public:
     void setAngle(std::vector<float>angles);
     bool enableInput =true;
     float motorSpeed = 150000;
-    float kp = 580;
+    float kp = 650;
 	
 };

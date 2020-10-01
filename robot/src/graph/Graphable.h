@@ -17,7 +17,7 @@ public:
     virtual void gDraw(int width) {};
     virtual void pauze(){};
     virtual void play(){};
-    bool isPauze =true;
+    bool isPauze =false;
 
 
     std::string gName;

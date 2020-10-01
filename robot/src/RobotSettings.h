@@ -11,7 +11,7 @@ class RobotSettings
 public:
     RobotSettings(){};
     float bodyY =SETTINGS()->getFloat("RobotSettings","bodyY",300)->value();
-    float bodyX =SETTINGS()->getFloat("RobotSettings","bodyX",0)->value();
+    float bodyX =SETTINGS()->getFloat("RobotSettings","bodyX",50)->value();
     float bodyXStart =SETTINGS()->getFloat("RobotSettings","bodyXStart",-27)->value();
     float bodyYStart =SETTINGS()->getFloat("RobotSettings","bodyYStart",80)->value();
 

@@ -7,7 +7,7 @@
 #include "cinder/CinderImGui.h"
 #include "imgui/imgui_internal.h"
 #include "../Status.h"
-
+#include "../graph/GraphRenderer.h"
 using namespace std;
 using namespace ci;
 using namespace ci::app;
@@ -78,10 +78,16 @@ void StateController::setCommand(int type, int com)
         } else if (com == 2)
         {
             trySetNewState(STATE::TESTALLLEGSDOWN);
+        } else if (com == 3)
+        {
+            GRAPH()->pauze();
+        } else if (com == 4)
+        {
+            GRAPH()->play();
         }
 
     }
-    ci::app::console() << "command " << type << " " << com << std::endl;
+   // ci::app::console() << "command " << type << " " << com << std::endl;
 
 }
 

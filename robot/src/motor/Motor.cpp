@@ -178,13 +178,11 @@ void Motor::updatePosition()
     int64_t angleR = (angleTarget) * 100.f * 6.f;
     float angleChange = abs(prevAngleTarget - angleTarget);
 
-    if(angleChange !=0) {
+   // if(angleChange !=0) {
 
         uint32_t speed = angleChange * 60 * kpR;
-        if (speed < speedR && speed != 0)speedR = speed;
-        if (speed == 0) {
-            speedR = 5000;
-        }
+        if (speed < speedR )speedR = speed;
+        if(speed==0)speedR= 10;
         prevAngleTarget = angleTarget;
         setPositionData(angleR, speedR);
         my_serial->writeBytes(&data[0], data.size());
@@ -216,10 +214,10 @@ void Motor::updatePosition()
         motorData.z = Uencoder.r;
         outMutex.unlock();
 
-    }else{
+   /* }else{
 
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
-    }
+    }*/
 }
 void Motor::shutDown()
 {
