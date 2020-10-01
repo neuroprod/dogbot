@@ -11,6 +11,8 @@
 #include "BaseState.h"
 #include "cinder/Timeline.h"
 #include "../../settings/SettingsHandler.h"
+#include "../../balance/BalanceController.h"
+
 class Test2LegsUpState : public BaseState
 {
 public:
@@ -38,6 +40,7 @@ public:
     ci::Anim<float> FRpos;
     ci::Anim<float> BLpos;
     IKController * ikController;
+    BalanceController *balanceController;
     bool done ;
 };
 

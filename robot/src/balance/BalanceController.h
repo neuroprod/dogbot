@@ -18,8 +18,13 @@ public:
     PID pidZ;
     float offsetX =0;
     float offsetZ =0;
+    float inputX =0;
+    float inputZ =0;
+    float balanceZ =0;
+    float balanceX =0;
     GraphableArray balanceGraph;
     void reset();
+    void setLevel();
 };
 
 

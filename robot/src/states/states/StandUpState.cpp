@@ -25,7 +25,7 @@ void StandUpState::update()
     ikController->bodyY  =bodyY;
     ikController->bodyX  =bodyX;
 
-
+if(done) balanceController->setLevel();
 };
 bool StandUpState::isDone()
 {

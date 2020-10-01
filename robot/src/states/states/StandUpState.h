@@ -9,6 +9,8 @@
 #include "BaseState.h"
 #include "cinder/Timeline.h"
 #include "../../settings/SettingsHandler.h"
+#include "../../balance/BalanceController.h"
+
 class StandUpState : public BaseState
 {
 public:
@@ -29,6 +31,7 @@ public:
     ci::Anim<float> bodyY;
     ci::Anim<float> bodyX;
     IKController * ikController;
+    BalanceController *balanceController;
     bool done ;
 };
 

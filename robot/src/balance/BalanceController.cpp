@@ -26,11 +26,22 @@ void BalanceController::setup( bool isRobot)
 }
 void BalanceController::update(float rotX,float rotZ)
 {
-if(rotX>30 ||rotX<-30   ){return;}
-    offsetX =  pidX.calculate(0, rotX);
+    inputX = rotX;
+    inputZ = rotZ;
+
+    float adjX = inputX-offsetX;
+    float adjY = inputZ-offsetZ;
+    if(adjX >30 ||adjX <-30   ){return;}
+    balanceZ =  pidX.calculate(0, adjX );
    // offsetZ = pidX.calculate(0, tan(rotX)*300);
 
     balanceGraph.addData({rotX,rotZ});
+}
+void BalanceController::setLevel()
+{
+    offsetX =   inputX;
+    offsetZ =   inputZ;
+
 }
 void BalanceController::reset()
 {

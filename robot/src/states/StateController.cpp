@@ -20,6 +20,7 @@ void StateController::setup(IKController *ikController, GaitController *gaitCont
 
     standupState = std::make_shared<StandUpState>();
     standupState->ikController = ikController;
+    standupState->balanceController= balanceController;
     states.push_back(standupState);
 
     stepState = std::make_shared<StepState>();
@@ -34,6 +35,7 @@ void StateController::setup(IKController *ikController, GaitController *gaitCont
 ////tests
     test2LegsUpState = std::make_shared<Test2LegsUpState>();
     test2LegsUpState->ikController = ikController;
+    test2LegsUpState->balanceController= balanceController;
     states.push_back(test2LegsUpState);
 
     testAllLegsDownState = std::make_shared<TestAllLegsDownState>();

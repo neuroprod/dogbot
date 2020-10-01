@@ -24,7 +24,7 @@ void Test2LegsUpState::update()
 {
     ikController->FR->targetPos.y =FRpos;
     ikController->BL->targetPos.y =BLpos;
-
+    ikController->setBalance(0, balanceController->balanceZ);
 
 };
 bool Test2LegsUpState::isDone()
