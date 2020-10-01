@@ -173,10 +173,10 @@ void IMU::pollLoop()
                         dataMutex.lock();
 
 
-                        euler.x = event.data.imuData.r[0];
-                        euler.y = event.data.imuData.r[1];
-                        euler.z = event.data.imuData.r[2];
-
+                        quaternion.y = event.data.imuData.q[0];
+                        quaternion.z = event.data.imuData.q[1];
+                        quaternion.x = event.data.imuData.q[2];
+                        quaternion.w = event.data.imuData.q[3];
 
 
                         linearAcc.x = event.data.imuData.linAcc[0];

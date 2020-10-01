@@ -33,7 +33,8 @@ void Robot::setup() {
 
 void Robot::update() {
 
-    vec3  euler=imu.getEuler();
+    glm::quat q =imu.getQuat();
+    glm::vec3 euler =glm::eulerAngles(q)/3.1415f*180.f;
     balanceController.update(euler.x,euler.y);
 
     if(COM()->receiver->hasNewJoystick)
@@ -58,7 +59,7 @@ void Robot::update() {
 
 
     mat4 mat;
- //   mat = glm::toMat4(  imu.getQuat());
+    mat = glm::toMat4(  q);
     mat = glm::translate(mat,vec3(  ikController.bodyX,ikController.bodyY,ikController.bodyZ)  );
 
 

@@ -31,6 +31,14 @@ void StateController::setup(IKController *ikController, GaitController *gaitCont
     laydownState->ikController = ikController;
     states.push_back(laydownState);
 
+////tests
+    test2LegsUpState = std::make_shared<Test2LegsUpState>();
+    test2LegsUpState->ikController = ikController;
+    states.push_back(test2LegsUpState);
+
+    testAllLegsDownState = std::make_shared<TestAllLegsDownState>();
+    testAllLegsDownState->ikController = ikController;
+    states.push_back(testAllLegsDownState);
 
     currentState = sitState;
 
@@ -59,6 +67,17 @@ void StateController::setCommand(int type, int com)
         } else if (com == 3)
         {
             trySetNewState(STATE::STEP);
+        }
+
+    }
+    if (type == 2)
+    {
+        if (com == 1)
+        {
+            trySetNewState(STATE::TEST2LEGSUP);
+        } else if (com == 2)
+        {
+            trySetNewState(STATE::TESTALLLEGSDOWN);
         }
 
     }

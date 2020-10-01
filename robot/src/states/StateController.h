@@ -14,6 +14,9 @@
 #include "states/StandUpState.h"
 #include "states/StepState.h"
 #include "states/LayDownState.h"
+#include "states/Test2LegsUpState.h"
+#include "states/TestAllLegsDownState.h"
+
 class StateController
 {
 public:
@@ -35,7 +38,8 @@ public:
     std::shared_ptr<StandUpState> standupState;
     std::shared_ptr<StepState> stepState;
     std::shared_ptr<LayDownState> laydownState;
-
+    std::shared_ptr<Test2LegsUpState> test2LegsUpState;
+    std::shared_ptr<TestAllLegsDownState> testAllLegsDownState;
 };
 
 #endif //BOT_STATECONTROLLER_H

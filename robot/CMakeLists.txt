@@ -44,6 +44,8 @@ set(SRC_FILES
         ${APP_PATH}/src/states/states/StandUpState.cpp
         ${APP_PATH}/src/states/states/LayDownState.cpp
         ${APP_PATH}/src/states/states/StepState.cpp
+        ${APP_PATH}/src/states/states/Test2LegsUpState.cpp
+        ${APP_PATH}/src/states/states/TestAllLegsDownState.cpp
         ${APP_PATH}/src/input/StepInput.cpp
         ${APP_PATH}/src/walking/GaitController.cpp
         ${APP_PATH}/src/walking/LegController.cpp
