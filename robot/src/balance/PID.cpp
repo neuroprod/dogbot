@@ -52,7 +52,7 @@ void PID::drawGui(string name)
     ImGui::Text("%s error=%f",name.c_str() ,error);
     ImGui::Text("integral =%f derivative =%f",integral,derivative);
     ImGui::Text("P=%f I=%f  D=%f  out=%f",Pout,Iout,Dout,output);
-    ImGui::DragFloat("p", &Kp, 0.001f, -2.f, 2.f);
+    ImGui::DragFloat("p", &Kp, 0.1f, -2.f, 10.f);
     ImGui::DragFloat("i", &Ki, 0.001f, 0, 1);
     ImGui::DragFloat("d", &Kd, 0.001f, 0, 1);
     ImGui::Checkbox("invert", &inv);
