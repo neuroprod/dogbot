@@ -76,6 +76,9 @@ void Motor::loop()
             console()<<now- prevTime<<endl;
             prevTime =now;
         }
+        stateMutex.lock();
+        MOTOR_STATE currentState =currentStateTarget;
+        stateMutex.unlock();
         //
         if(currentState ==MOTOR_STATE::NONE) {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -85,21 +88,39 @@ void Motor::loop()
         {
             updatePosition();
         }
+        else if( currentState ==MOTOR_STATE::SET_PID)
+        {
+            updatePID();
+            stateMutex.lock();
+            currentStateTarget=MOTOR_STATE::POSITION;
+            stateMutex.unlock();
+        }
         else if(currentState ==MOTOR_STATE::KILL) {
 
             shutDown();
-            currentState =MOTOR_STATE::NONE;
+            stateMutex.lock();
+            currentStateTarget=MOTOR_STATE::NONE;
+            stateMutex.unlock();
         }
         else if(currentState ==MOTOR_STATE::SET_ZERO)
         {
 
             setZero();
-            currentState =MOTOR_STATE::NONE;
+
+            stateMutex.lock();
+            currentStateTarget=MOTOR_STATE::NONE;
+            stateMutex.unlock();
         }
 
     }
 }
+void  Motor::setState( MOTOR_STATE state)
+{
+    stateMutex.lock();
+   currentStateTarget =state;
+    stateMutex.unlock();
 
+}
 
 void Motor::drawGui()
 {
@@ -152,6 +173,14 @@ void Motor::setMotorKp(float target)
     kp = target;
     inMutex.unlock();
 }
+void Motor::setMotorIntKpi(float p,float i)
+{
+    inMutex.lock();
+    motorIntP = p;
+    motorIntI = i;
+    inMutex.unlock();
+    setState( MOTOR_STATE::SET_PID);
+}
 vec3 Motor::getData()
 {
     vec3 data;
@@ -164,6 +193,28 @@ vec3 Motor::getData()
 
 
 /////////////////
+void Motor::updatePID()
+{
+    inMutex.lock();
+    float Kp =  motorIntP;
+    float Ki =  motorIntI;
+    inMutex.unlock();
+    makeHeader(0x31, 1, 0x06);
+    data.push_back((uint8_t)Kp);
+    data.push_back((uint8_t)Ki);
+    data.push_back((uint8_t)100) ;
+    data.push_back((uint8_t)100);
+    data.push_back((uint8_t)100);
+    data.push_back((uint8_t)100);
+    addCheckSum();
+
+    my_serial->writeBytes(&data[0], data.size());
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    while ((my_serial->getNumBytesAvailable() < 11)) {
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+}
 void Motor::updatePosition()
 {
 

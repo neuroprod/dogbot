@@ -5,7 +5,7 @@
 #include "../graph/GraphableArray.h"
 class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
-enum class MOTOR_STATE { NONE, POSITION,KILL,SET_ZERO };
+enum class MOTOR_STATE { NONE, POSITION,KILL,SET_ZERO,SET_PID };
 class Motor {
 
 
@@ -16,7 +16,10 @@ class Motor {
     float kp = 650;
     float kpUI= kp ;
 
+    float motorIntP=100;
+    float motorIntI=100;
 
+    void updatePID();
     void updatePosition();
     void shutDown();
     void setZero();
@@ -37,6 +40,7 @@ class Motor {
 	std::thread motorThread;
 	std::mutex inMutex;
 	std::mutex outMutex;
+    std::mutex stateMutex;
 	std::vector< uint8_t> data;
 	ci::SerialRef my_serial;
 	bool connectionFailed = false;
@@ -54,7 +58,7 @@ class Motor {
 
     double prevTime =0;
     //MOTOR_STATE currentState = MOTOR_STATE::SET_ZERO;
-    MOTOR_STATE currentState = MOTOR_STATE::POSITION;
+    MOTOR_STATE currentStateTarget = MOTOR_STATE::POSITION;
 
 public:
 	Motor() {};
@@ -62,9 +66,10 @@ public:
 	static MotorRef create();
 	void setup(Smotor settings);
 	void drawGui();
-
+    void setState( MOTOR_STATE state);
 	void setMotorAngle(float angle);
     void setMotorKp(float target);
+    void setMotorIntKpi(float p,float i);
 	void setMotorMaxSpeed(float speed);
 	ci::vec3 getData();
 	

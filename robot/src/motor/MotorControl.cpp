@@ -118,6 +118,27 @@ void MotorControl::drawGui()
         }
 
     }
+    if (ImGui::SliderFloat("all_motorIntP", &motorIntP, 10.f, 255.f))
+    {
+        for(auto m:motors)
+        {
+            m->setMotorIntKpi(motorIntP,motorIntI);
+        }
+
+    }
+    if (ImGui::SliderFloat("all_motorIntI", &motorIntI, 10.f, 255.f))
+    {
+        for(auto m:motors)
+        {
+            m->setMotorIntKpi(motorIntP,motorIntI);
+        }
+
+    }
+
+
+
+
+
 	for (auto m : motors)
 	{
 		m->drawGui();
