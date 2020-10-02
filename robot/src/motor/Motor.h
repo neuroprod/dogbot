@@ -5,7 +5,7 @@
 #include "../graph/GraphableArray.h"
 class Motor;
 typedef std::shared_ptr<Motor> MotorRef;
-enum class MOTOR_STATE { NONE, POSITION,KILL,SET_ZERO,SET_PID };
+enum class MOTOR_STATE { NONE, POSITION,KILL,SET_ZERO,SET_PID,READ_PID };
 class Motor {
 
 
@@ -16,14 +16,14 @@ class Motor {
     float kp = 650;
     float kpUI= kp ;
 
-    float motorIntP=100;
-    float motorIntI=100;
+   int motorIntP=100;
+    int motorIntI=100;
 
     void updatePID();
     void updatePosition();
     void shutDown();
     void setZero();
-
+    void readPID();
 	void setPositionData( int64_t angle, int32_t speed);
 	void makeHeader(uint8_t command, uint8_t id, uint8_t dataLength);
 	void addCheckSum();
@@ -57,8 +57,9 @@ class Motor {
 
 
     double prevTime =0;
-    //MOTOR_STATE currentState = MOTOR_STATE::SET_ZERO;
+   // MOTOR_STATE currentStateTarget = MOTOR_STATE::SET_ZERO;
     MOTOR_STATE currentStateTarget = MOTOR_STATE::POSITION;
+  // MOTOR_STATE currentStateTarget = MOTOR_STATE::READ_PID;
 
 public:
 	Motor() {};

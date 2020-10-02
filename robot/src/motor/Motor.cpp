@@ -102,6 +102,10 @@ void Motor::loop()
             currentStateTarget=MOTOR_STATE::NONE;
             stateMutex.unlock();
         }
+        else if(currentState ==MOTOR_STATE::READ_PID) {
+
+           readPID();
+        }
         else if(currentState ==MOTOR_STATE::SET_ZERO)
         {
 
@@ -190,30 +194,59 @@ vec3 Motor::getData()
     return data;
 }
 
+void Motor::readPID()
+{
 
+    makeHeader(0x30, 1, 0x00);
+
+
+    my_serial->writeBytes(&data[0], data.size());
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+
+    while ((my_serial->getNumBytesAvailable() < 12)) {
+       // console() <<  my_serial->getNumBytesAvailable() << endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+    std::vector<uint8_t> buffer;
+    buffer.resize(12);
+    my_serial->readBytes(&buffer[0], 12);
+    for (int i = 0; i < buffer.size(); i++)
+    {
+        console() <<  (int)buffer[i]<< "-";
+    }
+    console() <<endl;
+}
 
 /////////////////
 void Motor::updatePID()
 {
     inMutex.lock();
-    float Kp =  motorIntP;
-    float Ki =  motorIntI;
+   int Kp =  motorIntP;
+    int Ki =  motorIntI;
     inMutex.unlock();
     makeHeader(0x31, 1, 0x06);
     data.push_back((uint8_t)Kp);
     data.push_back((uint8_t)Ki);
-    data.push_back((uint8_t)100) ;
-    data.push_back((uint8_t)100);
-    data.push_back((uint8_t)100);
-    data.push_back((uint8_t)100);
+    data.push_back((uint8_t)50) ;
+    data.push_back((uint8_t)40);
+    data.push_back((uint8_t)50);
+    data.push_back((uint8_t)50);
     addCheckSum();
 
     my_serial->writeBytes(&data[0], data.size());
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
-    while ((my_serial->getNumBytesAvailable() < 11)) {
+    while ((my_serial->getNumBytesAvailable() < 12)) {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
+    std::vector<uint8_t> buffer;
+    buffer.resize(12);
+    my_serial->readBytes(&buffer[0], 12);
+    for (int i = 0; i < buffer.size(); i++)
+    {
+        console() <<  (int)buffer[i]<< "-";
+    }
+    console() <<endl;
 }
 void Motor::updatePosition()
 {

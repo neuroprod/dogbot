@@ -16,6 +16,6 @@ public:
     bool enableInput =true;
     float motorSpeed = 150000;
     float kp = 650;
-    float motorIntP=100;
-    float motorIntI=100;
+    int motorIntP=100;
+    int motorIntI=100;
 };

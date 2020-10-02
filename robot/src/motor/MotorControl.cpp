@@ -118,7 +118,7 @@ void MotorControl::drawGui()
         }
 
     }
-    if (ImGui::SliderFloat("all_motorIntP", &motorIntP, 10.f, 255.f))
+    if (ImGui::SliderInt("all_motorIntP", &motorIntP, 10, 255))
     {
         for(auto m:motors)
         {
@@ -126,7 +126,7 @@ void MotorControl::drawGui()
         }
 
     }
-    if (ImGui::SliderFloat("all_motorIntI", &motorIntI, 10.f, 255.f))
+    if (ImGui::SliderInt("all_motorIntI", &motorIntI, 10, 255))
     {
         for(auto m:motors)
         {
