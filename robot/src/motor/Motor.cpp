@@ -177,11 +177,15 @@ void Motor::setMotorKp(float target)
     kp = target;
     inMutex.unlock();
 }
-void Motor::setMotorIntKpi(float p,float i)
+void Motor::setMotorIntPID(int pp,int pi,int sp,int si,int tp,int ti)
 {
     inMutex.lock();
-    motorIntP = p;
-    motorIntI = i;
+    motorPosP=pp;
+   motorPosI=pi;
+    motorSpeedP=sp;
+    motorSpeedI=si;
+    motorTorqueP=tp;
+    motorTorqueI=ti;
     inMutex.unlock();
     setState( MOTOR_STATE::SET_PID);
 }
@@ -221,16 +225,17 @@ void Motor::readPID()
 void Motor::updatePID()
 {
     inMutex.lock();
-   int Kp =  motorIntP;
-    int Ki =  motorIntI;
+
     inMutex.unlock();
     makeHeader(0x31, 1, 0x06);
-    data.push_back((uint8_t)Kp);
-    data.push_back((uint8_t)Ki);
-    data.push_back((uint8_t)50) ;
-    data.push_back((uint8_t)40);
-    data.push_back((uint8_t)50);
-    data.push_back((uint8_t)50);
+    inMutex.lock();
+    data.push_back((uint8_t)motorPosP);
+    data.push_back((uint8_t)motorPosI);
+    data.push_back((uint8_t)motorSpeedP) ;
+    data.push_back((uint8_t)motorSpeedI);
+    data.push_back((uint8_t)motorTorqueP);
+    data.push_back((uint8_t)motorTorqueI);
+    inMutex.unlock();
     addCheckSum();
 
     my_serial->writeBytes(&data[0], data.size());

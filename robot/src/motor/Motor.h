@@ -16,8 +16,15 @@ class Motor {
     float kp = 650;
     float kpUI= kp ;
 
-   int motorIntP=100;
-    int motorIntI=100;
+   int motorPosP=100;
+    int motorPosI=100;
+    int motorSpeedP=50;
+    int motorSpeedI=40;
+    int motorTorqueP=50;
+    int motorTorqueI=50;
+
+
+
 
     void updatePID();
     void updatePosition();
@@ -70,7 +77,7 @@ public:
     void setState( MOTOR_STATE state);
 	void setMotorAngle(float angle);
     void setMotorKp(float target);
-    void setMotorIntKpi(float p,float i);
+    void setMotorIntPID(int pp,int pi,int sp,int si,int tp,int ti);
 	void setMotorMaxSpeed(float speed);
 	ci::vec3 getData();
 	

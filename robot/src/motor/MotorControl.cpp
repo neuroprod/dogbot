@@ -99,6 +99,14 @@ void MotorControl::setAngle(std::vector<float>angles)
         }
     }
 }
+void MotorControl::setPID()
+{
+
+    for(auto m:motors)
+    {
+        m->setMotorIntPID(motorPosP,motorPosI,motorSpeedP,motorSpeedI,motorTorqueP,motorTorqueI);
+    }
+}
 void MotorControl::drawGui()
 {
     ImGui::Begin( "motors" );
@@ -118,24 +126,30 @@ void MotorControl::drawGui()
         }
 
     }
-    if (ImGui::SliderInt("all_motorIntP", &motorIntP, 10, 255))
+    if (ImGui::SliderInt("motorPosP", &motorPosP, 0, 255))
     {
-        for(auto m:motors)
-        {
-            m->setMotorIntKpi(motorIntP,motorIntI);
-        }
-
+        setPID();
     }
-    if (ImGui::SliderInt("all_motorIntI", &motorIntI, 10, 255))
+    if (ImGui::SliderInt("motorPosI", &motorPosI, 0, 255))
     {
-        for(auto m:motors)
-        {
-            m->setMotorIntKpi(motorIntP,motorIntI);
-        }
-
+        setPID();
     }
-
-
+    if (ImGui::SliderInt("motorSpeedP", &motorSpeedP, 0, 255))
+    {
+        setPID();
+    }
+    if (ImGui::SliderInt("motorSpeedI", &motorSpeedI, 0, 255))
+    {
+        setPID();
+    }
+    if (ImGui::SliderInt("motorTorqueP", &motorTorqueP, 0, 255))
+    {
+        setPID();
+    }
+    if (ImGui::SliderInt("motorTorqueI", &motorTorqueI, 0, 255))
+    {
+        setPID();
+    }
 
 
 
