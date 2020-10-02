@@ -1,121 +1,13 @@
 [
    {
-      "key" : "BRAnkle",
-      "type" : "motor",
-      "value" : {
-         "id" : 4,
-         "max" : 163,
-         "min" : -10,
-         "offsetInput" : 163,
-         "port" : "ttyMot11",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "BLHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 4,
-         "max" : 90,
-         "min" : -90,
-         "offsetInput" : 0,
-         "port" : "ttyMot4",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "FRKnee",
+      "key" : "FRHip",
       "type" : "motor",
       "value" : {
          "id" : 1,
-         "max" : 10,
-         "min" : -75.079999999999998,
-         "offsetInput" : -75.079999999999998,
-         "port" : "ttyMot5",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "FRAnkle",
-      "type" : "motor",
-      "value" : {
-         "id" : 1,
-         "max" : 163,
-         "min" : -10,
-         "offsetInput" : 163,
-         "port" : "ttyMot9",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "FLHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 2,
          "max" : 90,
          "min" : -90,
          "offsetInput" : 0,
-         "port" : "ttyMot2",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "BLKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 4,
-         "max" : 75,
-         "min" : -10,
-         "offsetInput" : 75.079999999999998,
-         "port" : "ttyMot8",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "FLKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 2,
-         "max" : 75,
-         "min" : -10,
-         "offsetInput" : 75.079999999999998,
-         "port" : "ttyMot6",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "BRKnee",
-      "type" : "motor",
-      "value" : {
-         "id" : 4,
-         "max" : 10,
-         "min" : -75,
-         "offsetInput" : -75.079999999999998,
-         "port" : "ttyMot7",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "BLAnkle",
-      "type" : "motor",
-      "value" : {
-         "id" : 4,
-         "max" : 10,
-         "min" : -163,
-         "offsetInput" : -163,
-         "port" : "ttyMot12",
-         "reverse" : false
-      }
-   },
-   {
-      "key" : "BRHip",
-      "type" : "motor",
-      "value" : {
-         "id" : 3,
-         "max" : 90,
-         "min" : -90,
-         "offsetInput" : 0,
-         "port" : "ttyMot3",
+         "port" : "ttyMota",
          "reverse" : false
       }
    },
@@ -132,14 +24,122 @@
       }
    },
    {
-      "key" : "FRHip",
+      "key" : "BRHip",
       "type" : "motor",
       "value" : {
-         "id" : 1,
+         "id" : 3,
          "max" : 90,
          "min" : -90,
          "offsetInput" : 0,
-         "port" : "ttyMota",
+         "port" : "ttyMot3",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "BLAnkle",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 10,
+         "min" : -163,
+         "offsetInput" : -163,
+         "port" : "ttyMot12",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "FRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 1,
+         "max" : 10,
+         "min" : -75.079999999999998,
+         "offsetInput" : -75.079999999999998,
+         "port" : "ttyMot5",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "BRKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 10,
+         "min" : -75,
+         "offsetInput" : -75.079999999999998,
+         "port" : "ttyMot7",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "FLKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 2,
+         "max" : 75,
+         "min" : -10,
+         "offsetInput" : 75.079999999999998,
+         "port" : "ttyMot6",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "BLKnee",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 75,
+         "min" : -10,
+         "offsetInput" : 75.079999999999998,
+         "port" : "ttyMot8",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "FLHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 2,
+         "max" : 90,
+         "min" : -90,
+         "offsetInput" : 0,
+         "port" : "ttyMot2",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "FRAnkle",
+      "type" : "motor",
+      "value" : {
+         "id" : 1,
+         "max" : 163,
+         "min" : -10,
+         "offsetInput" : 163,
+         "port" : "ttyMot9",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "BLHip",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 90,
+         "min" : -90,
+         "offsetInput" : 0,
+         "port" : "ttyMot4",
+         "reverse" : false
+      }
+   },
+   {
+      "key" : "BRAnkle",
+      "type" : "motor",
+      "value" : {
+         "id" : 4,
+         "max" : 163,
+         "min" : -10,
+         "offsetInput" : 163,
+         "port" : "ttyMot11",
          "reverse" : false
       }
    }

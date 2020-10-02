@@ -10,7 +10,7 @@
 #include "BaseState.h"
 #include "cinder/Timeline.h"
 #include "../../walking/GaitController.h"
-
+#include "../../balance/BalanceController.h"
 class StepState : public BaseState
 {
 public:
@@ -29,6 +29,7 @@ public:
     }
     IKController * ikController;
     GaitController * gaitController;
+    BalanceController *balanceController;
     bool done ;
 };
 

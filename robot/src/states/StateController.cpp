@@ -26,6 +26,7 @@ void StateController::setup(IKController *ikController, GaitController *gaitCont
     stepState = std::make_shared<StepState>();
     stepState->ikController = ikController;
     stepState->gaitController = gaitController;
+    stepState->balanceController= balanceController;
     states.push_back(stepState);
 
     laydownState = std::make_shared<LayDownState>();
