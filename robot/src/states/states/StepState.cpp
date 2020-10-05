@@ -20,7 +20,10 @@ void StepState::update()
     {
         ikController->legs[i]->targetPos =  gaitController->legs[i]->targetPos;
     }
-    ikController->setBalance(0, balanceController->balanceZ);
+    float scale =1;
+    if(!gaitController->frUp)scale=-1;
+
+    ikController->setBalance(balanceController->balanceX, balanceController->balanceZ*scale);
 }
 bool StepState::isDone()
 {

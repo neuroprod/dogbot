@@ -9,14 +9,14 @@
 void BalanceController::setup( bool isRobot)
 {
 
-    pidX.Kp = 0;
+    pidX.Kp = 1;
     pidX.Ki = 0;
     pidX.Kd = 0;
     pidX.inv =false;
     pidX.max =50;
     pidX.min =-50;
     //
-    pidZ.Kp = 0;
+    pidZ.Kp = 3;
     pidZ.Ki = 0;
     pidZ.Kd = 0;
     pidZ.inv = true;

@@ -102,8 +102,16 @@ void GaitController::update()
 
 
         int state = legs[0]->state;
+        if(state==3)
+        {
+            frUp =true;
 
-        if(state==3 || state==1)
+        }  else if(state==1)
+        {
+            frUp =false;
+
+        }
+            if(state==3 || state==1)
         {
             GRAPH()->pulse(1);
         }else{

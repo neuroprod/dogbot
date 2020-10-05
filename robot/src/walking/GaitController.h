@@ -71,7 +71,7 @@ public:
     OrbitCamera camera;
     float fboWidth =0;
 bool isWalking =false;
-
+    bool frUp =false;
 
 };
 

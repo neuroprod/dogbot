@@ -51,7 +51,7 @@ void Simulation::update()
     if (usePhysics && waitTime<0)
     {
 
-        balanceController.update(physicsController.model.angleX, physicsController.model.angleZ);
+        balanceController.update(physicsController.model.angleX/3.1415f*180.f, physicsController.model.angleZ/3.1415f*180.f);
 
         ikController.setBalance(balanceController.offsetX,balanceController.offsetZ);
 
