@@ -224,9 +224,7 @@ void Motor::readPID()
 /////////////////
 void Motor::updatePID()
 {
-    inMutex.lock();
 
-    inMutex.unlock();
     makeHeader(0x31, 1, 0x06);
     inMutex.lock();
     data.push_back((uint8_t)motorPosP);
