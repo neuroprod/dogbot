@@ -90,6 +90,7 @@ void StateController::setCommand(int type, int com)
         } else if (com == 4)
         {
             trySetNewState(STATE::TEST2LEGSUP);
+
         }
 
     }
