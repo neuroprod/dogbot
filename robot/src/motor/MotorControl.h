@@ -13,8 +13,10 @@ public:
 	void drawGui();
 	std::vector<MotorRef> motors;
     void setAngle(std::vector<float>angles);
+
     void setPID();
-    bool enableInput =false;
+    bool enableInput =true;
+
     float motorSpeed = 150000;
     float kp = 650;
     int motorPosP=100;
