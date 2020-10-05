@@ -34,6 +34,7 @@ void TestAllLegsDownState::update()
     ikController->BL->targetPos.y =BLpos;
     ikController->BR->targetPos.y =BRpos;
     ikController->setBalance(offsetX.value(),offsetZ.value());
+    if(done) balanceController->setLevel();
 };
 bool TestAllLegsDownState::isDone()
 {

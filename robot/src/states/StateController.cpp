@@ -41,6 +41,7 @@ void StateController::setup(IKController *ikController, GaitController *gaitCont
 
     testAllLegsDownState = std::make_shared<TestAllLegsDownState>();
     testAllLegsDownState->ikController = ikController;
+    testAllLegsDownState->balanceController= balanceController;
     states.push_back(testAllLegsDownState);
 
     currentState = sitState;

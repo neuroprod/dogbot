@@ -22,7 +22,7 @@ void BalanceController::setup( bool isRobot)
     pidZ.inv = true;
     pidZ.max =50;
     pidZ.min =-50;
-    balanceGraph.prepGraph("Balance","robot",2,{1000,1000},{ci::Color(1,0,0),ci::Color(0,1,0)},{"rotX","rotZ"} );
+    balanceGraph.prepGraph("Balance","robot",2,{1,1},{ci::Color(1,0,0),ci::Color(0,1,0)},{"rotX","rotZ"} );
     balanceGraph.gVisible =true;
     balanceGraph.drawZero =true;
     GRAPH()->reg(&balanceGraph);
@@ -33,11 +33,11 @@ void BalanceController::update(float rotX,float rotZ)
     inputZ = rotZ;
 
     float adjX = inputX-offsetX;
-    float adjY = inputZ-offsetZ;
+    float adjZ = inputZ-offsetZ;
     if(adjX >30 ||adjX <-30   ){return;}
-    if(adjX >30 ||adjX <-30   ){return;}
+    if(adjZ >30 ||adjZ <-30   ){return;}
     balanceZ =  pidX.calculate(0, adjX );
-   offsetZ = pidX.calculate(0, adjY);
+    balanceX = pidZ.calculate(0, adjZ);
 
     balanceGraph.addData({rotX,rotZ});
 }
