@@ -77,16 +77,19 @@ void StateController::setCommand(int type, int com)
     {
         if (com == 1)
         {
-            trySetNewState(STATE::TEST2LEGSUP);
+            GRAPH()->play();
+
         } else if (com == 2)
         {
-            trySetNewState(STATE::TESTALLLEGSDOWN);
+            GRAPH()->pauze();
+
         } else if (com == 3)
         {
-            GRAPH()->pauze();
+            trySetNewState(STATE::TESTALLLEGSDOWN);
+
         } else if (com == 4)
         {
-            GRAPH()->play();
+            trySetNewState(STATE::TEST2LEGSUP);
         }
 
     }
