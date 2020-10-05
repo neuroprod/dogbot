@@ -35,7 +35,7 @@ void Robot::update() {
 
     glm::quat q =imu.getQuat();
     glm::vec3 euler =glm::eulerAngles(q)/3.1415f*180.f;
-    balanceController.update(euler.x,euler.y);
+    balanceController.update(euler.x,euler.z);
 
     if(COM()->receiver->hasNewJoystick)
     {
