@@ -13,9 +13,11 @@ public:
     BalanceController(){};
     void setup(bool isRobot );
     void drawGui();
-    void update(float rotX,float rotZ);
+    void update(float rotX,float rotZ,float avX,float avZ);
     PID pidX;
     PID pidZ;
+    PID pidAVX;
+    PID pidAVZ;
     float offsetX =0;
     float offsetZ =0;
     float inputX =0;

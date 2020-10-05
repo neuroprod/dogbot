@@ -7,7 +7,7 @@ class IMU
     void pollLoop();
     void addDiscoveredSensor(const ZenEventData_SensorFound& desc);
 
-    ci::vec3 euler;
+   ci::vec3 euler;
     glm::quat quaternion;
     ci::vec3 linearAcc;
     ci::vec3 angularVel;
@@ -29,7 +29,8 @@ public:
     void drawGui();
 
     glm::quat getQuat();
-    ci::vec3 getLinearAccel();
     ci::vec3 getEuler();
+    ci::vec3 getLinearAccel();
+    ci::vec3 getAngularVel();
 };
 

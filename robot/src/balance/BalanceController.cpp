@@ -9,37 +9,55 @@
 void BalanceController::setup( bool isRobot)
 {
 
-    pidX.Kp = 1;
+    pidX.Kp = 2;
     pidX.Ki = 0;
     pidX.Kd = 0;
     pidX.inv =false;
     pidX.max =50;
     pidX.min =-50;
     //
-    pidZ.Kp = 3;
+    pidZ.Kp = 0;
     pidZ.Ki = 0;
     pidZ.Kd = 0;
     pidZ.inv = true;
     pidZ.max =50;
     pidZ.min =-50;
-    balanceGraph.prepGraph("Balance","robot",2,{1,1},{ci::Color(1,0,0),ci::Color(0,1,0)},{"rotX","rotZ"} );
+
+
+
+    pidAVX.Kp = 1;
+    pidAVX.Ki = 0;
+    pidAVX.Kd = 0;
+    pidAVX.inv =true;
+    pidAVX.max =50;
+    pidAVX.min =-50;
+    //
+    pidAVZ.Kp = 0;
+    pidAVZ.Ki = 0;
+    pidAVZ.Kd = 0;
+    pidAVZ.inv = false;
+    pidAVZ.max =50;
+    pidAVZ.min =-50;
+
+
+
+    balanceGraph.prepGraph("Balance","robot",4,{1,1,0.5,0.5},{ci::Color(1,0,0),ci::Color(0,1,0),ci::Color(0.5,0,0),ci::Color(0,0.5,0)},{"rotX","rotZ","avX","avZ"} );
     balanceGraph.gVisible =true;
     balanceGraph.drawZero =true;
     GRAPH()->reg(&balanceGraph);
 }
-void BalanceController::update(float rotX,float rotZ)
+void BalanceController::update(float rotX,float rotZ,float avX,float avZ)
 {
     inputX = rotX;
     inputZ = rotZ;
 
     float adjX = inputX-offsetX;
     float adjZ = inputZ-offsetZ;
-    if(adjX >30 ||adjX <-30   ){return;}
-    if(adjZ >30 ||adjZ <-30   ){return;}
-    balanceZ =  pidX.calculate(0, adjX );
-    balanceX = pidZ.calculate(0, adjZ);
 
-    balanceGraph.addData({rotX,rotZ});
+    balanceZ =  pidX.calculate(0, adjX )+pidAVX.calculate(0, avX );;
+    balanceX = pidZ.calculate(0, adjZ)+pidAVZ.calculate(0, avZ );;
+
+    balanceGraph.addData({rotX,rotZ,avX,avZ});
 }
 void BalanceController::setLevel()
 {
@@ -57,7 +75,9 @@ void BalanceController::drawGui()
 {
     ImGui::Begin("Balance");
     pidX.drawGui("xRotation");
+    pidAVX.drawGui("xAngVel");
     pidZ.drawGui("zRotation");
+    pidAVZ.drawGui("zAngVel");
     ImGui::End();
 
 }

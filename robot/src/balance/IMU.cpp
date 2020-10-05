@@ -19,12 +19,20 @@ void IMU::start()
     g_imuHandle = 0;
     pollingThread = std::thread(&IMU::pollLoop, this);
 }
-
 ci::vec3 IMU::getEuler()
 {
     vec3 e;
+    dataMutex.lock();
+    e = euler;
+    dataMutex.unlock();
+    return e;
+
+}
+ci::vec3 IMU::getAngularVel()
+{
+    vec3 e;
      dataMutex.lock();
-     e = euler;
+     e = angularVel;
      dataMutex.unlock();
     return e;
 }
@@ -54,6 +62,7 @@ void IMU::drawGui()
     glm::quat q = getQuat();
     ImGui::Begin("IMU");
     ImGui::InputFloat4("quat", &q[0]);
+    ImGui::InputFloat3("linearAcc", &a[0]);
     ImGui::InputFloat3("linearAcc", &a[0]);
     ImGui::End();
 }
@@ -177,6 +186,15 @@ void IMU::pollLoop()
                         quaternion.z = event.data.imuData.q[1];
                         quaternion.x = event.data.imuData.q[2];
                         quaternion.w = event.data.imuData.q[3];
+
+
+                        angularVel.x = event.data.imuData.w[0];
+                        angularVel.y = event.data.imuData.w[1];
+                        angularVel.z = event.data.imuData.w[2];
+
+                        euler.x = event.data.imuData.r[0];
+                        euler.y = event.data.imuData.r[1];
+                        euler.z = event.data.imuData.r[2];
 
 
                         linearAcc.x = event.data.imuData.linAcc[0];

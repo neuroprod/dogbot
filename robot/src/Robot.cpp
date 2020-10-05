@@ -21,10 +21,11 @@ void Robot::setup() {
     modelRenderer.setup();
     modelRenderer.showMesh =false;
     modelRenderer.showWire =true;
+    balanceController.setup(true);
     motorControl.setup();
 
     stateController.setup(&ikController, &gaitController,&balanceController);
-    balanceController.setup(true);
+
 
 
 
@@ -34,8 +35,10 @@ void Robot::setup() {
 void Robot::update() {
 
     glm::quat q =imu.getQuat();
-    glm::vec3 euler =glm::eulerAngles(q)/3.1415f*180.f;
-    balanceController.update(euler.x,euler.z);
+    glm::vec3 euler =imu.getEuler();
+    vec3  angularVel =imu.getAngularVel();
+
+    balanceController.update(euler.x,euler.y,angularVel.x,angularVel.y);
 
     if(COM()->receiver->hasNewJoystick)
     {
