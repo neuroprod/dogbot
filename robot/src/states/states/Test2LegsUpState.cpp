@@ -14,22 +14,27 @@ void Test2LegsUpState::start()
 
     FRpos =  ikController->FR->targetPos.y;
     BLpos = ikController->BL->targetPos.y;
-    float time =3;
-    float height =30;
-    timeline().apply(&FRpos,height,time,EaseInOutQuad());
-    timeline().apply(&BLpos,height,time,EaseInOutQuad()).finishFn( [&](){done=true;});
+
+    timeline().apply(&FRpos,height,time,EaseInOutQuad()) ;
+    timeline().appendTo(&FRpos,0.f,time,EaseInOutQuad());
+
+    timeline().apply(&BLpos,height,time,EaseInOutQuad());
+    timeline().appendTo(&BLpos,0.0f,time,EaseInOutQuad()).finishFn( [&](){done=true;});
+
+
+
 
 };
 void Test2LegsUpState::update()
 {
     ikController->FR->targetPos.y =FRpos;
     ikController->BL->targetPos.y =BLpos;
-    ikController->setBalance(0, balanceController->balanceZ);
+    ikController->setBalance(balanceController->balanceX, balanceController->balanceZ);
 
 };
 bool Test2LegsUpState::isDone()
 {
-    // if(done)GRAPH()->pauze();
+
     return  done;
 }
 

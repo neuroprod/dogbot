@@ -31,7 +31,8 @@ public:
     }
 
 
-
+    ci::Anim<float> offsetX;
+    ci::Anim<float> offsetZ;
     ci::Anim<float> FRpos;
     ci::Anim<float> BLpos;
     ci::Anim<float> FLpos;

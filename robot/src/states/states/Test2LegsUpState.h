@@ -34,8 +34,8 @@ public:
         }
         return false;
     }
-    float height =30;
-
+    float height =40;
+    float time =0.25;
 
     ci::Anim<float> FRpos;
     ci::Anim<float> BLpos;
