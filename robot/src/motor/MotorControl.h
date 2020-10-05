@@ -14,7 +14,7 @@ public:
 	std::vector<MotorRef> motors;
     void setAngle(std::vector<float>angles);
     void setPID();
-    bool enableInput =true;
+    bool enableInput =false;
     float motorSpeed = 150000;
     float kp = 650;
     int motorPosP=100;

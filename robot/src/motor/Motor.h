@@ -64,7 +64,7 @@ class Motor {
 
 
     double prevTime =0;
-   // MOTOR_STATE currentStateTarget = MOTOR_STATE::SET_ZERO;
+    //MOTOR_STATE currentStateTarget = MOTOR_STATE::SET_ZERO;
     MOTOR_STATE currentStateTarget = MOTOR_STATE::POSITION;
   // MOTOR_STATE currentStateTarget = MOTOR_STATE::READ_PID;
 
