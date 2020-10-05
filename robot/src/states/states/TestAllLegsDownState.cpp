@@ -16,9 +16,11 @@ void TestAllLegsDownState::start()
     BLpos = ikController->BL->targetPos.y;
     FLpos =  ikController->FL->targetPos.y;
     BRpos = ikController->BR->targetPos.y;
-    float time =2;
+    float time =0.5;
     offsetZ= ikController->mOffsetZ;
     offsetX= ikController->mOffsetX;
+    timeline().apply(&offsetZ,0.f,time,EaseInOutQuad());
+    timeline().apply(&offsetX,0.f,time,EaseInOutQuad());
     timeline().apply(&FRpos,0.f,time,EaseInOutQuad());
     timeline().apply(&FLpos,0.f,time,EaseInOutQuad());
     timeline().apply(&BRpos,0.f,time,EaseInOutQuad());
@@ -31,7 +33,7 @@ void TestAllLegsDownState::update()
     ikController->FL->targetPos.y =FLpos;
     ikController->BL->targetPos.y =BLpos;
     ikController->BR->targetPos.y =BRpos;
-ikController->setBalance()
+    ikController->setBalance(offsetX.value(),offsetZ.value());
 };
 bool TestAllLegsDownState::isDone()
 {

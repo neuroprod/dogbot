@@ -78,7 +78,7 @@ void Robot::update() {
 void Robot::draw()
 {
     motorControl.drawGui();
-    GRAPH()->draw("motors");
+    GRAPH()->draw("robot");
     ikController.drawGui();
     gaitController.drawGui();
     modelRenderer.draw();

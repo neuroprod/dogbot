@@ -28,7 +28,7 @@ void Motor::setup(Smotor settings)
 
 
 
-    motorGraph.prepGraph(name,"motors",4,{0.1f,0.4f,(100.f/65000.f)*0.9f,0.5},{Color(1,0,0),Color(0,1,0),Color(0,0,1),Color(1,1,1)},{"Torque","Speed","Encoder","tar angle"} );
+    motorGraph.prepGraph(name,"robot",4,{0.1f,0.4f,(100.f/65000.f)*0.9f,0.5},{Color(1,0,0),Color(0,1,0),Color(0,0,1),Color(1,1,1)},{"Torque","Speed","Encoder","tar angle"} );
     GRAPH()->reg(&motorGraph);
 
     unsigned long baud = 115200;
@@ -62,7 +62,7 @@ void Motor::loop()
 
     bool nComplete = true;
     std::vector<uint8_t> buffer;
-    std::this_thread::sleep_for (std::chrono::milliseconds(2000));
+    std::this_thread::sleep_for (std::chrono::milliseconds(100));
 
 
     while (nComplete)

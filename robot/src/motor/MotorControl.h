@@ -25,4 +25,12 @@ public:
     int motorSpeedI=40;
     int motorTorqueP=50;
     int motorTorqueI=50;
+
+
+    /*int motorPosP=100;
+    int motorPosI=100;
+    int motorSpeedP=50;
+    int motorSpeedI=40;
+    int motorTorqueP=50;
+    int motorTorqueI=50;*/
 };

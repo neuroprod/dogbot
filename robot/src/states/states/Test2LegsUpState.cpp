@@ -41,5 +41,5 @@ bool Test2LegsUpState::isDone()
 void Test2LegsUpState::drawGui(){
 
     ImGui::SliderFloat("height",&height,0.f,80.f);
-
+    ImGui::SliderFloat("time",&time,0.f,80.f);
 }

@@ -44,7 +44,7 @@ void MotorControl::setup()
     FRKnee->setup(SETTINGS()->getMotor("FRKnee"));
     motors.push_back(FRKnee);
     FRKnee->motorGraph.gVisible =true;
-/*
+
     MotorRef FRAnkle = Motor::create();
     FRAnkle->setup(SETTINGS()->getMotor("FRAnkle"));
     motors.push_back(FRAnkle);
@@ -86,7 +86,10 @@ void MotorControl::setup()
 
     MotorRef BLAnkle = Motor::create();
     BLAnkle->setup(SETTINGS()->getMotor("BLAnkle"));
-    motors.push_back(BLAnkle);*/
+    motors.push_back(BLAnkle);
+
+
+    setPID();
 }
 void MotorControl::setAngle(std::vector<float>angles)
 {
