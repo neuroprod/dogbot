@@ -20,6 +20,7 @@ public:
     virtual void start(){};
     virtual void update(){};
     virtual bool isDone()=0;
+    virtual bool canRepeat(){return false;};
     virtual std::string getName()=0;
     virtual bool canHaveNextState(  STATE nextState)=0;
 

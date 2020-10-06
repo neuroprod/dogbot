@@ -9,7 +9,7 @@
 void BalanceController::setup( bool isRobot)
 {
 
-    pidX.Kp = 2;
+    pidX.Kp = 0;
     pidX.Ki = 0;
     pidX.Kd = 0;
     pidX.inv =false;
@@ -25,7 +25,7 @@ void BalanceController::setup( bool isRobot)
 
 
 
-    pidAVX.Kp = 1;
+    pidAVX.Kp = 0;
     pidAVX.Ki = 0;
     pidAVX.Kd = 0;
     pidAVX.inv =true;
@@ -41,7 +41,7 @@ void BalanceController::setup( bool isRobot)
 
 
 
-    balanceGraph.prepGraph("Balance","robot",4,{1,1,0.5,0.5},{ci::Color(1,0,0),ci::Color(0,1,0),ci::Color(0.5,0,0),ci::Color(0,0.5,0)},{"rotX","rotZ","avX","avZ"} );
+    balanceGraph.prepGraph("Balance","robot",6,{1,1,0.5,0.5,2,2},{ci::Color(1,0,0),ci::Color(0,1,0),ci::Color(0.5,0,0),ci::Color(0,0.5,0),ci::Color(1,1,1),ci::Color(0.5,0.5,0.5)},{"rotX","rotZ","avX","avZ","balX","balZ"} );
     balanceGraph.gVisible =true;
     balanceGraph.drawZero =true;
     GRAPH()->reg(&balanceGraph);
@@ -57,7 +57,7 @@ void BalanceController::update(float rotX,float rotZ,float avX,float avZ)
     balanceZ =  pidX.calculate(0, adjX )+pidAVX.calculate(0, avX );;
     balanceX = pidZ.calculate(0, adjZ)+pidAVZ.calculate(0, avZ );;
 
-    balanceGraph.addData({rotX,rotZ,avX,avZ});
+    balanceGraph.addData({rotX,rotZ,avX,avZ,balanceX,balanceZ});
 }
 void BalanceController::setLevel()
 {

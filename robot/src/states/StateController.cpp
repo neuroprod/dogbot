@@ -112,7 +112,7 @@ void StateController::trySetNewState(STATE state)
         setNewState = false;
         error = "current state (" + currentState->getName() + ") busy";
 
-    } else if (state == currentState->state)
+    } else if (state == currentState->state  && !currentState->canRepeat() )
     {
         setNewState = false;
         error = "already in state " + currentState->getName();
@@ -179,7 +179,7 @@ void StateController::draw()
         bool disable = true;
         if (!forceDisable)
         {
-            if (currentState->state != states[i]->state)
+            if (currentState->state != states[i]->state ||  currentState->canRepeat())
             {
                 if (currentState->canHaveNextState(states[i]->state))
                 {

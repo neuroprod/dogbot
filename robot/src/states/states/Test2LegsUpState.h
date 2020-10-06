@@ -25,23 +25,24 @@ public:
 
     bool hasGui() {return true;};
     void drawGui();
-
+    bool canRepeat(){return true;};
     bool canHaveNextState(  STATE nextState){
-        if(nextState==STATE::TESTALLLEGSDOWN)
+        if(nextState==STATE::TESTALLLEGSDOWN ||nextState==STATE::TEST2LEGSUP )
         {
-        return true;
+         return true;
 
         }
         return false;
     }
-    float height =40;
-    float time =0.25;
-
-    ci::Anim<float> FRpos;
-    ci::Anim<float> BLpos;
+    float height =40.f;
+    float timeRise =0.25f;
+    float timeStay =1.f;
+    ci::Anim<float> Fpos;
+    ci::Anim<float> Bpos;
     IKController * ikController;
     BalanceController *balanceController;
     bool done ;
+    bool frUp =true;
 };
 
 

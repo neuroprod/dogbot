@@ -21,6 +21,8 @@ void Robot::setup() {
     modelRenderer.setup();
     modelRenderer.showMesh =false;
     modelRenderer.showWire =true;
+    modelRenderer.showFloor =false;
+    modelRenderer.showCOM =false;
     balanceController.setup(true);
     motorControl.setup();
 
