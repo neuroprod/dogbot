@@ -37,6 +37,7 @@ void RSerial::worker()
     {
         if (mSerial)
         {
+            mSerial->writeByte(' ');
             std::string mLastString = mSerial->readStringUntil('\n', 80);
             if (mLastString.length() > 1)
             {
