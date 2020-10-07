@@ -16,7 +16,7 @@ void RSerial::setup()
     try
     {
 
-        mSerial = Serial::create(Serial::Device("ttyACM0"), 115200);
+        mSerial = Serial::create(Serial::Device("ttyAMA0"), 115200);
     }
     catch (SerialExc &exc)
     {
