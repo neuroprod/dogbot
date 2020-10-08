@@ -37,7 +37,7 @@ void RSerial::worker()
     {
         if (mSerial)
         {
-            mSerial->writeByte(' ');
+
             std::string mLastString = mSerial->readStringUntil('\n', 80);
             if (mLastString.length() > 1)
             {
@@ -57,30 +57,7 @@ void RSerial::worker()
                     float i4 = std::stof(strings[3]);//right hor
 
                     joystick.setRaw(i1,i2,i4,i3);
-                    /*
-                    bool rDown = false;
-                    if (i2 > 900)rDown = true;
 
-                    bool lDown = false;
-                    if (i3 > 900)lDown = true;
-
-                    float xl = clampJoystick(i1 - 515.f)*-1;
-                    float yl = clampJoystick((i2 - 512.f) * -1.f);
-
-
-                    float xr = clampJoystick(i4 - 505.f)*-1;
-                    float yr = clampJoystick((i3 - 515.f) * -1.f);
-
-
-                    std::lock_guard<std::mutex> lock(dataMutex);
-
-
-                    joystick.mRightJoystick.x = xr;
-                    joystick.mRightJoystick.y = yr;
-                    joystick.mLeftJoystick.x = xl;
-                    joystick.mLeftJoystick.y = yl;
-                    joystick.mLeftJoystickDown = lDown;
-                    joystick.mRightJoystickDown = rDown;*/
 
 
                 }
